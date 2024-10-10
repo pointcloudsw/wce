@@ -1,0 +1,13 @@
+li, div > div {
+  display: flex;
+  align-items: center;
+  background: slategray;
+  justify-content: space-between;
+}
+.icon {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  float: right;
+  font-size: 1.8rem;
+}
