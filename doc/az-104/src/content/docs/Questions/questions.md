@@ -2,6 +2,12 @@
 title: Questions
 description: Questions.
 ---
+Is there a functional difference between the following two tag policy scope definitions?
+```
+> Subscription1/RG3
+> Subscription1/RG3/*
+```
+
 
 What's the difference between azure compute gallery and azure container registry?
 
