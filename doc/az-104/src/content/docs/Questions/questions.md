@@ -1,19 +1,26 @@
 ---
 title: Questions
-description: Questions.
 ---
-Is there a functional difference between the following two tag policy scope definitions?
+#
+
+### Is there a functional difference between the following two tag policy scope definitions?
 ```
 > Subscription1/RG3
 > Subscription1/RG3/*
 ```
 
+:::note
+- Applying new Policies to existing Subscriptions and existing Resource Groups do not automatically apply to pre-existing resources
+- Applying new Policies to pre-existing resources requires remediation actions to be defined as part of the policy
+- Whether applied directly or through a policy, Azure Resources do not inherit tags applied to their Resource Group or to their Subscription
+:::
 
-What's the difference between azure compute gallery and azure container registry?
+
+### What's the difference between azure compute gallery and azure container registry?
 
 Azure Compute Gallery and Azure Container Registry serve different purposes within the Azure ecosystem:
 
-### **Azure Compute Gallery**
+#### **Azure Compute Gallery**
 - **Purpose**: It helps you manage and share VM images and applications.
 - **Features**:
   - **Global Replication**: Allows you to replicate images across multiple regions for high availability and disaster recovery[^1].
@@ -21,7 +28,7 @@ Azure Compute Gallery and Azure Container Registry serve different purposes with
   - **Sharing**: You can share resources across subscriptions, Active Directory tenants, or even publicly¹(https://learn.microsoft.com/en-us/azure/virtual-machines/azure-compute-gallery).
   - **Scaling**: Supports scaling deployments with resource replicas in each region¹(https://learn.microsoft.com/en-us/azure/virtual-machines/azure-compute-gallery).
 
-### **Azure Container Registry**
+#### **Azure Container Registry**
 - **Purpose**: It is a managed Docker registry service for storing and managing container images and related artifacts.
 - **Features**:
   - **Geo-Replication**: Supports global distribution and reliability for network-close deployments[^2].
