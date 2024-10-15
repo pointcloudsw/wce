@@ -42,3 +42,68 @@ VM4729:1 | [Storage Blob Delegator](https://learn.microsoft.com/en-us/azure/role
 VM4729:1 | [Storage File Data Privileged Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/storage#storage-file-data-privileged-contributor) | Allows for read, write, delete, and modify ACLs on files/directories in Azure file shares by overriding existing ACLs/NTFS permissions. This role has no built-in equivalent on Windows file servers. | 69566ab7-960f-475b-8e7c-b3118f30c6bd |
 VM4729:1 | [Storage File Data Privileged Reader](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/storage#storage-file-data-privileged-reader) | Allows for read access on files/directories in Azure file shares by overriding existing ACLs/NTFS permissions. This role has no built-in equivalent on Windows file servers. | b8eda974-7b85-4f76-af95-65846b26df6d |
 ```
+
+```js
+/*
+document.location:  Location {
+    "ancestorOrigins": {},
+    "href": "https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/delegate-by-task#groups",
+    "origin": "https://learn.microsoft.com",
+    "protocol": "https:",
+    "host": "learn.microsoft.com",
+    "hostname": "learn.microsoft.com",
+    "port": "",
+    "pathname": "/en-us/entra/identity/role-based-access-control/delegate-by-task",
+    "search": "",
+    "hash": "#groups"
+}
+*/
+target = document.querySelectorAll("div.heading-wrapper h2.heading-anchor, div.heading-wrapper + div.mx-tableFixed tr");
+
+function buildHrefs(nl) {
+  hrStr = '';
+  nl.forEach( (el) => {
+    if ( el.nodeName === 'A' ){
+      if ( hrStr.length ) hrStr += '<br />';
+      hrStr += '[' + el.textContent + '](' + el.href + ')';
+    }
+  });
+  return !hrStr.length ? ' ||' : ' | ' + hrStr.substring(0, hrStr.length-1) + ') |';
+}
+
+target.forEach( t => {
+  st = '';
+  if ( t.nodeName === 'H2' ) st += '### ' + t.textContent;
+  if( t.nodeName === 'TR' )
+    if ( t.children[0].nodeName === 'TH' ) {
+      st += '| ' + t.children[0]?.textContent + ' | ' +  t.children[1]?.textContent + ' | ' +  t.children[2]?.textContent + ' |\n';
+      st += '| --- | --- | --- |';
+    } else {
+      st += '| ' + t.children[0]?.textContent + ' | [' +  t.children[1]?.textContent + '](' + t.children[1]?.children[0]?.href + ')';
+      st += buildHrefs(t.children[2]?.childNodes);
+    }
+  console.log(st);
+  });
+```
+
+
+```js
+/*
+document.location: Location: {
+    "ancestorOrigins": {},
+    "href": "https://learn.microsoft.com/en-us/entra/identity/devices/manage-device-identities#configure-device-settings",
+    "origin": "https://learn.microsoft.com",
+    "protocol": "https:",
+    "host": "learn.microsoft.com",
+    "hostname": "learn.microsoft.com",
+    "port": "",
+    "pathname": "/en-us/entra/identity/devices/manage-device-identities",
+    "search": "",
+    "hash": "#configure-device-settings"
+} 
+*/
+arr = [];
+flag = 0;
+document.querySelectorAll(".heading-wrapper:has(h2#configure-device-settings), .heading-wrapper:has(h2#configure-device-settings) ~ *").forEach((el, idx) => { if ( idx > 1 && el.nodeName === 'DIV' ) flag = 1; if ( !flag ) arr[idx] = el; } );
+console.log(arr);
+```
