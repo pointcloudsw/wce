@@ -1,0 +1,14 @@
+---
+import { getCollection, getEntries, getEntry } from "astro:content";
+const entries = await getEntries('docs');
+const { Content } = await entries.entries().flatMap(e => e);
+---
+
+<div class="nav-links">
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/blog/">Blog</a>
+  <a href="/tags/">Tags</a>
+  <Content />
+
+</div>
