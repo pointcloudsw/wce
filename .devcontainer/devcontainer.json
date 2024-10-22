@@ -39,7 +39,8 @@
 				"qwtel.sqlite-viewer",
 				"vscode-icons-team.vscode-icons",
 				"tomoki1207.pdf",
-				"ms-vscode.powershell"
+				"ms-vscode.powershell",
+				"ms-codespaces-tools.ado-codespaces-auth"
 			]
 		}
 	}
