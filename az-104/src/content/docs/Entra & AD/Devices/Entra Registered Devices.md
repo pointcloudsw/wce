@@ -1,5 +1,5 @@
 ---
-title: Entra & Active Directory Device Settings
+title: Entra Registered Devices
 ---
 
 ### Configurable settings for Entra/AD devices
@@ -21,6 +21,7 @@ Devices obtain their Entra Device Identity through user self-service or through 
 
 
 <table style="border-bottom: none;"><tr style="border-bottom: none;"><td><img src="/src/assets/Entra & AD/azure-ad-registered-device.png" width="201" alt="Entra Registered Device"/>Entra Registered</td><td><img src="/src/assets/Entra & AD/azure-ad-hybrid-joined-device.png" width="330" height="330" alt="Azure Active Directory hybrid joined device" />Entra+ADDS Hybrid-joined</td><td><img src="/src/assets/Entra & AD/azure-ad-joined-device.png" width="315" height="315" alt="Azure Active Directory joined device" />ADDS joined</td></tr></table>
+
 
 ##### Microsoft Entra registered
 Microsoft Entra registered - also known as Workplace joined - supports bring your own device (BYOD) and mobile device scenarios, enabling users to access secured resources from their personal devices.

@@ -5,9 +5,9 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
     integrations: [
         starlight({
-            title: 'My Docs'
+            title: 'AZ-104'
             , customCss: [
-                './src/styles/custom.css'
+                './styles/custom.css'
             ]
             , social: {
                 github: 'https://github.com/withastro/starlight'
