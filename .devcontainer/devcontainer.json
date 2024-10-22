@@ -3,7 +3,45 @@
 {
 	"name": "Starlight",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bullseye"
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bullseye",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"astro-build.astro-vscode",
+				"amazonwebservices.aws-toolkit-vscode",
+				"ms-vscode.azure-account",
+				"ms-azuretools.vscode-azureappservice",
+				"ms-azuretools.vscode-azurecontainerapps",
+				"ms-azuretools.vscode-cosmosdb",
+				"ms-azuretools.azure-dev",
+				"ms-azuretools.vscode-azurefunctions",
+				"ms-toolsai.vscode-ai-remote",
+				"ms-vscode.azure-repos",
+				"ms-azuretools.vscode-azureresourcegroups",
+				"ms-azuretools.vscode-azurestaticwebapps",
+				"ms-azuretools.vscode-azurestorage",
+				"ms-vscode.vscode-node-azure-pack",
+				"ms-azuretools.vscode-azurevirtualmachines",
+				"ms-vscode-remote.remote-containers",
+				"GraphQL.vscode-graphql-syntax",
+				"xabikos.JavaScriptSnippets",
+				"ms-vscode.live-server",
+				"ritwickdey.LiveServer",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"ms-python.debugpy",
+				"ms-vscode-remote.remote-ssh",
+				"ms-vscode-remote.remote-ssh-edit",
+				"ms-vscode.remote-server",
+				"ms-vscode-remote.vscode-remote-extensionpack",
+				"ms-vscode.remote-explorer",
+				"ms-vscode.remote-repositories",
+				"qwtel.sqlite-viewer",
+				"vscode-icons-team.vscode-icons",
+				"tomoki1207.pdf"
+			]
+		}
+	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
