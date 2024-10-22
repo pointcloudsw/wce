@@ -1,6 +1,9 @@
 ---
 title: Entra-AD Hybrid Joined
 ---
+<!-- <aside aria-label="Note" class="starlight-aside starlight-aside--note"> -->
+<style>.starlight-aside--note { inline-size: 95%; margin: auto; position: relative; }</style>
+
 
 ### Entra-AD Hybrid Joined
 
@@ -49,7 +52,7 @@ Feature Summary
 | **Min Rqd OS** | Win10<br />macOS 10.15<br />iOS 15<br />Android<br />Ubuntu 20/22.04 LTS<br />RHEL 8/9 LTS |
 | **Enabled via** | Windows: Settings<br />Android/iOS: Company Portal or Microsoft Authenticator app<br />macOS: Company Portal<br />Linux:  Intune Agent |
 | **Signin via** | End-user local credentials<br />Password<br />Windows Hello<br />PIN<br />Biometrics or pattern for other devices |
-| **Enables** | <ul style="padding-left: 2ch;"><li>Single sign-on (SSO) to cloud resources</li><li>Single sign-on (SSO) to cloud resources<li>Single sign-on (SSO) to cloud resources</li><li>Conditional Access when enrolled into Intune</li><li>Conditional Access via App protection policy</li><li>Enables Phone sign in with Microsoft Authenticator app</li></ul> |
+| **Enables** | <ul style="padding-left: 2ch;"><li>Single sign-on (SSO) to cloud resources</li><li>Conditional Access when enrolled into Intune</li><li>Conditional Access via App protection policy</li><li>Enables Phone sign in with Microsoft Authenticator app</li></ul> |
 
 ##### Microsoft Entra hybrid joined
 Microsoft Entra hybrid joined devices.

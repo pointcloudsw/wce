@@ -107,3 +107,18 @@ flag = 0;
 document.querySelectorAll(".heading-wrapper:has(h2#configure-device-settings), .heading-wrapper:has(h2#configure-device-settings) ~ *").forEach((el, idx) => { if ( idx > 1 && el.nodeName === 'DIV' ) flag = 1; if ( !flag ) arr[idx] = el; } );
 console.log(arr);
 ```
+### Extract Styles
+```js
+asides = document.querySelectorAll('aside');
+t = asides[3];
+style = window.getComputedStyle(t, null);
+style.getPropertyCSSValue('position').cssText
+```
+
+```js
+asides.forEach( (el, idx, obj) => { console.log(idx,el.getAttribute("aria-label"),  window.getComputedStyle(el, null).getPropertyCSSValue('position').cssText); });
+```
+
+```js
+document.querySelectorAll('aside').forEach( (el, idx, obj) => { console.log(idx,el.getAttribute("aria-label"),  window.getComputedStyle(el, null).getPropertyCSSValue('position').cssText); });
+```
