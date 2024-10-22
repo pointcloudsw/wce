@@ -38,7 +38,8 @@
 				"ms-vscode.remote-repositories",
 				"qwtel.sqlite-viewer",
 				"vscode-icons-team.vscode-icons",
-				"tomoki1207.pdf"
+				"tomoki1207.pdf",
+				"ms-vscode.powershell"
 			]
 		}
 	}
