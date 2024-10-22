@@ -1,4 +1,11 @@
+
+aside {
+  inline-size: 95%;
+  margin: auto;
+  position: relative;
+}
 /* body { background: navy; } */
+
 .card {
     background: slategray;
 }

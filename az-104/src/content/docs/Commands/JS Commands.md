@@ -120,5 +120,10 @@ asides.forEach( (el, idx, obj) => { console.log(idx,el.getAttribute("aria-label"
 ```
 
 ```js
+// WebKit / Safari
 document.querySelectorAll('aside').forEach( (el, idx, obj) => { console.log(idx,el.getAttribute("aria-label"),  window.getComputedStyle(el, null).getPropertyCSSValue('position').cssText); });
+```
+```js
+// Chromium / Edge
+document.querySelectorAll('div.alert.is-info').forEach( (el, idx, obj) => { console.log(idx,  window.getComputedStyle(el).getPropertyValue('position')); });
 ```
