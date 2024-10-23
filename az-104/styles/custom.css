@@ -16,9 +16,6 @@ a.sl-link-button:has(> svg) {
   /* text-align: justify; */
 }
 
-div.hero, div.hero * {
-  margin: auto;
-}
 
 aside {
   inline-size: 95%;
@@ -29,7 +26,15 @@ aside {
 div.main-frame:has(.content-panel) footer {
   display: none;
 } */
+div.hero, div.hero * {
+  margin: auto;
+}
 
+input[type='checkbox'] {
+  transform: scale(1.8);
+  margin: auto .5ch;
+  vertical-align: middle;
+}
 figure > figcaption {
   margin: -0.5rem auto 1rem;
 }

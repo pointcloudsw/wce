@@ -16,11 +16,11 @@ export default defineConfig({
                 src: './src/assets/MSCertifiedAssociate.png'
                 , replacesTitle: true
             }
+            , tableOfContents: { minHeadingLevel: 1, maxHeadingLevel: 3 }
             , title: 'AZ-104'
             , social: {
                 github: 'https://github.com/withastro/starlight'
             }
-            , tableOfContents: { minHeadingLevel: 1, maxHeadingLevel: 3 }
         })
     ]
 });
