@@ -5,12 +5,30 @@
 }
 Solved for this in starlight/utils/route-data.ts by replacing the annoying hardcoded 'Overview' with page title from the ToC entry frontmatter 
 */
+a.sl-link-button:has(> svg) {
+  transform: scale(2);
+
+  /* true center */
+  margin: 2lh auto;
+
+  /* apparent center */
+  /* margin: 2lh 0 2lh 20vh; */
+  /* text-align: justify; */
+}
+
+div.hero, div.hero * {
+  margin: auto;
+}
 
 aside {
   inline-size: 95%;
   margin: auto;
   position: relative;
 }
+/* 
+div.main-frame:has(.content-panel) footer {
+  display: none;
+} */
 
 figure > figcaption {
   margin: -0.5rem auto 1rem;

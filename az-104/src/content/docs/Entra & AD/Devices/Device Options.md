@@ -12,7 +12,9 @@ Managing device identities in Microsoft Entra / Azure Active Directory requires 
 ### Configurable settings for Entra/AD devices
 [Entra Devices - Configure Device Settings](https://learn.microsoft.com/en-us/entra/identity/devices/manage-device-identities#configure-device-settings)
 
-![Entra admin center - Devices/All Devices Screen](./azure-entra-devices-all-devices.png)
+#### Device Management Screens - Microsoft Entra Admin Center
+<div class="not-content picgrid"><figure><img src="/src/assets/Entra & AD/Devices/devices-azure-portal.png" alt="Devices Overview - Entra Admin Center" width="300" /><figcaption>Devices Overview - Entra Admin Center</figcaption></figure><figure><img src="/src/assets/Entra & AD/Devices/azure-entra-devices-all-devices.png" alt="All Devices View - Entra Admin Center" width="300" /><figcaption>All Devices View - Entra Admin Center</figcaption></figure></div>
+
 
 #### Device Identities and Join Types
 A [device identity](https://learn.microsoft.com/en-us/graph/api/resources/device) is an object in Microsoft Entra ID:
