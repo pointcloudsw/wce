@@ -8,6 +8,7 @@ export default defineConfig({
         starlight({
             components: {
                 TableOfContents: './src/components/TableOfContents.astro'
+                , MobileTableOfContents: './src/components/MobileTableOfContents.astro'
             }
             , customCss: [
                 './styles/custom.css'

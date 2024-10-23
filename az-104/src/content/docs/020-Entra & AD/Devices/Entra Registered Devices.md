@@ -1,5 +1,7 @@
 ---
 title: Entra Registered Devices
+sidebar:
+    order: 1
 ---
 
 ### Configurable settings for Entra/AD devices

@@ -1,5 +1,7 @@
 ---
 title: Introduction to Microsoft Entra Device Identity
+sidebar:
+    order: 0
 ---
 
 ### Overview
