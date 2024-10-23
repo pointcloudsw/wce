@@ -1,20 +1,38 @@
 
+
+/* a[href='#_top'] span::after {
+  content: 'Top of Page';
+}
+Solved for this in starlight/utils/route-data.ts by replacing the annoying hardcoded 'Overview' with page title from the ToC entry frontmatter 
+*/
+
 aside {
   inline-size: 95%;
   margin: auto;
   position: relative;
 }
-/* body { background: navy; } */
+
+figure > figcaption {
+  margin: -0.5rem auto 1rem;
+}
 
 .card {
     background: slategray;
 }
+
 .dgr {
     display: grid;
     border: 2px solid hotpink;
+}
+
+.picgrid {
+    display: grid;
+    gap: 0.7rem;
+    place-content: start space-evenly;
+}
+  
+@media screen and (min-width: 500px){
+  .dgr, .picgrid {
+    grid-auto-flow: column;
   }
-  @media screen and (min-width: 500px){
-    .dgr {
-      grid-auto-flow: column;
-    }
-  }
+}

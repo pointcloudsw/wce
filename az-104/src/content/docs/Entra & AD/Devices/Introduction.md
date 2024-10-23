@@ -1,9 +1,18 @@
 ---
-title: Entra-AD Hybrid Joined
+title: Introduction to Microsoft Entra Device Identity
+sidebar:
+    order: 1
 ---
-<!-- <aside aria-label="Note" class="starlight-aside starlight-aside--note"> -->
-<!-- <style>.starlight-aside--note { inline-size: 95%; margin: auto; position: relative; }</style> -->
 
+### Overview
+Microsoft Entra ID provides a central place to manage device identities and monitor related event information.  A [device identity](https://learn.microsoft.com/en-us/graph/api/resources/device) is an object in Microsoft Entra ID. This device object is similar to users, groups, or applications. A device identity gives administrators information they can use when making access or configuration decisions.
+
+#### Device Management Screens - Microsoft Entra Admin Center
+<div class="not-content picgrid"><figure><img src="/src/assets/Entra & AD/Devices/devices-azure-portal.png" alt="Devices Overview - Entra Admin Center" width="300" /><figcaption>Devices Overview - Entra Admin Center</figcaption></figure><figure><img src="/src/assets/Entra & AD/Devices/azure-entra-devices-all-devices.png" alt="All Devices View - Entra Admin Center" width="300" /><figcaption>All Devices View - Entra Admin Center</figcaption></figure></div>
+
+
+### References
+[Configure Device Settings](https://learn.microsoft.com/en-us/entra/identity/devices/manage-device-identities#configure-device-settings)
 
 ### Entra-AD Hybrid Joined
 
@@ -102,7 +111,9 @@ You must be assigned one of the following roles to read or modify device setting
 - [Intune Administrator](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference#intune-administrator) (read only)
 - [Windows 365 Administrator](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference#windows-365-administrator) (read only)
 
-![Entra Device Settings Screen](device-settings-azure-portal.png)
+<!-- ![Entra Device Settings Screen](device-settings-azure-portal.png) -->
+
+<figure><img src="/src/assets/Entra & AD/device-settings-azure-portal.png" alt="Entra Device Settings Screen" width="500" /><figcaption>Entra Device Settings Screen</figcaption></figure>
 
 
 - **Users may join devices to Microsoft Entra ID:** This setting enables you to select the users who can register their devices as Microsoft Entra joined devices. The default is All.

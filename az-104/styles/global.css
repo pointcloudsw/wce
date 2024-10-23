@@ -1,4 +1,8 @@
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
@@ -12,10 +16,6 @@ body {
   line-height: 1.5;
 
   /* background: navy; */
-}
-
-* {
-  box-sizing: border-box;
 }
 
 h1 {
