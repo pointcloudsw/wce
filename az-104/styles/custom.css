@@ -22,10 +22,10 @@ aside {
   margin: auto;
   position: relative;
 }
-/* 
-div.main-frame:has(.content-panel) footer {
+
+br.pbrk {
   display: none;
-} */
+}
 div.hero, div.hero * {
   margin: auto;
 }
@@ -53,9 +53,65 @@ figure > figcaption {
     gap: 0.7rem;
     place-content: start space-evenly;
 }
+.picgrid.pg-a figure {
+    place-items: start;
+    margin: auto;
+}
+
+@media print {
+  * {
+    font-size: large;
+  }
+  body > a, header, nav, aside[class*='sidebar'], .sl-container footer {
+    display: none;
+  }
+  br.pbrk {
+    display: unset;
+  }
+  li, td, tr, aside {
+    break-inside: avoid-page;
+  }
+  div.main-frame {
+    padding: 0;
+    margin: auto;
+  }
+  div.main-frame .main-pane {
+    flex: 2;
+  }
+  h1#_top {
+    margin: 1lh 0 1lh 0;
+  }
+  *[class*='grid'] {
+    grid-auto-flow: column;
+  }
+  main {
+    padding: 0 5ch;
+  }
+  div.main-frame, div.content-panel {
+    margin: auto;
+    padding: 0;
+  }
+  div.content-panel > .sl-container {
+    max-width: unset;
+    text-wrap: auto;
+  }
   
+  h1, h2, h3, h4 {
+    break-after: avoid;
+  }
+    *[class*='grid'] > * {
+      /* grid-auto-flow: column; */
+      break-inside: avoid;
+    }
+  
+}
+
+
 @media screen and (min-width: 500px){
   .dgr, .picgrid {
     grid-auto-flow: column;
+  }
+  .picgrid.pg-a {
+    grid: auto / 1fr 2fr;
   }
 }

@@ -1,8 +1,8 @@
 ---
-title: Entra-AD Hybrid Joined
+title: Microsoft Entra Hybrid Join
+sidebar:
+    order: 3
 ---
-<!-- <aside aria-label="Note" class="starlight-aside starlight-aside--note"> -->
-<!-- <style>.starlight-aside--note { inline-size: 95%; margin: auto; position: relative; }</style> -->
 
 
 ### Entra-AD Hybrid Joined

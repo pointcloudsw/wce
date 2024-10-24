@@ -127,3 +127,31 @@ document.querySelectorAll('aside').forEach( (el, idx, obj) => { console.log(idx,
 // Chromium / Edge
 document.querySelectorAll('div.alert.is-info').forEach( (el, idx, obj) => { console.log(idx,  window.getComputedStyle(el).getPropertyValue('position')); });
 ```
+
+
+### Extract page content for print
+```js
+// Example selector to locate content to be included in print:
+document.querySelectorAll("main > .content-panel > .sl-container *:not(footer)");
+
+// Example selector to locate content to be excluded from print:
+document.querySelectorAll("body *:not(main), footer");
+```
+
+### Extract page content for print (JS JavaScript)
+```js
+// Example selector to locate content to be included in print:
+document.querySelectorAll("main > .content-panel > .sl-container *:not(footer)");
+
+// Example selector to locate content to be excluded from print:
+document.querySelectorAll("body *:not(main), footer");
+```
+
+### Extract page content for print (JS JavaScript)
+```css
+@media print {
+  body *:not(main), footer {
+    display: none;
+  }
+}
+```
