@@ -1,7 +1,7 @@
 ---
 title: Introduction to Microsoft Entra Device Identity
 sidebar:
-    order: 0
+    order: 800
 ---
 
 ### Overview
@@ -86,6 +86,17 @@ The **Maximum number of devices** setting applies to devices that are either Mic
 - **Restrict non-admin users from recovering the BitLocker key(s) for their owned devices:** Admins can block self-service BitLocker key access to the registered owner of the device. Default users without the BitLocker read permission are unable to view or copy their BitLocker key(s) for their owned devices. You must be at least a [Privileged Role Administrator](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference#privileged-role-administrator) to update this setting.
 
 - **Enterprise State Roaming:** For information about this setting, see [the overview article](https://learn.microsoft.com/en-us/entra/identity/devices/enterprise-state-roaming-enable).
+
+### Device Method Summary
+| Item | Registered | Entra-Joined | Hybrid-Joined |
+| ---: | :--- | :--- | :--- |
+| **Applicable To** | BYOD<br /> Mobile Devices | Cloud-only organizations<br />Cloud+OnPrem Hybrid organizations<br />All users in the org | Hybrid organizations with existing on-premises Microsoft Windows Server Active Directory infrastructure<br />All users in the org |
+| **Device Ownership** | User<br />Organization | Organization | Organization |
+| **Min Rqd OS** | Win10<br />macOS 10.15<br />iOS 15<br />Android<br />Ubuntu 20/22.04 LTS<br />RHEL 8/9 LTS | Win10<br />Win Server 2019 running in Azure<br />Note: Win Server core not supported | Win10<br />Win Server 2016 |
+| **Enabled via** | Windows: Settings<br />Android/iOS: Company Portal or Microsoft Authenticator app<br />macOS: Company Portal<br />Linux:  Intune Agent | Self-service:<ul style="padding-left: 2ch;"><li>Windows Out of Box Experience (OOBE)</li><li>Windows Settings</li></ul><br />Bulk enrollment<br />Windows Autopilot | Win10+ Settings<br />Win Server 2016+ Settings<br />Domain join by IT<br />Domain autojoin via Entra Connect<br />Domain autojoin via AD FS config<br />Domain join by Windows Autopilot and autojoin via Entra Connect<br />Domain join by Windows Autopilot and autojoin via AD FS config |
+| **Signin via** | End-user local credentials<br />Password<br />Windows Hello<br />PIN<br />Biometrics or pattern for other devices | Organizational accounts using:<ul style="padding-left: 2ch;"><li>Password</li><li>[Passwordless](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-passwordless) options like Windows Hello for Business and FIDO2.0 security keys</li></ul><br /> | Organizational accounts using:<ul style="padding-left: 2ch;"><li>Password</li><li>[Passwordless](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-passwordless) options like Windows Hello for Business and FIDO2.0 security keys</li></ul><br /> |
+| **Device Management** | Mobile Device Management (example: Microsoft Intune)<br />Mobile Application Management | Mobile Device Management (example: Microsoft Intune)<br />[Configuration Manager](https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview) standalone<br />[Configuration Manager](https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview) co-management with Intune | [Group Policy](https://learn.microsoft.com/en-us/mem/configmgr/comanage/faq#my-environment-has-too-many-group-policy-objects-and-legacy-authenticated-apps--do-i-have-to-use-hybrid-azure-ad-)<br />[Configuration Manager](https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview) standalone<br />[Configuration Manager](https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview) co-management with Intune |
+| **Enables** | <ul style="padding-left: 2ch;"><li>Single sign-on (SSO) to cloud resources</li><li>Single sign-on (SSO) to cloud resources<li>Single sign-on (SSO) to cloud resources</li><li>Conditional Access when enrolled into Intune</li><li>Conditional Access via App protection policy</li><li>Enables Phone sign in with Microsoft Authenticator app</li></ul> | <ul style="padding-left: 2ch;"><li>Single sign-on (SSO) to cloud resources</li><li>Single sign-on (SSO) to on-prem resources</li><li>Conditional Access through mobile device management (MDM) enrollment (Intune)</li><li>Compliance evaluation through MDM/Intune</li><li>[Self-service Password Reset (SSPR)](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-windows)</li><li>Windows Hello PIN reset on lock screen</li></ul> | <ul style="padding-left: 2ch;"><li>Single sign-on (SSO) to cloud resources</li><li>Single sign-on (SSO) to on-prem resources</li><li>Conditional Access through Domain join</li><li>Conditional Access through Intune, if co-managemed </li><li>[Self-service Password Reset (SSPR)](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-windows)</li><li>Windows Hello PIN reset on lock screen</li></ul> |
 
 
 ### References

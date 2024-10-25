@@ -1,7 +1,7 @@
 ---
 title: Microsoft Entra Hybrid Join
 sidebar:
-    order: 3
+    order: 830
 ---
 
 
@@ -42,8 +42,7 @@ Microsoft Entra registered - also known as Workplace joined - supports bring you
 Microsoft Entra **registered** is separate from and is a *prerequisite for* Entra **device enrollment**.
 :::
 
-Feature Summary
----
+### Summary
 #### Microsoft Entra registered
 | Item | Description |
 | ---: | :--- |
@@ -58,8 +57,7 @@ Feature Summary
 Microsoft Entra hybrid joined devices.
 
 
-Feature Summary
----
+### Summary
 #### Microsoft Entra hybrid joined
 | Item | Description |
 | ---: | :--- |
@@ -76,8 +74,7 @@ Feature Summary
 ##### Microsoft Entra joined
 Microsoft Entra joined devices.
 
-Feature Summary
----
+### Summary
 #### Microsoft Entra hybrid joined
 | Item | Description |
 | ---: | :--- |

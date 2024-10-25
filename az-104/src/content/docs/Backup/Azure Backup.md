@@ -1,5 +1,7 @@
 ---
 title: Azure Backup
+sidebar:
+    order: 200
 ---
 The first time you use Azure Backup, you must register the Azure Recovery Service provider in your subscription with Register-AzResourceProvider, as follows:
 

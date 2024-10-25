@@ -1,7 +1,7 @@
 ---
 title: Microsoft Entra Registration
 sidebar:
-    order: 1
+    order: 810
 ---
 
 ### [Microsoft Entra registration](https://learn.microsoft.com/en-us/entra/identity/devices/concept-device-registration)
@@ -19,8 +19,7 @@ Microsoft Entra registered - also known as Workplace joined - supports bring you
 Microsoft Entra **registered** is separate from and is a *prerequisite for* Entra **device enrollment**.
 :::
 
-Feature Summary
----
+### Summary
 #### Microsoft Entra registered
 | Item | Description |
 | ---: | :--- |

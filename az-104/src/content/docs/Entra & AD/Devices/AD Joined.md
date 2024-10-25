@@ -1,7 +1,7 @@
 ---
 title: Microsoft Entra Join
 sidebar:
-    order: 2
+    order: 820
 ---
 
 ### [Microsoft Entra Join Device<br>(Active Directory Domain Services joined device)](https://learn.microsoft.com/en-us/entra/identity/devices/concept-directory-join)
@@ -54,8 +54,7 @@ Microsoft Entra join can be deployed by using any of the following methods:
 - [Bulk deployment](https://learn.microsoft.com/en-us/mem/intune/enrollment/windows-bulk-enroll)
 - [Self-service experience](https://learn.microsoft.com/en-us/entra/identity/devices/device-join-out-of-box)
 
-Feature Summary
----
+### Summary
 #### Microsoft Entra join
 | Item | Description |
 | ---: | :--- |
