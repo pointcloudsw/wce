@@ -13,12 +13,27 @@ export default defineConfig({
             , customCss: [
                 './styles/custom.css'
             ]
+            , favicon: '/images/favicon.svg'
+            , head: [
+                {
+                    tag: 'link'
+                    , attrs: {
+                        rel: 'icon'
+                        , href: '/images/favicon.ico'
+                        , sizes: '32x32'
+                    }
+                }
+            ]
             , logo: {
                 src: './src/assets/MSCertifiedAssociate.png'
                 , replacesTitle: true
             }
-            , tableOfContents: { minHeadingLevel: 1, maxHeadingLevel: 3 }
+            , tableOfContents: {
+                minHeadingLevel: 1
+                , maxHeadingLevel: 3
+            }
             , title: 'AZ-104'
+            , titleDelimiter: ' — '
             , social: {
                 github: 'https://github.com/withastro/starlight'
             }

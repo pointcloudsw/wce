@@ -5,6 +5,24 @@
 }
 Solved for this in starlight/utils/route-data.ts by replacing the annoying hardcoded 'Overview' with page title from the ToC entry frontmatter 
 */
+
+
+aside {
+  inline-size: 95%;
+  margin: auto;
+  position: relative;
+}
+
+input[type='checkbox'] {
+  transform: scale(1.8);
+  margin: auto .5ch;
+  vertical-align: middle;
+}
+
+figure > figcaption {
+  margin: -0.5rem auto 1rem;
+}
+
 a.sl-link-button:has(> svg) {
   transform: scale(2);
 
@@ -16,27 +34,17 @@ a.sl-link-button:has(> svg) {
   /* text-align: justify; */
 }
 
-
-aside {
-  inline-size: 95%;
-  margin: auto;
-  position: relative;
-}
-
 br.pbrk {
   display: none;
 }
+
 div.hero, div.hero * {
   margin: auto;
 }
 
-input[type='checkbox'] {
-  transform: scale(1.8);
-  margin: auto .5ch;
-  vertical-align: middle;
-}
-figure > figcaption {
-  margin: -0.5rem auto 1rem;
+/* ul "short indent" */
+ul.shin {
+  padding-left: 2ch;
 }
 
 .card {

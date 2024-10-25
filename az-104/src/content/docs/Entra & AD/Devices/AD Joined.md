@@ -4,9 +4,9 @@ sidebar:
     order: 820
 ---
 
-### [Microsoft Entra Join Device<br>(Active Directory Domain Services joined device)](https://learn.microsoft.com/en-us/entra/identity/devices/concept-directory-join)
-
-Microsoft Entra joined devices can help you to manage devices accessing resources in your environment.  The device is **joined** only to Microsoft Entra ID *requiring organizational account to sign in to the device*
+### Overview
+[Microsoft Entra joined devices](https://learn.microsoft.com/en-us/entra/identity/devices/concept-directory-join)
+ -- also known as Active Directory Domain Services joined devices -- can help you to manage devices accessing resources in your environment.  The device is **joined** only to Microsoft Entra ID *requiring organizational account to sign in to the device*
 
 <figure><img src="/src/assets/Entra & AD/azure-ad-joined-device.png" width="400" alt="Entra Joined Device">Entra Join Device</figure>
 
@@ -15,7 +15,7 @@ Microsoft Entra joined devices can help you to manage devices accessing resource
 #### Microsoft Entra join
 This device type is joined only to Microsoft Entra ID, and thus requries organizational account to sign in to the device.
 
-You sign in to Microsoft Entra joined devices using a Microsoft Entra account. Access to resources can be controlled based on your account and [Conditional Access policies](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-alt-all-users-compliant-hybrid-or-mfa) applied to the device.
+You sign in to Microsoft Entra joined devices using a Microsoft Entra account. Access to resources can be controlled based on your account and <a href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-alt-all-users-compliant-hybrid-or-mfa" target="_blank">Conditional Access policies</a> applied to the device.
 
 Administrators can secure and further control Microsoft Entra joined devices using Mobile Device Management (MDM) tools like Microsoft Intune or in co-management scenarios using Microsoft Configuration Manager. These tools provide a means to enforce organization-required configurations like:
 
@@ -58,18 +58,21 @@ Microsoft Entra join can be deployed by using any of the following methods:
 #### Microsoft Entra join
 | Item | Description |
 | ---: | :--- |
-| **Applicable To** | Hybrid organizations<br />Cloud-only organiztions |
+| **Applicable To** | Hybrid organizations<br />Cloud-only organiztions<br>All users in the org |
 | **Device Ownership** | Organization |
-| **Min Rqd OS** | Win10+<br />Windows Server 2019+ running as VM in Azure |
-| **Enabled via** | Self-Service: Windows Settings<br>Self<br />Domain join by IT and autojoin via Microsoft Entra Connect or AD FS config<br />Domain join by Windows Autopilot and autojoin via Microsoft Entra Connect or AD FS config |
+| **Min Rqd OS** | Win10+<br />Windows Server 2019+ running as VM in Azure<br>(Note: Win Server core not supported)|
+| **Enabled via** | Self-Service:<ul><li>Windows Settings</li><li>Windows Out of the Box Experience (OOBE)</li></ul>Bulk enrollment<br>Windows Autopilot |
 | **Signin via** | Organizational accounts using Password<br />Organizational accounts using Passwordless options such as Windows Hello for Business and FIDO2.0 security keys |
 | **Device management** | Mobile Device Management (example: Microsoft Intune)<br />[Configuration Manager standalone or co-management with Microsoft Intune](https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview) |
+| **Enables** | <ul class="shin"><li>Single sign-on (SSO) to resources both in the cloud and on-prem</li><li>Conditional Access through mobile device management (MDM) enrollment (Intune)</li><li>Compliance evaluation through MDM/Intune</li><li>[Self-service Password Reset (SSPR)](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-windows)</li><li>Windows Hello PIN reset on lock screen</li></ul> |
+
+<!-- 
 | **Enables** | <ul style="padding-left: 2ch;"><li>Single sign-on (SSO) to resources both in the cloud and on-prem</li><li>Conditional Access through mobile device management (MDM) enrollment and compliance evaluation</li><li>Conditional Access through Domain join or through Intune, if co-managed</li><li>[Self-service Password Reset and Windows Hello PIN reset on lock screen](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-windows)</li></ul> |
+ -->
 
-
-### References
-- [Plan your Microsoft Entra join implementation](https://learn.microsoft.com/en-us/entra/identity/devices/device-join-plan)
-- [Co-management using Configuration Manager and Microsoft Intune](https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview)
-- [How to manage the local administrators group on Microsoft Entra joined devices](https://learn.microsoft.com/en-us/entra/identity/devices/assign-local-admin)
-- [Manage device identities](https://learn.microsoft.com/en-us/entra/identity/devices/manage-device-identities)
-- [Manage stale devices in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/devices/manage-stale-devices)
+### See also
+- <a target="_blank" href="https://learn.microsoft.com/en-us/entra/identity/devices/device-join-plan">Plan your Microsoft Entra join implementation</a>
+- <a target="_blank" href="https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview">Co-management using Configuration Manager and Microsoft Intune</a>
+- <a target="_blank" href="https://learn.microsoft.com/en-us/entra/identity/devices/assign-local-admin">How to manage the local administrators group on Microsoft Entra joined devices</a>
+- <a target="_blank" href="https://learn.microsoft.com/en-us/entra/identity/devices/manage-device-identities">Manage device identities</a>
+- <a target="_blank" href="https://learn.microsoft.com/en-us/entra/identity/devices/manage-stale-devices">Manage stale devices in Microsoft Entra ID</a>
