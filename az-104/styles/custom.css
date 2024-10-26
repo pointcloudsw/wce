@@ -38,6 +38,8 @@ br.pbrk {
   display: none;
 }
 
+
+
 div.hero, div.hero * {
   margin: auto;
 }
@@ -50,6 +52,18 @@ ul.shin {
 .card {
     background: slategray;
 }
+
+.def-hdr > ul > li {
+  display: inline;
+  list-style: none;
+}
+.def-hdr > ul > li:nth-of-type(n+2){
+  margin-left: 1ch;
+}
+.def-hdr > ul > li:nth-of-type(3)::before{
+  content: '\2014\3164'; /* emdash space */
+}
+.def-hdr .def, .def-hdr h4 { display: inline; }
 
 .dgr {
     display: grid;

@@ -1,7 +1,7 @@
 ---
 title: Entra Users & Groups
 sidebar:
-    order: 830
+    order: 821
 ---
 
 ### Configuring writeback settings

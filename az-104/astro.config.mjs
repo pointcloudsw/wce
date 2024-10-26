@@ -30,7 +30,7 @@ export default defineConfig({
             }
             , tableOfContents: {
                 minHeadingLevel: 1
-                , maxHeadingLevel: 3
+                , maxHeadingLevel: 5
             }
             , title: 'AZ-104'
             , titleDelimiter: ' — '

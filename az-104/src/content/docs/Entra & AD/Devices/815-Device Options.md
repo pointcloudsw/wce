@@ -1,5 +1,7 @@
 ---
 title: Entra & Active Directory Device Settings
+sidebar:
+    order: 815
 ---
 
 Managing device identities in Microsoft Entra / Azure Active Directory requires that the devices be [**registered** or **joined**](https://learn.microsoft.com/en-us/entra/identity/devices/overview) to Microsoft Entra ID. As an administrator, you can control the process of registering and joining devices by configuring the following device settings.  This requires one of the following roles to read or modify Entra ID device settings:

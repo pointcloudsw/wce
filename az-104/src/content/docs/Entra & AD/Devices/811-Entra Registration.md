@@ -1,7 +1,7 @@
 ---
 title: Microsoft Entra Registration
 sidebar:
-    order: 810
+    order: 811
 ---
 
 ### Overview
@@ -33,6 +33,23 @@ After enrolling their home PC in Intune, IT then pushes and applies the required
 **A user wishes to access company email from their personal Android phone, which is rooted**
 <br>
 IT implemented an Intune device compliance policy that limits access to company email to devices which meet the compliance requirements.  Users wishing to access company email can do so only from devices which are compliant, which excludes rooted devices.  Therefore, rooted devices will be blocked from accessing company email and this user will not be able to access company email from this device until the device has been brought into compliance with the policy.
+
+### The Process
+The process for registering a personal device on your organization's network is as follows:
+1. Windows registers your device on your organization's network.
+2. Optionally, based on your organization's choices, you might be asked to set up two-step verification through either two-factor authentication or security info.
+3. Optionally, based on your organization's choices, you might be automatically enrolled in mobile device management, such as Microsoft Intune. For more info about enrolling in Microsoft Intune, see Enroll your device in Intune.
+4. You'll go through the sign-in process, using the username and password for your work or school account.
+
+#### The Process for Windows devices
+To register your Windows device
+1. Open Settings, and then select Accounts.
+2. Select Access work or school, and then select Connect from the Access work or school screen.
+3. Access work or school screen with Connect option highlighted
+4. On the Add a work or school account screen, type in your email address for your work or school account, and then select Next. For example, alain@contoso.com.
+5. Sign in to your work or school account, and then select Sign in.
+6. Complete the rest of the registration process, including approving your identity verification request (if you use two-step verification) and setting up Windows Hello (if necessary).
+
 
 ### Summary
 #### Microsoft Entra registered

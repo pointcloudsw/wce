@@ -1,7 +1,7 @@
 ---
 title: Microsoft Entra Join
 sidebar:
-    order: 820
+    order: 812
 ---
 
 ### Overview
@@ -54,6 +54,38 @@ Microsoft Entra join can be deployed by using any of the following methods:
 - [Bulk deployment](https://learn.microsoft.com/en-us/mem/intune/enrollment/windows-bulk-enroll)
 - [Self-service experience](https://learn.microsoft.com/en-us/entra/identity/devices/device-join-out-of-box)
 
+### The Process
+The process for joining a work device to your organization's network is as follows:
+1. Windows registers your device to your work or school network, letting you access your resources using your personal account. After your device is registered, Windows then joins your device to the network, so you can use your work or school username and password to sign in and access restricted resources.
+2. Optionally, based on your organization's choices, you might be asked to set up two-step verification through either two-step verification or security info.
+3. Optionally, based on your organization's choices, you might be automatically enrolled in mobile device management, such as Microsoft Intune. For more info about enrolling in Microsoft Intune, see Enroll your device in Intune.
+4. You'll go through the sign-in process, using automatic sign-in with your work or school account.
+
+
+#### The Process for new Windows devices
+If your Windows device is brand-new and hasn't been set up yet, you can go through the Windows Out of Box Experience (OOBE) process to join your device to the network.
+1. Start up your new device and begin the Windows Out of Box Experience.
+2. On the Sign in with Microsoft screen, type your work or school email address.
+3. Sign in screen with email address
+4. On the Enter your password screen, type your password.
+5. Enter your password screen
+6. On your mobile device, approve your device so it can access your account.
+7. Complete the Out of Box Experience, including setting your privacy settings and setting up Windows Hello (if necessary)
+
+
+#### The Process for existing Windows devices
+If your Windows device is already been set up, follow these steps to join your device to the network.
+1. Open Settings, and then select Accounts.
+2. Select Access work or school, and then select Connect.
+3. Access work or school and Connect links
+4. On the Set up a work or school account screen, select Join this device to Azure Active Directory.
+5. On the Let's get you signed in screen, type your email address (for example, alain@contoso.com), and then select Next.
+6. On the Enter password screen, type your password, and then select Sign in.
+7. On your mobile device, approve your device so it can access your account.
+8. On the Make sure this is your organization screen, review the information to make sure it's right, and then select Join.
+9. Confirm your organization verification screen
+10. On the You're all set screen, click Done.
+
 ### Summary
 #### Microsoft Entra join
 | Item | Description |
@@ -66,9 +98,6 @@ Microsoft Entra join can be deployed by using any of the following methods:
 | **Device management** | Mobile Device Management (example: Microsoft Intune)<br />[Configuration Manager standalone or co-management with Microsoft Intune](https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview) |
 | **Enables** | <ul class="shin"><li>Single sign-on (SSO) to resources both in the cloud and on-prem</li><li>Conditional Access through mobile device management (MDM) enrollment (Intune)</li><li>Compliance evaluation through MDM/Intune</li><li>[Self-service Password Reset (SSPR)](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-windows)</li><li>Windows Hello PIN reset on lock screen</li></ul> |
 
-<!-- 
-| **Enables** | <ul style="padding-left: 2ch;"><li>Single sign-on (SSO) to resources both in the cloud and on-prem</li><li>Conditional Access through mobile device management (MDM) enrollment and compliance evaluation</li><li>Conditional Access through Domain join or through Intune, if co-managed</li><li>[Self-service Password Reset and Windows Hello PIN reset on lock screen](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-windows)</li></ul> |
- -->
 
 ### See also
 - <a target="_blank" href="https://learn.microsoft.com/en-us/entra/identity/devices/device-join-plan">Plan your Microsoft Entra join implementation</a>
@@ -76,3 +105,5 @@ Microsoft Entra join can be deployed by using any of the following methods:
 - <a target="_blank" href="https://learn.microsoft.com/en-us/entra/identity/devices/assign-local-admin">How to manage the local administrators group on Microsoft Entra joined devices</a>
 - <a target="_blank" href="https://learn.microsoft.com/en-us/entra/identity/devices/manage-device-identities">Manage device identities</a>
 - <a target="_blank" href="https://learn.microsoft.com/en-us/entra/identity/devices/manage-stale-devices">Manage stale devices in Microsoft Entra ID</a>
+- <a target="_blank" href="https://support.microsoft.com/en-us/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973">Join your work device to your organization's network</a>
+- <a target="_blank" href="https://support.microsoft.com/en-us/account-billing/register-your-personal-device-on-your-work-or-school-network-8803dd61-a613-45e3-ae6c-bd1ab25bf8a8">Join your personal device to your organization's network</a>

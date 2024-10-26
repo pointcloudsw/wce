@@ -1,7 +1,7 @@
 ---
-title: Brief Intro to Entra Users and Groups
+title: Microsoft Entra ID Groups
 sidebar:
-    order: 830
+    order: 822
 ---
 <style>aside { inline-size: 95%; }</style>
 ### Configuring writeback settings

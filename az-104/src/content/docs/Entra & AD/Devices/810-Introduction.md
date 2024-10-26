@@ -1,7 +1,7 @@
 ---
 title: Introduction to Microsoft Entra Device Identity
 sidebar:
-    order: 800
+    order: 810
 ---
 
 ### Overview
