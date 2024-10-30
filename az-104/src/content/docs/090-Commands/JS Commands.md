@@ -155,3 +155,7 @@ document.querySelectorAll("body *:not(main), footer");
   }
 }
 ```
+
+```js
+document.querySelectorAll("a").forEach( r => console.log( `[${r.textContent.trim()}](${r.href.trim()}` ) );
+```

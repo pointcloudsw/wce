@@ -21,14 +21,9 @@ sidebar:
 <details class="def-hdr">
 <summary class="def">
 
-#### Others
+#### Storage
 
 </summary>
-<ul><li><b>Others</b></li><li>(OTH)</li><li>Others</li></ul>
-</details>
+<ul><li><b><a target="_blank" href="https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview?source=recommendations">Recovery Services Vault</a></b></li><li>(RSV)</li><li>an Azure storage entity that houses backup data such as copies of files, blobs, and configuration data for VMs, workloads, servers, or workstations. RSVs can hold backup data for various Azure services such as IaaS VMs (Linux or Windows) and SQL Server in Azure VMs. Recovery Services vaults can be used with System Center DPM, Windows Server, Azure Backup Server, and more. Recovery Services vaults make it easy to organize your backup data, while minimizing management overhead.</li></ul>
 
-<!-- 
-<details class="def-hdr"><summary class="def">Active Directory</summary>
-<div><b>Active Directory Federation Service (AD FS)</b><span>AD FS</span><span>&#8212;</span><span>Enables Federated Identity and Access Management by securely sharing digital identity and entitlements rights across security and enterprise boundaries.</span></div><br><br>
-<b>Active Directory Federation Service (AD FS)</b> AD FS &#8212; Enables Federated Identity and Access Management by securely sharing digital identity and entitlements rights across security and enterprise boundaries.
-</details> -->
+</details>
