@@ -4,11 +4,14 @@ sidebar:
     order: 812
 ---
 
+import {Image} from 'astro:assets'
+import aajd from '/src/assets/Entra--AD/azure-ad-joined-device.png'
+
 ### Overview
 [Microsoft Entra joined devices](https://learn.microsoft.com/en-us/entra/identity/devices/concept-directory-join)
  -- also known as Active Directory Domain Services joined devices -- can help you to manage devices accessing resources in your environment.  The device is **joined** only to Microsoft Entra ID *requiring organizational account to sign in to the device*
 
-<figure><img src="/src/assets/Entra & AD/azure-ad-joined-device.png" width="400" alt="Entra Joined Device">Entra Join Device</figure>
+<figure><Image src={aajd} width="750" alt="Entra Joined Device" />Entra Join Device</figure>
 
 
 
@@ -90,10 +93,10 @@ If your Windows device is already been set up, follow these steps to join your d
 #### Microsoft Entra join
 | Item | Description |
 | ---: | :--- |
-| **Applicable To** | Hybrid organizations<br />Cloud-only organiztions<br>All users in the org |
+| **Applicable To** | Hybrid organizations<br />Cloud-only organiztions<br />All users in the org |
 | **Device Ownership** | Organization |
-| **Min Rqd OS** | Win10+<br />Windows Server 2019+ running as VM in Azure<br>(Note: Win Server core not supported)|
-| **Enabled via** | Self-Service:<ul><li>Windows Settings</li><li>Windows Out of the Box Experience (OOBE)</li></ul>Bulk enrollment<br>Windows Autopilot |
+| **Min Rqd OS** | Win10+<br />Windows Server 2019+ running as VM in Azure<br />(Note: Win Server core not supported)|
+| **Enabled via** | Self-Service:<ul><li>Windows Settings</li><li>Windows Out of the Box Experience (OOBE)</li></ul>Bulk enrollment<br />Windows Autopilot |
 | **Signin via** | Organizational accounts using Password<br />Organizational accounts using Passwordless options such as Windows Hello for Business and FIDO2.0 security keys |
 | **Device management** | Mobile Device Management (example: Microsoft Intune)<br />[Configuration Manager standalone or co-management with Microsoft Intune](https://learn.microsoft.com/en-us/mem/configmgr/comanage/overview) |
 | **Enables** | <ul class="shin"><li>Single sign-on (SSO) to resources both in the cloud and on-prem</li><li>Conditional Access through mobile device management (MDM) enrollment (Intune)</li><li>Compliance evaluation through MDM/Intune</li><li>[Self-service Password Reset (SSPR)](https://learn.microsoft.com/en-us/entra/identity/authentication/howto-sspr-windows)</li><li>Windows Hello PIN reset on lock screen</li></ul> |
