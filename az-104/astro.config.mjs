@@ -5,8 +5,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [starlight({
       components: {
-            Page: './src/components/Page.astro'
-          , TableOfContents: './src/components/TableOfContents.astro'
+            TableOfContents: './src/components/TableOfContents.astro'
           , MobileTableOfContents: './src/components/MobileTableOfContents.astro'
       }
       , customCss: [

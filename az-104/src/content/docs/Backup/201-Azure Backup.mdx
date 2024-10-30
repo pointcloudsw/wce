@@ -3,21 +3,18 @@ title: Azure Backup
 sidebar:
     order: 201
 ---
+import {Image} from 'astro:assets'
+import pic1 from '/src/assets/backup-method-comparison.png'
+
 The first time you use Azure Backup, you must register the Azure Recovery Service provider in your subscription with Register-AzResourceProvider, as follows:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
 ```
-![backup-method-comparison.png](backup-method-comparison.png)
+<Image src={pic1} alt="Pic1" width="150" />
 
-![second file](/src/assets/backup-method-comparison.png)
+<Image src={pic1} alt="Pic1" width="150" />
 
-<Image src="/src/assets/Backup/backup-method-comparison.png" alt="Backup Method Comparison" />
-
-<img src='../../../assets/Backup/backup-method-comparison.png'>
-<img src='backup-method-comparison.png'>
-
-<img src="/src/assets/backup-method-comparison.png" alt="backup">
 
 Feature	Direct Backup of Files and Folders (using MARS Agent)	Azure VM Backup	Machines or apps with DPM/MABS
 Back up to vault	Yes	Yes	Yes
