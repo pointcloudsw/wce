@@ -1,0 +1,139 @@
+
+
+/* a[href='#_top'] span::after {
+  content: 'Top of Page';
+}
+Solved for this in starlight/utils/route-data.ts by replacing the annoying hardcoded 'Overview' with page title from the ToC entry frontmatter 
+*/
+
+
+aside {
+  inline-size: 95%;
+  margin: auto;
+  position: relative;
+}
+
+input[type='checkbox'] {
+  transform: scale(1.8);
+  margin: auto .5ch;
+  vertical-align: middle;
+}
+
+figure > figcaption {
+  margin: -0.5rem auto 1rem;
+}
+
+a.sl-link-button:has(> svg) {
+  transform: scale(2);
+
+  /* true center */
+  margin: 2lh auto;
+
+  /* apparent center */
+  /* margin: 2lh 0 2lh 20vh; */
+  /* text-align: justify; */
+}
+
+br.pbrk {
+  display: none;
+}
+
+
+
+div.hero, div.hero * {
+  margin: auto;
+}
+
+/* ul "short indent" */
+ul.shin {
+  padding-left: 2ch;
+}
+
+.card {
+    background: slategray;
+}
+
+.def-hdr > ul > li {
+  display: inline;
+  list-style: none;
+}
+.def-hdr > ul > li:nth-of-type(n+2){
+  margin-left: 1ch;
+}
+.def-hdr > ul > li:nth-of-type(3)::before{
+  content: '\2014\3164'; /* emdash space */
+}
+.def-hdr .def, .def-hdr h4 { display: inline; }
+
+.dgr {
+    display: grid;
+    border: 2px solid hotpink;
+}
+
+.picgrid {
+    display: grid;
+    gap: 0.7rem;
+    place-content: start space-evenly;
+}
+.picgrid.pg-a figure {
+    place-items: start;
+    margin: auto;
+}
+
+@media print {
+  * {
+    font-size: large;
+  }
+  body > a, header, nav, aside[class*='sidebar'], .sl-container footer {
+    display: none;
+  }
+  br.pbrk {
+    display: unset;
+  }
+  li, td, tr, aside {
+    break-inside: avoid-page;
+  }
+  div.main-frame {
+    padding: 0;
+    margin: auto;
+  }
+  div.main-frame .main-pane {
+    flex: 2;
+  }
+  h1#_top {
+    margin: 1lh 0 1lh 0;
+  }
+  *[class*='grid'] {
+    grid-auto-flow: column;
+  }
+  main {
+    padding: 0 5ch;
+  }
+  div.main-frame, div.content-panel {
+    margin: auto;
+    padding: 0;
+  }
+  div.content-panel > .sl-container {
+    max-width: unset;
+    text-wrap: auto;
+  }
+  
+  h1, h2, h3, h4 {
+    break-after: avoid;
+  }
+    *[class*='grid'] > * {
+      /* grid-auto-flow: column; */
+      break-inside: avoid;
+    }
+  
+}
+
+
+@media screen and (min-width: 400px){
+  .dgr, .picgrid {
+    grid-auto-flow: column;
+  }
+  .picgrid.pg-a {
+    grid: auto / 1fr 2fr;
+  }
+}

@@ -10,6 +10,15 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
 ```
 ![backup-method-comparison.png](backup-method-comparison.png)
 
+![second file](/src/assets/backup-method-comparison.png)
+
+<Image src="/src/assets/Backup/backup-method-comparison.png" alt="Backup Method Comparison" />
+
+<img src='../../../assets/Backup/backup-method-comparison.png'>
+<img src='backup-method-comparison.png'>
+
+<img src="/src/assets/backup-method-comparison.png" alt="backup">
+
 Feature	Direct Backup of Files and Folders (using MARS Agent)	Azure VM Backup	Machines or apps with DPM/MABS
 Back up to vault	Yes	Yes	Yes
 Back up to DPM/MABS disk, then to Azure			Yes
