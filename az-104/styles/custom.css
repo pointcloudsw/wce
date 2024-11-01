@@ -69,7 +69,31 @@ ul.shin {
     display: grid;
     border: 2px solid hotpink;
 }
-
+.a-3-1 {
+  --brdr: .2px solid color(display-p3 .2 .2 .2);
+  --wdth: 95%;
+  display: grid;
+  grid: auto / 3fr 1fr;
+  inline-size: var(--wdth);
+  margin: auto;
+}
+.a-3-1 * {
+  padding: .1lh 1ch;
+}
+.a-3-1 :nth-child(-n+2),
+.a-3-1 :nth-last-child(-n+2) {
+  border-bottom: var(--brdr);
+  inline-size: 100%;
+  margin: auto;
+  text-align: center;
+}
+.a-3-1 *:nth-child(2n+2) {
+  place-self: start end;
+}
+.hdr {
+  font-weight: 700;
+  /* margin: auto; */
+}
 .picgrid {
     display: grid;
     gap: 0.7rem;
@@ -90,7 +114,7 @@ ul.shin {
   br.pbrk {
     display: unset;
   }
-  li, td, tr, aside {
+  aside, li, p, td, tr {
     break-inside: avoid-page;
   }
   div.main-frame {
@@ -122,12 +146,13 @@ ul.shin {
     break-after: avoid;
   }
     *[class*='grid'] > * {
-      /* grid-auto-flow: column; */
       break-inside: avoid;
     }
   
 }
-
+@page {
+  margin: 1.0in 2ch 1.0in 2ch;
+}
 
 @media screen and (min-width: 500px){
   .dgr, .picgrid {
