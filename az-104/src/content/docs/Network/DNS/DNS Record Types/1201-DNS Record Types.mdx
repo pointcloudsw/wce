@@ -1,0 +1,238 @@
+---
+title: DNS Record Type Details
+sidebar:
+    order: 1201
+---
+#### CNAME Records
+Formally termed the "canonical name" record, a CNAME points from an alias domain to a "canonical" domain. A CNAME record is used in lieu of an <a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/" target="_blank">A-Record</a>, when a <a class="tab" href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/" target="_blank">domain</a> or subdomain is an alias of another domain. All CNAME records must point to a domain, never to an IP address. Imagine a scavenger hunt where each clue points to another clue, and the final clue points to the treasure. A domain with a CNAME record is like a clue that can point you to another clue (another domain with a CNAME record) or to the treasure (a domain with an A record).
+:::danger[Important]
+Mail Exchange (MX) records and Nameserver (NS) records **must point to A/AAAA records**, __NOT__ to CNAME records
+:::
+For example, suppose blog.example.com has a CNAME record with a value of "example.com" (without the "blog"). This means when a <a class="tab" href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">DNS</a> server hits the <a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/" target="_blank">DNS records</a> for blog.example.com, it actually triggers another DNS lookup to example.com, returning example.com’s IP address via its A record. In this case we would say that example.com is the canonical name (or true name) of blog.example.com.
+
+:::note[CNAME Record Sets]
+- CNAME record sets can't coexist with other record sets with the same name.
+- In other words, you can't create a CNAME record set with the relative name `www` and an A record with the relative name `www` at the same time.
+- Since the zone apex (name = '@') will always contain the NS and SOA record sets during the creation of the zone, you can't create a CNAME record set at the zone apex.
+- These constraints arise from the DNS standards and aren't limitations of Azure DNS.
+:::
+
+Oftentimes, when sites have subdomains such as blog.example.com or shop.example.com, those subdomains will have CNAME records that point to a root domain (example.com). This way if the IP address of the host changes, only the DNS A record for the root domain needs to be updated and all the CNAME records will follow along with whatever changes are made to the root.<br /><br />A frequent misconception is that a CNAME record must always resolve to the same website as the domain it points to, but this is not the case. The CNAME record only points the client to the same IP address as the root domain. Once the client hits that IP address, the web server will still handle the URL accordingly. So for instance, blog.example.com might have a CNAME that points to example.com, directing the client to example.com’s IP address. But when the client actually connects to that IP address, the web server will look at the URL, see that it is blog.example.com, and deliver the blog page rather than the home page.<br /><br />Example of a CNAME record:
+<table>
+    <thead>
+        <tr>
+            <th>blog.example.com</th>
+            <th>record type:</th>
+            <th>value:</th>
+            <th>TTL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @
+            </td>
+            <td>
+                CNAME
+            </td>
+            <td>
+                is an alias of example.com
+            </td>
+            <td>
+                32600
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+In this example you can see that blog.example.com points to example.com, and assuming it is based on our <a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/" target="_blank">example A record</a> we know that it will eventually resolve to the IP address 192.0.2.1.
+
+While technically possible, pointing a CNAME record to another CNAME record is seldom, if ever, necessary and should be avoided.  This approach is inefficient because it requires multiple DNS lookups before the domain can be loaded — which slows down the user experience.
+
+For example, blog.example.com could have a CNAME record that pointed to www.example.com's CNAME record, which then pointed to example.com's A record.  As an alternative, the CNAME records for both blog.example.com and www.example.com should point directly to example.com.
+
+
+#### Nameserver (NS) Records
+The nameserver (NS) record indicates which [DNS](https://www.cloudflare.com/learning/dns/dns-records/) server is authoritative for that [domain](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/) (i.e. which server contains the actual [DNS records](https://www.cloudflare.com/learning/dns/dns-records/)). Basically, NS records tell the Internet where to go to find out a domain's [IP address](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/). A domain often has multiple NS records which can indicate [primary and secondary nameservers](https://www.cloudflare.com/learning/dns/glossary/primary-secondary-dns/) for that domain. Without properly configured NS records, users will be unable to load a website or application.
+
+Here is an example of an NS record:
+| example.com | record type: | value:| TTL |
+| --- | --- | --- | --- |
+| @	| NS | ns1.exampleserver.com | 21600 |
+|||||
+
+Note that NS records can never point to a canonical name (CNAME) record.
+
+
+Domain administrators should update their NS records when they need to change their domain's nameservers. For instance, some cloud providers provide nameservers and require their customers to point to them.
+
+Admins may also wish to update their NS records if they want a subdomain to use different nameservers. In the example above, the nameserver for example.com is ns1.exampleserver.com. If the example.com admin wanted blog.example.com to resolve via a ns2.exampleserver.com instead, they could set this up by updating the NS record.
+
+When NS records are updated, it may take several hours for the changes to be replicated throughout the DNS.
+
+#### Start of Authority (SOA) Records
+A SOA record set gets created automatically at the apex of each zone (name = '@'), and gets deleted automatically when the zone gets deleted. SOA records can't be created or deleted separately.
+
+##### SOA Record Layout
+| Field Name | Example Value |
+| --- | --- |
+| name | example.com |
+name| example.com
+record type| SOA
+MNAME | ns.primaryserver.com
+RNAME | admin.example.com
+SERIAL | 1111111111
+REFRESH | 86400
+RETRY | 7200
+EXPIRE | 4000000
+TTL | 11200
+
+The 'RNAME' value here represents the administrator's email address, which can be confusing because it is missing the ‘@’ sign, but in an SOA record admin.example.com is the equivalent of admin@example.com.
+
+In Azure, You can modify all properties of the SOA record except for the host property. This property gets preconfigured to refer to the primary name server name provided by Azure DNS.
+
+The zone serial number in the SOA record isn't updated automatically when changes are made to the records in the zone. It can be updated manually by editing the SOA record, if necessary.
+
+
+#### Sender Policy Framework (SPF) Records
+A sender policy framework (SPF) record is a type of DNS TXT record that lists all the servers authorized to send emails from a particular domain. A DNS TXT (“text”) record lets a domain administrator enter arbitrary text into the Domain Name System (DNS). TXT records were initially created for the purpose of including important notices regarding the domain, but have since evolved to serve other purposes.
+
+Domain operators may use SPF records to:
+- **Help prevent attacks**: If emails are not authenticated, companies and email recipients are at risk for phishing attacks, spam emails, and email spoofing. With SPF records, it is harder for attackers to imitate a domain, reducing the likelihood of these attacks.
+- **Help improve email deliverability**: Domains without a published SPF record may have their emails bounce or be marked as spam. Over time, bounced emails or emails marked as spam can hurt a domain’s ability to reach their audience’s inboxes, compromising efforts to communicate with customers, employees, and other entities.
+- **To assist with DMARC compliance**: DMARC is an email validation system that helps ensure that emails are sent only by authorized users. DMARC policies dictate what servers should do with emails that fail SPF and DKIM checks. Based on the DMARC policy instructions, those emails will either be marked as spam, rejected, or delivered as normal. Domain administrators receive reports about their email activity that help them make adjustments to their policy.
+
+##### SPF Record Description
+[SPF records](https://datatracker.ietf.org/doc/html/rfc7208) must follow certain standards in order for the server to understand how to interpret its contents. Here is an example of the core components of an SPF record:
+> `v=spf1 ip4:192.0.2.0 ip4:192.0.2.1 include:examplesender.email -all`
+
+This example lets the server know what type of record this is, states the approved IP addresses and a third-party for this domain, and tells the server what to do with non-compliant emails. Let’s break down how the individual components accomplish this:
+
+- `v=spf1` tells the server that this contains an SPF record. Every SPF record must begin with this string.
+- Then comes the “guest list” portion of the SPF record or the list of authorized IP addresses. In this example, the SPF record is telling the server that `ip4:192.0.2.0` and `ip4:192.0.2.1` are authorized to send emails on behalf of the domain.
+- `include:examplesender.net` is an example of the include tag, which tells the server what third-party organizations are authorized to send emails on behalf of the domain. This tag signals that the content of the SPF record for the included domain (`examplesender.net`) should be checked and the IP addresses it contains should also be considered authorized. Multiple domains can be included within an SPF record but this tag will only work for valid domains.
+- Finally, `-all` tells the server that addresses not listed in the SPF record are not authorized to send emails and should be rejected.
+- Alternative options here include `~all`, which states that unlisted emails will be marked as insecure or spam but still accepted, and, less commonly, `+all`, which signifies that any server can send emails on behalf of your domain.
+While the example used in this article is fairly straightforward, SPF records can certainly be more complex. Here are just a few things to keep in mind to ensure SPF records are valid:
+
+:::danger[Important]
+- A domain can have a maximum of ONE (1) SPF record associated with it
+- The record must end with the `all` component or include a `redirect=` component (which indicates that the SPF record is hosted by another domain)
+- The SPF record cannot contain uppercase characters
+:::
+
+Mail servers go through a relatively simple process when checking an SPF record:
+1. Server One sends an email. Its IP address is 192.0.2.0 and the return-path the email uses is email@returnpath.com. (A return-path address is different from the “from” address and is used specifically for collecting and processing bounced messages.)
+2. The mail server that is receiving the message (Server Two) takes the return-path domain and searches for its SPF record.
+3. If Server Two finds an SPF record for the return-path’s domain, it searches the SPF record for Server One’s IP address in its list of authorized senders. If the IP address is listed in the SPF record, the SPF check passes and the email will go through. If the IP address is not listed in the SPF record, the SPF check fails. In this case, the email will be rejected or marked as spam.
+
+SPF records were originally created because the standard protocol used for email — the Simple Mail Transfer Protocol (SMTP) — does not inherently authenticate the “from” address in an email. This means that without SPF or other authentication records, an attacker can easily impersonate a sender and trick the recipient into taking action or sharing information they otherwise would not.
+
+The DNS RFCs originally introduced a new SPF record type to support this scenario. To support older name servers, they also allowed the use of the TXT record type to specify SPF records. This ambiguity led to confusion, which was resolved by [RFC 7208](https://datatracker.ietf.org/doc/html/rfc7208#section-3.1). It states that SPF records must be created by using the TXT record type. It also states that the SPF record type is deprecated.
+
+:::note
+SPF records are supported by Azure DNS and must be created by using the TXT record type. The obsolete SPF record type isn't supported. When you [import a DNS zone file](https://learn.microsoft.com/en-us/azure/dns/dns-import-export), any SPF records that use the SPF record type are converted to the TXT record type.
+:::
+
+Think of SPF records like a guest list that is managed by a door attendant. If someone is not on the list, the door attendant will not let them in. Similarly, if an SPF record does not have a sender’s IP address or domain on its list, the receiving server (door attendant) will either not deliver those emails or mark them as spam.
+
+SPF records are just one of many DNS-based mechanisms that can help email servers confirm whether an email comes from a trusted source. Domain-based Message Authentication Reporting and Conformance (DMARC) and DomainKeys Identified Mail (DKIM) are two other mechanisms used for email authentication.
+
+It is worth noting that, at one point, SPF records had a dedicated DNS record type. The dedicated record type has since been deprecated and only TXT records are to be used.
+
+
+#### SRV Records
+The DNS "service" (SRV) record specifies a host and port for specific services such as voice over IP (VoIP), instant messaging, and so on. Most other DNS records only specify a server or an IP address, but SRV records include a port at that IP address as well. Some Internet protocols require the use of SRV records in order to function.
+
+Ports are virtual places that designate what processes network traffic goes to within a computer. Ports allow computers to easily differentiate between different kinds of traffic: VoIP streams go to a different port than email messages, for instance, even though both reach a computer over the same Internet connection. Much like IP addresses, all ports are assigned a number.
+
+Certain Internet protocols, such as IMAP, SIP, and XMPP, need to connect to a specific port in addition to connecting with a specific server.
+
+:::note
+SRV records are how a port can be specified within the DNS.
+:::
+
+##### SRV Record Description
+An SRV record contains the following information:
+| Field Name | Example value |
+| --- | --- |
+service	| XMPP
+proto*	| TCP
+name**	| example.com
+TTL	| 86400
+class	| IN
+type	| SRV
+priority	| 10
+weight	| 5
+port	| 5223
+target	| server.example.com
+||
+
+##### SRV Record Format
+SRV records are formatted as follows:
+> `_service._proto.name. TTL class type of record priority weight port target`
+
+So our example SRV record would actually look like:
+> `_xmpp._tcp.example.com. 86400 IN SRV 10 5 5223 server.example.com.`
+
+In the above example, "_xmpp" indicates the type of service (the XMPP protocol) and "_tcp" indicates the TCP transport protocol, while "example.com" is the host, or the domain name. "Server.example.com" is the target server and "5223" indicates the port within that server.
+
+:::danger[Note]
+SRV records must point to an A record (in IPv4) or an AAAA record (in IPv6). The server name they list cannot be a CNAME. So "server.example.com" must lead directly to an A or AAAA record under that name.
+:::
+
+##### SRV Record Priority and Weight
+SRV records indicate the "priority" and "weight" of the various servers they list. The "priority" value in an SRV record enables administrators to prioritize one server that supports the given service over another. A server with a lower priority value will receive more traffic than other servers. However, the "weight" value is similar: a server with a higher weight will receive more traffic than other servers with the same priority.
+
+The main difference between them is that priority is looked at first. If there are three servers, Server A, Server B, and Server C, and they have respective priorities of 10, 20, and 30, then their "weight" does not matter. The service will always query Server A first.
+
+But suppose Servers A, B, and C all have a priority of 10 — how will a service choose between them? This is where weight becomes a factor: if Server A has a "weight" value of 5 and Servers B and C have a "weight" value of 3 and 2, Server A will receive the most traffic, Server B will receive the second-most traffic, and Server C the third-most.
+
+
+#### TXT Records
+The DNS ‘text’ (TXT) record lets a domain administrator enter text into the Domain Name System (DNS). Text is stored in the form of one or more strings within quotation marks. A domain can have many TXT records.
+
+The TXT record was originally intended as a place for human-readable notes. However, it is now possible to put some machine-readable data into TXT records.  So, although TXT records were not originally designed for these, important new use cases have emerged:
+- Email spam prevention
+- Domain ownership verification
+
+##### TXT records for preventing spam email
+Spammers often try to fake or forge the domains from which they send their email messages. TXT records are a key component of several different email authentication methods that help an email server determine if a message is from a trusted source.
+
+Common email authentication methods include Domain Keys Identified Mail (DKIM), Sender Policy Framework (SPF), and Domain-based Message Authentication, Reporting & Conformance (DMARC). By configuring these records, domain operators can make it more difficult for spammers to spoof their domains and can track attempts to do so.
+
+- [SPF records](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/): SPF TXT records list all the servers that are authorized to send email messages from a domain.
+- [DKIM records](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/): DKIM works by digitally signing each email using a public-private key pair. This helps verify that the email is actually from the domain it claims to be from. The public key is hosted in a TXT record associated with the domain. (Learn more about public key encryption.)
+- [DMARC records](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/): A DMARC TXT record references the domain's SPF and DKIM policies. It should be stored under the title _dmarc.example.com. with 'example.com' replaced with the actual domain name. The 'value' of the record is the domain's DMARC policy (a guide to creating one can be found here).
+
+##### TXT Records for Domain Ownership verification
+While domain ownership verification was not initially a feature of TXT records, this approach has been adopted by some webmaster tools and cloud providers.
+
+By uploading a new TXT record with specific information included, or editing the current TXT record, an administrator can prove they control that domain. The tool or cloud provider can check the TXT record and see that it has been changed as requested. This is somewhat like when a user confirms their email address by opening and clicking a link sent to that email, proving they own the address.
+
+
+The [original RFC](https://tools.ietf.org/html/rfc1035) only indicates that 'text strings' go in the 'value' field of a TXT record. This could be any text that an administrator wants to associate with their domain.
+
+In 1993, [RFC1464](https://tools.ietf.org/html/rfc1464) defined a format for storing attributes and their corresponding values within the 'value' field of TXT records. The format was simply the attribute and the value contained within quotation marks (") and separated by an equal sign (=), such as:
+
+> `"attribute=value"`
+
+This definition was considered experimental, and in practice it is not often adopted. Some DNS administrators follow their own formats within TXT records, if they make use of TXT records at all.
+
+TXT records may also be formatted in a specific way for certain uses described below — for instance, DMARC policies have to be formatted in a standardized way. However, TXT records still store their content within quotation marks ("").
+
+Most DNS servers will put a limit on how big TXT records can be and how many strings they can store, so administrators cannot use TXT records for large amounts of data.
+
+Strings are limited to 255 bytes, but applications often do not care about the difference between strings and will just join them together, treating multiple strings as a single string.
+
+:::note
+The multiple strings in a DNS record shouldn't be confused with the multiple TXT records in a TXT record set. A TXT record set can contain multiple records, each of which can contain multiple strings. Azure DNS supports a total string length of up to 4096 characters in each TXT record set (across all records combined).
+:::
+
+When calling the Azure DNS REST API, you need to specify each TXT string separately. When you use the Azure portal, PowerShell, or CLI interfaces, you should specify a single string per record. This string is automatically divided into 255-character segments if necessary.
+
+
+
+
+### See also
+- [DNS Records](https://www.cloudflare.com/learning/dns/dns-records/)

@@ -19,3 +19,19 @@ Install-Module az
 ```powershell
 Connect-AzAccount -UseDeviceAuthentication -TenantId 73ec7808-5b5c-4971-b28c-663b15f02e0b
 ```
+#### Get Azure RBAC Providers where Company = Microsoft
+```powershell
+Get-AzProviderOperation | where operation -like 'Microsoft.*' | ft
+Get-AzProviderOperation | where operation -like 'Microsoft.Network*' | ft
+```
+#### Get Azure RBAC Role Definitions pertaining to DNS
+```powershell
+get-azRoleDefinition | where actions -like '*dns*'   
+```
+
+#### See full RBAC defintiion for given role
+```powershell
+get-azRoleDefinition "DNS Resolver Contributor" | select actions -ExpandProperty actions
+get-azRoleDefinition "DNS Resolver Contributor" | select actions -ExpandProperty actions -Unique
+```
+

@@ -1,37 +1,89 @@
-
-
-<div class="not-content a-3-1">
-    <p class="hdr">Record Name</p>
-    <p class="hdr">Record Type</p>
-    <p>Number of DNS queries a virtual machine can send to Azure DNS resolver, per second</p>
-    <p>1000</p>
-    <p>Maximum number of DNS queries queued (pending response) per virtual machine</p>
-    <p>200</p>
-    <p></p>
-    <p></p>
-</div>
-
-
-#### Record names
-In Azure DNS, records are specified by using relative names. A *fully qualified* domain name (FQDN) includes the zone name, whereas a *relative* name does not. For example, the relative record name `www` in the zone `contoso.com` gives the fully qualified record name `www.contoso.com`.
-
-An *apex* record is a DNS record at the root (or *apex*) of a DNS zone. For example, in the DNS zone `contoso.com`, an apex record also has the fully qualified name `contoso.com` (this is sometimes called a *naked* domain).  By convention, the relative name '\@' is used to represent apex records.
-
-#### Record types
-Each DNS record has a name and a type. Records are organized into various types according to the data they contain. The most common type is an 'A' record, which maps a name to an IPv4 address. Another common type is an 'MX' record, which maps a name to a mail server.
-
-Azure DNS supports all common DNS record types: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, and TXT. Note that [SPF records are represented using TXT records](https://learn.microsoft.com/en-us/azure/dns/dns-zones-records#spf-records)
-
-#### Record sets
-Sometimes you need to create more than one DNS record with a given name and type. For example, suppose the 'www.contoso.com' web site is hosted on two different IP addresses. The website requires two different A records, one for each IP address. Here is an example of a record set:
-
-```dns
-www.contoso.com.        3600    IN    A    134.170.185.46
-www.contoso.com.        3600    IN    A    134.170.188.221
-```
-
-Azure DNS manages all DNS records using *record sets*. A record set (also known as a *resource* record set) is the collection of DNS records in a zone that have the same name and are of the same type. Most record sets contain a single record. However, examples like the one above, in which a record set contains more than one record, are not uncommon.
-
-For example, suppose you have already created an A record 'www' in the zone 'contoso.com', pointing to the IP address '134.170.185.46' (the first record above).  To create the second record you would add that record to the existing record set, rather than create an additional record set.
-
-The SOA and CNAME record types are exceptions. The DNS standards don't permit multiple records with the same name for these types, therefore these record sets can only contain a single record.
+<table>
+    <thead>
+        <tr>
+            <th>DNS Record Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>A</td>
+            <td>An "A-Record" (A) maps a fully-qualified domain name (FQDN) to an IPv4 address</td>
+        </tr>
+        <tr>
+            <td>AAAA</td>
+            <td>A "Quad A-Record" (AAAA) maps a fully-qualified domain name (FQDN) to an IPv6 address</td>
+        </tr>
+        <td>CAA</td>
+        <td>The Certification Authority Authorization (CAA) Resource Record allow domain owners to specify which
+            Certificate Authorities (CAs) are authorized to issue certificates for their domain. If no CAA record exists, then anyone can issue a certificate for the domain. These records are also inherited by subdomains. This record allows CAs
+            to avoid mis-issuing certificates in some circumstances. CAA records have three properties:
+            <ul class="shin">
+                <li><b>Flags</b>: This field is an integer between 0 and 255, used to represent the critical flag that
+                    has special meaning per <a class="tab" href="https://tools.ietf.org/html/rfc6844#section-3"
+                        target="_blank">RFC6844</a></li>
+                <li><b>Tag</b>: an ASCII string that can be one of the following:<ul class="shin">
+                        <li><b>issue</b>: if you want to specify CAs that are permitted to issue certs (all types)</li>
+                        <li><b>issuewild</b>: if you want to specify CAs that are permitted to issue certs (wildcard
+                            certs only)</li>
+                        <li><b>iodef</b>: specify an email address or hostname to which CAs can notify for unauthorized
+                            cert issue requests</li>
+                    </ul>
+                <li><b>Value</b>: the value for the specific Tag chosen</li>
+            </ul>
+        </td>
+        </tr>
+        <tr>
+            <td><a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record/"
+                    target="_blank">CNAME</a></td>
+            <td>The DNS CNAME record works as an alias for domain names, thereby "translating" requests for one domain
+                or subdomain to another domain so long as the IP address of the canonical name is equipped to handle
+                requests associated with the alias names as well as requests associated directly to itself. In other
+                words, the aliases defined through CNAME records will resolve to the same IP address (e.g., the same A-
+                and AAAA-record) as the domain they point to. Which means, the aliases and the cononical name all appear
+                to "share" the same IP address.
+            </td>
+        </tr>
+        <tr>
+            <td><a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/"
+                    target="_blank">NS</a></td>
+            <td><p>The Name Server (NS) record stores the name server for a DNS entry.  As such, the NS record set at the zone apex (name '@') gets created automatically with each DNS zone and gets deleted automatically when the zone gets deleted. The NS records can't be deleted unless and until the zone itself is deleted.</p>
+            <p>This record set contains the names of the Azure DNS name servers assigned to the zone. You can add more name servers to this NS record set, to support cohosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, removing or modifying the prepopulated Azure DNS name servers isn't allowed.</p>
+            <p>This restriction only applies to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be created, modified, and deleted without constraint.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-soa-record/"
+                    target="_blank">SOA</a></td>
+            <td><p>The DNS Start of Authority (SOA) record stores important administrative information about a domain and who is responsible for it.  For example, SOA records for a domain or zone will typically include the email address of the administrator, when the domain was last updated, and how long the server should wait between refreshes. </p><p>In Azure DNS, admins can modify all properties of the SOA record in Azure except for the `host` property. This property gets preconfigured to refer to the primary name server name provided by Azure DNS.</p>
+            <p>All DNS zones need an SOA record in order to conform to IETF standards. SOA records are also important for zone transfers.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/"
+                    target="_blank">SPF</a></td>
+            <td><p>DNS Sender Policy Framework (SPF) records are a type of DNS TXT record commonly used for email authentication. SPF records include a list of IP addresses and domains authorized to send emails from that domain.  Sender policy framework (SPF) records are used to specify which email servers can send email on behalf of a domain name. Correct configuration of SPF records is important to prevent recipients from marking your email as junk.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-srv-record/"
+                    target="_blank">SRV</a></td>
+            <td>
+                <p>SRV records are used by various services to specify server locations and port numbers, especially for services such as VoIP. When specifying an SRV record in Azure DNS:</p>
+                <ul class="shin">
+                    <li>The service and protocol must be specified as part of the record set name, prefixed with underscores, such as `_sip._tcp.name`</li>
+                    <li>For a record at the zone apex, there's no need to specify '@' in the record name, simply use the service and protocol, such as `_sip._tcp`</li>
+                    <li>Priority, weight, port, and target are specified as parameters of each record in the record set</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record/" target="_blank">TXT</a></td>
+            <td><p>DNS text (TXT) records are used to map domain names to arbitrary text strings. They're used in multiple applications, in particular related to email configuration, such as the Sender Policy Framework (SPF Sender Policy Framework and DomainKeys Identified Mail (DKIM).</p>
+            <p>The DNS standards permit a single TXT record to contain multiple strings, each of which can be up to 255 characters in length. Where multiple strings are used, they're concatenated by clients and treated as a single string.</p>
+            <p>The multiple strings in a DNS record shouldn't be confused with the multiple TXT records in a TXT record set. A TXT record set can contain multiple records, each of which can contain multiple strings. Azure DNS supports a total string length of up to 4096 characters in each TXT record set (across all records combined).</p>
+            <p>When calling the Azure DNS REST API, you need to specify each TXT string separately. When you use the Azure portal, PowerShell, or CLI interfaces, you should specify a single string per record. This string is automatically divided into 255-character segments if necessary.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
