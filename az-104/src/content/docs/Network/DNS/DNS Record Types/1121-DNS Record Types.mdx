@@ -97,7 +97,6 @@ A SOA record set gets created automatically at the apex of each zone (name = '@'
 ##### SOA Record Layout
 | Field Name | Example Value |
 | --- | --- |
-| name | example.com |
 name| example.com
 record type| SOA
 MNAME | ns.primaryserver.com
@@ -178,8 +177,8 @@ An SRV record contains the following information:
 | Field Name | Example value |
 | --- | --- |
 service	| XMPP
-proto*	| TCP
-name**	| example.com
+proto	| TCP
+name	| example.com
 TTL	| 86400
 class	| IN
 type	| SRV

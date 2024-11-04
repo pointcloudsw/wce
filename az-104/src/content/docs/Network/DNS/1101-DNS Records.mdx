@@ -54,7 +54,9 @@ www.contoso.com.        3600    IN    A    134.170.188.221
 ```
 
 Azure DNS manages all DNS records using *record sets*. A record set (also known as a *resource* record set) is the collection of DNS records in a zone that have the same name and are of the same type. Most record sets contain a single record. However, examples like the one above, in which a record set contains more than one record, are not uncommon.
-
+:::note
+It's important to understand the difference between DNS record sets and individual DNS records. A record set is a collection of records in a zone that have the same name and are the same type.
+:::
 For example, suppose you have already created an A record 'www' in the zone 'contoso.com', pointing to the IP address '134.170.185.46' (the first record above).  To create the second record you would add that record to the existing record set, rather than create an additional record set.
 
 :::note
