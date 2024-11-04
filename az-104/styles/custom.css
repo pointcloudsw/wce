@@ -54,6 +54,9 @@ div.hero, div.hero * {
 ul.shin {
   padding-left: 2ch;
 }
+ul.shin > li {
+  display: list-item;
+}
 
 .card {
     background: slategray;

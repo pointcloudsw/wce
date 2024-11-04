@@ -55,15 +55,17 @@
         <tr>
             <td><a class="tab" href="https://www.cloudflare.com/learning/dns/dns-records/dns-ptr-record/"
                     target="_blank">PTR</a></td>
-            <td><p>The DNS Pointer (PTR) record is exactly the opposite of the 'A' record, which provides the IP address associated with a domain name. The Pointer (PTR) record is used for reverse DNS lookups, returning the domain name associated with an IP address.</p>
-            <p>DNS PTR records are used in reverse DNS lookups. When a user attempts to reach a domain name in their browser, a DNS lookup occurs, matching the domain name to the IP address. A reverse DNS lookup is the opposite of this process: it is a query that starts with the IP address and looks up the domain name.</p>
-            <p>PTR records are used in reverse DNS lookups; common uses for reverse DNS include:</p>
-            <ul class="shin">
-            <li><b>Anti-spam</b>: Some email anti-spam filters use reverse DNS to check the domain names of email addresses and see if the associated IP addresses are likely to be used by legitimate email servers.
-
-Troubleshooting email delivery issues: Because anti-spam filters perform these checks, email delivery problems can result from a misconfigured or missing PTR record. If a domain has no PTR record, or if the PTR record contains the wrong domain, email services may block all emails from that domain.
-
-Logging: System logs typically record only IP addresses; a reverse DNS lookup can convert these into domain names for logs that are more human-readable.
+            <td>
+                <p>The DNS Pointer (PTR) record is exactly the opposite of the 'A' record, which provides the IP address associated with a domain name. The Pointer (PTR) record is used for reverse DNS lookups, returning the domain name associated with an IP address.</p>
+                <p>DNS PTR records are used in reverse DNS lookups. When a user attempts to reach a domain name in their browser, a DNS lookup occurs, matching the domain name to the IP address. A reverse DNS lookup is the opposite of this process: it is a query that starts with the IP address and looks up the domain name.</p>
+                <p>PTR records are used in reverse DNS lookups; common uses for reverse DNS include:</p>
+                <span>
+                    <ul class="not-content shin">
+                        <li><b>Anti-spam</b>: Some email anti-spam filters use reverse DNS to check the domain names of email addresses and see if the associated IP addresses are likely to be used by legitimate email servers.</li>
+                        <li><b>Troubleshooting email delivery</b>:If a domain has no PTR record, or if the PTR record contains the wrong domain, email services may block all emails from that domain.</li>
+                        <li><b>Logging</b>:System logs typically record only IP addresses; a reverse DNS lookup can convert these into domain names for logs that are more human-readable.</li>
+                    </ul>
+                </span>
             </td>
         </tr>
         <tr>
