@@ -1,8 +1,10 @@
 ---
 title: Introduction to DNS Records
 sidebar:
-    order: 1001
+    order: 1101
 ---
+import {Image} from 'astro:assets'
+import DnsRecordSet from '/src/assets/Network/DNS/dns-record-set.png'
 import DnsRecordTypes from '/src/assets/Network/DNS/dns-dns-record-types.md'
 
 ### Overview
@@ -42,7 +44,9 @@ CNAME records are what enables IP address resolution of one or more domain alias
 
 
 ### DNS Record sets
-Sometimes you need to create more than one DNS record with a given name and type. For example, suppose the 'www.contoso.com' web site is hosted on two different IP addresses. The website requires two different A records, one for each IP address. Here is an example of a record set:
+Sometimes you need to create more than one DNS record with a given name and type.
+<Image src={DnsRecordSet} alt="Azure DNS Record Set Screen" width="750" />
+For example, suppose the 'www.contoso.com' web site is hosted on two different IP addresses. The website requires two different A records, one for each IP address. This example shows a simple example DNS record set:
 
 ```dns
 www.contoso.com.        3600    IN    A    134.170.185.46
