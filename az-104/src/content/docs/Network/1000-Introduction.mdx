@@ -4,18 +4,145 @@ sidebar:
     order: 1000
 ---
 import {Image} from 'astro:assets'
+import NtwkVirtualNtwk from '/src/assets/Network/network-virtual-network.md'
 import NtwkSvcEndpoints from '/src/assets/Network/network-service-endpoints.md'
 import VnetSvcEpOverview from '/src/assets/Network/vnet-service-endpoints-overview.png'
+import NtwkMultiSiteVpnGw from '/src/assets/Network/network-multisite-vpn-gw.png'
+import NtwkExpressRteOv from '/src/assets/Network/network-expressroute-overview.png'
+import NtwkAzureVirtualWan from '/src/assets/Network/network-azure-virtual-wan.png'
+import NtwkFwPartners from '/src/assets/Network/network-firewall-partners.png'
+import NtwkAzureFirewall from '/src/assets/Network/network-azure-firewall.png'
+import NtwkAzureWafExample from '/src/assets/Network/network-azure-waf-example.png'
+import NtwkAzureDdosExample from '/src/assets/Network/network-azure-ddos-protection-example.png'
+import NtwkAzTwoTierLbEx from '/src/assets/Network/network-azure-two-tier-lb-example.png'
+import NtwkAzAppGwEx from '/src/assets/Network/network-azure-appgw-example.png'
+import NtwkAzFdEx from '/src/assets/Network/network-azure-fd-example.png'
 
 ### Overview
-<div class="not-content container c-col" style="--cols: 1fr 2fr 2fr; --col-count: 3">
-<h4>Hybrid connectivity</h4>
-<p>Network connectivity services that provide a secure communication between your on-premises network and Azure</p>
-<ul class="shin">
-<li>VPN Gateway</li>
-<li>ExpressRoute</li>
-</ul>
+<div class="not-content container c-col align-1-ctr" style="--cols: 1fr 2fr 2fr; --col-count: 3;">
+<p class="c-hdr">Subject</p>
+<p class="c-hdr">Description</p>
+<p class="c-hdr">Topics</p>
+<p class="c-hbrdr"></p>
+<p class="c-hbrdr"></p>
+<p class="c-hbrdr"></p>
+<h5>Azure Networking Foundation Services</h5>
+    <p>Core connectivity for your resources in Azure</p>
+    <ul>
+        <li>Virtual Network (VNet)</li>
+        <li>Private Link</li>
+        <li>Azure DNS</li>
+        <li>Azure Bastion</li>
+        <li>Route Server</li>
+        <li>NAT Gateway</li>
+        <li>Traffic Manager</li>
+    </ul>
+<h5>Hybrid connectivity</h5>
+    <p>Network connectivity services for secure communication between on-premises network and Azure</p>
+    <ul>
+        <li><a href="#vpn-gateway">VPN Gateway</a></li>
+        <li><a href="#expressroute">ExpressRoute</a></li>
+        <li><a href="#virtual-wan">Virtual WAN</a></li>
+        <li><a href="#peering-service">Peering Service</a></li>
+    </ul>
+<h5>Load balancing and content delivery</h5>
+    <p>Management, distribution, and optimization of your applications and workloads</p>
+    <ul>
+        <li><a href="#load-balancer">Load Balancer</a></li>
+        <li><a href="#application-gateway">Application Gateway</a></li>
+        <li><a href="#azure-front-door">Azure Front Door</a></li>
+    </ul>
+<h5>Network Security</h5>
+    <p>Protect your web applications and IaaS services from DDoS attacks and malicious actors</p>
+    <ul>
+        <li><a href="#azure-firewall">Azure Firewall</a></li>
+        <li><a href="#firewall-manager">Firewall Manager</a></li>
+        <li><a href="#web-application-firewall-waf">Web Application Firewall</a></li>
+        <li><a href="#ddos-protection">DDoS Protection</a></li>
+    </ul>
+<h5>Network Management and Monitoring</h5>
+    <p>Tools to manage and monitor your network resources</p>
+    <ul>
+        <li>Network Watcher</li>
+        <li>Azure Monitor</li>
+        <li>Azure Virtual Network Manager</li>
+    </ul>
 </div>
 
+### Hybrid connectivity
+This section describes network connectivity services that provide a secure communication between your on-premises network and Azure - VPN Gateway, ExpressRoute, Virtual WAN, and Peering Service.
+
+#### VPN Gateway
+[VPN Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways) helps you create encrypted cross-premises connections to your virtual network from on-premises locations, or create encrypted connections between VNets. There are different configurations available for VPN Gateway connections. Some of the main features include:
+- Site-to-site VPN connectivity
+- Point-to-site VPN connectivity
+- VNet-to-VNet VPN connectivity
+The following diagram illustrates multiple site-to-site VPN connections to the same virtual network. To view more connection diagrams, see [VPN Gateway - design](https://learn.microsoft.com/en-us/azure/vpn-gateway/design).
+<Image src={NtwkMultiSiteVpnGw} alt="Multisite VPN Gateway" width="750" />
+
+#### ExpressRoute
+[ExpressRoute](https://learn.microsoft.com/en-us/azure/expressroute/expressroute-introduction) enables you to extend your on-premises networks into the Microsoft cloud over a private connection facilitated by a connectivity provider. This connection is private. Traffic doesn't go over the internet. With ExpressRoute, you can establish connections to Microsoft cloud services, such as Microsoft Azure, Microsoft 365, and Dynamics 365.
+<Image src={NtwkExpressRteOv} alt="ExpressRoute Overview" width="750" />
+
+#### Virtual WAN
+[Azure Virtual WAN](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-about) is a networking service that brings many networking, security, and routing functionalities together to provide a single operational interface. Connectivity to Azure VNets is established by using virtual network connections. Some of the main features include:
+- Branch connectivity (via connectivity automation from Virtual WAN Partner devices such as SD-WAN or VPN CPE)
+- Site-to-site VPN connectivity
+- Remote user VPN connectivity (point-to-site)
+- Private connectivity (ExpressRoute)
+- Intra-cloud connectivity (transitive connectivity for virtual networks)
+- VPN ExpressRoute inter-connectivity
+- Routing, Azure Firewall, and encryption for private connectivity
+<Image src={NtwkAzureVirtualWan} alt="Azure Virtual WAN" width="750" />
+
+#### Peering Service
+[Azure Peering Service](https://learn.microsoft.com/en-us/azure/peering-service/about) enhances customer connectivity to Microsoft cloud services such as Microsoft 365, Dynamics 365, software as a service (SaaS) services, Azure, or any Microsoft services accessible via the public internet.
+
+### Load Balancing and Content Delivery
+#### Load Balancer
+[Azure Load Balancer](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) provides high-performance, low-latency Layer 4 load-balancing for all UDP and TCP protocols. It manages inbound and outbound connections. You can configure public and internal load-balanced endpoints. You can define rules to map inbound connections to back-end pool destinations by using TCP and HTTP health-probing options to manage service availability.
+
+Azure Load Balancer is available in Standard, Regional, and Gateway SKUs.
+
+The following picture shows an Internet-facing multi-tier application that utilizes both external and internal load balancers:
+<Image src={NtwkAzTwoTierLbEx} alt="Azure Two Tier Load Balancer Example" width="750" />
+
+#### Application Gateway
+Azure Application Gateway is a web traffic load balancer that enables you to manage traffic to your web applications. It's an Application Delivery Controller (ADC) as a service, offering various layer 7 load-balancing capabilities for your applications.
+
+The following diagram shows url path-based routing with Application Gateway.
+<Image src={NtwkAzAppGwEx} alt="Azure Application Gateway Example" width="750" />
+
+
+#### Azure Front Door
+[Azure Front Door](https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview) enables you to define, manage, and monitor the global routing for your web traffic by optimizing for best performance and instant global failover for high availability. With Front Door, you can transform your global (multi-region) consumer and enterprise applications into robust, high-performance personalized modern applications, APIs, and content that reach a global audience with Azure.
+<Image src={NtwkAzFdEx} alt="Azure Front Door Example" width="750" />
+
+### Network Security
+
+#### Azure Firewall
+[Azure Firewall](https://learn.microsoft.com/en-us/azure/firewall/overview) is a managed, cloud-based network security service that protects your Azure Virtual Network resources. Using Azure Firewall, you can centrally create, enforce, and log application and network connectivity policies across subscriptions and virtual networks. Azure Firewall uses a static public IP address for your virtual network resources allowing outside firewalls to identify traffic originating from your virtual network.
+<Image src={NtwkAzureFirewall} alt="Azure Firewall" width="750" />
+
+#### Firewall Manager
+[Azure Firewall Manager](https://learn.microsoft.com/en-us/azure/firewall-manager/overview) is a security management service that provides central security policy and routing management for cloud based security perimeters. Firewall manager can provide security management for two different types of network architecture: secure virtual hub and hub virtual network. With Azure Firewall Manager, you can deploy multiple Azure Firewall instances across Azure regions and subscriptions, implement DDoS protection plans, manage web application firewall policies, and integrate with partner security-as-a-service for enhanced security.
+<Image src={NtwkFwPartners} alt="Azure Firewall Manager" width="750" />
+
+#### Web Application Firewall (WAF)
+[Azure Web Application Firewall (WAF)](https://learn.microsoft.com/en-us/azure/web-application-firewall/overview) provides protection to your web applications from common web exploits and vulnerabilities such as SQL injection, and cross site scripting. Azure WAF provides out of box protection from OWASP top 10 vulnerabilities via managed rules. Additionally customers can also configure custom rules, which are customer managed rules to provide extra protection based on source IP range, and request attributes such as headers, cookies, form data fields, or query string parameters.
+
+Customers can choose to deploy [Azure WAF with Application Gateway](https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview), which provides regional protection to entities in public and private address space. Customers can also choose to deploy [Azure WAF with Front Door](https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/afds-overview) which provides protection at the network edge to public endpoints.
+<Image src={NtwkAzureWafExample} alt="Azure Web Application Firewall Example" width="750" />
+
+#### DDoS Protection
+[Azure DDoS Protection](https://learn.microsoft.com/en-us/azure/ddos-protection/manage-ddos-protection) provides countermeasures against the most sophisticated DDoS threats. The service provides enhanced DDoS mitigation capabilities for your application and resources deployed in your virtual networks. Additionally, customers using Azure DDoS Protection have access to DDoS Rapid Response support to engage DDoS experts during an active attack.
+
+Azure DDoS Protection consists of two tiers:
+- [DDoS Network Protection](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview#ddos-network-protection), combined with application design best practices, provides enhanced DDoS mitigation features to defend against DDoS attacks. It's automatically tuned to help protect your specific Azure resources in a virtual network.
+- [DDoS IP Protection](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview#ddos-ip-protection) is a pay-per-protected IP model. DDoS IP Protection contains the same core engineering features as DDoS Network Protection, but differs in the following value-added services: DDoS rapid response support, cost protection, and discounts on WAF.
+<Image src={NtwkAzureDdosExample} alt="Azure DDoS Protection Example" width="750" />
+
+<NtwkVirtualNtwk />
 <NtwkSvcEndpoints />
 <Image src={VnetSvcEpOverview} alt="VNet Service Endpoints" width="750" />
+
