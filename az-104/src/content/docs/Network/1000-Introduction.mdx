@@ -19,6 +19,9 @@ import NtwkAzAppGwEx from '/src/assets/Network/network-azure-appgw-example.png'
 import NtwkAzFdEx from '/src/assets/Network/network-azure-fd-example.png'
 import NtwkAzPrvLnkEx from '/src/assets/Network/network-azure-private-endpoint.png'
 import NtwkAzBastion from '/src/assets/Network/network-azure-bastion.png'
+import NtwkAzRteSrvr from '/src/assets/Network/network-azure-route-server.png'
+import NtwkAzNatGw from '/src/assets/Network/network-azure-nat-gw.png'
+import NtwkTrafficMgr from '/src/assets/Network/network-traffic-manager.png'
 
 
 ### Overview
@@ -36,9 +39,9 @@ import NtwkAzBastion from '/src/assets/Network/network-azure-bastion.png'
         <li><a href="#azure-private-link">Private Link</a></li>
         <li><a href="#azure-dns">Azure DNS</a></li>
         <li><a href="#azure-bastion">Azure Bastion</a></li>
-        <li>Route Server</li>
-        <li>NAT Gateway</li>
-        <li>Traffic Manager</li>
+        <li><a href="#azure-route-server">Azure Route Server</a></li>
+        <li><a href="#nat-gateway">Azure vNAT Gateway</a></li>
+        <li><a href="#traffic-manager">Azure Traffic Manager</a></li>
     </ul>
 <h5>Hybrid connectivity</h5>
     <p>Network connectivity services for secure communication between on-premises network and Azure</p>
@@ -107,23 +110,22 @@ Using Azure DNS, you can host and resolve public domains, manage DNS resolution 
 <figure><Image src={NtwkAzBastion} alt="Azure Bastion" width="750" /><figcaption>Azure Bastion Example</figcaption></figure>
 
 #### Azure Route Server
-Azure Route Server simplifies dynamic routing between your network virtual appliance (NVA) and your virtual network. It allows you to exchange routing information directly through Border Gateway Protocol (BGP) routing protocol between any NVA that supports the BGP routing protocol and the Azure Software Defined Network (SDN) in the Azure Virtual Network (VNet) without the need to manually configure or maintain route tables.
-
-Diagram showing Azure Route Server configured in a virtual network.
+[Azure Route Server](https://learn.microsoft.com/en-us/azure/route-server/overview) simplifies dynamic routing between your network virtual appliance (NVA) and your virtual network. It allows you to exchange routing information directly through Border Gateway Protocol (BGP) routing protocol between any NVA that supports the BGP routing protocol and the Azure Software Defined Network (SDN) in the Azure Virtual Network (VNet) without the need to manually configure or maintain route tables.
+<figure><Image src={NtwkAzRteSrvr} alt="Azure Route Server" width="750" /><figcaption>Azure Route Server Example</figcaption></figure>
 
 #### NAT Gateway
-Virtual Network NAT(network address translation) simplifies outbound-only Internet connectivity for virtual networks. When configured on a subnet, all outbound connectivity uses your specified static public IP addresses. Outbound connectivity is possible without load balancer or public IP addresses directly attached to virtual machines. For more information, see What is Azure NAT gateway?
-
-Diagram of virtual network NAT gateway.
+[Azure Virtual Network NAT(network address translation) Gateway](https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/nat-overview) simplifies outbound-only Internet connectivity for virtual networks. When configured on a subnet, all outbound connectivity uses your specified static public IP addresses. Outbound connectivity is possible without load balancer or public IP addresses directly attached to virtual machines. For more information, see What is Azure NAT gateway?
+<figure><Image src={NtwkAzNatGw} alt="Azure vNAT Gateway" width="750" /><figcaption>Azure vNAT Gateway Example</figcaption></figure>
 
 #### Traffic Manager
-Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions, while providing high availability and responsiveness. Traffic Manager provides a range of traffic-routing methods to distribute traffic such as priority, weighted, performance, geographic, multi-value, or subnet.
+[Azure Traffic Manager](https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-routing-methods) is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions, while providing high availability and responsiveness. Traffic Manager provides a range of traffic-routing methods to distribute traffic such as priority, weighted, performance, geographic, multi-value, or subnet.
 
 The following diagram shows endpoint priority-based routing with Traffic Manager:
+<figure><Image src={NtwkTrafficMgr} alt="Azure Network Traffic Manager" width="750" /><figcaption>Azure Network Traffic Manager</figcaption></figure>
 
 Diagram of Azure Traffic Manager 'Priority' traffic-routing method.
 
-For more information about Traffic Manager, see What is Azure Traffic Manager?.
+For more information about Traffic Manager, see [What is Azure Traffic Manager?](https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview).
 
 ### Hybrid connectivity
 This section describes network connectivity services that provide a secure communication between your on-premises network and Azure - VPN Gateway, ExpressRoute, Virtual WAN, and Peering Service.
