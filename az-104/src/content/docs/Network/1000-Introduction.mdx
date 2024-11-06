@@ -22,7 +22,8 @@ import NtwkAzBastion from '/src/assets/Network/network-azure-bastion.png'
 import NtwkAzRteSrvr from '/src/assets/Network/network-azure-route-server.png'
 import NtwkAzNatGw from '/src/assets/Network/network-azure-nat-gw.png'
 import NtwkTrafficMgr from '/src/assets/Network/network-traffic-manager.png'
-
+import NtwkWatcherCapabilities from '/src/assets/Network/network-watcher-capabilities.png'
+import NtwkVirtualNtwkMgr from '/src/assets/Network/network-virtual-network-manager-resources-diagram.png'
 
 ### Overview
 <div class="not-content container c-col align-1-ctr" style="--cols: 1fr 2fr 2fr; --col-count: 3;">
@@ -69,9 +70,9 @@ import NtwkTrafficMgr from '/src/assets/Network/network-traffic-manager.png'
 <h5>Network Management and Monitoring</h5>
     <p>Tools to manage and monitor your network resources</p>
     <ul>
-        <li>Network Watcher</li>
-        <li>Azure Monitor</li>
-        <li>Azure Virtual Network Manager</li>
+        <li><a href="#azure-network-watcher">Network Watcher</a></li>
+        <li><a href="#azure-monitor">Azure Monitor</a></li>
+        <li><a href="#azure-virtual-network-manager">Azure Virtual Network Manager</a></li>
     </ul>
 </div>
 
@@ -123,8 +124,6 @@ Using Azure DNS, you can host and resolve public domains, manage DNS resolution 
 The following diagram shows endpoint priority-based routing with Traffic Manager:
 <figure><Image src={NtwkTrafficMgr} alt="Azure Network Traffic Manager" width="750" /><figcaption>Azure Network Traffic Manager</figcaption></figure>
 
-Diagram of Azure Traffic Manager 'Priority' traffic-routing method.
-
 For more information about Traffic Manager, see [What is Azure Traffic Manager?](https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview).
 
 ### Hybrid connectivity
@@ -166,7 +165,7 @@ The following picture shows an Internet-facing multi-tier application that utili
 <Image src={NtwkAzTwoTierLbEx} alt="Azure Two Tier Load Balancer Example" width="750" />
 
 #### Application Gateway
-Azure Application Gateway is a web traffic load balancer that enables you to manage traffic to your web applications. It's an Application Delivery Controller (ADC) as a service, offering various layer 7 load-balancing capabilities for your applications.
+[Azure Application Gateway](https://learn.microsoft.com/en-us/azure/application-gateway/overview) is a web traffic load balancer that enables you to manage traffic to your web applications. It's an Application Delivery Controller (ADC) as a service, offering various layer 7 load-balancing capabilities for your applications.
 
 The following diagram shows url path-based routing with Application Gateway.
 <Image src={NtwkAzAppGwEx} alt="Azure Application Gateway Example" width="750" />
@@ -199,6 +198,21 @@ Azure DDoS Protection consists of two tiers:
 - [DDoS Network Protection](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview#ddos-network-protection), combined with application design best practices, provides enhanced DDoS mitigation features to defend against DDoS attacks. It's automatically tuned to help protect your specific Azure resources in a virtual network.
 - [DDoS IP Protection](https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview#ddos-ip-protection) is a pay-per-protected IP model. DDoS IP Protection contains the same core engineering features as DDoS Network Protection, but differs in the following value-added services: DDoS rapid response support, cost protection, and discounts on WAF.
 <Image src={NtwkAzureDdosExample} alt="Azure DDoS Protection Example" width="750" />
+
+### Network Management and Monitoring
+#### Azure Network Watcher
+[Azure Network Watcher](https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview?toc=/azure/networking/toc.json) provides tools to monitor, diagnose, view metrics, and enable or disable logs for resources in an Azure virtual network.
+<figure><Image src={NtwkWatcherCapabilities} alt="Azure Network Watcher" width="750" /><figcaption>Azure Network Watcher</figcaption></figure>
+
+
+#### Azure Monitor
+[Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview?toc=%2fazure%2fnetworking%2ftoc.json) maximizes the availability and performance of your applications by delivering a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments. It helps you understand how your applications are performing and proactively identifies issues affecting them and the resources they depend on.
+
+#### Azure Virtual Network Manager
+[Azure Virtual Network Manager](https://learn.microsoft.com/en-us/azure/virtual-network-manager/overview) is a management service that enables you to group, configure, deploy, and manage virtual networks globally across subscriptions. With Virtual Network Manager, you can define [network groups](https://learn.microsoft.com/en-us/azure/virtual-network-manager/concept-network-groups) to identify and logically segment your virtual networks. Then you can determine the [connectivity](https://learn.microsoft.com/en-us/azure/virtual-network-manager/concept-connectivity-configuration) and [security configurations](https://learn.microsoft.com/en-us/azure/virtual-network-manager/concept-security-admins) you want and apply them across all the selected virtual networks in network groups at once.
+<figure><Image src={NtwkVirtualNtwkMgr} alt="Azure Virtual Network Manager" width="750" /><figcaption>Azure Virtual Network Manager</figcaption></figure>
+
+
 
 <NtwkVirtualNtwk />
 <NtwkSvcEndpoints />
