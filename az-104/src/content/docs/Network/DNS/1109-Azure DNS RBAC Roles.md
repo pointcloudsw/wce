@@ -11,7 +11,7 @@ get-azRoleDefinition | where actions -like '*dns*'
 get-azRoleDefinition "DNS Resolver Contributor" | select actions -ExpandProperty actions -Unique
 ```
 ### DNS Built-In RBAC Role Definitions 
-<div class="not-content container c-col" style="--cols: 2fr 2fr 4fr;">
+<div class="not-content container c-col align-1-ctr" style="--cols: 2fr 2fr 4fr; --col-count: 3;">
     <p class="c-hdr">DNS RBAC Role</p>
     <p class="c-hdr">Description</p>
     <p class="c-hdr">Providers</p>

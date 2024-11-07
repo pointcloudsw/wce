@@ -1,10 +1,24 @@
 
-.sidebar-pane {
+/*
+  For ideas for renovating ToC and on-this-page dropdowns, refer to:
+  https://codepen.io/jrollio/pen/abevogv
+*/
+
+/* .sidebar-pane {
     visibility: hidden;
+} */
+/* 
+div#starlight__sidebar {
+  visibility: hidden;
+  display: none;
+}
+starlight-menu-button > button {
+  visibility: visible;
+  display: initial;
 }
 [aria-expanded="true"] ~ .sidebar-pane:where(.astro-vrdttmbt) {
   visibility: visible;
-}
+} */
 
 a.tab {
   display: inline;
@@ -130,7 +144,7 @@ ul.shin > li {
 
 .container.align-1-ctr {
   @container style(--col-count: 2){
-    >:nth-child(2n+3){
+    > :nth-child(2n+5){
       margin: auto;
       margin-block-start: 0;
       text-align: center;
