@@ -115,11 +115,66 @@ ul.shin > li {
   place-self: start end;
 }
 /*
+  S200
+  argyle tabs challenge
+  https://web.dev/articles/building/a-tabs-component
+*/
+.tabbox {
+  display: flex;
+  flex-wrap: wrap;
+  /* box-shadow:
+    2px 2px color(display-p3 .2 .2 .2)
+    , 2px 2px color(display-p3 .2 .2 .2) */
+}
+.tabbox article {
+  border-left: 1px solid color(display-p3 .2 .2 .2);
+  box-shadow: 4px 2px color(display-p3 .2 .2 .2);
+  border-top: 1px solid color(display-p3 .2 .2 .2);
+  margin-top: -1px;
+  order: 1;
+  padding: 1em;
+}
+.tabbox input[type=radio]
+, .tabbox article {
+  display: none;
+}
+
+.tabbox label {
+  cursor: pointer;
+  inline-size: 12ch;
+  margin-left: -1px;
+  padding: .7em 1em;
+  z-index: 1;
+}
+
+.tabbox label:first-of-type {
+  margin-left: 0;
+}
+.tabbox input[type=radio]:checked + label {
+  font-weight: 900;
+  border-bottom: 2px solid hsl(224,10%,10%);
+  border-left: 1px solid color(display-p3 .2 .2 .2);
+  border-top: 1px solid color(display-p3 .2 .2 .2);
+  box-shadow: 4px 0px color(display-p3 .2 .2 .2), 4px 6px hsl(224,10%,10%);
+}
+.tabbox input[type=radio]:checked + label + article {
+  display: block;
+}
+/* 
+.tabbox > section {
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+  inline-size: 100%;
+} */
+/* S200 */
+
+
+/*
   S100
   modern table adaptation
   see: https://codepen.io/jrollio/pen/ZEgRBgY?editors=1100
 */
-
 .container {
   display: grid;
   gap: 1ch;
