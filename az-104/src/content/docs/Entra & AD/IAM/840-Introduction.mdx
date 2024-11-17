@@ -22,6 +22,9 @@ Example application that signs in a user and then accesses a protected resource.
 
 5. The identity provider/authorization server validates the access token. If successful the request for protected resources is granted, and a response is sent back to the client application.
 
+<embed type="application/pdf" src="/src/assets/Entra--AD/m365e-identity-infra.pdf" height="300" width="750" />
+
+
 ### Autentication and authorization standards
 These are the most well-known and commonly used authentication and authorization standards:
 
@@ -30,6 +33,7 @@ OAuth is an open-standards identity management protocol that provides secure acc
 
 #### [OpenID Connect (OIDC)](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols)
 With the release of the OpenID Connect (which uses public-key encryption), OpenID became a widely adopted authentication layer for OAuth. Like SAML, OpenID Connect (OIDC) is widely used for single sign-on (SSO), but OIDC uses REST/JSON instead of XML. OIDC was designed to work with both native and mobile apps by using REST/JSON protocols. The primary use case for SAML, however, is web-based apps. To learn more, read about [OpenID Connect protocol](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols).
+
 
 #### [JSON Web Tokens (JWTs)](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols#tokens)
 JWTs are an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. JWTs can be verified and trusted because they’re digitally signed. They can be used to pass the identity of authenticated users between the identity provider and the service requesting the authentication. They also can be authenticated and encrypted. To learn more, read [JSON Web Tokens](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols#tokens).
