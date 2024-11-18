@@ -7,7 +7,7 @@ sidebar:
 ### Exceptions
 Azure RBAC (Role-Based Access Control) policies control access to most Azure resources, but there are some exceptions.  
 
-:::danger
+:::danger[Important]
 Access to some Azure resources cannot be managed through Azure RBAC.  For example:
 - **Azure Key Vault**: Azure Key Vault uses its own access policy model for controlling access to keys, secrets, and certificates. The AKV access policy model is separate from Azure RBAC and operates on the data plane alone.
 - **Azure Policy**: While Azure Policy itself is used to enforce rules and compliance, it doesn't use RBAC for its own access control.

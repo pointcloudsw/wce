@@ -23,6 +23,8 @@ Connect-AzAccount -UseDeviceAuthentication -TenantId 73ec7808-5b5c-4971-b28c-663
 ```powershell
 Get-AzProviderOperation | where operation -like 'Microsoft.*' | ft
 Get-AzProviderOperation | where operation -like 'Microsoft.Network*' | ft
+Get-AzProviderOperation | where operation -like 'Microsoft.Authorization/*read' 
+| ft
 ```
 #### Get Azure RBAC Role Definitions pertaining to DNS
 ```powershell
