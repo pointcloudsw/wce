@@ -6,10 +6,10 @@ sidebar:
 
 :::note
 To delete a resource group...
-- you must first remove any underlying resource locks and backup data
-- you need access to the delete action for the Microsoft.Resources/subscriptions/resourceGroups resource
-- you DO NOT need permission to delete individual resources within the resource group
-- delete actions that are specified in **notActions** for a roleAssignment are superseded by the resource group delete action
+1. First, remove underlying resource locks and backup data
+2. Access to the delete action for the Microsoft.Resources/subscriptions/resourceGroups resource IS required
+3. Permission to delete individual resources within the resource group is NOT required
+4. DELETE actions specified in **notActions** for a roleAssignment are SUPERSEDED by the **Resource Group DELETE** action
 :::
 
 ### Exceptions
