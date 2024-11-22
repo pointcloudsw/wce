@@ -122,9 +122,12 @@ ul.shin > li {
 .tabbox {
   display: flex;
   flex-wrap: wrap;
+
+
 }
 .tabbox article {
   border-left: 1px solid color(display-p3 .2 .2 .2);
+  /* box-shadow: -1px 1px 4px color( from var(--sl-color-text) display-p3 r g b / .15), 4px 2px color(display-p3 .2 .2 .2); */
   border-top: 1px solid color(display-p3 .2 .2 .2);
   margin-top: -1px;
   padding: 1em;
@@ -138,26 +141,38 @@ ul.shin > li {
 .tabbox label:first-of-type {
   margin-left: 0;
 }
-.tabbox label {
+.tabbox label:not(label:checked) {
   cursor: pointer;
   inline-size: 12ch;
   margin-left: -1px;
   padding: .7em 1em;
   z-index: 1;
   /* box-shadow: -1px 1px 4px color( from var(--sl-color-text) display-p3 r g b / .15); */
+  box-shadow: 1px -2px 2px 1px hsl(0 0 60%);
+
 }
 
 .tabbox input[type=radio]:checked + label {
+
   font-weight: 900;
+  /* box-shadow: 4px 0px 2px -2px hsl(0 0 75%); */
   border: none;
   z-index: 2;
+  /* border-bottom: 10px solid color(from var(--sl-color-background) srgb r g b / 0.9); */
+  /* border-bottom: 10px solid #000; */
   border-bottom: 14px solid var(--sl-color-bg);
+  /* border-left: 10px solid color(from var(--sl-color-text) srgb r g b / 0.1); */
+  box-shadow: 2px -4px 4px 1px hsl(0 0 60%), -3px -7px 4px 0px hsl(0 0 60%); /*, 2px -5px hsl(0 0 60%); */
+
 }
 .tabbox input[type=radio]:checked + label + article {
   display: block;
   background: var(--sl-color-background);
   margin-top: -5px;
+  /* box-shadow: 4px 1px 8px 4px hsl(0 0 75%); */
+  /* box-shadow: 5px -5px 4px 1px hsl(0 0 60%); */
   box-shadow: -1px -2px 6px 2px hsl(0 0 60%);
+
   border: none;
   z-index: -1;
 }
