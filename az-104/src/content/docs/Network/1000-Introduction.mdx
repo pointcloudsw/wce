@@ -85,6 +85,43 @@ import NtwkVirtualNtwkMgr from '/src/assets/Network/network-virtual-network-mana
 - **Communicate with on-premises networks**: You can connect your on-premises computers and networks to a virtual network using [VPN Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways) or [ExpressRoute](https://learn.microsoft.com/en-us/azure/expressroute/expressroute-introduction).
 - **Encrypt traffic between resources**: You can use [Virtual network encryption](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-encryption-overview) to encrypt traffic between resources in a virtual network.
 
+#### <a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses">Public IP address SKUs</a>
+Public IP addresses are created with a SKU of **Standard** or **Basic**. The SKU determines their functionality including allocation method, feature support, and resources they can be associated with.
+
+Both types use the same idle timeout: an adjustable inbound originated flow idle timeout of 4-30 minutes, with a default of 4 minutes, and fixed outbound originated flow idle timeout of 4 minutes.
+
+Virtual machines attached to a backend pool do not need a public IP address to be attached to a public load balancer. But if they do, matching SKUs are required for load balancer and public IP resources. You can't have a mixture of basic SKU resources and standard SKU resources. You can't attach standalone virtual machines, virtual machines in an availability set resource, or a virtual machine scale set resources to both SKUs simultaneously. New designs should consider using Standard SKU resources. For more information about a standard load balancer, see [Standard Load Balancer](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview?toc=/azure/virtual-network/toc.json).
+
+:::note
+On September 30, 2025, Basic SKU public IPs will be retired. For more information, see the <a class="tab" href="https://azure.microsoft.com/updates/upgrade-to-standard-sku-public-ip-addresses-in-azure-by-30-september-2025-basic-sku-will-be-retired/" target="_blank">official announcement</a>. If you are currently using Basic SKU public IPs, make sure to upgrade to Standard SKU public IPs prior to the retirement date. For guidance on upgrading, visit [Upgrading a basic public IP address to Standard SKU - Guidance](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-basic-upgrade-guidance).
+:::
+<section class="not-content container c-col align-1-ctr" style="--cols: 1fr 3fr 3fr; --col-count: 3;">
+<span class="c-hdr">Public IP address</span>
+<span class="c-hdr">Standard</span>
+<span class="c-hdr">Basic</span>
+<p class="c-hbrdr"></p>
+<p class="c-hbrdr"></p>
+<p class="c-hbrdr"></p>
+<p>Allocation Method</p>
+<span>Static</span>
+<span>For IPv4: Dynamic or Static; For IPv6: Dynamic.</span>
+<p>Security</p>
+<span>Secure by default model and be closed to inbound traffic when used as a frontend. Allow traffic with [network security group (NSG)](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview#network-security-groups) is required (for example, on the NIC of a virtual machine with a Standard SKU Public IP attached).</span>
+<span>Open by default. Network security groups are recommended but optional for restricting inbound or outbound traffic.</span>
+<p>[Availability zones](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview?toc=/azure/virtual-network/toc.json)</p>
+<span>Supported. Standard IPs can be nonzonal, zonal, or zone-redundant. Zone redundant IPs can only be created in [regions where 3 availability zones](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-region-support) are live. IPs created before availability zones aren't zone redundant.</span>
+<span>Not supported.</span>
+<p>[Routing preference](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/routing-preference-overview)</p>
+<span>Supported to enable more granular control of how traffic is routed between Azure and the Internet.</span>
+<span>Not supported.</span>
+<p>Global tier</p>
+<span>Supported via [cross-region load balancers](https://learn.microsoft.com/en-us/azure/load-balancer/cross-region-overview).</span>
+<span>Not supported.</span>
+</section>
+
+#### <a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses">Azure Load Balancer SKUs</a>
+Public IP addresses are created with a SKU of **Standard** or **Basic**. The SKU determines their functionality including allocation method, feature support, and resources they can be associated with.
+
 #### Network security groups
 You can filter network traffic to and from Azure resources in an Azure virtual network with a network security group. For more information, see [Network security groups](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview).
 

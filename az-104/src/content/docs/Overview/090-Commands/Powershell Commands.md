@@ -25,6 +25,11 @@ Get-AzProviderOperation | where operation -like 'Microsoft.*' | ft
 Get-AzProviderOperation | where operation -like 'Microsoft.Network*' | ft
 Get-AzProviderOperation | where operation -like 'Microsoft.Authorization/*read' 
 | ft
+
+# Azure Kubernetes Contributor Role Definition and Privileges
+get-azRoleDefinition "Azure Kubernetes Service Contributor Role" | select actions -ExpandProperty actions -Unique
+Get-AzProviderOperation | where operation -like 'Microsoft.ContainerService/managedClusters/*'
+Get-AzProviderOperation | where operation -like 'Microsoft.ContainerService/managedClusters/*write' | ft
 ```
 #### Get Azure RBAC Role Definitions pertaining to DNS
 ```powershell
@@ -34,7 +39,7 @@ get-azRoleDefinition | where actions -like '*dns*'
 #### See full RBAC defintiion for given role
 ```powershell
 get-azRoleDefinition "DNS Resolver Contributor" | select actions -ExpandProperty actions
-get-azRoleDefinition "DNS Resolver Contributor" | select actions -ExpandProperty actions -Unique
+get-azRoleDefinition "Azure Kubernetes Service Contributor Role" | select actions -ExpandProperty actions -Unique
 ```
 #### Setup Parameters for Resource Creation
 ```powershell
