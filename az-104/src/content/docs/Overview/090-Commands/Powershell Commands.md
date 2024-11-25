@@ -62,3 +62,9 @@ $sncfg = Add-AzVirtualNetworkSubnetConfig @sn
 ```powershell
 $virtualnetwork | Set-AzVirtualNetwork
 ```
+
+#### Use the Azure Pricing API to Gather Pricing Info
+##### Retail pricing for Azure Virtual Machines
+(invoke-webrequest https://prices.azure.com/api/retail/prices?filter=serviceName%20eq%20Virtual%20Machines).content | jq .
+(invoke-webrequest https://prices.azure.com/api/retail/prices?filter=serviceName%20eq%20Virtual%20Machines).content | jq '. | .Items | .[] | .armSkuName'
+(invoke-webrequest https://prices.azure.com/api/retail/prices?filter=serviceName%20eq%20Virtual%20Machines).content | jq '. | .Items | .[] |  .armSkuName, .retailPrice, .unitPrice '

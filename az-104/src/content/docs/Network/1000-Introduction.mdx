@@ -119,8 +119,86 @@ On September 30, 2025, Basic SKU public IPs will be retired. For more informatio
 <span>Not supported.</span>
 </section>
 
-#### <a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses">Azure Load Balancer SKUs</a>
-Public IP addresses are created with a SKU of **Standard** or **Basic**. The SKU determines their functionality including allocation method, feature support, and resources they can be associated with.
+#### <a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/load-balancer/skus">Azure Load Balancer SKUs</a>
+Azure Load Balancer has three stock-keeping units (SKUs) - Basic, Standard, and Gateway. Each SKU is catered towards a specific scenario and has differences in scale, features, and pricing.
+
+To compare and understand the differences between Basic and Standard SKU, see the following table.
+
+:::note
+On September 30, 2025, Basic Load Balancer will be retired. For more information, see the <a class="tab" href="https://azure.microsoft.com/updates/azure-basic-load-balancer-will-be-retired-on-30-september-2025-upgrade-to-standard-load-balancer/" target="_blank">official announcement</a>. If you are currently using Basic Load Balancer, make sure to upgrade to Standard Load Balancer prior to the retirement date. For guidance on upgrading, visit <a class="tab" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-basic-upgrade-guidance" target="_blank">Upgrading from Basic Load Balancer - Guidance</a>.
+:::
+
+<section class="not-content container c-col align-1-ctr" style="--cols: 1fr 3fr 3fr; --col-count: 3;">
+<span class="c-hdr"></span>
+<span class="c-hdr">Standard LB</span>
+<span class="c-hdr">Basic LB</span>
+<p class="c-hbrdr"></p>
+<p class="c-hbrdr"></p>
+<p class="c-hbrdr"></p>
+<p><b>Scenario</b></p>
+<span>Equipped for load-balancing network layer traffic when high performance and ultra-low latency is needed. Routes traffic within and across regions, and to availability zones for high resiliency.</span>
+<span>Equipped for small-scale applications that don't need high availability or redundancy. Not compatible with availability zones.</span>
+<p><b>Backend type</b></p>
+<span><ul class="shin"><li>IP-based</li><li>NIC-based</li></ul></span>
+<span>NIC-based only</span>
+<p><b>Protocol</b></p>
+<span><ul class="shin"><li>TCP</li><li>UDP</li></ul></span>
+<span><ul class="shin"><li>TCP</li><li>UDP</li></ul></span>
+<p><b>Backend pool endpoints</b></p>
+<span>Any virtual machines or virtual machine scale sets in a single virtual network</span>
+<span>Virtual machines in a single availability set or virtual machine scale set</span>
+<p><b><a class="tab" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview#probe-protocol" target="_blank">Health probes</a></b></p>
+<span><ul class="shin"><li>TCP</li><li>HTTP</li><li>HTTPS</li></ul></span>
+<span><ul class="shin"><li>TCP</li><li>HTTP</li></ul></span>
+<p><b><a class="tab" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview#probe-down-behavior" target="_blank">Health probe down behavior</a></b></p>
+<span>TCP connections stay alive on an instance probe down and on all probes down.</span>
+<span>TCP connections stay alive on an instance probe down. All TCP connections end when all probes are down.</span>
+<p><b>Availability Zones</b></p>
+<span>Zone-redundant, zonal, or non-zonal frontend IP configurations can be used for inbound and outbound traffic</span>
+<span>Not available.</span>
+<p><b>Type</b></p>
+<span><ul class="shin"><li>Internal</li><li>Public</li></ul></span>
+<span><ul class="shin"><li>Internal</li><li>Public</li></ul></span>
+<p><b>Frontend IP configuration</b></p>
+<span>When using a Public Standard Load Balancer, the SKU of the public IP must be Standard. Basic Public IPs are not supported on Standard LB</span>
+<span>When using a Public Basic Load Balancer, the SKU of the public IP must be Basic. Standard Public IPs are not supported on Basic LB</span>
+<p><b>Diagnostics</b></p>
+<span><a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-diagnostics">Azure Monitor multi-dimensional metrics</a></span>
+<span>Not supported.</span>
+<p><b>HA Ports</b></p>
+<span><a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-ha-ports-overview">Available only on <b>Internal Load Balancer</b></a></span>
+<span>Not supported.</span>
+<p><b>Secure by default</b></p>
+<span>Closed to inbound flows unless allowed by a network security group. Internal traffic from the virtual network to the internal load balancer is allowed.</span>
+<span>Open by default. Network security group optional.</span>
+<p><b>Outbound Rules</b></p>
+<span><a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections#outboundrules">Declarative outbound NAT configuration</a></span>
+<span>Not available.</span>
+<p><b>TCP Reset on Idle</b></p>
+<span><a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-tcp-reset">Available on any rule</a></span>
+<span>Not available.</span>
+<p><b><a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-multivip-overview">Multiple front ends</a></b></p>
+<span>Inbound and <a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections">outbound</a></span>
+<span><b>Inbound</b> only.</span>
+<p><b>Management Operations</b></p>
+<span>&#8826;30 seconds for most operations</span>
+<span>Usually &#8805;60 seconds</span>
+<p><b>SLA</b></p>
+<span><a class="tab" target="_blank" href="https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/">99.99% (Four-nines)</a></span>
+<span>None (best-effort)</span>
+<p><b>Global VNet Peering Support</b></p>
+<span>Standard Internal Load Balancer is supported via Global VNet Peering</span>
+<span>Not supported</span>
+<p><b><a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/nat-overview">NAT Gateway Support</a></b></p>
+<span>Both Standard Internal Load Balancer and Standard Public Load Balancer are supported via Nat Gateway</span>
+<span>Not supported</span>
+<p><b><a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/private-link/private-link-overview">Private Link Support</a></b></p>
+<span>Standard Internal Load Balancer is supported via Private Link</span>
+<span>Not supported</span>
+<p><b><a class="tab" target="_blank" href="https://learn.microsoft.com/en-us/azure/load-balancer/cross-region-overview">Global tier</a></b></p>
+<span>Standard Load Balancer supports the Global tier for Public Load Balancers enabling cross-region load balancing</span>
+<span>Not supported</span>
+</section>
 
 #### Network security groups
 You can filter network traffic to and from Azure resources in an Azure virtual network with a network security group. For more information, see [Network security groups](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview).

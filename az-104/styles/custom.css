@@ -218,7 +218,11 @@ ul.shin > li {
   grid-area: 2;
   border: 2px solid hsl(230deg 25% 20%);
 }
-
+.container * {
+  @container style(--grid-area){
+    grid-area: var(--grid-area);
+  }
+}
 .container.align-1-ctr {
   @container style(--col-count: 2){
     > :nth-child(2n+5){
