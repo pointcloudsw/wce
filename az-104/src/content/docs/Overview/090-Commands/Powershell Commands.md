@@ -68,3 +68,17 @@ $virtualnetwork | Set-AzVirtualNetwork
 (invoke-webrequest https://prices.azure.com/api/retail/prices?filter=serviceName%20eq%20Virtual%20Machines).content | jq .
 (invoke-webrequest https://prices.azure.com/api/retail/prices?filter=serviceName%20eq%20Virtual%20Machines).content | jq '. | .Items | .[] | .armSkuName'
 (invoke-webrequest https://prices.azure.com/api/retail/prices?filter=serviceName%20eq%20Virtual%20Machines).content | jq '. | .Items | .[] |  .armSkuName, .retailPrice, .unitPrice '
+
+(invoke-webrequest "https://prices.azure.com/api/retail/prices?api-version=2021-10-01-preview&filter=armRegionName%20eq%20'centralus'").content | jq .Items[]
+
+(invoke-webrequest "https://prices.azure.com/api/retail/prices?api-version=2021-10-01-preview&filter=armRegionName%20eq%20'centralus'").content | jq .Items[].serviceName
+
+(invoke-webrequest "https://prices.azure.com/api/retail/prices?api-version=2021-10-01-preview&filter=armRegionName%20eq%20'centralus'").content | jq .Items[].serviceName | sort -Unique
+
+(invoke-webrequest "https://prices.azure.com/api/retail/prices?api-version=2021-10-01-preview&filter=armRegionName%20eq%20'centralus'").content | jq .Items[].armRegionName | sort -Unique 
+
+$webReq = Invoke-WebRequest -Uri https://azure.microsoft.com/api/v1/pricing/virtual-machines/calculator/?culture=en-us | ConvertFrom-Json
+foreach($obj in $webReq.offers.psobject.properties)
+{
+    $obj.value | Add-Member -NotePropertyName Name -NotePropertyValue $obj.Name -PassThru
+}
