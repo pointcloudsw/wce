@@ -220,7 +220,7 @@ ul.shin > li {
 }
 .container * {
   @container style(--grid-area){
-    grid-area: var(--grid-area);
+    grid-area: var(--grid-area);  
   }
 }
 .container.align-1-ctr {
