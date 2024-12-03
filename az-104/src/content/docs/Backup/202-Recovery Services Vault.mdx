@@ -33,6 +33,9 @@ A Recovery Services vault is an entity that stores the backups and recovery poin
 
 - To learn more about storage redundancy, see these articles on [geo](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy#geo-zone-redundant-storage), [local](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy#locally-redundant-storage) and [zonal](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy#zone-redundant-storage) redundancy.
 
+### Azure Instant Restore(https://learn.microsoft.com/azure/backup/backup-instant-restore-capability)
+You can choose to store between one and five instant recovery snapshots and the default value is two. However, when the backup schedule frequency is weekly, you must retain five instant recovery snapshots.
+
 ### [Encryption settings in the Recovery Services vault](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview?source=recommendations#encryption-settings-in-the-recovery-services-vault)
 This section discusses the options available for encrypting your backup data stored in the Recovery Services vault.
 
