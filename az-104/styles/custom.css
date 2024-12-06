@@ -19,6 +19,28 @@ starlight-menu-button > button {
 [aria-expanded="true"] ~ .sidebar-pane:where(.astro-vrdttmbt) {
   visibility: visible;
 } */
+@font-face {
+  font-family: 'Roboto Serif', serif;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+} 
+
+li,
+p,
+span {
+  font: 150% 'Roboto Serif';
+}
+h2, h3, h4, h5 {
+  font: 100% 'Roboto Serif';
+}
+h1[id] {
+  font: 200% 'Roboto Serif';
+}
+div
+, li
+, p
+, span {
+  color:ghostwhite;
+}
 
 a.tab {
   display: inline;
@@ -80,13 +102,15 @@ ul.shin > li {
   display: inline;
   list-style: none;
 }
-.def-hdr > ul > li:nth-of-type(n+2){
-  margin-left: 1ch;
+.def-hdr > ul > li:nth-of-type(n+2)::before {
+  content: ' ';
 }
-.def-hdr > ul > li:nth-of-type(3)::before{
-  content: '\2014\3164'; /* emdash space */
+.def-hdr > ul > li:nth-of-type(n+2)::after {
+  content: ' ''\2014'' ';
 }
-.def-hdr .def, .def-hdr h4 { display: inline; }
+.def-hdr .def, .def-hdr h4 {
+  display: inline;
+}
 
 .dgr {
     display: grid;
