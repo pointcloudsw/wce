@@ -1,0 +1,138 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "extensions_Microsoft_Insights_VMDiagnosticsSettings_xmlCfg": {
+            "value": null
+        },
+        "extensions_Microsoft_Insights_VMDiagnosticsSettings_storageAccountName": {
+            "value": null
+        },
+        "extensions_Microsoft_Insights_VMDiagnosticsSettings_storageAccountKey": {
+            "value": null
+        },
+        "extensions_Microsoft_Insights_VMDiagnosticsSettings_storageAccountEndPoint": {
+            "value": null
+        },
+        "extensions_Microsoft_Insights_VMDiagnosticsSettings_xmlCfg_1": {
+            "value": null
+        },
+        "extensions_Microsoft_Insights_VMDiagnosticsSettings_storageAccountName_1": {
+            "value": null
+        },
+        "extensions_Microsoft_Insights_VMDiagnosticsSettings_storageAccountKey_1": {
+            "value": null
+        },
+        "extensions_Microsoft_Insights_VMDiagnosticsSettings_storageAccountEndPoint_1": {
+            "value": null
+        },
+        "sites_jroll_name": {
+            "value": null
+        },
+        "sites_jroll_logica_das_name": {
+            "value": null
+        },
+        "networkInterfaces_nic0_name": {
+            "value": null
+        },
+        "networkInterfaces_nic1_name": {
+            "value": null
+        },
+        "networkInterfaces_nic2_name": {
+            "value": null
+        },
+        "networkInterfaces_nic6_name": {
+            "value": null
+        },
+        "networkInterfaces_nic10_name": {
+            "value": null
+        },
+        "networkInterfaces_nic11_name": {
+            "value": null
+        },
+        "networkInterfaces_nic12_name": {
+            "value": null
+        },
+        "networkInterfaces_nic13_name": {
+            "value": null
+        },
+        "networkInterfaces_nic14_name": {
+            "value": null
+        },
+        "storageAccounts_jrolls1_name": {
+            "value": null
+        },
+        "storageAccounts_jrolls2_name": {
+            "value": null
+        },
+        "storageAccounts_sacct21_name": {
+            "value": null
+        },
+        "storageAccounts_sacct31_name": {
+            "value": null
+        },
+        "storageAccounts_sacct40_name": {
+            "value": null
+        },
+        "storageAccounts_sacct50_name": {
+            "value": null
+        },
+        "storageAccounts_sacct60_name": {
+            "value": null
+        },
+        "storageAccounts_sacct70_name": {
+            "value": null
+        },
+        "storageAccounts_sacct80_name": {
+            "value": null
+        },
+        "storageAccounts_sacct90_name": {
+            "value": null
+        },
+        "serverfarms_ASP_jrollrg00_9324_name": {
+            "value": null
+        },
+        "serverfarms_ASP_jrollrg00_aa84_name": {
+            "value": null
+        },
+        "vaults_jroll_rsv01_name": {
+            "value": null
+        },
+        "virtualNetworks_jroll_vnet00_name": {
+            "value": null
+        },
+        "virtualMachines_jroll_vm0_win_name": {
+            "value": null
+        },
+        "virtualMachines_jroll_vm1_win_name": {
+            "value": null
+        },
+        "networkInterfaces_testInterface_name": {
+            "value": null
+        },
+        "virtualNetworks_jroll_rg00_vnet00_name": {
+            "value": null
+        },
+        "dataCollectionRules_jroll_vm0_dcr_name": {
+            "value": null
+        },
+        "virtualNetworks_jroll_az104_vnet01_name": {
+            "value": null
+        },
+        "workspaces_jroll_logaw_name": {
+            "value": null
+        },
+        "privateEndpoints_jroll_rg00_vnet0_pe_name": {
+            "value": null
+        },
+        "templateSpecs_jr_rg00_templateSpec01_name": {
+            "value": null
+        },
+        "dataCollectionRules_jroll_logaw_dcr_das_name": {
+            "value": null
+        },
+        "automationAccounts_jroll_rg00_automation_name": {
+            "value": null
+        }
+    }
+}
