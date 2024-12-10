@@ -82,3 +82,50 @@ foreach($obj in $webReq.offers.psobject.properties)
 {
     $obj.value | Add-Member -NotePropertyName Name -NotePropertyValue $obj.Name -PassThru
 }
+
+#### Deploy Windows Server VM to Azure using Azure PowerShell
+```powershell
+# Define baseline parameters
+$rg = @{ name = 'jroll_rg00'; Location = 'centralus'; Tag = @{ Scope = 'Dev'; Users = 'jroll@kforce.com,'} }
+
+# Encrypt VM admin password for passing into deployment command
+$ap = ConvertTo-SecureString 'theAdminPsswdForMyWin19VM' -AsPlainText -force
+
+# Deploy using the templates from the assets diretory
+New-AzResourceGroupDeployment -TemplateFile .\template.json -TemplateParameterFile .\parameters.json -Location $rg.Location -adminPassword $ap -ResourceGe .\template.json -TeroupName $rg.name
+```
+
+#### Perform VM nic swap in Azure PowerShell
+```powershell
+# Ensure network module is loaded...
+Get-Module -ListAvailable Az.Network
+
+# Default parms
+$rg = @{ name = 'jroll_rg00'; Location = 'centralus'; Tag = @{ Scope = 'Dev'; Users = 'jroll@kforce.com,'} }
+
+# Grab the NICs to be swapped
+get-azvm -resourcegroupname $rg.name
+$curNic = Get-AzNetworkInterface -ResourceGroupName $rg.name  -Name 'jroll-vm0-win633_z2'
+$newNic = Get-AzNetworkInterface -ResourceGroupName $rg.name  -Name 'nic0'
+
+# Target VM name
+$vmname = 'jroll-vm0-win'
+
+# Detach the current nic from the vm
+$vm = Get-AzVM -ResourceGroupName $rg.name -Name $vmname
+
+# See the nics attached to the vm
+$vm.NetworkProfile | fl
+
+# Stop the VM
+Stop-AzVM -Name $vm.name -ResourceGroupName $rg.name
+
+# Add the new nic
+Add-AzVMNetworkInterface -VM $vm -Id $newNic | Update-AzVm -ResourceGroupName $rg.name
+
+# Detach
+$vm.NetworkProfile.NicConfigurations[0].NetworkInterfaceReference = $null
+Update-AzVM -VM $vm -ResourceGroupName "YourResourceGroupName"
+
+
+```

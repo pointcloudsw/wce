@@ -3,6 +3,21 @@ title: Notes
 description: Notes and action items
 ---
 
+### Stopped Here
+Monday 12/9/24
+Page 45, Q#30 Topic 4
+Find definition, scope and purpose of:
+    Subscription Contributor
+    Resource Group Contributor
+    [Security Admin](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/security#security-admin)
+    [Resource Policy Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/management-and-governance#resource-policy-contributor)
+```powershell
+(get-azroledefinition).Actions -like "*policy*"
+
+get-azproviderOperation | where operation -like 'Microsoft.*/*policy*' | ft
+```
+
+
 Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.       
 Writing a good guide requires thinking about what your users are trying to do.
 
