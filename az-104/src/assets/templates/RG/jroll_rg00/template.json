@@ -2,21 +2,29 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "virtualNetworks_jroll_vnet00_name": {
-            "defaultValue": "jroll_vnet00",
-            "type": "String"
-        },
-        "virtualNetworks_jroll_vnet05_name": {
-            "defaultValue": "jroll_vnet05",
-            "type": "String"
-        },
-        "virtualNetworks_jroll_vnet10_name": {
-            "defaultValue": "jroll_vnet10",
-            "type": "String"
-        },
-        "virtualNetworks_jroll_vnet20_name": {
-            "defaultValue": "jroll_vnet20",
-            "type": "String"
+        "vnet_address_space": {
+            "defaultValue": "[parameters('vnet_subnet_name')]"
+            , "type": "string"
+        }
+        , "vnet_location": {
+            "type": "string"
+            , "defaultValue": "[parameters('vnet_location')]"
+        }
+        , "vnet_name": {
+            "type": "string"
+            , "defaultValue": "[parameters('vnet_name')]"
+        }
+        , "vnet_subnet_address_prefix": {
+            "type": "string"
+            , "defaultValue": "[parameters('vnet_subnet_address_prefix')]"
+        }
+        , "vnet_subnet_id": {
+            "type": "string"
+            , "defaultValue": "[parameters('vnet_subnet_id')]"
+        }
+        , "vnet_subnet_name": {
+            "type": "string"
+            , "defaultValue": "[parameters('vnet_subnet_name')]"
         }
     },
     "variables": {},
@@ -24,26 +32,20 @@
         {
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2024-01-01",
-            "name": "[parameters('virtualNetworks_jroll_vnet00_name')]",
-            "location": "centralus",
-            "tags": {
-                "User": "jroll@kforce.com",
-                "Scope": "Dev",
-                "Subject": "az-104",
-                "Finance_Forecast_Project_Name": "ConsultingSolutions"
-            },
+            "name": "[parameters('vnet_name')]",
+            "location": "[parameters('vnet_location')]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "10.0.0.0/16"
+                        "[parameters('vnet_address_space')]"
                     ]
                 },
                 "subnets": [
                     {
-                        "name": "[concat(parameters('virtualNetworks_jroll_vnet00_name'), '_subnet00')]",
-                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_jroll_vnet00_name'), concat(parameters('virtualNetworks_jroll_vnet00_name'), '_subnet00'))]",
+                        "name": "[parameters('vnet_subnet_name')]",
+                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet_name'), concat(parameters('vnet_name'), '_sn'))]",
                         "properties": {
-                            "addressPrefix": "10.0.0.0/24",
+                            "addressPrefix": "[parameters('vnet_subnet_address_prefix')]",
                             "serviceEndpoints": [],
                             "delegations": [],
                             "privateEndpointNetworkPolicies": "Disabled",
@@ -54,171 +56,6 @@
                 ],
                 "virtualNetworkPeerings": [],
                 "enableDdosProtection": false
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2024-01-01",
-            "name": "[parameters('virtualNetworks_jroll_vnet05_name')]",
-            "location": "centralus",
-            "tags": {
-                "User": "jroll@kforce.com",
-                "Scope": "Dev",
-                "Subject": "az-104",
-                "Finance_Forecast_Project_Name": "ConsultingSolutions"
-            },
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "10.5.0.0/16"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "jroll_vn05_sn05",
-                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_jroll_vnet05_name'), 'jroll_vn05_sn05')]",
-                        "properties": {
-                            "addressPrefix": "10.5.0.0/24",
-                            "serviceEndpoints": [],
-                            "delegations": [],
-                            "privateEndpointNetworkPolicies": "Disabled",
-                            "privateLinkServiceNetworkPolicies": "Enabled"
-                        },
-                        "type": "Microsoft.Network/virtualNetworks/subnets"
-                    }
-                ],
-                "virtualNetworkPeerings": [],
-                "enableDdosProtection": false
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2024-01-01",
-            "name": "[parameters('virtualNetworks_jroll_vnet10_name')]",
-            "location": "eastus",
-            "tags": {
-                "User": "jroll@kforce.com",
-                "Scope": "Dev",
-                "Subject": "az-104",
-                "Finance_Forecast_Project_Name": "ConsultingSolutions"
-            },
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "10.10.0.0/16"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "jroll_vn10_sn10",
-                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_jroll_vnet10_name'), 'jroll_vn10_sn10')]",
-                        "properties": {
-                            "addressPrefix": "10.10.0.0/24",
-                            "serviceEndpoints": [],
-                            "delegations": [],
-                            "privateEndpointNetworkPolicies": "Disabled",
-                            "privateLinkServiceNetworkPolicies": "Enabled"
-                        },
-                        "type": "Microsoft.Network/virtualNetworks/subnets"
-                    }
-                ],
-                "virtualNetworkPeerings": [],
-                "enableDdosProtection": false
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2024-01-01",
-            "name": "[parameters('virtualNetworks_jroll_vnet20_name')]",
-            "location": "westus",
-            "tags": {
-                "User": "jroll@kforce.com",
-                "Scope": "Dev",
-                "Subject": "az-104",
-                "Finance_Forecast_Project_Name": "ConsultingSolutions"
-            },
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "10.20.0.0/16"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "jroll_vn20_sn20",
-                        "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_jroll_vnet20_name'), 'jroll_vn20_sn20')]",
-                        "properties": {
-                            "addressPrefix": "10.20.0.0/24",
-                            "serviceEndpoints": [],
-                            "delegations": [],
-                            "privateEndpointNetworkPolicies": "Disabled",
-                            "privateLinkServiceNetworkPolicies": "Enabled"
-                        },
-                        "type": "Microsoft.Network/virtualNetworks/subnets"
-                    }
-                ],
-                "virtualNetworkPeerings": [],
-                "enableDdosProtection": false
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks/subnets",
-            "apiVersion": "2024-01-01",
-            "name": "[concat(parameters('virtualNetworks_jroll_vnet05_name'), '/jroll_vn05_sn05')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_jroll_vnet05_name'))]"
-            ],
-            "properties": {
-                "addressPrefix": "10.5.0.0/24",
-                "serviceEndpoints": [],
-                "delegations": [],
-                "privateEndpointNetworkPolicies": "Disabled",
-                "privateLinkServiceNetworkPolicies": "Enabled"
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks/subnets",
-            "apiVersion": "2024-01-01",
-            "name": "[concat(parameters('virtualNetworks_jroll_vnet10_name'), '/jroll_vn10_sn10')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_jroll_vnet10_name'))]"
-            ],
-            "properties": {
-                "addressPrefix": "10.10.0.0/24",
-                "serviceEndpoints": [],
-                "delegations": [],
-                "privateEndpointNetworkPolicies": "Disabled",
-                "privateLinkServiceNetworkPolicies": "Enabled"
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks/subnets",
-            "apiVersion": "2024-01-01",
-            "name": "[concat(parameters('virtualNetworks_jroll_vnet20_name'), '/jroll_vn20_sn20')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_jroll_vnet20_name'))]"
-            ],
-            "properties": {
-                "addressPrefix": "10.20.0.0/24",
-                "serviceEndpoints": [],
-                "delegations": [],
-                "privateEndpointNetworkPolicies": "Disabled",
-                "privateLinkServiceNetworkPolicies": "Enabled"
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks/subnets",
-            "apiVersion": "2024-01-01",
-            "name": "[concat(parameters('virtualNetworks_jroll_vnet00_name'), '/', parameters('virtualNetworks_jroll_vnet00_name'), '_subnet00')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_jroll_vnet00_name'))]"
-            ],
-            "properties": {
-                "addressPrefix": "10.0.0.0/24",
-                "serviceEndpoints": [],
-                "delegations": [],
-                "privateEndpointNetworkPolicies": "Disabled",
-                "privateLinkServiceNetworkPolicies": "Enabled"
             }
         }
     ]

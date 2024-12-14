@@ -2,16 +2,22 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "virtualNetworks_jroll_vnet00_name": {
+        "vnet_address_space": {
             "value": null
-        },
-        "virtualNetworks_jroll_vnet05_name": {
+        }
+        , "vnet_location": {
             "value": null
-        },
-        "virtualNetworks_jroll_vnet10_name": {
+        }
+        , "vnet_name": {
             "value": null
-        },
-        "virtualNetworks_jroll_vnet20_name": {
+        }
+        , "vnet_subnet_address_prefix": {
+            "value": null
+        }
+        , "vnet_subnet_id": {
+            "value": null
+        }
+        , "vnet_subnet_name": {
             "value": null
         }
     }
