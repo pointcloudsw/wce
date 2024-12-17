@@ -26,6 +26,9 @@ Get-AzProviderOperation | where operation -like 'Microsoft.Network*' | ft
 Get-AzProviderOperation | where operation -like 'Microsoft.Authorization/*read' 
 | ft
 
+#### Get Azure RBAC Roles with actions involving LogicApp privileges
+(get-azroledefinition | where actions -Like 'Microsoft.Logic/*').Name
+
 # Azure Kubernetes Contributor Role Definition and Privileges
 get-azRoleDefinition "Azure Kubernetes Service Contributor Role" | select actions -ExpandProperty actions -Unique
 Get-AzProviderOperation | where operation -like 'Microsoft.ContainerService/managedClusters/*'

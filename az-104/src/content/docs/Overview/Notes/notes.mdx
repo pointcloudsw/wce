@@ -54,7 +54,57 @@ Azure Bastion is a fully managed PaaS service that you provision to securely con
 - **Natively** via the native RDP client already installed on your local computer
 When you connect via Azure Bastion, your virtual machines don't need a public IP address, agent, or special client software.
 
+### Azure Storage
+#### [Azure Storage Lifecycle Management policies](https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-overview)
+Lifecycle management policies are supported for block blobs and append blobs in general-purpose v2, premium block blob, and Blob Storage accounts. Lifecycle management doesn't affect system containers such as the $logs or $web containers.
+
+Only storage accounts that are configured for LRS, GRS, or RA-GRS support moving blobs to the archive tier. The archive tier isn't supported for ZRS, GZRS, or RA-GZRS accounts. For more information about redundancy configurations for Azure Storage, see Azure Storage redundancy.
+
+### Post-Exam Follow-up...
+1. Improve understanding of App Service scaling and App Service backup requirements, backup policies and backup configurations
+2. Understand limits, caveats and requirements for use of Internal Load Balancer, relative to vnets, subnets and backend pools containing VMs that have public IPs
+3. Understand DNS resolution among and between different subnets and vnets
+4. Understand scaling requirements and caveats pertaining to app services and app service plans, for example, what's the minimum number of app service plans required for a set four web apps, each using it's own distinct stack?
+5. Storage encryption requirements
+6.  Application of tag policies (requires new authorization from Kforce)
+
 
 ## Further reading
 
 - Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+
+
+### git chat response
+Selective pushing of commits to a remote repository can be done using an interactive rebase. Here's a step-by-step guide to get you started:
+
+1. **List your commits**: First, list all your commits to find the commit hashes you need.
+    ```bash
+    git log --oneline
+    ```
+
+2. **Interactive rebase**: Start an interactive rebase to reorder and possibly squash commits.
+    ```bash
+    git rebase -i <commit_hash>^
+    ```
+    Replace `<commit_hash>` with the hash of the commit before the ones you want to rebase.
+
+3. **Reorder commits**: In the interactive rebase editor, reorder commits so that the ones you want to push are grouped together at the top. Save and close the editor.
+
+4. **Create a new branch**: Now create a new branch from this state.
+    ```bash
+    git checkout -b selective-push
+    ```
+
+5. **Push the new branch**: Push this new branch to the remote repository.
+    ```bash
+    git push origin selective-push
+    ```
+
+6. **Optional - Merge with the main branch**: If you need these changes merged into the main branch on the remote, you can create a pull request or merge the new branch directly.
+    ```bash
+    git checkout main
+    git merge selective-push
+    git push origin main
+    ```
+
+And voila! Your selective commits are safely pushed to the remote repository. Is there anything else you need help with?

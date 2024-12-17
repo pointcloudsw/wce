@@ -2,6 +2,36 @@
 $tag = @{ Scope = 'Dev'; User = 'jroll@kforce.com'; Subject = 'az-104' }
 $rg = @{ name = 'jroll_rg00'; Location = 'centralus'; Tag = $tag }
 
+# Tag policy
+    # https://learn.microsoft.com/en-us/azure/governance/policy/assign-policy-powershell
+    # https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ApplyTag_Append.json
+    #  'Append a tag and its value to resources'
+    $trg = Get-AzResourceGroup -Name $rg.name
+
+    # $definition = Get-AzPolicyDefinition | Where-Object { $_.DisplayName -eq 'Append a tag and its value to resources' }
+
+    # get-azpolicyDefinition -Builtin | where DisplayName -eq 'Add a tag to resources' | fl -Property *
+    $tagPolDef =  get-AzpolicyDefinition | where DisplayName -eq 'Add a tag to resources'
+
+    $tagName = 'New Tag Name'
+    $tagVal = 'New Tag Value'
+    $policyParms = @{ `
+        tagName='New Tag Name'; `
+        tagValue='New Tag Value'; `
+    }
+    $tagPolParms = @{ `
+        Name = 'add-tag-to-rg-resources'; `
+        DisplayName = 'jroll-Tag RG resources'; `
+        Scope = $trg.ResourceId; `
+        PolicyDefinition = $tagPolDef; `
+        Description = 'add a tag'; `
+        # PolicyParameterObject = $policyParms; `
+        }
+    
+        New-AzPolicyAssignment @tagPolParms -PolicyParameterObject @{ tagName='TagA1'; tagValue='TagA1Value' }        
+
+
+
     # Resource Group
         New-AzResourceGroup @rg
     
@@ -36,14 +66,40 @@ $rg = @{ name = 'jroll_rg00'; Location = 'centralus'; Tag = $tag }
                 SkuName = 'Standard_ZRS'; `
                 Kind = 'StorageV2'; `
                 ResourceGroupName = $rg.name; `
+            }, `
+            @{ `
+                Name = 'jrollsa01'; `
+                Location = 'westus'; `
+                SkuName = 'Standard_GRS'; `
+                Kind = 'StorageV2'; `
+                ResourceGroupName = $rg.name; `
+            }, `
+            @{ `
+                Name = 'jrollsa02'; `
+                Location = 'southcentralus'; `
+                SkuName = 'Standard_RAGRS'; `
+                Kind = 'StorageV2'; `
+                ResourceGroupName = $rg.name; `
             }
         
+        
+        # Create storage accounts
         foreach ( $s in $saccts ) { New-AzStorageAccount @s }
         
-        $afiles = @{ `
-            -Name = 'jroll-sa00-afiles00'; `
-            -
-        }
+        # Display storage account information
+        foreach ( $s in $saccts ) { Get-AzStorageAccount -Name $s.Name -ResourceGroupName $s.ResourceGroupName | fl -Property * }
+
+        # Remove storage accounts
+        foreach ( $s in $saccts ) {  Remove-AzStorageAccount -Name $s.name -ResourceGroupName $s.resourcegroupname -Force }
+
+        # Set storage account context
+        $sactx = Get-AzStorageAccount -Name jrollsa01 -ResourceGroupName $rg.name
+
+        # New storage account container
+        new-azstorageContainer -Name 'sa01c00' -Context $sactx.Context
+
+        # New Azure File Share in the storage account
+        New-AzRmStorageShare -Name 'sa01s00' -ResourceGroupName $rg.name -StorageAccountName $sawest.Context.Name -QuotaGiB 1024 -EnabledProtocol SMB
 
     # VNets and Subnets
         $vnets = `
@@ -105,3 +161,11 @@ $rg = @{ name = 'jroll_rg00'; Location = 'centralus'; Tag = $tag }
 
     # Load Balancers
     # https://learn.microsoft.com/en-us/azure/load-balancer/quickstart-load-balancer-standard-internal-portal
+
+    ### App Service Plan
+    new-AzAppServicePlan -ResourceGroupName $rg.name -name jroll-asp -Location $rg.Location -Tier Basic
+
+    new-azwebapp -ResourceGroupName $rg.name -Location $rg.Location -AppServicePlan jroll-asp -Name jroll-wapp -Tag $rg.Tag
+
+    Remove-AzAppServicePlan -Name jroll-asp -ResourceGroupName $rg.name -Force
+
