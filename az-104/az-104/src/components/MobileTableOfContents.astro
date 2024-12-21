@@ -1,0 +1,10 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/MobileTableOfContents.astro';
+
+const { title } = Astro.props.entry.data;
+const { toc } = Astro.props;
+
+[ ...toc?.items][0].text = title;
+---
+<Default {...Astro.props}><slot /></Default>

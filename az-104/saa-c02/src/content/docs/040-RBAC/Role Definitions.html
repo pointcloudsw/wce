@@ -1,0 +1,1320 @@
+<!DOCTYPE html><html
+	class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-light"
+	lang="en-us"
+	dir="ltr"
+	data-authenticated="false"
+	data-auth-status-determined="false"
+	data-target="docs"
+	x-ms-format-detection="none">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="Understand Azure role definitions - Azure RBAC" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://learn.microsoft.com/en-us/azure/role-based-access-control/role-definitions" /><meta property="og:description" content="Learn about Azure role definitions in Azure role-based access control (Azure RBAC) for fine-grained access management of Azure resources." /><meta property="og:image" content="https://learn.microsoft.com/en-us/media/open-graph-image.png" />
+
+	<meta property="og:image:alt" content="Microsoft Learn" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<meta name="twitter:site" content="@MicrosoftLearn" />
+
+	<meta name="color-scheme" content="light dark"><meta name="author" content="rolyon" />
+<meta name="breadcrumb_path" content="/azure/bread/toc.json" />
+<meta name="depot_name" content="Azure.azure-documents" />
+<meta name="description" content="Learn about Azure role definitions in Azure role-based access control (Azure RBAC) for fine-grained access management of Azure resources." />
+<meta name="document_id" content="e0091902-7cb0-8dc3-2a7a-dc644f39a961" />
+<meta name="document_version_independent_id" content="d2757c88-1bad-8d27-b548-9e04a8ec7fe1" />
+<meta name="feedback_help_link_type" content="get-help-at-qna" />
+<meta name="feedback_help_link_url" content="https://learn.microsoft.com/answers/tags/189/azure-rbac/" />
+<meta name="feedback_product_url" content="https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4" />
+<meta name="feedback_system" content="Standard" />
+<meta name="git_commit_id" content="236f95ae2c515fe8338db5d2a82a78d248ecb1b6" />
+<meta name="gitcommit" content="https://github.com/MicrosoftDocs/azure-docs-pr/blob/236f95ae2c515fe8338db5d2a82a78d248ecb1b6/articles/role-based-access-control/role-definitions.md" />
+<meta name="learn_banner_products" content="azure" />
+<meta name="locale" content="en-us" />
+<meta name="manager" content="amycolannino" />
+<meta name="ms.author" content="rolyon" />
+<meta name="ms.custom" content="" />
+<meta name="ms.date" content="02/12/2024" />
+<meta name="ms.service" content="role-based-access-control" />
+<meta name="ms.suite" content="office" />
+<meta name="ms.topic" content="conceptual" />
+<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/azure-docs-pr/blob/live/articles/role-based-access-control/role-definitions.md" />
+<meta name="page_type" content="conceptual" />
+<meta name="pdf_url_template" content="https://learn.microsoft.com/pdfstore/en-us/Azure.azure-documents/{branchName}{pdfName}" />
+<meta name="permissioned-type" content="public" />
+<meta name="recommendation_types" content="Training" />
+<meta name="recommendation_types" content="Certification" />
+<meta name="recommendations" content="true" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="toc.json" />
+<meta name="uhfHeaderId" content="azure" />
+<meta name="updated_at" content="2024-09-09 10:10 PM" />
+<meta name="word_count" content="2619" />
+<meta name="persistent_id" content="28f131bc-5b1b-72ce-9712-3258b9e8485c" />
+	
+	<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d" data-source="generated" />
+	
+	<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d" data-source="generated" />
+	<meta name="scope" content="Azure" /><meta name="github_feedback_content_git_url" content="https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/role-based-access-control/role-definitions.md" /><link href="https://learn.microsoft.com/en-us/azure/role-based-access-control/role-definitions" rel="canonical"><title>Understand Azure role definitions - Azure RBAC | Microsoft Learn</title><link rel="stylesheet" href="/static/assets/0.4.028406001/styles/site-ltr.css">
+
+	<script id="msdocs-script">
+	var msDocs = {environment: {
+			supportLevel: 'production',
+			accessLevel: 'online',
+			reviewFeatures: false,
+			systemContent: true,
+			azurePortalHostname: 'portal.azure.com',
+			legacyHosting: false,
+			siteName: 'learn',
+		},data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: 'azure',
+			context: {},
+			hasBinaryRating: true,
+			feedbackHelpLinkType:'get-help-at-qna',
+			feedbackHelpLinkUrl:'https://learn.microsoft.com/answers/tags/189/azure-rbac/',
+			standardFeedback: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'Standard',
+			feedbackGitHubRepo: 'MicrosoftDocs/azure-docs',
+			feedbackProductUrl: 'https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4',extendBreadcrumb: false,isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasPrintButton: true,
+			hasBookmark: true,
+			hasShare: true,
+			isPermissioned: false,
+			isPrivateUnauthorized: false,hasRecommendations: true,contributors: [{ name: "rolyon", url: "https://github.com/rolyon" },{ name: "MeckenS", url: "https://github.com/MeckenS" },{ name: "azarboon", url: "https://github.com/azarboon" },{ name: "Taojunshen", url: "https://github.com/Taojunshen" },{ name: "mikefrobbins", url: "https://github.com/mikefrobbins" },{ name: "johndowns", url: "https://github.com/johndowns" },{ name: "shwetamathur7", url: "https://github.com/shwetamathur7" },{ name: "MicrosoftGuyJFlo", url: "https://github.com/MicrosoftGuyJFlo" },{ name: "changeworld", url: "https://github.com/changeworld" },{ name: "bandersmsft", url: "https://github.com/bandersmsft" },{ name: "john-par", url: "https://github.com/john-par" },{ name: "tjsullivan1", url: "https://github.com/tjsullivan1" },{ name: "rachrobins", url: "https://github.com/rachrobins" },{ name: "tamram", url: "https://github.com/tamram" },{ name: "markjgardner", url: "https://github.com/markjgardner" }],},
+		functions:{}
+	};
+	</script><script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+	<script src="https://js.monitor.azure.com/scripts/c/ms.jsll-4.min.js"></script><script src="/static/assets/0.4.028406001/global/deprecation.js"></script><script src="/static/assets/0.4.028406001/scripts/en-us/index-docs.js"></script></head>
+
+<body lang="en-us" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused position-fixed has-inner-focus focus-visible top-0 left-0 right-0 padding-xs has-text-centered has-body-background" tabindex="1">Skip to main content</a><div hidden id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;"
+			hidden
+		>
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">This browser is no longer supported.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+						style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">Download Microsoft Edge</a>
+					<a href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+						style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">More info about Internet Explorer and Microsoft Edge</a>
+				</div>
+			</div>
+		</div>
+		<!-- liquid-tag banners global -->
+
+		<!-- site header -->
+		<header id="ms--site-header" data-test-id="site-header-wrapper" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+			<div id="ms--mobile-nav" class="site-header display-none-tablet padding-inline-none gap-none" data-bi-name="mobile-header" data-test-id="mobile-header"></div>
+			<div id="ms--primary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L1-header" data-test-id="primary-header"></div>
+			<div id="ms--secondary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L2-header" data-test-id="secondary-header"></div>
+		</header><div id="content-header" class="content-header uhf-container has-padding has-default-focus border-bottom-none" data-bi-name="content-header">
+				<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+					<button type="button" class="contents-button button button-sm margin-right-xxs" data-bi-name="contents-expand" aria-haspopup="true" data-contents-button>
+						<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+						<span class="contents-expand-title">Table of contents</span>
+					</button>
+					<button type="button" class="ap-collapse-behavior ap-expanded button button-sm" data-bi-name="ap-collapse" aria-controls="action-panel">
+						<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+						<span>Exit focus mode</span>
+					</button>
+				</div>
+			</div><div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+			<!-- liquid-tag banners sectional -->
+		</div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile "><div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="margin-top-sm-tablet position-sticky display-flex flex-direction-column" aria-label="Primary"></nav>
+			</div><!-- .primary-holder -->
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps "><div id="main-column" class="column  is-full is-8-desktop">
+
+						<main id="main" class="" role="main" data-bi-name="content" lang="en-us" dir="ltr"><!-- article-header -->
+							<div id="article-header" class="background-color-body margin-top-sm-tablet margin-bottom-xs display-none-print">
+								<div class="display-flex align-items-center "><details id="article-header-breadcrumbs-overflow-popover" class="popover" data-for="article-header-breadcrumbs">
+										<summary class="button button-clear button-primary button-sm inner-focus" aria-label="All breadcrumbs">
+											<span class="icon">
+												<span class="docon docon-more"></span>
+											</span>
+										</summary>
+										<div id="article-header-breadcrumbs-overflow" class="popover-content padding-none">
+
+										</div>
+									</details>
+
+									<bread-crumbs id="article-header-breadcrumbs" data-test-id="article-header-breadcrumbs" class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs"></bread-crumbs><div id="article-header-page-actions"  class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch"><a
+											id="lang-link-tablet"
+											class="button button-primary button-clear button-sm display-none display-inline-flex-tablet"
+											title="Read in English" data-bi-name="language-toggle"
+											data-read-in-link
+											hidden>
+											<span class="icon margin-none" aria-hidden="true" data-read-in-link-icon>
+												<span class="docon docon-locale-globe"></span>
+											</span>
+											<span class="is-visually-hidden" data-read-in-link-text>Read in English</span>
+										</a><button
+												type="button"
+												class="collection button button-clear button-sm button-primary display-none display-inline-flex-tablet"
+												data-list-type="collection"
+												data-bi-name="collection"
+												title="Add to collection">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-circle-addition"></span>
+												</span>
+												<span class="collection-status is-visually-hidden">Save</span>
+											</button><a	data-contenteditbtn
+												class="button button-clear button-sm text-decoration-none button-primary display-none display-inline-flex-tablet"
+												aria-label="Edit"
+												title="Edit This Document"
+												data-bi-name="edit"
+														href="https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/role-based-access-control/role-definitions.md"
+														data-original_content_git_url="https://github.com/MicrosoftDocs/azure-docs-pr/blob/live/articles/role-based-access-control/role-definitions.md"
+														data-original_content_git_url_template="{repo}/blob/{branch}/articles/role-based-access-control/role-definitions.md"
+														data-pr_repo=""
+														data-pr_branch="">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-edit-outline"></span>
+												</span>
+											</a>
+										<details class="popover popover-right" id="article-header-page-actions-overflow">
+											<summary class="justify-content-flex-start button button-clear button-sm button-primary" aria-label="More actions" title="More actions">
+												<span class="icon" aria-hidden="true">
+													<span class="docon docon-more-vertical"></span>
+												</span>
+											</summary>
+											<div class="popover-content padding-xs"><button
+														data-page-action-item="overflow-mobile"
+														type="button"
+														class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear display-none-tablet"
+														data-bi-name="contents-expand"
+														data-contents-button
+														data-popover-close>
+														<span class="icon">
+															<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+														</span><span class="contents-expand-title">Table of contents</span></button><a
+													id="lang-link-overflow"
+													class="justify-content-flex-start button-sm has-inner-focus button button-clear button-block display-none-tablet"
+													title="Read in English" data-bi-name="language-toggle"
+													data-page-action-item="overflow-mobile"
+													data-check-hidden="true"
+													data-read-in-link
+													hidden
+													>
+													<span class="icon" aria-hidden="true" data-read-in-link-icon>
+														<span class="docon docon-locale-globe"></span>
+													</span>
+													<span data-read-in-link-text>Read in English</span>
+												</a><button
+														type="button"
+														class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet"
+														data-list-type="collection"
+														data-bi-name="collection"
+														title="Save"
+														data-page-action-item="overflow-mobile"
+														data-check-hidden="true"
+														data-popover-close>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="collection-status">Save</span>
+													</button>
+
+			 										
+													<button
+													 	type="button"
+														class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet"
+														data-list-type="plan"
+														data-bi-name="plan"
+														title="Add to Plan"
+														data-page-action-item="overflow-mobile"
+														data-check-hidden="true"
+														data-popover-close
+														hidden>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="plan-status">Add to Plan</span>
+													</button><a	data-contenteditbtn
+														class="button button-clear button-block button-sm has-inner-focus justify-content-flex-start text-decoration-none display-none-tablet"
+														aria-label="Edit"
+														title="Edit This Document"
+														data-bi-name="edit"
+																href="https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/role-based-access-control/role-definitions.md"
+																data-original_content_git_url="https://github.com/MicrosoftDocs/azure-docs-pr/blob/live/articles/role-based-access-control/role-definitions.md"
+																data-original_content_git_url_template="{repo}/blob/{branch}/articles/role-based-access-control/role-definitions.md"
+																data-pr_repo=""
+																data-pr_branch="">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-edit-outline"></span>
+														</span>
+														<span>Edit</span>
+													</a><div aria-hidden="true" class="margin-none" data-page-action-item="overflow-all"></div>
+														<hr class="display-none-tablet margin-bottom-xxs margin-top-xxs" />
+														<h4 class="font-size-sm padding-left-xxs">Share via</h4>
+
+													<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-facebook" data-bi-name="facebook" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-facebook-share font-size-md color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">Facebook</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-twitter" data-bi-name="twitter" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-xlogo-share font-size-xxs"></span>
+															</span>
+															<span class="margin-left-xxs">x.com</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-linkedin" data-bi-name="linkedin" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-linked-in-logo font-size-sm color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">LinkedIn</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start margin-bottom-xxs share-email" data-bi-name="email" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-mail-message font-size-sm color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">Email</span>
+														</a><hr />
+													<button
+														class="button button-block button-clear button-sm justify-content-flex-start has-inner-focus margin-top-xxs"
+														title="Print"
+														type="button"
+														aria-label="Print"
+														data-bi-name="print"
+														data-page-action-item="overflow-all"
+														data-popover-close
+														data-print-page
+														data-check-hidden="true">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-print font-size-sm color-primary"></span>
+														</span>
+														<span class="margin-left-xxs">Print</span>
+													</button>
+											</div>
+										</details>
+										
+									</div></div>
+							</div>
+							<!-- end article-header --><div>
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" data-bi-name="contents-expand" data-contents-button hidden>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span><span class="contents-expand-title">Table of contents</span></button>
+							</div><!-- end mobile-contents button  -->
+
+							<div class="content "><h1 id="understand-azure-role-definitions">Understand Azure role definitions</h1><div class="display-flex justify-content-space-between align-items-center flex-wrap-wrap page-metadata-container">
+										<div class="margin-right-xxs">
+											<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr"><li>Article</li><li class="visibility-hidden-visual-diff"><time class="is-invisible" data-article-date aria-label="Article review date" datetime="2024-02-12T08:00:00Z" data-article-date-source="calculated">02/12/2024</time>
+															</li><li class="contributors-holder display-none-print">
+															<button aria-label="View all contributors" class="contributors-button link-button" data-bi-name="contributors" title="View all contributors">15 contributors</button>
+														</li></ul>
+										</div>
+<div id="user-feedback" class="margin-block-xxs display-none-print" data-hide-on-archived>
+	<button
+		id="user-feedback-button"
+		data-test-id="conceptual-feedback-button"
+		class="button button-sm button-clear button-primary"
+		type="button"
+		data-bi-name="user-feedback-button"
+		data-user-feedback-button
+	>
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-like"></span>
+		</span>
+		<span>Feedback</span>
+	</button>
+</div></div><nav id="center-doc-outline" class="doc-outline is-hidden-desktop display-none-print margin-bottom-sm" data-bi-name="intopic toc" aria-label="In this article">
+											<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">In this article</h2>
+										</nav><!-- <content> --><p>If you are trying to understand how an Azure role works or if you are creating your own <a href="custom-roles" data-linktype="relative-path">Azure custom role</a>, it's helpful to understand how roles are defined. This article describes the details of role definitions and provides some examples.</p>
+<h2 id="role-definition">Role definition</h2>
+<p>A <em>role definition</em> is a collection of permissions. It's sometimes just called a <em>role</em>. A role definition lists the actions that can be performed, such as read, write, and delete. It can also list the actions that are excluded from allowed actions or actions related to underlying data.</p>
+<p>The following shows an example of the properties in a role definition when displayed using <a href="role-definitions-list#azure-powershell" data-linktype="relative-path">Azure PowerShell</a>:</p>
+<pre><code>Name
+Id
+IsCustom
+Description
+Actions []
+NotActions []
+DataActions []
+NotDataActions []
+AssignableScopes []
+Condition
+ConditionVersion
+</code></pre>
+<p>The following shows an example of the properties in a role definition when displayed using the <a href="role-definitions-list#azure-cli" data-linktype="relative-path">Azure CLI</a> or <a href="role-definitions-list#rest-api" data-linktype="relative-path">REST API</a>:</p>
+<pre><code>roleName
+name
+id
+roleType
+type
+description
+actions []
+notActions []
+dataActions []
+notDataActions []
+assignableScopes []
+condition
+conditionVersion
+createdOn
+updatedOn
+createdBy
+updatedBy
+</code></pre>
+<p>The following table describes what the role properties mean.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Name</code><br><code>roleName</code></td>
+<td>Display name of the role.</td>
+</tr>
+<tr>
+<td><code>Id</code><br><code>name</code></td>
+<td>Unique ID of the role. Built-in roles have the same role ID across clouds.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>Fully qualified unique ID of the role. Even if the role is renamed, the role ID does not change. It's a best practice to use the role ID in your scripts.</td>
+</tr>
+<tr>
+<td><code>IsCustom</code><br><code>roleType</code></td>
+<td>Indicates whether this role is a custom role. Set to <code>true</code> or <code>CustomRole</code> for custom roles. Set to <code>false</code> or <code>BuiltInRole</code> for built-in roles.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Type of object. Set to <code>Microsoft.Authorization/roleDefinitions</code>.</td>
+</tr>
+<tr>
+<td><code>Description</code><br><code>description</code></td>
+<td>Description of the role.</td>
+</tr>
+<tr>
+<td><code>Actions</code><br><code>actions</code></td>
+<td>Array of strings that specifies the control plane actions that the role allows to be performed.</td>
+</tr>
+<tr>
+<td><code>NotActions</code><br><code>notActions</code></td>
+<td>Array of strings that specifies the control plane actions that are excluded from the allowed <code>Actions</code>.</td>
+</tr>
+<tr>
+<td><code>DataActions</code><br><code>dataActions</code></td>
+<td>Array of strings that specifies the data plane actions that the role allows to be performed to your data within that object.</td>
+</tr>
+<tr>
+<td><code>NotDataActions</code><br><code>notDataActions</code></td>
+<td>Array of strings that specifies the data plane actions that are excluded from the allowed <code>DataActions</code>.</td>
+</tr>
+<tr>
+<td><code>AssignableScopes</code><br><code>assignableScopes</code></td>
+<td>Array of strings that specifies the scopes that the role is available for assignment.</td>
+</tr>
+<tr>
+<td><code>Condition</code><br><code>condition</code></td>
+<td>For built-in roles, condition statement based on one or more actions in role definition.</td>
+</tr>
+<tr>
+<td><code>ConditionVersion</code><br><code>conditionVersion</code></td>
+<td>Condition version number. Defaults to 2.0 and is the only supported version.</td>
+</tr>
+<tr>
+<td><code>createdOn</code></td>
+<td>Date and time role was created.</td>
+</tr>
+<tr>
+<td><code>updatedOn</code></td>
+<td>Date and time role was last updated.</td>
+</tr>
+<tr>
+<td><code>createdBy</code></td>
+<td>For custom roles, principal that created role.</td>
+</tr>
+<tr>
+<td><code>updatedBy</code></td>
+<td>For custom roles, principal that updated role.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="actions-format">Actions format</h3>
+<p>Actions are specified with strings that have the following format:</p>
+<ul>
+<li><code>{Company}.{ProviderName}/{resourceType}/{action}</code></li>
+</ul>
+<p>The <code>{action}</code> portion of an action string specifies the type of actions you can perform on a resource type. For example, you will see the following substrings in <code>{action}</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Action substring</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>The wildcard character grants access to all actions that match the string.</td>
+</tr>
+<tr>
+<td><code>read</code></td>
+<td>Enables read actions (GET).</td>
+</tr>
+<tr>
+<td><code>write</code></td>
+<td>Enables write actions (PUT or PATCH).</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>Enables custom actions like restart virtual machines (POST).</td>
+</tr>
+<tr>
+<td><code>delete</code></td>
+<td>Enables delete actions (DELETE).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="role-definition-example">Role definition example</h3>
+<p>Here's the <a href="built-in-roles#contributor" data-linktype="relative-path">Contributor</a> role definition as displayed in Azure PowerShell and Azure CLI. The wildcard (<code>*</code>) actions under <code>Actions</code> indicates that the principal assigned to this role can perform all actions, or in other words, it can manage everything. This includes actions defined in the future, as Azure adds new resource types. The actions under <code>NotActions</code> are subtracted from <code>Actions</code>. In the case of the <a href="built-in-roles#contributor" data-linktype="relative-path">Contributor</a> role, <code>NotActions</code> removes this role's ability to manage access to resources and also manage Azure Blueprints assignments.</p>
+<p>Contributor role as displayed in <a href="role-definitions-list#azure-powershell" data-linktype="relative-path">Azure PowerShell</a>:</p>
+<pre><code class="lang-json">{
+  "Name": "Contributor",
+  "Id": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "IsCustom": false,
+  "Description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC, manage assignments in Azure Blueprints, or share image galleries.",
+  "Actions": [
+    "*"
+  ],
+  "NotActions": [
+    "Microsoft.Authorization/*/Delete",
+    "Microsoft.Authorization/*/Write",
+    "Microsoft.Authorization/elevateAccess/Action",
+    "Microsoft.Blueprint/blueprintAssignments/write",
+    "Microsoft.Blueprint/blueprintAssignments/delete",
+    "Microsoft.Compute/galleries/share/action",
+    "Microsoft.Purview/consents/write",
+    "Microsoft.Purview/consents/delete"
+  ],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/"
+  ],
+  "Condition": null,
+  "ConditionVersion": null
+}
+</code></pre>
+<p>Contributor role as displayed in <a href="role-definitions-list#azure-cli" data-linktype="relative-path">Azure CLI</a>:</p>
+<pre><code class="lang-json">[
+  {
+    "assignableScopes": [
+      "/"
+    ],
+    "createdBy": null,
+    "createdOn": "2015-02-02T21:55:09.880642+00:00",
+    "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC, manage assignments in Azure Blueprints, or share image galleries.",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+    "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+    "permissions": [
+      {
+        "actions": [
+          "*"
+        ],
+        "condition": null,
+        "conditionVersion": null,
+        "dataActions": [],
+        "notActions": [
+          "Microsoft.Authorization/*/Delete",
+          "Microsoft.Authorization/*/Write",
+          "Microsoft.Authorization/elevateAccess/Action",
+          "Microsoft.Blueprint/blueprintAssignments/write",
+          "Microsoft.Blueprint/blueprintAssignments/delete",
+          "Microsoft.Compute/galleries/share/action",
+          "Microsoft.Purview/consents/write",
+          "Microsoft.Purview/consents/delete"
+        ],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Contributor",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "updatedBy": null,
+    "updatedOn": "2023-07-10T15:10:53.947865+00:00"
+  }
+]
+</code></pre>
+<h2 id="control-and-data-actions">Control and data actions</h2>
+<p>Role-based access control for control plane actions is specified in the <code>Actions</code> and <code>NotActions</code> properties of a role definition. Here are some examples of control plane actions in Azure:</p>
+<ul>
+<li>Manage access to a storage account</li>
+<li>Create, update, or delete a blob container</li>
+<li>Delete a resource group and all of its resources</li>
+</ul>
+<p>Control plane access is not inherited to your data plane provided that the container authentication method is set to <strong>Microsoft Entra User Account</strong> and not <strong>Access Key</strong>. This separation prevents roles with wildcards (<code>*</code>) from having unrestricted access to your data. For example, if a user has a <a href="built-in-roles#reader" data-linktype="relative-path">Reader</a> role on a subscription, then they can view the storage account, but by default they can't view the underlying data.</p>
+<p>Previously, role-based access control was not used for data actions. Authorization for data actions varied across resource providers. The same role-based access control authorization model used for control plane actions has been extended to data plane actions.</p>
+<p>To support data plane actions, new data properties have been added to the role definition. Data plane actions are specified in the <code>DataActions</code> and <code>NotDataActions</code> properties. By adding these data properties, the separation between control plane and data plane is maintained. This prevents current role assignments with wildcards (<code>*</code>) from suddenly having accessing to data. Here are some data plane actions that can be specified in <code>DataActions</code> and <code>NotDataActions</code>:</p>
+<ul>
+<li>Read a list of blobs in a container</li>
+<li>Write a storage blob in a container</li>
+<li>Delete a message in a queue</li>
+</ul>
+<p>Here's the <a href="built-in-roles#storage-blob-data-reader" data-linktype="relative-path">Storage Blob Data Reader</a> role definition, which includes actions in both the <code>Actions</code> and <code>DataActions</code> properties. This role allows you to read the blob container and also the underlying blob data.</p>
+<p>Storage Blob Data Reader role as displayed in Azure PowerShell:</p>
+<pre><code class="lang-json">{
+  "Name": "Storage Blob Data Reader",
+  "Id": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "IsCustom": false,
+  "Description": "Allows for read access to Azure Storage blob containers and data",
+  "Actions": [
+    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+    "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
+  ],
+  "NotActions": [],
+  "DataActions": [
+    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+  ],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/"
+  ],
+  "Condition": null,
+  "ConditionVersion": null
+}
+</code></pre>
+<p>Storage Blob Data Reader role as displayed in Azure CLI:</p>
+<pre><code class="lang-json">[
+  {
+    "assignableScopes": [
+      "/"
+    ],
+    "createdBy": null,
+    "createdOn": "2017-12-21T00:01:24.797231+00:00",
+    "description": "Allows for read access to Azure Storage blob containers and data",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+    "name": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+          "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
+        ],
+        "condition": null,
+        "conditionVersion": null,
+        "dataActions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Storage Blob Data Reader",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "updatedBy": null,
+    "updatedOn": "2021-11-11T20:13:55.297507+00:00"
+  }
+]
+</code></pre>
+<p>Only data plane actions can be added to the <code>DataActions</code> and <code>NotDataActions</code> properties. Resource providers identify which actions are data actions, by setting the <code>isDataAction</code> property to <code>true</code>. To see a list of the actions where <code>isDataAction</code> is <code>true</code>, see <a href="resource-provider-operations" data-linktype="relative-path">Resource provider operations</a>. Roles that do not have data actions are not required to have <code>DataActions</code> and <code>NotDataActions</code> properties within the role definition.</p>
+<p>Authorization for all control plane API calls is handled by Azure Resource Manager. Authorization for data plane API calls is handled by either a resource provider or Azure Resource Manager.</p>
+<h3 id="data-actions-example">Data actions example</h3>
+<p>To better understand how control plane and data plane actions work, let's consider a specific example. Alice has been assigned the <a href="built-in-roles#owner" data-linktype="relative-path">Owner</a> role at the subscription scope. Bob has been assigned the <a href="built-in-roles#storage-blob-data-contributor" data-linktype="relative-path">Storage Blob Data Contributor</a> role at a storage account scope. The following diagram shows this example.</p>
+<p><img src="media/role-definitions/rbac-data-plane.png" alt="Role-based access control has been extended to support both control plane and data plane actions" data-linktype="relative-path"></p>
+<p>The <a href="built-in-roles#owner" data-linktype="relative-path">Owner</a> role for Alice and the <a href="built-in-roles#storage-blob-data-contributor" data-linktype="relative-path">Storage Blob Data Contributor</a> role for  Bob have the following actions:</p>
+<p>Owner</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>*</code></p>
+<p>Storage Blob Data Contributor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/containers/delete</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/containers/read</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/containers/write</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;DataActions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action</code></p>
+<p>Since Alice has a wildcard (<code>*</code>) action at a subscription scope, their permissions inherit down to enable them to perform all control plane actions. Alice can read, write, and delete containers. However, Alice cannot perform data plane actions without taking additional steps. For example, by default, Alice cannot read the blobs inside a container. To read the blobs, Alice would have to retrieve the storage access keys and use them to access the blobs.</p>
+<p>Bob's permissions are restricted to just the <code>Actions</code> and <code>DataActions</code> specified in the <a href="built-in-roles#storage-blob-data-contributor" data-linktype="relative-path">Storage Blob Data Contributor</a> role. Based on the role, Bob can perform both control plane and data plane actions. For example, Bob can read, write, and delete containers in the specified storage account and can also read, write, and delete the blobs.</p>
+<p>For more information about control and data plane security for storage, see the <a href="../storage/blobs/security-recommendations" data-linktype="relative-path">Azure Storage security guide</a>.</p>
+<h3 id="what-tools-support-using-azure-roles-for-data-actions">What tools support using Azure roles for data actions?</h3>
+<p>To view and work with data actions, you must have the correct versions of the tools or SDKs:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en-us/powershell/azure/install-azure-powershell" data-linktype="absolute-path">Azure PowerShell</a></td>
+<td>1.1.0 or later</td>
+</tr>
+<tr>
+<td><a href="/en-us/cli/azure/install-azure-cli" data-linktype="absolute-path">Azure CLI</a></td>
+<td>2.0.30 or later</td>
+</tr>
+<tr>
+<td><a href="/en-us/dotnet/azure/" data-linktype="absolute-path">Azure for .NET</a></td>
+<td>2.8.0-preview or later</td>
+</tr>
+<tr>
+<td><a href="/en-us/azure/go/azure-sdk-go-install" data-linktype="absolute-path">Azure SDK for Go</a></td>
+<td>15.0.0 or later</td>
+</tr>
+<tr>
+<td><a href="/en-us/java/azure/" data-linktype="absolute-path">Azure for Java</a></td>
+<td>1.9.0 or later</td>
+</tr>
+<tr>
+<td><a href="/en-us/azure/python/" data-linktype="absolute-path">Azure for Python</a></td>
+<td>0.40.0 or later</td>
+</tr>
+<tr>
+<td><a href="https://rubygems.org/gems/azure_sdk" data-linktype="external">Azure SDK for Ruby</a></td>
+<td>0.17.1 or later</td>
+</tr>
+</tbody>
+</table>
+<p>To view and use the data actions in the REST API, you must set the <strong>api-version</strong> parameter to the following version or later:</p>
+<ul>
+<li>2018-07-01</li>
+</ul>
+<h2 id="actions">Actions</h2>
+<p>The <code>Actions</code> permission specifies the control plane actions that the role allows to be performed. It is a collection of strings that identify securable actions of Azure resource providers. Here are some examples of control plane actions that can be used in <code>Actions</code>.</p>
+<div class="mx-tableFixed">
+<table>
+<thead>
+<tr>
+<th>Action string</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*/read</code></td>
+<td>Grants access to read actions for all resource types of all Azure resource providers.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Compute/*</code></td>
+<td>Grants access to all actions for all resource types in the Microsoft.Compute resource provider.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Network/*/read</code></td>
+<td>Grants access to read actions for all resource types in the Microsoft.Network resource provider.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Compute/virtualMachines/*</code></td>
+<td>Grants access to all actions of virtual machines and its child resource types.</td>
+</tr>
+<tr>
+<td><code>microsoft.web/sites/restart/Action</code></td>
+<td>Grants access to restart a web app.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="notactions">NotActions</h2>
+<p>The <code>NotActions</code> permission specifies the control plane actions that are subtracted or excluded from the allowed <code>Actions</code> that have a wildcard (<code>*</code>). Use the <code>NotActions</code> permission if the set of actions that you want to allow is more easily defined by subtracting from <code>Actions</code> that have a wildcard (<code>*</code>). The access granted by a role (effective permissions) is computed by subtracting the <code>NotActions</code> actions from the <code>Actions</code> actions.</p>
+<p><code>Actions - NotActions = Effective control plane permissions</code></p>
+<p>The following table shows two examples of the effective control plane permissions for a <a href="resource-provider-operations#microsoftcostmanagement" data-linktype="relative-path">Microsoft.CostManagement</a> wildcard action:</p>
+<div class="mx-tableFixed">
+<table>
+<thead>
+<tr>
+<th>Actions</th>
+<th>NotActions</th>
+<th>Effective control plane permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.CostManagement/exports/*</code></td>
+<td><em>none</em></td>
+<td><code>Microsoft.CostManagement/exports/action</code><br><code>Microsoft.CostManagement/exports/read</code><br><code>Microsoft.CostManagement/exports/write</code><br><code>Microsoft.CostManagement/exports/delete</code><br><code>Microsoft.CostManagement/exports/run/action</code></td>
+</tr>
+<tr>
+<td><code>Microsoft.CostManagement/exports/*</code></td>
+<td><code>Microsoft.CostManagement/exports/delete</code></td>
+<td><code>Microsoft.CostManagement/exports/action</code><br><code>Microsoft.CostManagement/exports/read</code><br><code>Microsoft.CostManagement/exports/write</code><br><code>Microsoft.CostManagement/exports/run/action</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="NOTE">
+<p>Note</p>
+<p>If a user is assigned a role that excludes an action in <code>NotActions</code>, and is assigned a second role that grants access to the same action, the user is allowed to perform that action. <code>NotActions</code> is not a deny rule – it is simply a convenient way to create a set of allowed actions when specific actions need to be excluded.</p>
+</div>
+<h3 id="differences-between-notactions-and-deny-assignments">Differences between NotActions and deny assignments</h3>
+<p><code>NotActions</code> and deny assignments are not the same and serve different purposes. <code>NotActions</code> are a convenient way to subtract specific actions from a wildcard (<code>*</code>) action.</p>
+<p>Deny assignments block users from performing specific actions even if a role assignment grants them access. For more information, see <a href="deny-assignments" data-linktype="relative-path">Understand Azure deny assignments</a>.</p>
+<h2 id="dataactions">DataActions</h2>
+<p>The <code>DataActions</code> permission specifies the data plane actions that the role allows to be performed to your data within that object. For example, if a user has read blob data access to a storage account, then they can read the blobs within that storage account. Here are some examples of data actions that can be used in <code>DataActions</code>.</p>
+<div class="mx-tableFixed">
+<table>
+<thead>
+<tr>
+<th>Data action string</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read</code></td>
+<td>Returns a blob or a list of blobs.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write</code></td>
+<td>Returns the result of writing a blob.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/read</code></td>
+<td>Returns a message.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/*</code></td>
+<td>Returns a message or the result of writing or deleting a message.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="notdataactions">NotDataActions</h2>
+<p>The <code>NotDataActions</code> permission specifies the data plane actions that are subtracted or excluded from the allowed <code>DataActions</code> that have a wildcard (<code>*</code>). Use the <code>NotDataActions</code> permission if the set of actions that you want to allow is more easily defined by subtracting from <code>DataActions</code> that have a wildcard (<code>*</code>). The access granted by a role (effective permissions) is computed by subtracting the <code>NotDataActions</code> actions from the <code>DataActions</code> actions. Each resource provider provides its respective set of APIs to fulfill data actions.</p>
+<p><code>DataActions - NotDataActions = Effective data plane permissions</code></p>
+<p>The following table shows two examples of the effective date plane permissions for a <a href="resource-provider-operations#microsoftstorage" data-linktype="relative-path">Microsoft.Storage</a> wildcard action:</p>
+<div class="mx-tableFixed">
+<table>
+<thead>
+<tr>
+<th>DataActions</th>
+<th>NotDataActions</th>
+<th>Effective data plane permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/*</code></td>
+<td><em>none</em></td>
+<td><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/read</code><br><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/write</code><br><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete</code><br><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action</code><br><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action</code></td>
+</tr>
+<tr>
+<td><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/*</code></td>
+<td><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete</code><br></td>
+<td><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/read</code><br><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/write</code><br><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action</code><br><code>Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="NOTE">
+<p>Note</p>
+<p>If a user is assigned a role that excludes a data action in <code>NotDataActions</code>, and is assigned a second role that grants access to the same data action, the user is allowed to perform that data action. <code>NotDataActions</code> is not a deny rule – it is simply a convenient way to create a set of allowed data actions when specific data actions need to be excluded.</p>
+</div>
+<h2 id="assignablescopes">AssignableScopes</h2>
+<p>The <code>AssignableScopes</code> property specifies the scopes (root, management group, subscriptions, or resource groups) where a role definition can be assigned. You can make a custom role available for assignment in only the management group, subscriptions, or resource groups that require it. You must use at least one management group, subscription, or resource group.</p>
+<p>For example, if <code>AssignableScopes</code> is set to a subscription, that means that the custom role is available for assignment at subscription scope for the specified subscription, resource group scope for any resource group in the subscription, or resource scope for any resource in the subscription.</p>
+<p>Built-in roles have <code>AssignableScopes</code> set to the root scope (<code>"/"</code>). The root scope indicates that the role is available for assignment in all scopes.</p>
+<p>Examples of valid assignable scopes include:</p>
+<div class="mx-tableFixed">
+<table>
+<thead>
+<tr>
+<th>Role is available for assignment</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One subscription</td>
+<td><code>"/subscriptions/{subscriptionId1}"</code></td>
+</tr>
+<tr>
+<td>Two subscriptions</td>
+<td><code>"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"</code></td>
+</tr>
+<tr>
+<td>Network resource group</td>
+<td><code>"/subscriptions/{subscriptionId1}/resourceGroups/Network"</code></td>
+</tr>
+<tr>
+<td>One management group</td>
+<td><code>"/providers/Microsoft.Management/managementGroups/{groupId1}"</code></td>
+</tr>
+<tr>
+<td>Management group and a subscription</td>
+<td><code>"/providers/Microsoft.Management/managementGroups/{groupId1}", "/subscriptions/{subscriptionId1}",</code></td>
+</tr>
+<tr>
+<td>All scopes (applies only to built-in roles)</td>
+<td><code>"/"</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can define only one management group in <code>AssignableScopes</code> of a custom role.</p>
+<p>Although it's possible to create a custom role with a resource instance in <code>AssignableScopes</code> using the command line, it's not recommended. Each tenant supports a maximum of 5,000 custom roles. Using this strategy could potentially exhaust your available custom roles. Ultimately, the level of access is determined by the custom role assignment (scope + role permissions + security principal) and not the <code>AssignableScopes</code> listed in the custom role. So, create your custom roles with <code>AssignableScopes</code> of management group, subscription, or resource group, but assign the custom roles with narrow scope, such as resource or resource group.</p>
+<p>For more information about <code>AssignableScopes</code> for custom roles, see <a href="custom-roles" data-linktype="relative-path">Azure custom roles</a>.</p>
+<h2 id="privileged-administrator-role-definition">Privileged administrator role definition</h2>
+<p>Privileged administrator roles are roles that grant privileged administrator access, such as the ability to manage Azure resources or assign roles to other users. If a built-in or custom role includes any of the following actions, it is considered privileged. For more information, see <a href="role-assignments-list-portal#list-or-manage-privileged-administrator-role-assignments" data-linktype="relative-path">List or manage privileged administrator role assignments</a>.</p>
+<div class="mx-tableFixed">
+<table>
+<thead>
+<tr>
+<th>Action string</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>Create and manage resources of all types.</td>
+</tr>
+<tr>
+<td><code>*/delete</code></td>
+<td>Delete resources of all types.</td>
+</tr>
+<tr>
+<td><code>*/write</code></td>
+<td>Write resources of all types.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Authorization/denyAssignments/delete</code></td>
+<td>Delete a deny assignment at the specified scope.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Authorization/denyAssignments/write</code></td>
+<td>Create a deny assignment at the specified scope.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Authorization/roleAssignments/delete</code></td>
+<td>Delete a role assignment at the specified scope.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Authorization/roleAssignments/write</code></td>
+<td>Create a role assignment at the specified scope.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Authorization/roleDefinitions/delete</code></td>
+<td>Delete the specified custom role definition.</td>
+</tr>
+<tr>
+<td><code>Microsoft.Authorization/roleDefinitions/write</code></td>
+<td>Create or update a custom role definition with specified permissions and assignable scopes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="role-assignments" data-linktype="relative-path">Understand role assignments</a></li>
+<li><a href="built-in-roles" data-linktype="relative-path">Azure built-in roles</a></li>
+<li><a href="custom-roles" data-linktype="relative-path">Azure custom roles</a></li>
+<li><a href="resource-provider-operations" data-linktype="relative-path">Azure resource provider operations</a></li>
+</ul>
+</div><div id="ms--inline-notifications" class="margin-block-xs" data-bi-name="inline-notification"></div><div id="assertive-live-region" role="alert" aria-live="assertive" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<div id="polite-live-region" role="status" aria-live="polite" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<!-- </content> -->
+
+						</main><!-- recommendations section --><!-- end recommendations section -->
+
+						<!-- feedback section --><section id="site-user-feedback-footer" class="font-size-sm margin-top-md" data-test-id="site-user-feedback-footer" data-bi-name="site-feedback-section">
+	<hr class="hr" />
+	<h2 id="feedback" class="title is-3">Feedback</h2>
+	<div class="display-flex flex-wrap-wrap align-items-center">
+		<p class="font-weight-semibold margin-xxs margin-left-none">Was this page helpful?</p>
+		<div class="buttons">
+			<button
+				class="thumb-rating-button like button button-primary button-sm"
+				data-test-id="footer-rating-yes"
+				data-binary-rating-response="rating-yes"
+				type="button"
+				title="This article is helpful"
+				data-bi-name="button-rating-yes"
+				aria-pressed="false"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-like"></span>
+				</span>
+				<span>Yes</span>
+			</button>
+			<button
+				class="thumb-rating-button dislike button button-primary button-sm"
+				data-test-id="footer-rating-no"
+				data-binary-rating-response="rating-no"
+				type="button"
+				title="This article is not helpful"
+				data-bi-name="button-rating-no"
+				aria-pressed="false"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-dislike"></span>
+				</span>
+				<span>No</span>
+			</button>
+		</div>
+	</div><div class="display-flex flex-wrap-wrap margin-top-xxs"><div>
+			<a
+				data-bi-name="provide-feedback-cta"
+				class="has-external-link-indicator"
+				href="https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4"
+				data-bi-name="product-feedback"
+			>
+				<span>Provide product feedback</span>
+			</a><span class="margin-inline-xxs" aria-hidden="true">|</span></div><a href="https://learn.microsoft.com/answers/tags/189/azure-rbac/" class="has-external-link-indicator" data-bi-name="get-help-at-qna">
+			<span>Get help at Microsoft Q&A</span>
+		</a></div>
+
+</section><!-- end feedback section -->
+
+						<!-- feedback report section --><!-- end feedback report section --><aside
+								id="ms--additional-resources-mobile"
+								aria-label="Additional resources"
+								class="display-none-desktop display-none-print"
+							>
+								<hr class="hr" hidden />
+								<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden>Additional resources</h2>
+								<section id="right-rail-recommendations-mobile" data-bi-name="recommendations" hidden></section>
+								<section id="right-rail-training-mobile" data-bi-name="learning-resources-card" hidden></section>
+								<section id="right-rail-events-mobile" data-bi-name="events-card" hidden></section>
+								<section id="right-rail-qna-mobile" data-bi-name="qna-link-card" hidden></section>
+							</aside><div class="border-top is-visible-interactive has-default-focus margin-top-sm "><footer id="footer-interactive" data-bi-name="footer" class="footer-layout"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-sm button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+<a
+	href="https://aka.ms/yourcaliforniaprivacychoices"
+	class="button button-sm button-clear flex-shrink-0"
+	data-mscc-ic="false"
+	data-bi-name="your-privacy-choices"
+>
+	<svg
+		role="img"
+		aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 30 14"
+		xml:space="preserve"
+		height="16"
+		width="43"
+		focusable="false"
+	>
+		<title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Light</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Dark</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>High contrast</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li><li>&copy; Microsoft 2024</li>
+	</ul>
+</footer></div></div><div
+							id="ms--additional-resources"
+							class="right-container column is-4-desktop display-none display-block-desktop"
+							data-bi-name="pageactions"
+							role="complementary"
+							aria-label="Additional resources"
+						>
+							<div id="affixed-right-container" class="margin-top-sm-tablet" data-bi-name="right-column">
+								<h2 id="ms--additional-resources-heading" class="title is-6 margin-top-md" hidden>Additional resources</h2>
+								<section id="right-rail-events" data-bi-name="events-card" hidden></section>
+								<section id="right-rail-training" data-bi-name="learning-resources-card" hidden></section>
+								<section id="right-rail-recommendations" data-bi-name="recommendations" hidden></section>
+								<nav id="side-doc-outline" class="doc-outline" data-bi-name="intopic toc" aria-label="In this article">
+									<h3>In this article</h3>
+								</nav>
+								<section id="right-rail-qna" class="margin-top-xxs" data-bi-name="qna-link-card" hidden></section>
+							</div>
+						</div></div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm "><footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-sm button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link hidden>
+<a
+	href="https://aka.ms/yourcaliforniaprivacychoices"
+	class="button button-sm button-clear flex-shrink-0"
+	data-mscc-ic="false"
+	data-bi-name="your-privacy-choices"
+>
+	<svg
+		role="img"
+		aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 30 14"
+		xml:space="preserve"
+		height="16"
+		width="43"
+		focusable="false"
+	>
+		<title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Light</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>Dark</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>High contrast</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li><li>&copy; Microsoft 2024</li>
+	</ul>
+</footer>
+
+	</section>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+</body>
+</html>

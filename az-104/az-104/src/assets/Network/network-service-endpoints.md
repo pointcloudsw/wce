@@ -1,0 +1,2 @@
+#### Service Endpoints
+[Virtual Network (VNet) service](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview) endpoints extend your virtual network private address space and the identity of your virtual network to the Azure services, over a direct connection. Endpoints allow you to secure your critical Azure service resources to only your virtual networks. Traffic from your virtual network to the Azure service always remains on the Microsoft Azure backbone network.

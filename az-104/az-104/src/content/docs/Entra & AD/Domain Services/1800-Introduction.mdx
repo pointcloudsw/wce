@@ -1,0 +1,35 @@
+---
+title: Introduction to Microsoft Entra Domain Services
+sidebar:
+    order: 1800
+---
+
+import {Image} from 'astro:assets'
+import ImgEntraAdmCtrOv from '/src/assets/Entra--AD/entra-adm-ctr-ov.png'
+import ImgEntraAdmCtrHa from '/src/assets/Entra--AD/entra-adm-ctr-ha.png'
+import ImgEntraAdmCtrSec from '/src/assets/Entra--AD/entra-adm-ctr-sec.png'
+import ImgEntraAdmCtrUiim from '/src/assets/Entra--AD/entra-adm-ctr-uiim.png'
+
+### Overview
+[Microsoft Entra Domain Services](https://azure.microsoft.com/en-us/products/microsoft-entra-ds/) provides managed domain services such as domain join, group policy, LDAP, Kerberos/NTLM authentication that is fully compatible with Windows Server Active Directory, without having to deploy, manage, and patch domain controllers as required by self-ma
+naged domain controllers.  Domain Services integrates with your existing Microsoft Entra tenant. This integration lets users sign in using their corporate credentials, and you can use existing groups and user accounts to secure access to resources.
+
+A Domain Services managed domain is a DNS namespace and matching directory. In a managed domain, the domain controllers (DCs) that contain all the resources like users and groups, credentials, and policies are part of the managed service. For redundancy, two DCs are created as part of a managed domain. You can't sign in to these DCs to perform management tasks. Instead, you create a management VM that's joined to the managed domain, then install your regular AD DS management tools. You can use the Active Directory Administrative Center or Microsoft Management Console (MMC) snap-ins like DNS or Group Policy objects, for example.
+
+#### Benefits
+<div class="container">
+<ul><li>Access to managed domain services such as Windows Domain Join, group policy, LDAP, and Kerberos authentication</li><li>Ability to join Azure virtual machines to a managed domain without domain controllers</li><li>Simple sign-in to apps connected to your managed domain with Microsoft Entra ID (formerly Azure AD) credentials</li><li>Lift-and-shift migration of legacy applications from your on-premises environment to a managed domain</li></ul>
+<span><h5>Increase operational efficiency</h5><p>Enable managed domain services for virtual machines and directory-aware applications deployed in Azure with a click of a button. Reduce operational and maintenance costs associated with managing identity infrastructure for your virtual machines and legacy applications.<figure><Image src={ImgEntraAdmCtrOv} alt="Entra Admin Center" width="750" /><figcaption>Entra Admin Center Domain Services example</figcaption></figure></p></span>
+<span><p><figure><figcaption>Entra Admin Center Domain Services Legacy Apps example</figcaption><Image src={ImgEntraAdmCtrSec} alt="Entra Admin Center Sec" width="750" /></figure><h5>Run legacy apps in the cloud</h5>Easily migrate on-premises apps to a managed domain. Streamline management of all applications from your legacy, directory-aware apps alongside your modern cloud apps with a single identity solution.</p></span>
+<h5>HA by default</h5>
+<span class="not-content container c-col inline" style="--cols: 2;"><p>Domain Services includes multiple domain controllers to provide high availability for your managed domain. Ensure business continuity with guaranteed service uptime and resilience to failures.</p><figure><Image src={ImgEntraAdmCtrHa} alt="Entra Admin Center HA" width="400" /><figcaption>Entra Admin Center Domain Services Replica Set example</figcaption></figure></span>
+<h5>Run legacy apps in the cloud</h5>
+<span class="not-content container c-col inline" style="--cols: 2;"><figure><Image src={ImgEntraAdmCtrSec} alt="Entra Admin Center Sec" width="500" /><figcaption>Entra Admin Center Domain Services Legacy Apps example</figcaption></figure><p>Easily migrate on-premises apps to a managed domain. Streamline management of all applications from your legacy, directory-aware apps alongside your modern cloud apps with a single identity solution.</p></span>
+</div>
+
+
+
+### See also
+- [Microsoft Entra Domain Services managed domain](https://learn.microsoft.com/en-us/entra/identity/domain-services/tutorial-create-instance?source=recommendations)
+- [Management concepts for user accounts, passwords, and administration in Microsoft Entra Domain Services](https://learn.microsoft.com/en-us/entra/identity/domain-services/administration-concepts)
+

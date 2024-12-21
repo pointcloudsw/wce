@@ -1,0 +1,46 @@
+---
+title: Introduction
+sidebar:
+    order: 200
+---
+import {Image} from 'astro:assets'
+import pic1 from '/src/assets/backup-method-comparison.png'
+
+The first time you use Azure Backup, you must register the Azure Recovery Service provider in your subscription with Register-AzResourceProvider, as follows:
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+```
+<Image src={pic1} alt="Pic1" width="750" />
+
+Feature	Direct Backup of Files and Folders (using MARS Agent)	Azure VM Backup	Machines or apps with DPM/MABS
+Back up to vault	Yes	Yes	Yes
+Back up to DPM/MABS disk, then to Azure			Yes
+Compress data sent for backup	Yes	No compression is used when transferring data. Storage is inflated slightly, but restoration is faster.	Yes
+Run incremental backup	Yes	Yes	Yes
+Back up deduplicated disks			Partially
+
+For DPM/MABS servers deployed on-premises only.
+
+<section class="not-content tabbox">
+    <input id="responsive" type="radio" name="grp" checked="checked" />
+    <label for="responsive">Responsive</label>
+    <article class="not-content">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis quis sint obcaecati quos quidem, nisi eum fugit sit. Mollitia est nisi amet tempora sequi sapiente labore obcaecati blanditiis dolor facere.
+    </article>
+    <input id="accessible" type="radio" name="grp" />
+    <label for="accessible">Accessible</label>        
+    <article class="not-content">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae qui obcaecati ullam adipisci impedit reprehenderit enim suscipit magnam sit ut, dolor laudantium nobis in, a ea delectus odio est, esse sequi quisquam reiciendis porro autem. Consectetur excepturi a accusamus corporis quam repudiandae sequi odio eligendi placeat incidunt, nulla, molestiae cupiditate repellat debitis quisquam nisi nihil praesentium minima laboriosam velit magnam ullam! Similique atque illum amet possimus. Totam in, provident reiciendis consectetur maiores exercitationem nostrum alias minus dolore odio quaerat deserunt, quod eligendi architecto minima facere odit obcaecati nam et suscipit repellat rerum magnam ad hic. Deserunt incidunt molestias in dolorum.
+    </article>
+    <input id="overscroll" type="radio" name="grp" />
+    <label for="overscroll">Overscroll</label>        
+    <article class="not-content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quis ad illo officiis ratione officia itaque, sit aspernatur impedit odit voluptates consequuntur id eius distinctio qui eveniet debitis perferendis sequi ea obcaecati? Cumque error minima expedita, debitis nulla alias molestiae doloremque omnis? Dignissimos dolore voluptatum facilis? Earum nesciunt perferendis ex voluptatum blanditiis consequatur qui cumque, est eos quasi labore ipsam.
+    </article>
+    <input id="more" type="radio" name="grp" />
+    <label for="more">More</label>        
+    <article class="not-content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quis ad illo officiis ratione officia itaque, sit aspernatur impedit odit voluptates consequuntur id eius distinctio qui eveniet debitis perferendis sequi ea obcaecati? Cumque error minima expedita, debitis nulla alias molestiae doloremque omnis? Dignissimos dolore voluptatum facilis? Earum nesciunt perferendis ex voluptatum blanditiis consequatur qui cumque, est eos quasi labore ipsam.
+    </article>
+</section>

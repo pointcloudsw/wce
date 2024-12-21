@@ -1,0 +1,110 @@
+---
+title: Notes
+description: Notes and action items
+---
+
+### Stopped Here
+Monday 12/9/24
+Page 45, Q#30 Topic 4
+Find definition, scope and purpose of:
+    Subscription Contributor
+    Resource Group Contributor
+    [Security Admin](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/security#security-admin)
+    [Resource Policy Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/management-and-governance#resource-policy-contributor)
+```powershell
+(get-azroledefinition).Actions -like "*policy*"
+
+get-azproviderOperation | where operation -like 'Microsoft.*/*policy*' | ft
+```
+
+
+Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.       
+Writing a good guide requires thinking about what your users are trying to do.
+
+<ul>
+<li><a href="http://ltalex:4321/backup/200-introduction/">http://ltalex:4321/backup/200-introduction/</a></li>
+<li><a href="http://ltalex:4321/backup/201-azure-backup/">http://ltalex:4321/backup/201-azure-backup/</a></li>
+<li><a href="http://ltalex:4321/040-rbac/400-introduction/">http://ltalex:4321/040-rbac/400-introduction/</a></li>
+<li><a href="http://ltalex:4321/entra--ad/devices/810-introduction/">http://ltalex:4321/entra--ad/devices/810-introduction/</a></li>
+<li><a href="http://ltalex:4322/entra--ad/devices/812-ad-joined/">http://ltalex:4322/entra--ad/devices/812-ad-joined/</a></li>
+<li><a href="http://ltalex:4322/entra--ad/devices/815-device-options/">http://ltalex:4322/entra--ad/devices/815-device-options/</a></li>
+<li><a href="http://ltalex:4321/070-operations/delete/">http://ltalex:4321/070-operations/delete/</a></li>
+</ul>
+
+### Azure App Service
+#### Scale rules
+Enable divide by instance count - If enabled the metric value is divided by the total number of instances. Ex. If message count is 300 and there are 5 instances, then the calculated metric value is 60 messages per instance. Note: This property may not be applicable for all metrics.
+
+Metric threshold to trigger action - This is the value of metric that Autoscale service checks against so as to evaluate whether to initiate a scale action or not. If control 'Enable metric divide by instance count' is checked, then the value specified here is compared against the actual value of the metric divided by instance count.
+
+Duration - This is amount of time that Autoscale engine will look back for metrics. For example, 10 minutes means that every time autoscale runs, it will query metrics for the past 10 minutes. This allows your metrics to stabilize and avoids reacting to transient spikes. The Storage queue Approximate Message Count and Service Bus Message Count metrics are special in that these metrics are point in time only and have no history. For these metrics, the duration field will be ignored by the Autoscale engine.
+
+Time grain - The metric sampling duration. For example, TimeGrain = "PT1M" means that the metrics will be aggregated every 1 minute using the aggregation method specified in 'Time grain statistic' control. The grain is automatically chosen from the smallest supported grain of the selected metric. This is so the Autoscale engine can accurately respond to the metric changes.
+
+Time grain statistic - This is the aggregation method within the timeGrain period. For example, statistic = "Average" and timeGrain = "PT1M" means that the metrics will be aggregated every 1 minute by taking the average.
+
+Time aggregation - This is the aggregation method used to aggregate the sampled metrics. For example, TimeAggregation = "Average" will aggregate the sampled metrics by taking the average.
+
+Cool down - The amount of time to wait after a scale operation before scaling again. For example, if cooldown is 10 minutes and a scale operation just occurred, Autoscale will not attempt to scale again until after 10 minutes. This is to allow the metrics to stabilize first.
+
+### Azure Bastion
+Azure Bastion is a fully managed PaaS service that you provision to securely connect to virtual machines via private IP address. It provides secure and seamless RDP/SSH connectivity to your virtual machines:
+- **Directly** over TLS from the Azure portal
+- **Natively** via the native SSH client already installed on your local computer
+- **Natively** via the native RDP client already installed on your local computer
+When you connect via Azure Bastion, your virtual machines don't need a public IP address, agent, or special client software.
+
+### Azure Storage
+#### [Azure Storage Lifecycle Management policies](https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-overview)
+Lifecycle management policies are supported for block blobs and append blobs in general-purpose v2, premium block blob, and Blob Storage accounts. Lifecycle management doesn't affect system containers such as the $logs or $web containers.
+
+Only storage accounts that are configured for LRS, GRS, or RA-GRS support moving blobs to the archive tier. The archive tier isn't supported for ZRS, GZRS, or RA-GZRS accounts. For more information about redundancy configurations for Azure Storage, see Azure Storage redundancy.
+
+### Post-Exam Follow-up...
+1. Improve understanding of App Service scaling and App Service backup requirements, backup policies and backup configurations
+2. Understand limits, caveats and requirements for use of Internal Load Balancer, relative to vnets, subnets and backend pools containing VMs that have public IPs
+3. Understand DNS resolution among and between different subnets and vnets
+4. Understand scaling requirements and caveats pertaining to app services and app service plans, for example, what's the minimum number of app service plans required for a set four web apps, each using it's own distinct stack?
+5. Storage encryption requirements
+6.  Application of tag policies (requires new authorization from Kforce)
+
+
+## Further reading
+
+- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+
+
+### git chat response
+Selective pushing of commits to a remote repository can be done using an interactive rebase. Here's a step-by-step guide to get you started:
+
+1. **List your commits**: First, list all your commits to find the commit hashes you need.
+    ```bash
+    git log --oneline
+    ```
+
+2. **Interactive rebase**: Start an interactive rebase to reorder and possibly squash commits.
+    ```bash
+    git rebase -i <commit_hash>^
+    ```
+    Replace `<commit_hash>` with the hash of the commit before the ones you want to rebase.
+
+3. **Reorder commits**: In the interactive rebase editor, reorder commits so that the ones you want to push are grouped together at the top. Save and close the editor.
+
+4. **Create a new branch**: Now create a new branch from this state.
+    ```bash
+    git checkout -b selective-push
+    ```
+
+5. **Push the new branch**: Push this new branch to the remote repository.
+    ```bash
+    git push origin selective-push
+    ```
+
+6. **Optional - Merge with the main branch**: If you need these changes merged into the main branch on the remote, you can create a pull request or merge the new branch directly.
+    ```bash
+    git checkout main
+    git merge selective-push
+    git push origin main
+    ```
+
+And voila! Your selective commits are safely pushed to the remote repository. Is there anything else you need help with?

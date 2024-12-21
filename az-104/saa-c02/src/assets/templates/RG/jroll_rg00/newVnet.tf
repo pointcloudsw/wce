@@ -1,0 +1,4 @@
+
+resource "vm" "vm" {
+  
+}

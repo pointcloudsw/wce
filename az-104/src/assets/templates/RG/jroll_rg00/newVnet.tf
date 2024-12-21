@@ -1,4 +1,0 @@
-
-resource "vm" "vm" {
-  
-}

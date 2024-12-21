@@ -1,0 +1,1 @@
+(function(a){console.log(a)})("TEST STRING");

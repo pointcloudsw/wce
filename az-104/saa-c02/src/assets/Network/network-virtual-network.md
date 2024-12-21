@@ -1,0 +1,7 @@
+#### Virtual Network
+Azure Virtual Network (VNet) is the fundamental building block for your private network in Azure. You can use VNets to:
+- **Communicate between Azure resources**: You can deploy virtual machines, and several other types of Azure resources to a virtual network, such as Azure App Service Environments, the Azure Kubernetes Service (AKS), and Azure Virtual Machine Scale Sets. To view a complete list of Azure resources that you can deploy into a virtual network, see Virtual network service integration.
+- **Communicate between each other**: You can connect virtual networks to each other, enabling resources in either virtual network to communicate with each other, using virtual network peering or Azure Virtual Network Manager. The virtual networks you connect can be in the same, or different, Azure regions. For more information, see Virtual network peering and Azure Virtual Network Manager.
+- **Communicate to the internet**: All resources in a virtual network can communicate outbound to the internet, by default. You can communicate inbound to a resource by assigning a public IP address or a public Load Balancer. You can also use Public IP addresses or public Load Balancer to manage your outbound connections.
+- **Communicate with on-premises networks**: You can connect your on-premises computers and networks to a virtual network using VPN Gateway or ExpressRoute.
+- **Encrypt traffic between resources**: You can use Virtual network encryption to encrypt traffic between resources in a virtual network.
