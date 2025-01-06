@@ -3,6 +3,92 @@ title: Notes
 description: Notes and action items
 ---
 
+### Azure Subscription Info
+#### Subscription: jrmsft@outlook.com
+- Subscription Name:  jrmsft
+- Subscription ID:  12ab23a4-42fe-419e-96ae-65fc77c18d73
+- Tenant ID: 311f3927-88d9-49b3-9482-ed05605a8d01
+
+
+### Hostinger VPS Host Ubuntu
+- In Hostinger VPS management portal
+    - Add DNS A record to DNS Manager in Hostinger VPS management portal 
+    - Allow default DNS resolver
+- Use Ubuntu 22.04 LTS (Jammy)
+- Add new general user(s) accounts:
+> useradd -m -U pcs
+> chpasswd
+> pcs:plaintextpasswd
+- Add user to sudoers...
+```sh
+vi /etc/sudoers
+...
+pcs     ALL=(ALL:ALL) ALL
+```
+- Ensure authorized_keys file is added to users' home directories
+```sh
+# For each user home directory, do the following:
+$ mkdir ~user/.ssh
+$ echo PublicKeyString >> ~user/.ssh/authorized_keys
+$ chown -R user:group ~user/.ssh
+$ chmod -R 600 ~user/.ssh
+$ chmod 700 ~user/.ssh
+```
+- sudo ip6tables -A INPUT -p icmpv6 --icmpv6-type echo-request -j DROP
+- sudo sysctl -w net.ipv4.icmp_echo_ignore_all=1
+- sudo systemctl disable exim4.service
+- sudo systemctl disable apache2.service
+- setup ssh-keygen to add public key to remote Host
+- add identity file into local ssh config file to reference identity file to use for access to remote host
+#### How to fix locale errors such as...
+##### [Source Courtesy Of](https://draculaservers.com/tutorials/setting-locale-failed-ubuntu/)
+```
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_MONETARY = "de_DE.UTF-8",
+	LC_ADDRESS = "de_DE.UTF-8",
+	LC_TELEPHONE = "de_DE.UTF-8",
+	LC_NAME = "de_DE.UTF-8",
+	LC_MEASUREMENT = "de_DE.UTF-8",
+	LC_IDENTIFICATION = "de_DE.UTF-8",
+	LC_NUMERIC = "de_DE.UTF-8",
+	LC_PAPER = "de_DE.UTF-8",
+	LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
+locale: Cannot set LC_ALL to default locale: No such file or directory
+```
+
+To generate the missing locale and reconfigure locales, identify the name of your locale ( in my case de_DE.UTF-8), or use one another one that you prefer, such as en_US.UTF-8.
+
+Then generate it using the following command:
+```sh
+$ sudo locale-gen "de_US.UTF-8"
+```
+And you’ll get the output:
+
+```sh
+Generating locales (this might take a while)...
+  de_DE.UTF-8... done
+Generation complete.
+```
+After which, reconfigure locales using the following command:
+
+```sh
+$ sudo dpkg-reconfigure locales
+And you’ll receive the output:
+```
+
+```sh
+Generating locales...
+  de_DE.UTF-8... up-to-date
+Generation complete.
+```
+And now you shouldn’t receive any more errors!
+
+
 ### Stopped Here
 Monday 12/9/24
 Page 45, Q#30 Topic 4
