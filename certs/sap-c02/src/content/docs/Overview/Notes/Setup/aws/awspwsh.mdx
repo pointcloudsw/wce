@@ -1,0 +1,43 @@
+---
+title: AWS PowerShell install and setup
+description: AWS PowerShell install and setup
+---
+
+### [Source](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-linux-mac.html)
+
+```powershell
+Install-Module -name AWS.Tools.Installer
+
+Install-AWSToolsModule AWS.Tools.EC2,AWS.Tools.S3 -CleanUp
+
+Update-AWSToolsModule -CleanUp
+
+Install-AWSToolsModule AWS.Tools.IdentityManagement -Scope CurrentUser
+
+Install-AWSToolsModule aws.tools.common
+
+Update-AWSToolsModule -CleanUp
+
+```
+
+```powershell
+$awssso = @{ `       
+    profilename = 'sbpwr'; `       
+    accountid = '710271911790'; `  
+    rolename = 'PowerUserAccess'; `
+    sessionname = 'ssosess'; `
+    starturl = 'https://d-9067de7a6e.awsapps.com/start'; `
+    ssoregion = 'us-east-1'; `
+    registrationscope = 'sso:account:access'; `
+}
+```
+
+```powershell
+Initialize-AWSSSOConfiguration @awssso
+
+# invoke-awsssologin -ProfileName $awssso.profilename
+
+set-awsCredential -ProfileName $awssso.profilename -Scope Global
+
+Get-STSCallerIdentity -Region $awssso.ssoregion
+```

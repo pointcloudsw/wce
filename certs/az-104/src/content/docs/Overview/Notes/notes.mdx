@@ -16,7 +16,7 @@ description: Notes and action items
     - Allow default DNS resolver
 - Use Ubuntu 22.04 LTS (Jammy)
 - Add new general user(s) accounts:
-> useradd -m -U pcs
+> useradd -m -U -s /bin/bash pcs
 > chpasswd
 > pcs:plaintextpasswd
 - Add user to sudoers...
@@ -88,6 +88,33 @@ Generation complete.
 ```
 And now you shouldn’t receive any more errors!
 
+### Install nvm and node on a per-user account basis:
+### [Source ref](https://nodejs.org/en/download)
+- # Download and install nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bas
+
+# Download and install Node.js:
+nvm install 22
+
+# Verify the Node.js version:
+node -v # Should print "v22.13.0".
+nvm current # Should print "v22.13.0".
+
+# Verify npm version:
+npm -v # Should print "10.9.2".
+
+### Install git-scm
+# add-apt-repository ppa:git-core/ppa
+# apt update; apt install git
+
+### Install gh github CLI
+(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
+	&& sudo mkdir -p -m 755 /etc/apt/keyrings && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+        && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
 
 ### Stopped Here
 Monday 12/9/24
