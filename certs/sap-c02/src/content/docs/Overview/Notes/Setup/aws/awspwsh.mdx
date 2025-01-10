@@ -16,6 +16,8 @@ Install-AWSToolsModule AWS.Tools.IdentityManagement -Scope CurrentUser
 
 Install-AWSToolsModule aws.tools.common
 
+install-awstoolsModule aws.tools.securitytoken -CleanUp -Force
+
 Update-AWSToolsModule -CleanUp
 
 ```
@@ -39,5 +41,8 @@ Initialize-AWSSSOConfiguration @awssso
 
 set-awsCredential -ProfileName $awssso.profilename -Scope Global
 
+# Verify
 Get-STSCallerIdentity -Region $awssso.ssoregion
 ```
+
+### [See also](https://docs.aws.amazon.com/powershell/latest/reference/items/SecurityToken_cmdlets.html)
