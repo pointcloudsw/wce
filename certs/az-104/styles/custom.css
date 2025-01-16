@@ -237,7 +237,41 @@ ul.shin > li {
   margin: auto;
   text-align: center;
 }
-
+.hero__image {
+  border: 2px solid red;
+  place-items: center;
+  margin: auto;
+}
+#hero__image__aws {
+  margin: 1lh auto;
+}
+.hero__image > a, .hero__image > a * {
+  border: 2px solid red;
+  place-items: center;
+  place-content: center;
+  margin: auto;
+}
+.pill__button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.pill-button:hover {
+  background-color: #0056b3;
+}
+/* 
+.hero__image:has(.sl-link-button) {
+  margin: auto;
+  place-self: center;
+  place-content: center;
+  padding: 0;
+  inline-size: max-content;
+} */
 .c-hbrdr {
   grid-area: 2;
   border: 2px solid hsl(230deg 25% 20%);
@@ -339,7 +373,7 @@ ul.shin > li {
   margin: 1.0in 2ch 1.0in 2ch;
 }
 
-@media screen and (min-width: 500px){
+@media screen and (min-width: 600px){
   .dgr, .picgrid, .container {
     grid-auto-flow: column;
   }
