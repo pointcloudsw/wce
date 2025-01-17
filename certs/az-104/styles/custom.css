@@ -241,25 +241,32 @@ ul.shin > li {
   border: 2px solid red;
   place-items: center;
   margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 #hero__image__aws {
   margin: 1lh auto;
 }
 .hero__image > a, .hero__image > a * {
   border: 2px solid red;
-  place-items: center;
-  place-content: center;
+  /* place-items: center; */
+  /* place-content: center; */
   margin: auto;
 }
+
 .pill__button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 16px;
+  /* padding: 16px 40px; */
+  padding: 1.2vh 5.6vw;
+  /* border-radius: 50px; */
+  border-radius: 36px;
+  font-size: 24px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+
+  max-inline-size: inherit;
+  /* transition: background 0.3s ease; */
 }
 .pill-button:hover {
   background-color: #0056b3;
@@ -373,7 +380,7 @@ ul.shin > li {
   margin: 1.0in 2ch 1.0in 2ch;
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 700px){
   .dgr, .picgrid, .container {
     grid-auto-flow: column;
   }

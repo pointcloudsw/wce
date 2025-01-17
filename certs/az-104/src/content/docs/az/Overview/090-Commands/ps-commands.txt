@@ -1,0 +1,3116 @@
+___
+Set-PSReadlineOption -EditMode vi -BellStyle None
+
+get-azroledefinition | where actions -like '*virtualnetwork*' | Measure-Object name -Line
+
+$storageAccount = az storage account list -g $rg00.name -o json
+$storageAccount
+
+ new-azresourceGroupDeployment -name $($rg00.name + '.rgdt.withcontainer') -ResourceGroupName $rg00.name  -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json -storageSku Premium_LRS
+
+Setting AZ Storage Account Context as required to create a Storage Container:
+$sactx = (Get-AzStorageAccount -ResourceGroupName $rg00.name -Name 'sacct80').Context
+$sactx | Set-AzCurrentStorageAccount
+New-AzStorageContainer -Name 'scontainer80'
+
+--or--
+Get-AzStorageAccount -Name sacct90 -ResourceGroupName $rg00.name 
+| Set-AzStorageAccount
+new-azstorageContainer -Name 'scontainer90'
+
+
+// grep for String
+(Get-AzRoleDefinition).Actions -like "*network*"
+
+// sort resource group output
+get-azresource | Sort-Object -Property ResourceType | format-table
+get-azresource | Sort-Object -Property ResourceGroupName, ResourceType | format-table
+
+
+// parse page
+document.querySelector("div.heading-wrapper:has(#privileged) + div.mx-tableFixed")
+
+// Devcenter 
+remove-azDevCenterAdminDevCenter -DevCenterName jroll-devctr-01 -ResourceGroupName jroll_rg00
+
+new-azresourceGroupDeployment -name $($rg00.name + '.rgdt') -ResourceGroupName $rg00.name  -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
+
+curl -H "Authorization: Bearer $((Get-AzAccessToken).Token)" "https://management.azure.com/subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e?api-version=2022-12-01"
+
+curl -H "Authorization: Bearer $((Get-AzAccessToken).Token)" "https://management.azure.com/subscriptions/$((Get-AzSubscription -TenantId 73ec7808-5b5c-4971-b28c-663b15f02e0b).SubscriptionId)?api-version=2022-12-01"
+
+curl -H "Authorization: Bearer $((Get-AzAccessToken).Token)" "https://management.azure.com/subscriptions/$((Get-AzSubscription -TenantId 73ec7808-5b5c-4971-b28c-663b15f02e0b).SubscriptionId)/providers?api-version=2021-04-01"
+
+curl -H "Authorization: Bearer $((Get-AzAccessToken).Token)" "https://management.azure.com/subscriptions/$((Get-AzSubscription -TenantId 73ec7808-5b5c-4971-b28c-663b15f02e0b).SubscriptionId)/providers?api-version=2021-04-01" | jq '[.value[]][].namespace' | sort.exe
+
+(Get-AzResource).name | ? { $_ -like '*jroll*' } | ForEach-Object { get-azresource -name $_ }
+(Get-AzResource).name | ? { $_ -like '*jroll*' } | ForEach-Object { (get-azresource -name $_).ResourceGroupName }
+Remove-AzResourceGroup -Name 'rg_azure_openai' -Force -AsJob 
+
+Remove-AzResourceGroup -Name 'jroll_az104_winwwwi' -Force -AsJob
+
+get-job | Format-List -Property *
+
+try { . "c:\Users\jroll\AppData\Local\Programs\Microso… $sn = @{ name = 'jroll_az104_vnet01_subnet01'; virtual…
+@sncfg = Add-AzVirtualNetworkSubnetConfig @sn           @sncfg = Add-AzVirtualNetworkSubnetConfig $sn
+$sncfg = Add-AzVirtualNetworkSubnetConfig @sn           $sncfg = Add-AzVirtualNetworkSubnetConfig $sn
+$sn = @{ name = 'jroll_az104_vnet01_subnet01'; virtual… $sncfg = Add-AzVirtualNetworkSubnetConfig @sn
+$sn = @{ name = 'jroll_az104_vnet01_subnet01'; virtual… $sn = @{ name = 'jroll_az104_vnet01_subnet01'; virtual…
+$virtualnetwork                                         $virtualnetwork | Set-AzVirtualNetwork
+Get-AzVirtualNetwork                                    Get-AzVirtualNetwork -Name jroll_az104_vnet01
+Get-AzVirtualNetwork -Name jroll_az104_vnet01 -ExpandR… Get-AzVirtualNetwork -Name jroll_az104_vnet01 -Verbose
+Get-AzVirtualNetwork @vnet01                            $virtualnetwork = New-AzVirtualNetwork @vnet
+@vnet                                                   @vnet
+$vnet = @{ name = 'jroll_az104_vnet01'; resourcegroupn… @vnet
+$vnet                                                   $virtualnetwork
+$virtualnetwork = New-AzVirtualNetwork @vnet            $rg
+$rg = @{ name = 'jroll_az104_rg01'; Location = 'northc… $vnet = @{ name = 'jroll_az104_vnet01'; resourcegroupn…
+$vnet                                                   $virtualnetwork = New-AzVirtualNetwork @vnet
+$vnet                                                   get-history
+get-history -Count 1000                                 get-history -Count 1000
+get-history -Count 1000 | format-list -Property comman… get-history -Count 1000 | format-list -Property comman…
+get-history -Count 1000 | format-list -Property comman… get-help format-list
+update-help                                             update-help -UICulture en-US
+get-history -Count 1000 | format-list -Property comman… get-history -Count 1000 | format-list -Property comman…
+get-history -Count 1000 | format-list -Property comman… dir
+get-history -Count 1000 | format-list commandline       get-history -Count 1000
+get-history -Count 1000 | $1                            get-history -Count 1000 | @1
+get-history -Count 1000 | @{ $1 }                       get-history -Count 1000 | @{ $_ }
+get-history -Count 1000 | Format-Wide -Column 2         
+
+
+try { . "c:\Users\jroll\AppData\Local\Programs\Microso… cls
+cls                                                     cls
+cls                                                     cls
+dir                                                     cls
+New-AzResourceGroup -Location 'US Central'              New-AzResourceGroup -Location 'US Central' -name 'RGte…
+get-help connect-azaccount                              $Cred = get-credential
+connect-AzAccount  -Credential $Cred -TenantId organiz… Get-AzTenant
+connect-AzAccount  -Credential $Cred -TenantId 73ec780… az
+connect-azaccount --tenant 73ec7808-5b5c-4971-b28c-663… connect-azaccount -tenantID 73ec7808-5b5c-4971-b28c-66…
+New-AzResourceGroup -Location 'US Central' -name 'RGte… New-AzResourceGroup -Location 'northcentralus' -name '…
+Remove-AzResourceGroup -name 'jroll_rg1_az104'          Remove-AzResourceGroup -name 'jroll_rg1_az104' -Tag @{…
+New-AzResourceGroup -Location 'northcentralus' -name '… $tags = @{"Scope"="Dev"}
+Remove-AzResourceGroup -name 'jroll_rg1_az104'          New-AzResourceGroup -Location 'northcentralus' -name '…
+@rg = { name = 'jroll_az104_rg01'; Location = 'northce… $rg = @{ name = 'jroll_az104_rg01'; Location = 'northc…
+$vnet = @{ name = 'jroll_az104_vnet01'; $rg; addresspr… $vnet = @{ name = 'jroll_az104_vnet01'; resourcegroupn…
+$virtualnetwork = New-AzVirtualNetwork @vnet            Get-AzVirtualNetwork
+
+
+Id                 : 1
+CommandLine        : try { . "c:\Users\jroll\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\browser\media\shellIntegration.ps1" } catch {}
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:00:49 PM
+EndExecutionTime   : 9/26/2024 6:00:49 PM
+Duration           : 00:00:00.3407983
+
+Id                 : 2
+CommandLine        : $sn = @{ name = 'jroll_az104_vnet01_subnet01'; virtualnetwork = $vnet; addressprefix = '10.0.0.0/24' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:02:16 PM
+EndExecutionTime   : 9/26/2024 6:02:16 PM
+Duration           : 00:00:00.0123652
+
+Id                 : 3
+CommandLine        : @sncfg = Add-AzVirtualNetworkSubnetConfig @sn
+ExecutionStatus    : Failed
+StartExecutionTime : 9/26/2024 6:02:46 PM
+EndExecutionTime   : 9/26/2024 6:02:46 PM
+Duration           : 00:00:00.0004081
+
+Id                 : 4
+CommandLine        : @sncfg = Add-AzVirtualNetworkSubnetConfig $sn
+ExecutionStatus    : Failed
+StartExecutionTime : 9/26/2024 6:02:58 PM
+EndExecutionTime   : 9/26/2024 6:02:58 PM
+Duration           : 00:00:00.0002744
+
+Id                 : 5
+CommandLine        : $sncfg = Add-AzVirtualNetworkSubnetConfig @sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:03:07 PM
+EndExecutionTime   : 9/26/2024 6:03:09 PM
+Duration           : 00:00:02.5603232
+
+Id                 : 6
+CommandLine        : $sncfg = Add-AzVirtualNetworkSubnetConfig $sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:03:17 PM
+EndExecutionTime   : 9/26/2024 6:03:18 PM
+Duration           : 00:00:00.0329322
+
+Id                 : 7
+CommandLine        : $sn = @{ name = 'jroll_az104_vnet01_subnet01'; virtualnetwork = $vnet; addressprefix = '10.0.0.0/24' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:03:34 PM
+EndExecutionTime   : 9/26/2024 6:03:34 PM
+Duration           : 00:00:00.0014504
+
+Id                 : 8
+CommandLine        : $sncfg = Add-AzVirtualNetworkSubnetConfig @sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:03:47 PM
+EndExecutionTime   : 9/26/2024 6:03:47 PM
+Duration           : 00:00:00.0257976
+
+Id                 : 9
+CommandLine        : $sn = @{ name = 'jroll_az104_vnet01_subnet01'; virtualnetwork = @vnet; addressprefix = '10.0.0.0/24' }
+ExecutionStatus    : Failed
+StartExecutionTime : 9/26/2024 6:04:14 PM
+EndExecutionTime   : 9/26/2024 6:04:14 PM
+Duration           : 00:00:00.0001996
+
+Id                 : 10
+CommandLine        : $sn = @{ name = 'jroll_az104_vnet01_subnet01'; virtualnetwork = $virtualnetwork; addressprefix = '10.0.0.0/24' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:04:42 PM
+EndExecutionTime   : 9/26/2024 6:04:42 PM
+Duration           : 00:00:00.0143030
+
+Id                 : 11
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:05:22 PM
+EndExecutionTime   : 9/26/2024 6:05:22 PM
+Duration           : 00:00:00.0129650
+
+Id                 : 12
+CommandLine        : $virtualnetwork | Set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:05:30 PM
+EndExecutionTime   : 9/26/2024 6:05:31 PM
+Duration           : 00:00:00.2592604
+
+Id                 : 13
+CommandLine        : Get-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:06:07 PM
+EndExecutionTime   : 9/26/2024 6:06:10 PM
+Duration           : 00:00:03.2395268
+
+Id                 : 14
+CommandLine        : Get-AzVirtualNetwork -Name jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:06:35 PM
+EndExecutionTime   : 9/26/2024 6:06:36 PM
+Duration           : 00:00:00.4605615
+
+Id                 : 15
+CommandLine        : Get-AzVirtualNetwork -Name jroll_az104_vnet01 -ExpandResource
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:06:44 PM
+EndExecutionTime   : 9/26/2024 6:06:44 PM
+Duration           : 00:00:00.0449933
+
+Id                 : 16
+CommandLine        : Get-AzVirtualNetwork -Name jroll_az104_vnet01 -Verbose
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:06:52 PM
+EndExecutionTime   : 9/26/2024 6:06:52 PM
+Duration           : 00:00:00.4636333
+
+Id                 : 17
+CommandLine        : Get-AzVirtualNetwork @vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:07:18 PM
+EndExecutionTime   : 9/26/2024 6:07:18 PM
+Duration           : 00:00:00.0340469
+
+Id                 : 18
+CommandLine        : $virtualnetwork = New-AzVirtualNetwork @vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:07:37 PM
+EndExecutionTime   : 9/26/2024 6:07:37 PM
+Duration           : 00:00:00.1999302
+
+Id                 : 19
+CommandLine        : @vnet
+ExecutionStatus    : Failed
+StartExecutionTime : 9/26/2024 6:07:49 PM
+EndExecutionTime   : 9/26/2024 6:07:49 PM
+Duration           : 00:00:00.0002025
+
+Id                 : 20
+CommandLine        : @vnet
+ExecutionStatus    : Failed
+StartExecutionTime : 9/26/2024 6:07:52 PM
+EndExecutionTime   : 9/26/2024 6:07:52 PM
+Duration           : 00:00:00.0001755
+
+Id                 : 21
+CommandLine        : $vnet = @{ name = 'jroll_az104_vnet01'; resourcegroupname = $rg.name; location = $rg.location; addressprefix = '10.0.0.0/16' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:08:08 PM
+EndExecutionTime   : 9/26/2024 6:08:08 PM
+Duration           : 00:00:00.0029970
+
+Id                 : 22
+CommandLine        : @vnet
+ExecutionStatus    : Failed
+StartExecutionTime : 9/26/2024 6:08:30 PM
+EndExecutionTime   : 9/26/2024 6:08:30 PM
+Duration           : 00:00:00.0001817
+
+Id                 : 23
+CommandLine        : $vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:08:34 PM
+EndExecutionTime   : 9/26/2024 6:08:34 PM
+Duration           : 00:00:00.0192746
+
+Id                 : 24
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:09:02 PM
+EndExecutionTime   : 9/26/2024 6:09:02 PM
+Duration           : 00:00:00.0013297
+
+Id                 : 25
+CommandLine        : $virtualnetwork = New-AzVirtualNetwork @vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:09:07 PM
+EndExecutionTime   : 9/26/2024 6:09:07 PM
+Duration           : 00:00:00.0300810
+
+Id                 : 26
+CommandLine        : $rg
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:09:23 PM
+EndExecutionTime   : 9/26/2024 6:09:23 PM
+Duration           : 00:00:00.0083539
+
+Id                 : 27
+CommandLine        : $rg = @{ name = 'jroll_az104_rg01'; Location = 'northcentralus' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:10:08 PM
+EndExecutionTime   : 9/26/2024 6:10:08 PM
+Duration           : 00:00:00.0026137
+
+Id                 : 28
+CommandLine        : $vnet = @{ name = 'jroll_az104_vnet01'; resourcegroupname = $rg.name; location = $rg.location; addressprefix = '10.0.0.0/16' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:10:27 PM
+EndExecutionTime   : 9/26/2024 6:10:27 PM
+Duration           : 00:00:00.0048733
+
+Id                 : 29
+CommandLine        : $vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:10:29 PM
+EndExecutionTime   : 9/26/2024 6:10:29 PM
+Duration           : 00:00:00.0053314
+
+Id                 : 30
+CommandLine        : $virtualnetwork = New-AzVirtualNetwork @vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/26/2024 6:10:39 PM
+EndExecutionTime   : 9/26/2024 6:10:44 PM
+Duration           : 00:00:04.4664530
+
+Id                 : 31
+CommandLine        : $vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:07:30 AM
+EndExecutionTime   : 9/27/2024 9:07:30 AM
+Duration           : 00:00:00.0208662
+
+Id                 : 32
+CommandLine        : get-history
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:18:06 AM
+EndExecutionTime   : 9/27/2024 9:18:06 AM
+Duration           : 00:00:00.1537335
+
+Id                 : 33
+CommandLine        : get-history -Count 1000
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:18:15 AM
+EndExecutionTime   : 9/27/2024 9:18:15 AM
+Duration           : 00:00:00.0798836
+
+Id                 : 34
+CommandLine        : get-history -Count 1000
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:18:49 AM
+EndExecutionTime   : 9/27/2024 9:18:49 AM
+Duration           : 00:00:00.0499395
+
+Id                 : 35
+CommandLine        : get-history -Count 1000 | format-list -Property commandline
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:19:49 AM
+EndExecutionTime   : 9/27/2024 9:19:49 AM
+Duration           : 00:00:00.0952408
+
+Id                 : 36
+CommandLine        : get-history -Count 1000 | format-list -Property commandline -GroupBy commandline
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:21:48 AM
+EndExecutionTime   : 9/27/2024 9:21:48 AM
+Duration           : 00:00:00.1359456
+
+Id                 : 37
+CommandLine        : get-history -Count 1000 | format-list -Property commandline -view 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:21:59 AM
+EndExecutionTime   : 9/27/2024 9:21:59 AM
+Duration           : 00:00:00.1672078
+
+Id                 : 38
+CommandLine        : get-help format-list
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:22:14 AM
+EndExecutionTime   : 9/27/2024 9:22:14 AM
+Duration           : 00:00:00.1737261
+
+Id                 : 39
+CommandLine        : update-help
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:22:44 AM
+EndExecutionTime   : 9/27/2024 9:25:18 AM
+Duration           : 00:02:33.7902366
+
+Id                 : 40
+CommandLine        : update-help -UICulture en-US
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:25:46 AM
+EndExecutionTime   : 9/27/2024 9:26:25 AM
+Duration           : 00:00:38.5772492
+
+Id                 : 41
+CommandLine        : get-history -Count 1000 | format-list -Property commandline -Expand coreonly
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:27:21 AM
+EndExecutionTime   : 9/27/2024 9:27:21 AM
+Duration           : 00:00:00.0479683
+
+Id                 : 42
+CommandLine        : get-history -Count 1000 | format-list -Property commandline[1]
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:29:02 AM
+EndExecutionTime   : 9/27/2024 9:29:02 AM
+Duration           : 00:00:00.0395996
+
+Id                 : 43
+CommandLine        : get-history -Count 1000 | format-list -Property commandline
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:29:20 AM
+EndExecutionTime   : 9/27/2024 9:29:20 AM
+Duration           : 00:00:00.0341031
+
+Id                 : 44
+CommandLine        : dir
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:29:33 AM
+EndExecutionTime   : 9/27/2024 9:29:33 AM
+Duration           : 00:00:00.0461769
+
+Id                 : 45
+CommandLine        : get-history -Count 1000 | format-list commandline
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:30:46 AM
+EndExecutionTime   : 9/27/2024 9:30:46 AM
+Duration           : 00:00:00.0412531
+
+Id                 : 46
+CommandLine        : get-history -Count 1000
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:50:16 AM
+EndExecutionTime   : 9/27/2024 9:50:16 AM
+Duration           : 00:00:00.0267126
+
+Id                 : 47
+CommandLine        : get-history -Count 1000 | $1
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:50:32 AM
+EndExecutionTime   : 9/27/2024 9:50:32 AM
+Duration           : 00:00:00.0002195
+
+Id                 : 48
+CommandLine        : get-history -Count 1000 | @1
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:50:37 AM
+EndExecutionTime   : 9/27/2024 9:50:37 AM
+Duration           : 00:00:00.0002731
+
+Id                 : 49
+CommandLine        : get-history -Count 1000 | @{ $1 }
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:50:48 AM
+EndExecutionTime   : 9/27/2024 9:50:48 AM
+Duration           : 00:00:00.0002793
+
+Id                 : 50
+CommandLine        : get-history -Count 1000 | @{ $_ }
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:50:53 AM
+EndExecutionTime   : 9/27/2024 9:50:53 AM
+Duration           : 00:00:00.0002179
+
+Id                 : 51
+CommandLine        : get-history -Count 1000 | Format-Wide -Column 2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:02:24 AM
+EndExecutionTime   : 9/27/2024 10:02:24 AM
+Duration           : 00:00:00.0279732
+
+Id                 : 52
+CommandLine        : get-history -Count 1000 | Format-Wide -Column 2 > file.txt
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:02:53 AM
+EndExecutionTime   : 9/27/2024 10:02:53 AM
+Duration           : 00:00:00.0223689
+
+Id                 : 53
+CommandLine        : type file.txt
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:02:58 AM
+EndExecutionTime   : 9/27/2024 10:02:58 AM
+Duration           : 00:00:00.0225486
+
+Id                 : 54
+CommandLine        : rename-item file.txt ps-commands.txt
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:03:38 AM
+EndExecutionTime   : 9/27/2024 10:03:38 AM
+Duration           : 00:00:00.0156485
+
+Id                 : 55
+CommandLine        : cat
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 10:04:53 AM
+EndExecutionTime   : 9/27/2024 10:04:57 AM
+Duration           : 00:00:03.4053393
+
+Id                 : 56
+CommandLine        : Get-Content .\www\notes\ps-commands.txt
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:05:15 AM
+EndExecutionTime   : 9/27/2024 10:05:15 AM
+Duration           : 00:00:00.0294604
+
+Id                 : 57
+CommandLine        : Get-Content .\www\notes\ps-commands.txt | Get-Counter
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 10:05:31 AM
+EndExecutionTime   : 9/27/2024 10:05:33 AM
+Duration           : 00:00:02.3565091
+
+Id                 : 58
+CommandLine        : Get-Content .\www\notes\ps-commands.txt -ReadCount
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:05:56 AM
+EndExecutionTime   : 9/27/2024 10:05:56 AM
+Duration           : 00:00:00.0574851
+
+Id                 : 59
+CommandLine        : Get-Content .\www\notes\ps-commands.txt -TotalCount
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:06:29 AM
+EndExecutionTime   : 9/27/2024 10:06:29 AM
+Duration           : 00:00:00.0307914
+
+Id                 : 60
+CommandLine        : Get-Content .\www\notes\ps-commands.txt -Verbose
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:06:39 AM
+EndExecutionTime   : 9/27/2024 10:06:39 AM
+Duration           : 00:00:00.0285039
+
+Id                 : 61
+CommandLine        : Measure-Object -Line .\www\notes\ps-commands.txt -Verbose
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:08:03 AM
+EndExecutionTime   : 9/27/2024 10:08:03 AM
+Duration           : 00:00:00.0225978
+
+Id                 : 62
+CommandLine        : Measure-Object -Line .\www\notes\ps-commands.txt
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:08:07 AM
+EndExecutionTime   : 9/27/2024 10:08:07 AM
+Duration           : 00:00:00.0144900
+
+Id                 : 63
+CommandLine        : Measure-Object -Line .\www\notes\ps-commands.txt -Verbose
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:08:23 AM
+EndExecutionTime   : 9/27/2024 10:08:23 AM
+Duration           : 00:00:00.0022857
+
+Id                 : 64
+CommandLine        : Get-Content .\www\notes\ps-commands.txt | measure-object -Character -Line -Word
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:09:41 AM
+EndExecutionTime   : 9/27/2024 10:09:41 AM
+Duration           : 00:00:00.0251339
+
+Id                 : 65
+CommandLine        : Get-Content .\www\notes\ps-commands.txt | measure-object -Character -Line -Word
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:11:55 AM
+EndExecutionTime   : 9/27/2024 10:11:55 AM
+Duration           : 00:00:00.0049570
+
+Id                 : 66
+CommandLine        : $vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:29:00 AM
+EndExecutionTime   : 9/27/2024 10:29:00 AM
+Duration           : 00:00:00.0202734
+
+Id                 : 67
+CommandLine        : $rg
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:29:06 AM
+EndExecutionTime   : 9/27/2024 10:29:06 AM
+Duration           : 00:00:00.0095182
+
+Id                 : 68
+CommandLine        : $sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:29:13 AM
+EndExecutionTime   : 9/27/2024 10:29:13 AM
+Duration           : 00:00:00.0135833
+
+Id                 : 69
+CommandLine        : get-azVirtualNetwork 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:29:47 AM
+EndExecutionTime   : 9/27/2024 10:29:48 AM
+Duration           : 00:00:01.1517586
+
+Id                 : 70
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:30:55 AM
+EndExecutionTime   : 9/27/2024 10:30:55 AM
+Duration           : 00:00:00.0181918
+
+Id                 : 71
+CommandLine        : $subnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:31:38 AM
+EndExecutionTime   : 9/27/2024 10:31:38 AM
+Duration           : 00:00:00.0134393
+
+Id                 : 72
+CommandLine        : $sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:31:40 AM
+EndExecutionTime   : 9/27/2024 10:31:40 AM
+Duration           : 00:00:00.0033441
+
+Id                 : 73
+CommandLine        : $sn.name
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:33:07 AM
+EndExecutionTime   : 9/27/2024 10:33:07 AM
+Duration           : 00:00:00.0175340
+
+Id                 : 74
+CommandLine        : $sn = @{ name = $sn.name; addressprefix = $sn.addressprefix; virtualnetwork = $virtualnetwork }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:34:08 AM
+EndExecutionTime   : 9/27/2024 10:34:08 AM
+Duration           : 00:00:00.0155104
+
+Id                 : 75
+CommandLine        : $sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:34:11 AM
+EndExecutionTime   : 9/27/2024 10:34:11 AM
+Duration           : 00:00:00.0087934
+
+Id                 : 76
+CommandLine        : $subnetConfig = Add-AzVirtualNetworkSubnetConfig @sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:35:05 AM
+EndExecutionTime   : 9/27/2024 10:35:05 AM
+Duration           : 00:00:00.0791025
+
+Id                 : 77
+CommandLine        : $virtualnetwork | set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:35:32 AM
+EndExecutionTime   : 9/27/2024 10:35:39 AM
+Duration           : 00:00:06.8264469
+
+Id                 : 78
+CommandLine        : Get-AzResourceGroup -name jroll_az104_rg01 -Verbose
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:39:39 AM
+EndExecutionTime   : 9/27/2024 10:39:40 AM
+Duration           : 00:00:00.3264869
+
+Id                 : 79
+CommandLine        : Get-AzResourceGroupDeployment
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:41:08 AM
+EndExecutionTime   : 9/27/2024 10:41:35 AM
+Duration           : 00:00:27.2277355
+
+Id                 : 80
+CommandLine        : Get-AzResourceGroupDeployment -name jroll_az104_rg01 -Verbose
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 10:41:55 AM
+EndExecutionTime   : 9/27/2024 10:42:01 AM
+Duration           : 00:00:06.0568316
+
+Id                 : 81
+CommandLine        : Get-AzResourceGroupDeployment -ResourceGroupName jroll_az104_rg01 -Verbose
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:42:13 AM
+EndExecutionTime   : 9/27/2024 10:42:13 AM
+Duration           : 00:00:00.5110935
+
+Id                 : 82
+CommandLine        : Get-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:49:28 AM
+EndExecutionTime   : 9/27/2024 10:49:28 AM
+Duration           : 00:00:00.6596421
+
+Id                 : 83
+CommandLine        : Get-AzVirtualNetwork -name jroll_az104_vnet01 -Verbose
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:49:47 AM
+EndExecutionTime   : 9/27/2024 10:49:47 AM
+Duration           : 00:00:00.4533805
+
+Id                 : 84
+CommandLine        : Get-AzVirtualNetwork -name jroll_az104_vnet01 -ExpandResource
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:50:09 AM
+EndExecutionTime   : 9/27/2024 10:50:09 AM
+Duration           : 00:00:00.0390861
+
+Id                 : 85
+CommandLine        : $rg
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:50:56 AM
+EndExecutionTime   : 9/27/2024 10:50:56 AM
+Duration           : 00:00:00.0076945
+
+Id                 : 86
+CommandLine        : Get-AzVirtualNetwork -name jroll_az104_vnet01 -ResourceGroupName $rg.name
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:51:15 AM
+EndExecutionTime   : 9/27/2024 10:51:15 AM
+Duration           : 00:00:00.4443773
+
+Id                 : 87
+CommandLine        : Get-AzVirtualNetwork -name jroll_az104_vnet01 | Format-Wide
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:52:33 AM
+EndExecutionTime   : 9/27/2024 10:52:33 AM
+Duration           : 00:00:00.4088271
+
+Id                 : 88
+CommandLine        : Get-AzVirtualNetwork -name jroll_az104_vnet01 | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:52:43 AM
+EndExecutionTime   : 9/27/2024 10:52:44 AM
+Duration           : 00:00:00.5284288
+
+Id                 : 89
+CommandLine        : $rsrc = get-azresource -ResourceId /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jrol 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:56:50 AM
+EndExecutionTime   : 9/27/2024 10:56:51 AM
+Duration           : 00:00:00.1351848
+
+Id                 : 90
+CommandLine        :                              l_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vn 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:56:51 AM
+EndExecutionTime   : 9/27/2024 10:56:51 AM
+Duration           : 00:00:00.1284536
+
+Id                 : 91
+CommandLine        : $rsrc = get-azresource -ResourceId '/subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_vnet01' 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:36 AM
+EndExecutionTime   : 9/27/2024 10:57:36 AM
+Duration           : 00:00:00.1132755
+
+Id                 : 92
+CommandLine        : $rsrc = get-azresource -ResourceId /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:58:06 AM
+EndExecutionTime   : 9/27/2024 10:58:06 AM
+Duration           : 00:00:00.1293432
+
+Id                 : 93
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:00:30 AM
+EndExecutionTime   : 9/27/2024 11:00:31 AM
+Duration           : 00:00:01.0120068
+
+Id                 : 94
+CommandLine        : $rsrc = get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:01:01 AM
+EndExecutionTime   : 9/27/2024 11:01:02 AM
+Duration           : 00:00:00.9103141
+
+Id                 : 95
+CommandLine        : $rsrcId = '/subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:01:51 AM
+EndExecutionTime   : 9/27/2024 11:01:51 AM
+Duration           : 00:00:00.0222386
+
+Id                 : 96
+CommandLine        : $rsrcId
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:02:37 AM
+EndExecutionTime   : 9/27/2024 11:02:37 AM
+Duration           : 00:00:00.0156755
+
+Id                 : 97
+CommandLine        : $tags = @{'Scope'='Dev'; 'Users'='jroll@kforce.com'}
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:03:45 AM
+EndExecutionTime   : 9/27/2024 11:03:45 AM
+Duration           : 00:00:00.0264131
+
+Id                 : 98
+CommandLine        : $tags = @{'Scope'='Dev'; 'Users'='jroll@kforce.com,'}
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:03:53 AM
+EndExecutionTime   : 9/27/2024 11:03:53 AM
+Duration           : 00:00:00.0123713
+
+Id                 : 99
+CommandLine        : get-aztag -ResourceId $rsrcId
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:05:04 AM
+EndExecutionTime   : 9/27/2024 11:05:05 AM
+Duration           : 00:00:00.4420699
+
+Id                 : 100
+CommandLine        : update-aztag -ResourceId $rsrcId -tag $tags -Operation merge
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:05:53 AM
+EndExecutionTime   : 9/27/2024 11:05:55 AM
+Duration           : 00:00:01.5246943
+
+Id                 : 101
+CommandLine        : get-azresource -name * -Tag '*jroll*'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:06:56 AM
+EndExecutionTime   : 9/27/2024 11:06:56 AM
+Duration           : 00:00:00.0365421
+
+Id                 : 102
+CommandLine        : get-azresource -name * -TagValue 'jroll'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:07:22 AM
+EndExecutionTime   : 9/27/2024 11:07:22 AM
+Duration           : 00:00:00.4903824
+
+Id                 : 103
+CommandLine        : @rsrcs = get-azresource -name * -TagValue 'jroll'
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 11:09:04 AM
+EndExecutionTime   : 9/27/2024 11:09:04 AM
+Duration           : 00:00:00.0002859
+
+Id                 : 104
+CommandLine        : $rsrcs = get-azresource -name * -TagValue 'jroll'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:09:16 AM
+EndExecutionTime   : 9/27/2024 11:09:16 AM
+Duration           : 00:00:00.5561675
+
+Id                 : 105
+CommandLine        : $rsrcs
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:09:20 AM
+EndExecutionTime   : 9/27/2024 11:09:20 AM
+Duration           : 00:00:00.0206384
+
+Id                 : 106
+CommandLine        : $rsrcs[1]
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:09:27 AM
+EndExecutionTime   : 9/27/2024 11:09:27 AM
+Duration           : 00:00:00.0180181
+
+Id                 : 107
+CommandLine        : $rsrcs[1].resourceid
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:09:34 AM
+EndExecutionTime   : 9/27/2024 11:09:34 AM
+Duration           : 00:00:00.0184691
+
+Id                 : 108
+CommandLine        : update-aztag -ResourceId $rsrcs[1].resourceid -tag $tags -Operation merge
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:11:07 AM
+EndExecutionTime   : 9/27/2024 11:11:08 AM
+Duration           : 00:00:01.0222837
+
+Id                 : 109
+CommandLine        : update-aztag -ResourceId $rsrcs[0].resourceid -tag $tags -Operation merge
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:11:22 AM
+EndExecutionTime   : 9/27/2024 11:11:23 AM
+Duration           : 00:00:01.3787482
+
+Id                 : 110
+CommandLine        : get-azresource -name * -TagValue 'jroll'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:11:52 AM
+EndExecutionTime   : 9/27/2024 11:11:53 AM
+Duration           : 00:00:00.4260000
+
+Id                 : 111
+CommandLine        : $sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:13:20 AM
+EndExecutionTime   : 9/27/2024 11:13:20 AM
+Duration           : 00:00:00.0034145
+
+Id                 : 112
+CommandLine        : $sn | format-table -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:13:39 AM
+EndExecutionTime   : 9/27/2024 11:13:39 AM
+Duration           : 00:00:00.0210189
+
+Id                 : 113
+CommandLine        : $sn | Format-Wide -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:13:48 AM
+EndExecutionTime   : 9/27/2024 11:13:48 AM
+Duration           : 00:00:00.0173604
+
+Id                 : 114
+CommandLine        : $sn | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:13:59 AM
+EndExecutionTime   : 9/27/2024 11:13:59 AM
+Duration           : 00:00:00.0188931
+
+Id                 : 115
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:14:38 AM
+EndExecutionTime   : 9/27/2024 11:14:38 AM
+Duration           : 00:00:00.0046018
+
+Id                 : 116
+CommandLine        : $virtualnetwork | Format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:14:49 AM
+EndExecutionTime   : 9/27/2024 11:14:50 AM
+Duration           : 00:00:00.0327026
+
+Id                 : 117
+CommandLine        : $sn2 = @{ name = 'AzureBastionSubnet'; virtualnetwork = $virtualnetwork; addressprefix = '10.0.1.0/26' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:16:14 AM
+EndExecutionTime   : 9/27/2024 11:16:14 AM
+Duration           : 00:00:00.0151098
+
+Id                 : 118
+CommandLine        : $subnetConfig = Add-AzVirtualNetworkSubnetConfig @sn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:16:40 AM
+EndExecutionTime   : 9/27/2024 11:16:40 AM
+Duration           : 00:00:00.0761461
+
+Id                 : 119
+CommandLine        : $virtualnetwork | set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:19:20 AM
+EndExecutionTime   : 9/27/2024 11:19:26 AM
+Duration           : 00:00:05.6215637
+
+Id                 : 120
+CommandLine        : $virtualnetwork | Format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:19:38 AM
+EndExecutionTime   : 9/27/2024 11:19:38 AM
+Duration           : 00:00:00.0189507
+
+Id                 : 121
+CommandLine        : $rg
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:20:46 AM
+EndExecutionTime   : 9/27/2024 11:20:46 AM
+Duration           : 00:00:00.0055948
+
+Id                 : 122
+CommandLine        : $rg | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:20:53 AM
+EndExecutionTime   : 9/27/2024 11:20:53 AM
+Duration           : 00:00:00.0191186
+
+Id                 : 123
+CommandLine        : $ip = @{ resourcegroupname = $rg.name; name = 'jroll_az104_vnet01_pubIp01'; allocationmethod = 'static'; sku = 'standard'; zone = 1,2,3; tags = @{ 'Scope'='Dev'; 'Users'='jroll@kforce.com,' } }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:23:49 AM
+EndExecutionTime   : 9/27/2024 11:23:49 AM
+Duration           : 00:00:00.0310797
+
+Id                 : 124
+CommandLine        : $ip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:23:52 AM
+EndExecutionTime   : 9/27/2024 11:23:52 AM
+Duration           : 00:00:00.0115937
+
+Id                 : 125
+CommandLine        : New-AzPublicIpAddress @ip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:24:45 AM
+EndExecutionTime   : 9/27/2024 11:24:45 AM
+Duration           : 00:00:00.0516823
+
+Id                 : 126
+CommandLine        : $ip = @{ resourcegroupname = $rg.name; name = 'jroll_az104_vnet01_pubIp01'; allocationmethod = 'static'; sku = 'standard'; zone = 1,2,3; Tag = @{ 'Scope'='Dev'; 'Users'='jroll@kforce.com,' } }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:25:15 AM
+EndExecutionTime   : 9/27/2024 11:25:15 AM
+Duration           : 00:00:00.0158527
+
+Id                 : 127
+CommandLine        : New-AzPublicIpAddress @ip
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 11:25:17 AM
+EndExecutionTime   : 9/27/2024 11:25:20 AM
+Duration           : 00:00:02.3985915
+
+Id                 : 128
+CommandLine        : $ip = @{ resourcegroupname = $rg.name; name = 'jroll_az104_vnet01_pubIp01'; allocationmethod = 'static'; sku = 'standard'; zone = 1,2,3; Tag = @{ 'Scope'='Dev'; 'Users'='jroll@kforce.com,' }; location='northcentralus' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:26:00 AM
+EndExecutionTime   : 9/27/2024 11:26:00 AM
+Duration           : 00:00:00.0135288
+
+Id                 : 129
+CommandLine        : New-AzPublicIpAddress @ip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:26:03 AM
+EndExecutionTime   : 9/27/2024 11:26:04 AM
+Duration           : 00:00:00.8270256
+
+Id                 : 130
+CommandLine        : $ip = @{ resourcegroupname = $rg.name; name = 'jroll_az104_vnet01_pubIp01'; allocationmethod = 'static'; sku = 'standard'; zone = 1,2,3; Tag = @{ 'Scope'='Dev'; 'Users'='jroll@kforce.com,' }; location='centralus' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:26:49 AM
+EndExecutionTime   : 9/27/2024 11:26:49 AM
+Duration           : 00:00:00.0148332
+
+Id                 : 131
+CommandLine        : New-AzPublicIpAddress @ip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:26:53 AM
+EndExecutionTime   : 9/27/2024 11:26:56 AM
+Duration           : 00:00:03.1659043
+
+Id                 : 132
+CommandLine        : ping 172.169.89.43
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 11:27:23 AM
+EndExecutionTime   : 9/27/2024 11:27:25 AM
+Duration           : 00:00:01.7757463
+
+Id                 : 133
+CommandLine        : $rg | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:27:48 AM
+EndExecutionTime   : 9/27/2024 11:27:48 AM
+Duration           : 00:00:00.0045252
+
+Id                 : 134
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:28:21 AM
+EndExecutionTime   : 9/27/2024 11:28:22 AM
+Duration           : 00:00:00.8559133
+
+Id                 : 135
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01 | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:28:50 AM
+EndExecutionTime   : 9/27/2024 11:28:51 AM
+Duration           : 00:00:00.7683479
+
+Id                 : 136
+CommandLine        : get-history -Count 1000
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:29:52 AM
+EndExecutionTime   : 9/27/2024 11:29:52 AM
+Duration           : 00:00:00.0874924
+
+Id                 : 137
+CommandLine        : $tags
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:30:26 AM
+EndExecutionTime   : 9/27/2024 11:30:26 AM
+Duration           : 00:00:00.0153940
+
+Id                 : 138
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01 | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:30:44 AM
+EndExecutionTime   : 9/27/2024 11:30:44 AM
+Duration           : 00:00:00.8679670
+
+Id                 : 139
+CommandLine        : update-aztag -ResourceId /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01 -tag $tags -Operation merge
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:32:00 AM
+EndExecutionTime   : 9/27/2024 11:32:02 AM
+Duration           : 00:00:01.8357565
+
+Id                 : 140
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01 | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:32:08 AM
+EndExecutionTime   : 9/27/2024 11:32:09 AM
+Duration           : 00:00:00.9462736
+
+Id                 : 141
+CommandLine        : get-azvirtualNetwork -name jroll_az104_vnet01 | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:32:58 AM
+EndExecutionTime   : 9/27/2024 11:32:58 AM
+Duration           : 00:00:00.4924574
+
+Id                 : 142
+CommandLine        : $bastion = @{ name = 'jroll_az104_vnet01_bastion01'; resourcegroupname = $rg.name; publicipaddressrgname = $rg.name; publicipaddressname = $ip.name; virtualnetworkrgname = $rg.name; virtualnetworkname = $virtualnetwork.Name; sku = 'basic' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:38:26 AM
+EndExecutionTime   : 9/27/2024 11:38:26 AM
+Duration           : 00:00:00.0143071
+
+Id                 : 143
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:38:36 AM
+EndExecutionTime   : 9/27/2024 11:38:36 AM
+Duration           : 00:00:00.0162523
+
+Id                 : 144
+CommandLine        : New-AzBastion @bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:38:55 AM
+EndExecutionTime   : 9/27/2024 11:38:55 AM
+Duration           : 00:00:00.0399965
+
+Id                 : 145
+CommandLine        : $bastion = @{ name = 'jroll_az104_vnet01_bastion01'; resourcegroupname = $rg.name; publicipaddressrgname = $rg.name; publicipaddressname = $ip.name; virtualnetworkrgname = $rg.name; virtualnetworkname = $virtualnetwork.Name; sku = 'Basic' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:39:10 AM
+EndExecutionTime   : 9/27/2024 11:39:10 AM
+Duration           : 00:00:00.0147520
+
+Id                 : 146
+CommandLine        : New-AzBastion @bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:39:13 AM
+EndExecutionTime   : 9/27/2024 11:39:16 AM
+Duration           : 00:00:03.0094361
+
+Id                 : 147
+CommandLine        : $ip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:40:26 AM
+EndExecutionTime   : 9/27/2024 11:40:26 AM
+Duration           : 00:00:00.0096407
+
+Id                 : 148
+CommandLine        : get-azvirtualNetwork -name jroll_az104_vnet01 | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:40:59 AM
+EndExecutionTime   : 9/27/2024 11:41:00 AM
+Duration           : 00:00:00.5026521
+
+Id                 : 149
+CommandLine        : Get-AzPublicIpAddress
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:42:03 AM
+EndExecutionTime   : 9/27/2024 11:42:03 AM
+Duration           : 00:00:00.4999936
+
+Id                 : 150
+CommandLine        : Get-AzPublicIpAddress -Name jroll_az104_vnet01_pubIp01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:42:18 AM
+EndExecutionTime   : 9/27/2024 11:42:19 AM
+Duration           : 00:00:00.4573095
+
+Id                 : 151
+CommandLine        : Get-AzPublicIpAddress -Name jroll_az104_vnet01_pubIp01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:42:27 AM
+EndExecutionTime   : 9/27/2024 11:42:27 AM
+Duration           : 00:00:00.3928561
+
+Id                 : 152
+CommandLine        : New-AzBastion @bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:43:40 AM
+EndExecutionTime   : 9/27/2024 11:43:42 AM
+Duration           : 00:00:01.9126362
+
+Id                 : 153
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 11:44:56 AM
+EndExecutionTime   : 9/27/2024 11:44:56 AM
+Duration           : 00:00:00.0045086
+
+Id                 : 154
+CommandLine        : $ip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:07:50 PM
+EndExecutionTime   : 9/27/2024 1:07:50 PM
+Duration           : 00:00:00.0058016
+
+Id                 : 155
+CommandLine        : $ip | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:08:11 PM
+EndExecutionTime   : 9/27/2024 1:08:11 PM
+Duration           : 00:00:00.0234489
+
+Id                 : 156
+CommandLine        : Get-AzPublicIpAddress -Name jroll_az104_vnet01_pubIp01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:08:40 PM
+EndExecutionTime   : 9/27/2024 1:08:41 PM
+Duration           : 00:00:00.9978402
+
+Id                 : 157
+CommandLine        : get-azvirtualNetwork -name jroll_az104_vnet01 | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:09:58 PM
+EndExecutionTime   : 9/27/2024 1:09:58 PM
+Duration           : 00:00:00.6891256
+
+Id                 : 158
+CommandLine        : Get-AzPublicIpAddress -Name jroll_az104_vnet01_pubIp01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:14:10 PM
+EndExecutionTime   : 9/27/2024 1:14:11 PM
+Duration           : 00:00:00.4923870
+
+Id                 : 159
+CommandLine        : h
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:49:25 PM
+EndExecutionTime   : 9/27/2024 1:49:25 PM
+Duration           : 00:00:00.0855105
+
+Id                 : 160
+CommandLine        : $ip | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:52:40 PM
+EndExecutionTime   : 9/27/2024 1:52:40 PM
+Duration           : 00:00:00.0114082
+
+Id                 : 161
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:53:10 PM
+EndExecutionTime   : 9/27/2024 1:53:10 PM
+Duration           : 00:00:00.0043129
+
+Id                 : 162
+CommandLine        : Get-AzBastion | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:53:37 PM
+EndExecutionTime   : 9/27/2024 1:53:38 PM
+Duration           : 00:00:00.4937465
+
+Id                 : 163
+CommandLine        : Get-AzBastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:53:50 PM
+EndExecutionTime   : 9/27/2024 1:53:51 PM
+Duration           : 00:00:00.6307370
+
+Id                 : 164
+CommandLine        : h
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:54:02 PM
+EndExecutionTime   : 9/27/2024 1:54:02 PM
+Duration           : 00:00:00.0588846
+
+Id                 : 165
+CommandLine        : Get-AzResourceGroup
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 1:56:09 PM
+EndExecutionTime   : 9/27/2024 1:56:09 PM
+Duration           : 00:00:00.4394902
+
+Id                 : 166
+CommandLine        : h
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 2:55:58 PM
+EndExecutionTime   : 9/27/2024 2:55:58 PM
+Duration           : 00:00:00.0640159
+
+Id                 : 167
+CommandLine        : $rg
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:01:09 PM
+EndExecutionTime   : 9/27/2024 3:01:09 PM
+Duration           : 00:00:00.0052475
+
+Id                 : 168
+CommandLine        : $rg | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:01:29 PM
+EndExecutionTime   : 9/27/2024 3:01:29 PM
+Duration           : 00:00:00.0046519
+
+Id                 : 169
+CommandLine        : $rg2 = @{ name = 'jroll_az104_rg02'; location = 'centralus'; Tag = @{ Scope='Dev'; Users='jroll@kforce.com,' }
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:03:14 PM
+EndExecutionTime   : 9/27/2024 3:03:14 PM
+Duration           : 00:00:00.0177737
+
+Id                 : 170
+CommandLine        : $rg2 | New-AzResourceGroup
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:03:55 PM
+EndExecutionTime   : 9/27/2024 3:03:55 PM
+Duration           : 00:00:00.1119418
+
+Id                 : 171
+CommandLine        : $rg2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:04:05 PM
+EndExecutionTime   : 9/27/2024 3:04:05 PM
+Duration           : 00:00:00.0213886
+
+Id                 : 172
+CommandLine        : new-azresourceGroup $rg2
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 3:04:40 PM
+EndExecutionTime   : 9/27/2024 3:04:42 PM
+Duration           : 00:00:01.9180464
+
+Id                 : 173
+CommandLine        : new-azresourceGroup @rg2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:04:49 PM
+EndExecutionTime   : 9/27/2024 3:04:50 PM
+Duration           : 00:00:01.6224456
+
+Id                 : 174
+CommandLine        : @bastion
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 3:05:33 PM
+EndExecutionTime   : 9/27/2024 3:05:33 PM
+Duration           : 00:00:00.0001730
+
+Id                 : 175
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:05:39 PM
+EndExecutionTime   : 9/27/2024 3:05:39 PM
+Duration           : 00:00:00.0095445
+
+Id                 : 176
+CommandLine        : $ip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:11:09 PM
+EndExecutionTime   : 9/27/2024 3:11:09 PM
+Duration           : 00:00:00.0054778
+
+Id                 : 177
+CommandLine        : Get-AzPublicIpAddress
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:11:47 PM
+EndExecutionTime   : 9/27/2024 3:11:47 PM
+Duration           : 00:00:00.5940112
+
+Id                 : 178
+CommandLine        : get-verb publicip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:12:44 PM
+EndExecutionTime   : 9/27/2024 3:12:44 PM
+Duration           : 00:00:00.0155030
+
+Id                 : 179
+CommandLine        : get-verb
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:12:51 PM
+EndExecutionTime   : 9/27/2024 3:12:51 PM
+Duration           : 00:00:00.0506846
+
+Id                 : 180
+CommandLine        : $ip
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:15:57 PM
+EndExecutionTime   : 9/27/2024 3:15:57 PM
+Duration           : 00:00:00.0052561
+
+Id                 : 181
+CommandLine        : $ip | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:16:17 PM
+EndExecutionTime   : 9/27/2024 3:16:17 PM
+Duration           : 00:00:00.0123385
+
+Id                 : 182
+CommandLine        : get-azPublicIpAddress -Name jroll_az104_vnet01_pubIp01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:16:28 PM
+EndExecutionTime   : 9/27/2024 3:16:29 PM
+Duration           : 00:00:00.4977733
+
+Id                 : 183
+CommandLine        : get-azPublicIpAddress -Name jroll_az104_vnet01_pubIp01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:16:35 PM
+EndExecutionTime   : 9/27/2024 3:16:36 PM
+Duration           : 00:00:00.4530405
+
+Id                 : 184
+CommandLine        : Move-AzResource -DestinationResourceGroupName jroll_az104_rg02 -ResourceId /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/publicIP 
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 3:18:43 PM
+EndExecutionTime   : 9/27/2024 3:18:55 PM
+Duration           : 00:00:11.6447527
+
+Id                 : 185
+CommandLine        : Move-AzResource -DestinationResourceGroupName jroll_az104_rg02 -ResourceId /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/publicIP/Addresses/jroll_az104_vnet01_pubIp01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:19:31 PM
+EndExecutionTime   : 9/27/2024 3:19:44 PM
+Duration           : 00:00:13.0419685
+
+Id                 : 186
+CommandLine        : $rg
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:20:11 PM
+EndExecutionTime   : 9/27/2024 3:20:11 PM
+Duration           : 00:00:00.0034609
+
+Id                 : 187
+CommandLine        : $rg | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:20:16 PM
+EndExecutionTime   : 9/27/2024 3:20:16 PM
+Duration           : 00:00:00.0134155
+
+Id                 : 188
+CommandLine        : get-azPublicIpAddress -Name jroll_az104_vnet01_pubIp01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:20:28 PM
+EndExecutionTime   : 9/27/2024 3:20:28 PM
+Duration           : 00:00:00.3977442
+
+Id                 : 189
+CommandLine        : Move-AzResource -DestinationResourceGroupName 'jroll_az104_rg02' -ResourceId '/subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/publicIPAddresses/jroll_az104_vnet01_pubIp01'
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 3:21:41 PM
+EndExecutionTime   : 9/27/2024 3:23:55 PM
+Duration           : 00:02:13.9770762
+
+Id                 : 190
+CommandLine        : Move-AzResource -DestinationResourceGroupName jroll_az104_rg02 -ResourceId /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/publicIPAddresses/jroll_az104_vnet01_pubIp01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:24:15 PM
+EndExecutionTime   : 9/27/2024 3:24:17 PM
+Duration           : 00:00:01.8526409
+
+Id                 : 191
+CommandLine        : Get-Process
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:24:44 PM
+EndExecutionTime   : 9/27/2024 3:24:44 PM
+Duration           : 00:00:00.2969714
+
+Id                 : 192
+CommandLine        : Get-AzSystemAssignedIdentity
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:24:59 PM
+EndExecutionTime   : 9/27/2024 3:25:05 PM
+Duration           : 00:00:05.7983993
+
+Id                 : 193
+CommandLine        : get-azPublicIpAddress -Name jroll_az104_vnet01_pubIp01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:27:42 PM
+EndExecutionTime   : 9/27/2024 3:27:43 PM
+Duration           : 00:00:00.4774170
+
+Id                 : 194
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:28:27 PM
+EndExecutionTime   : 9/27/2024 3:28:27 PM
+Duration           : 00:00:00.0077693
+
+Id                 : 195
+CommandLine        : $bastion = @{ name = 'jroll_az104_vnet01_bastion01'; resourcegroupname = $rg2.name; publicipaddressrgname = $rg2.name; publicipaddressname = $ip.name; virtualnetworkrgname = $rg.name; virtualnetworkname = $virtualnetwork.Name; sku = 'Basic' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:29:28 PM
+EndExecutionTime   : 9/27/2024 3:29:28 PM
+Duration           : 00:00:00.0178114
+
+Id                 : 196
+CommandLine        : $bastion = @{ name = 'jroll_az104_vnet01_bastion01'; resourcegroupname = $rg2.name; publicipaddressrgname = $rg2.name; publicipaddressname = $ip.name; virtualnetworkrgname = $rg.name; virtualnetworkname = $virtualnetwork.Name; sku = 'Basic'; Tag = @{ Scope = 'Dev'; Users = 'jroll@kforce.com,' } }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:30:52 PM
+EndExecutionTime   : 9/27/2024 3:30:52 PM
+Duration           : 00:00:00.0136443
+
+Id                 : 197
+CommandLine        : cls
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:31:41 PM
+EndExecutionTime   : 9/27/2024 3:31:41 PM
+Duration           : 00:00:00.0370031
+
+Id                 : 198
+CommandLine        : h
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:31:49 PM
+EndExecutionTime   : 9/27/2024 3:31:49 PM
+Duration           : 00:00:00.1216251
+
+Id                 : 199
+CommandLine        : New-AzBastion @bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:32:44 PM
+EndExecutionTime   : 9/27/2024 3:32:46 PM
+Duration           : 00:00:01.9846198
+
+Id                 : 200
+CommandLine        : get-azPublicIpAddress -Name jroll_az104_vnet01_pubIp01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:33:49 PM
+EndExecutionTime   : 9/27/2024 3:33:50 PM
+Duration           : 00:00:00.4649879
+
+Id                 : 201
+CommandLine        : $rg2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:34:08 PM
+EndExecutionTime   : 9/27/2024 3:34:08 PM
+Duration           : 00:00:00.0034309
+
+Id                 : 202
+CommandLine        : $baston
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:34:32 PM
+EndExecutionTime   : 9/27/2024 3:34:32 PM
+Duration           : 00:00:00.0136956
+
+Id                 : 203
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:34:35 PM
+EndExecutionTime   : 9/27/2024 3:34:35 PM
+Duration           : 00:00:00.0046309
+
+Id                 : 204
+CommandLine        : $virtualnetwork | Format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:37:25 PM
+EndExecutionTime   : 9/27/2024 3:37:25 PM
+Duration           : 00:00:00.0204747
+
+Id                 : 205
+CommandLine        : move-AzResource -DestinationResourceGroupName jroll_az104_rg02 -ResourceId /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:38:51 PM
+EndExecutionTime   : 9/27/2024 3:43:33 PM
+Duration           : 00:04:41.7782134
+
+Id                 : 206
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:45:52 PM
+EndExecutionTime   : 9/27/2024 3:45:52 PM
+Duration           : 00:00:00.0064256
+
+Id                 : 207
+CommandLine        : $bastion = @{ name = 'jroll_az104_vnet01_bastion01'; resourcegroupname = $rg2.name; publicipaddressrgname = $rg2.name; publicipaddressname = $ip.name; virtualnetworkrgname = $rg2.name; virtualnetworkname = $virtualnetwork.Name; sku = 'Basic'; Tag = @{ Scope = 'Dev'; Users = 'jroll@kforce.com,' } }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:47:09 PM
+EndExecutionTime   : 9/27/2024 3:47:09 PM
+Duration           : 00:00:00.0135404
+
+Id                 : 208
+CommandLine        : new-azbastion @bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:47:23 PM
+EndExecutionTime   : 9/27/2024 3:47:25 PM
+Duration           : 00:00:01.8955890
+
+Id                 : 209
+CommandLine        : get-azPublicIpAddress -Name jroll_az104_vnet01_pubIp01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:48:42 PM
+EndExecutionTime   : 9/27/2024 3:48:43 PM
+Duration           : 00:00:00.4955945
+
+Id                 : 210
+CommandLine        : Get-AzVirtualNetwork -Name jroll_az104_vnet01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:49:31 PM
+EndExecutionTime   : 9/27/2024 3:49:32 PM
+Duration           : 00:00:00.4530447
+
+Id                 : 211
+CommandLine        : get-verb virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:51:41 PM
+EndExecutionTime   : 9/27/2024 3:51:41 PM
+Duration           : 00:00:00.0143313
+
+Id                 : 212
+CommandLine        : get-verb move
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:51:50 PM
+EndExecutionTime   : 9/27/2024 3:51:50 PM
+Duration           : 00:00:00.0248506
+
+Id                 : 213
+CommandLine        : get-verb move-az
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:52:02 PM
+EndExecutionTime   : 9/27/2024 3:52:02 PM
+Duration           : 00:00:00.0124710
+
+Id                 : 214
+CommandLine        : $sourceVNETID = (Get-AzVirtualNetwork -Name jroll_az104_vnet01 -ResourceGroupName jroll_az104_rg02).Id
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:57:23 PM
+EndExecutionTime   : 9/27/2024 3:57:23 PM
+Duration           : 00:00:00.5795207
+
+Id                 : 215
+CommandLine        : Export-AzResourceGroup -ResourceGroupName jroll_az104_rg02 -Resource $sourceVNETID -IncludeParameterDefaultValue
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 3:58:24 PM
+EndExecutionTime   : 9/27/2024 3:58:46 PM
+Duration           : 00:00:21.7589446
+
+Id                 : 216
+CommandLine        : cd .\network\
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:03:58 PM
+EndExecutionTime   : 9/27/2024 4:03:58 PM
+Duration           : 00:00:00.0189449
+
+Id                 : 217
+CommandLine        : New-AzResourceGroupDeployment -ResourceGroupName jroll_az104_rg02 -TemplateFile .\jroll_az104_rg02.json
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:05:12 PM
+EndExecutionTime   : 9/27/2024 4:05:13 PM
+Duration           : 00:00:01.1096662
+
+Id                 : 218
+CommandLine        : Remove-AzVirtualNetwork -name jroll_az104_vnet01 -ResourceGroupName jroll_az104_rg02
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:08:39 PM
+EndExecutionTime   : 9/27/2024 4:08:51 PM
+Duration           : 00:00:12.4025807
+
+Id                 : 219
+CommandLine        : New-AzResourceGroupDeployment -ResourceGroupName jroll_az104_rg02 -TemplateFile .\jroll_az104_rg02.json
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:09:02 PM
+EndExecutionTime   : 9/27/2024 4:09:24 PM
+Duration           : 00:00:22.1934719
+
+Id                 : 220
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:42:07 PM
+EndExecutionTime   : 9/27/2024 4:42:07 PM
+Duration           : 00:00:00.0056040
+
+Id                 : 221
+CommandLine        : get-azvirtualNetwork -Name jroll_az104_vnet01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:42:38 PM
+EndExecutionTime   : 9/27/2024 4:42:40 PM
+Duration           : 00:00:01.6027511
+
+Id                 : 222
+CommandLine        : new-azbastion @bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:43:14 PM
+EndExecutionTime   : 9/27/2024 4:51:18 PM
+Duration           : 00:08:04.4779313
+
+Id                 : 223
+CommandLine        : get-azbastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:51:46 PM
+EndExecutionTime   : 9/27/2024 4:51:46 PM
+Duration           : 00:00:00.4057852
+
+Id                 : 224
+CommandLine        : get-azbastion | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:51:52 PM
+EndExecutionTime   : 9/27/2024 4:51:52 PM
+Duration           : 00:00:00.5130260
+
+Id                 : 225
+CommandLine        : $bastion
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 4:54:04 PM
+EndExecutionTime   : 9/27/2024 4:54:04 PM
+Duration           : 00:00:00.0051116
+
+Id                 : 226
+CommandLine        : $rg2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:09:31 PM
+EndExecutionTime   : 9/27/2024 5:09:31 PM
+Duration           : 00:00:00.0164585
+
+Id                 : 227
+CommandLine        : $rg
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:09:37 PM
+EndExecutionTime   : 9/27/2024 5:09:37 PM
+Duration           : 00:00:00.0047156
+
+Id                 : 228
+CommandLine        : $vm1
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:09:52 PM
+EndExecutionTime   : 9/27/2024 5:09:52 PM
+Duration           : 00:00:00.0130268
+
+Id                 : 229
+CommandLine        : $sn
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:46:19 PM
+EndExecutionTime   : 9/27/2024 5:46:19 PM
+Duration           : 00:00:00.0050335
+
+Id                 : 230
+CommandLine        : $sn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:46:22 PM
+EndExecutionTime   : 9/27/2024 5:46:22 PM
+Duration           : 00:00:00.0152042
+
+Id                 : 231
+CommandLine        : $vmsn2 = @{ name = 'jroll_az104_vnet01_subnet02'; virtualnetwork = $virtualnetwork; addressprefix = '10.0.2.0/24' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:51:04 PM
+EndExecutionTime   : 9/27/2024 5:51:04 PM
+Duration           : 00:00:00.0143907
+
+Id                 : 232
+CommandLine        : h
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:51:58 PM
+EndExecutionTime   : 9/27/2024 5:51:58 PM
+Duration           : 00:00:00.1119057
+
+Id                 : 233
+CommandLine        : Add-AzVirtualNetworkSubnetConfig @vmsn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:52:59 PM
+EndExecutionTime   : 9/27/2024 5:52:59 PM
+Duration           : 00:00:00.0773887
+
+Id                 : 234
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:53:40 PM
+EndExecutionTime   : 9/27/2024 5:53:40 PM
+Duration           : 00:00:00.0062482
+
+Id                 : 235
+CommandLine        : get-azvirtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:53:53 PM
+EndExecutionTime   : 9/27/2024 5:53:54 PM
+Duration           : 00:00:01.0278533
+
+Id                 : 236
+CommandLine        : Remove-AzVirtualNetworkSubnetConfig @vmsn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:54:43 PM
+EndExecutionTime   : 9/27/2024 5:54:43 PM
+Duration           : 00:00:00.0331760
+
+Id                 : 237
+CommandLine        : Remove-AzVirtualNetworkSubnetConfig $vmsn2.name
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:54:55 PM
+EndExecutionTime   : 9/27/2024 5:54:55 PM
+Duration           : 00:00:00.0328857
+
+Id                 : 238
+CommandLine        : Remove-AzVirtualNetworkSubnetConfig -name $vmsn2.name
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:55:06 PM
+EndExecutionTime   : 9/27/2024 5:55:28 PM
+Duration           : 00:00:22.3665906
+
+Id                 : 239
+CommandLine        : Remove-AzVirtualNetworkSubnetConfig -name $vmsn2.name -VirtualNetwork jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:55:56 PM
+EndExecutionTime   : 9/27/2024 5:55:56 PM
+Duration           : 00:00:00.0341610
+
+Id                 : 240
+CommandLine        : Remove-AzVirtualNetworkSubnetConfig -name $vmsn2.name -VirtualNetwork 'jroll_az104_vnet01'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:56:05 PM
+EndExecutionTime   : 9/27/2024 5:56:05 PM
+Duration           : 00:00:00.0324603
+
+Id                 : 241
+CommandLine        : get-azvirtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:56:12 PM
+EndExecutionTime   : 9/27/2024 5:56:12 PM
+Duration           : 00:00:00.4894819
+
+Id                 : 242
+CommandLine        : get-azvirtualnetwork -name jroll_az104_vnet01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:56:20 PM
+EndExecutionTime   : 9/27/2024 5:56:21 PM
+Duration           : 00:00:00.4637368
+
+Id                 : 243
+CommandLine        : Get-AzResourceGroup -name jroll_az104_rg01 -Verbose | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:56:56 PM
+EndExecutionTime   : 9/27/2024 5:56:56 PM
+Duration           : 00:00:00.6527370
+
+Id                 : 244
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:57:27 PM
+EndExecutionTime   : 9/27/2024 5:57:27 PM
+Duration           : 00:00:00.0049854
+
+Id                 : 245
+CommandLine        : $virtualnetwork.ResourceGroupName = 'jroll_az104_rg02'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:57:57 PM
+EndExecutionTime   : 9/27/2024 5:57:57 PM
+Duration           : 00:00:00.0142982
+
+Id                 : 246
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:58:01 PM
+EndExecutionTime   : 9/27/2024 5:58:01 PM
+Duration           : 00:00:00.0066530
+
+Id                 : 247
+CommandLine        : $virtualnetwork.location = 'centralus'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:58:14 PM
+EndExecutionTime   : 9/27/2024 5:58:14 PM
+Duration           : 00:00:00.0154518
+
+Id                 : 248
+CommandLine        : $vmsn2 = @{ name = 'jroll_az104_vnet01_subnet02'; virtualnetwork = $virtualnetwork; addressprefix = '10.0.2.0/24' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:58:39 PM
+EndExecutionTime   : 9/27/2024 5:58:39 PM
+Duration           : 00:00:00.0012060
+
+Id                 : 249
+CommandLine        : Add-AzVirtualNetworkSubnetConfig @vmsn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:58:50 PM
+EndExecutionTime   : 9/27/2024 5:58:50 PM
+Duration           : 00:00:00.0858729
+
+Id                 : 250
+CommandLine        : get-azvirtualnetworksubnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:59:02 PM
+EndExecutionTime   : 9/27/2024 5:59:02 PM
+Duration           : 00:00:00.4175544
+
+Id                 : 251
+CommandLine        : Get-AzVirtualNetworkSubnetConfig
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:59:07 PM
+EndExecutionTime   : 9/27/2024 5:59:09 PM
+Duration           : 00:00:01.5530232
+
+Id                 : 252
+CommandLine        : Get-AzVirtualNetworkSubnetConfig -VirtualNetwork 'jroll_az104_vnet01'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:59:33 PM
+EndExecutionTime   : 9/27/2024 5:59:33 PM
+Duration           : 00:00:00.0295724
+
+Id                 : 253
+CommandLine        : Get-AzVirtualNetworkSubnetConfig -Verbose
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 5:59:51 PM
+EndExecutionTime   : 9/27/2024 5:59:53 PM
+Duration           : 00:00:02.3068999
+
+Id                 : 254
+CommandLine        : Get-AzVirtualNetworkSubnetConfig -virtualNetwork jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:00:05 PM
+EndExecutionTime   : 9/27/2024 6:00:05 PM
+Duration           : 00:00:00.0307755
+
+Id                 : 255
+CommandLine        : get-azvirtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:00:14 PM
+EndExecutionTime   : 9/27/2024 6:00:15 PM
+Duration           : 00:00:00.4974647
+
+Id                 : 256
+CommandLine        : get-azvirtualnetwork -name jroll_az104_vnet01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:00:38 PM
+EndExecutionTime   : 9/27/2024 6:00:39 PM
+Duration           : 00:00:00.4350312
+
+Id                 : 257
+CommandLine        : get-azvirtualnetwork -ResourceGroupName $rg.name
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:01:15 PM
+EndExecutionTime   : 9/27/2024 6:01:16 PM
+Duration           : 00:00:00.5805940
+
+Id                 : 258
+CommandLine        : get-azvirtualnetwork -ResourceGroupName $rg.name | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:01:30 PM
+EndExecutionTime   : 9/27/2024 6:01:30 PM
+Duration           : 00:00:00.4891099
+
+Id                 : 259
+CommandLine        : $vmsn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:01:55 PM
+EndExecutionTime   : 9/27/2024 6:01:55 PM
+Duration           : 00:00:00.0153048
+
+Id                 : 260
+CommandLine        : $vnet = get-azvirtualnetwork -name jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:03:11 PM
+EndExecutionTime   : 9/27/2024 6:03:12 PM
+Duration           : 00:00:00.4607808
+
+Id                 : 261
+CommandLine        : $vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:03:15 PM
+EndExecutionTime   : 9/27/2024 6:03:15 PM
+Duration           : 00:00:00.0169963
+
+Id                 : 262
+CommandLine        : $vnet | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:03:25 PM
+EndExecutionTime   : 9/27/2024 6:03:25 PM
+Duration           : 00:00:00.0388575
+
+Id                 : 263
+CommandLine        : $vnet
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:03:29 PM
+EndExecutionTime   : 9/27/2024 6:03:29 PM
+Duration           : 00:00:00.0032352
+
+Id                 : 264
+CommandLine        : New-AzVirtualNetworkSubnetConfig -AddressPrefix '10.0.2.0/25' -Name 'jroll_az104_vnet01_subnet02' 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:06:12 PM
+EndExecutionTime   : 9/27/2024 6:06:12 PM
+Duration           : 00:00:00.1295944
+
+Id                 : 265
+CommandLine        : get-azvirtualnetwork -ResourceGroupName $rg.name | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:21:40 PM
+EndExecutionTime   : 9/27/2024 6:21:40 PM
+Duration           : 00:00:00.3807535
+
+Id                 : 266
+CommandLine        : get-azvirtualnetwork -ResourceGroupName $rg2.name | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:21:47 PM
+EndExecutionTime   : 9/27/2024 6:21:47 PM
+Duration           : 00:00:00.5101131
+
+Id                 : 267
+CommandLine        : h
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 6:22:52 PM
+EndExecutionTime   : 9/27/2024 6:22:53 PM
+Duration           : 00:00:00.1503432
+
+Id                 : 268
+CommandLine        : $vmsn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:11:02 PM
+EndExecutionTime   : 9/27/2024 9:11:02 PM
+Duration           : 00:00:00.0169634
+
+Id                 : 269
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:11:48 PM
+EndExecutionTime   : 9/27/2024 9:11:48 PM
+Duration           : 00:00:00.0169955
+
+Id                 : 270
+CommandLine        : $virtualnetwork | Format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:12:26 PM
+EndExecutionTime   : 9/27/2024 9:12:26 PM
+Duration           : 00:00:00.0327543
+
+Id                 : 271
+CommandLine        : get-azvirtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:14:21 PM
+EndExecutionTime   : 9/27/2024 9:14:22 PM
+Duration           : 00:00:01.0376383
+
+Id                 : 272
+CommandLine        : $virtualnetwork | set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:14:49 PM
+EndExecutionTime   : 9/27/2024 9:14:50 PM
+Duration           : 00:00:00.7220975
+
+Id                 : 273
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:16:18 PM
+EndExecutionTime   : 9/27/2024 9:16:18 PM
+Duration           : 00:00:00.0038021
+
+Id                 : 274
+CommandLine        : Set-AzVirtualNetwork -VirtualNetwork $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:17:27 PM
+EndExecutionTime   : 9/27/2024 9:17:27 PM
+Duration           : 00:00:00.6385912
+
+Id                 : 275
+CommandLine        : $virtualnetwork.ResourceGroupName
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:18:07 PM
+EndExecutionTime   : 9/27/2024 9:18:07 PM
+Duration           : 00:00:00.0144481
+
+Id                 : 276
+CommandLine        : $virtualnetwork.ResourceGroupName | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:18:28 PM
+EndExecutionTime   : 9/27/2024 9:18:28 PM
+Duration           : 00:00:00.0171307
+
+Id                 : 277
+CommandLine        : $virtualnetwork.ResourceGroupName
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:18:43 PM
+EndExecutionTime   : 9/27/2024 9:18:43 PM
+Duration           : 00:00:00.0020179
+
+Id                 : 278
+CommandLine        : @virtualnetwork
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:18:57 PM
+EndExecutionTime   : 9/27/2024 9:18:57 PM
+Duration           : 00:00:00.0001763
+
+Id                 : 279
+CommandLine        : set-Azvirtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:19:15 PM
+EndExecutionTime   : 9/27/2024 9:19:39 PM
+Duration           : 00:00:23.8963378
+
+Id                 : 280
+CommandLine        : set-Azvirtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:19:48 PM
+EndExecutionTime   : 9/27/2024 9:19:53 PM
+Duration           : 00:00:05.2966219
+
+Id                 : 281
+CommandLine        : set-Azvirtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:20:03 PM
+EndExecutionTime   : 9/27/2024 9:20:21 PM
+Duration           : 00:00:17.6996376
+
+Id                 : 282
+CommandLine        : get-azres
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:21:26 PM
+EndExecutionTime   : 9/27/2024 9:21:26 PM
+Duration           : 00:00:00.0965086
+
+Id                 : 283
+CommandLine        : get-azresourceGroup -name jroll_az104_rg01 -Verbose | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:21:31 PM
+EndExecutionTime   : 9/27/2024 9:21:32 PM
+Duration           : 00:00:00.4015187
+
+Id                 : 284
+CommandLine        : get-azresourceGroup -name jroll_az104_rg02 -Verbose | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:22:32 PM
+EndExecutionTime   : 9/27/2024 9:22:32 PM
+Duration           : 00:00:00.4032300
+
+Id                 : 285
+CommandLine        : Get-AzResourceGroupDeployment -ResourceGroupName jroll_az104_rg01 -Verbose | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:23:07 PM
+EndExecutionTime   : 9/27/2024 9:23:07 PM
+Duration           : 00:00:00.4698106
+
+Id                 : 286
+CommandLine        : Get-AzResourceGroupDeployment -ResourceGroupName jroll_az104_rg02 -Verbose | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:23:15 PM
+EndExecutionTime   : 9/27/2024 9:23:15 PM
+Duration           : 00:00:00.5030426
+
+Id                 : 287
+CommandLine        : Get-AzBastion | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:24:25 PM
+EndExecutionTime   : 9/27/2024 9:24:26 PM
+Duration           : 00:00:00.4128491
+
+Id                 : 288
+CommandLine        : get-azpublicipaddress | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:25:22 PM
+EndExecutionTime   : 9/27/2024 9:25:38 PM
+Duration           : 00:00:15.6327982
+
+Id                 : 289
+CommandLine        : remove-azresourceGroup -name jroll_rg1_az104
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:27:48 PM
+EndExecutionTime   : 9/27/2024 9:27:52 PM
+Duration           : 00:00:03.8251952
+
+Id                 : 290
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network/virtualNetworks/jroll_az104_vnet01 | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:31:13 PM
+EndExecutionTime   : 9/27/2024 9:31:14 PM
+Duration           : 00:00:00.9625465
+
+Id                 : 291
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/providers/Microsoft.Network | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:31:38 PM
+EndExecutionTime   : 9/27/2024 9:31:38 PM
+Duration           : 00:00:00.1256573
+
+Id                 : 292
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:32:05 PM
+EndExecutionTime   : 9/27/2024 9:32:05 PM
+Duration           : 00:00:00.1167329
+
+Id                 : 293
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01/*
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:32:24 PM
+EndExecutionTime   : 9/27/2024 9:32:45 PM
+Duration           : 00:00:21.6551355
+
+Id                 : 294
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg0*
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:33:02 PM
+EndExecutionTime   : 9/27/2024 9:33:02 PM
+Duration           : 00:00:00.1251058
+
+Id                 : 295
+CommandLine        : get-azresource -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/*
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:33:11 PM
+EndExecutionTime   : 9/27/2024 9:33:11 PM
+Duration           : 00:00:00.1064540
+
+Id                 : 296
+CommandLine        : get-azresourcegroups
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:33:32 PM
+EndExecutionTime   : 9/27/2024 9:33:32 PM
+Duration           : 00:00:00.1396275
+
+Id                 : 297
+CommandLine        : get-azresourcegroup
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:33:35 PM
+EndExecutionTime   : 9/27/2024 9:33:36 PM
+Duration           : 00:00:00.3971890
+
+Id                 : 298
+CommandLine        : get-azresourcegroup.resourceId
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:34:07 PM
+EndExecutionTime   : 9/27/2024 9:34:07 PM
+Duration           : 00:00:00.0718497
+
+Id                 : 299
+CommandLine        : get-azresourcegroup | $_.resourceId
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:34:22 PM
+EndExecutionTime   : 9/27/2024 9:34:22 PM
+Duration           : 00:00:00.0002845
+
+Id                 : 300
+CommandLine        : get-azresourcegroup | $_resourceId
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:34:31 PM
+EndExecutionTime   : 9/27/2024 9:34:31 PM
+Duration           : 00:00:00.0001809
+
+Id                 : 301
+CommandLine        : get-azresourcegroup | $resourceId
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:34:37 PM
+EndExecutionTime   : 9/27/2024 9:34:37 PM
+Duration           : 00:00:00.0001834
+
+Id                 : 302
+CommandLine        : get-azresourcegroup | @{$_}.resourceId
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:34:57 PM
+EndExecutionTime   : 9/27/2024 9:34:57 PM
+Duration           : 00:00:00.0001931
+
+Id                 : 303
+CommandLine        : get-azresourcegroup | {$_).resourceId
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:35:05 PM
+EndExecutionTime   : 9/27/2024 9:35:05 PM
+Duration           : 00:00:00.0001956
+
+Id                 : 304
+CommandLine        : get-azresourcegroup | ($_).resourceId
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:35:12 PM
+EndExecutionTime   : 9/27/2024 9:35:12 PM
+Duration           : 00:00:00.0001872
+
+Id                 : 305
+CommandLine        : get-azresourcegroup | $_.resourceId
+ExecutionStatus    : Failed
+StartExecutionTime : 9/27/2024 9:35:20 PM
+EndExecutionTime   : 9/27/2024 9:35:20 PM
+Duration           : 00:00:00.0001820
+
+Id                 : 306
+CommandLine        : (get-azresourcegroup).resourceId
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:35:36 PM
+EndExecutionTime   : 9/27/2024 9:35:37 PM
+Duration           : 00:00:00.3039146
+
+Id                 : 307
+CommandLine        : remove-azresourcegroup -ResourceId /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:36:46 PM
+EndExecutionTime   : 9/27/2024 9:37:05 PM
+Duration           : 00:00:19.1874514
+
+Id                 : 308
+CommandLine        : (get-azresourcegroup).resourceId
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:37:11 PM
+EndExecutionTime   : 9/27/2024 9:37:11 PM
+Duration           : 00:00:00.2846681
+
+Id                 : 309
+CommandLine        : $virtualnetwork | set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:38:02 PM
+EndExecutionTime   : 9/27/2024 9:38:03 PM
+Duration           : 00:00:00.7079224
+
+Id                 : 310
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:38:47 PM
+EndExecutionTime   : 9/27/2024 9:38:47 PM
+Duration           : 00:00:00.0037928
+
+Id                 : 311
+CommandLine        : set-azvirtualnetwork -VirtualNetwork $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:39:17 PM
+EndExecutionTime   : 9/27/2024 9:39:18 PM
+Duration           : 00:00:00.8111487
+
+Id                 : 312
+CommandLine        : $virtualnetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:39:30 PM
+EndExecutionTime   : 9/27/2024 9:39:30 PM
+Duration           : 00:00:00.0032781
+
+Id                 : 313
+CommandLine        : get-help Set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:40:37 PM
+EndExecutionTime   : 9/27/2024 9:40:40 PM
+Duration           : 00:00:02.4293804
+
+Id                 : 314
+CommandLine        : Get-Process 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:41:15 PM
+EndExecutionTime   : 9/27/2024 9:41:15 PM
+Duration           : 00:00:00.3355393
+
+Id                 : 315
+CommandLine        : $PSDefaultParameterValues
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:42:08 PM
+EndExecutionTime   : 9/27/2024 9:42:08 PM
+Duration           : 00:00:00.1014171
+
+Id                 : 316
+CommandLine        : $PSDefaultParameterValues | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:42:35 PM
+EndExecutionTime   : 9/27/2024 9:42:35 PM
+Duration           : 00:00:00.6333804
+
+Id                 : 317
+CommandLine        : Get-AzContext
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:43:30 PM
+EndExecutionTime   : 9/27/2024 9:43:31 PM
+Duration           : 00:00:00.1721155
+
+Id                 : 318
+CommandLine        : Get-AzContext | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:43:53 PM
+EndExecutionTime   : 9/27/2024 9:43:53 PM
+Duration           : 00:00:00.1155473
+
+Id                 : 319
+CommandLine        : Get-AzContext | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:44:33 PM
+EndExecutionTime   : 9/27/2024 9:44:33 PM
+Duration           : 00:00:00.0660950
+
+Id                 : 320
+CommandLine        : Get-Command Set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:45:46 PM
+EndExecutionTime   : 9/27/2024 9:45:46 PM
+Duration           : 00:00:00.0380622
+
+Id                 : 321
+CommandLine        : Get-Command Set-AzVirtualNetwork | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:46:04 PM
+EndExecutionTime   : 9/27/2024 9:46:04 PM
+Duration           : 00:00:00.1019359
+
+Id                 : 322
+CommandLine        : $virtualnetwork | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:47:47 PM
+EndExecutionTime   : 9/27/2024 9:47:47 PM
+Duration           : 00:00:00.0565843
+
+Id                 : 323
+CommandLine        : $virtualnetwork | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:48:50 PM
+EndExecutionTime   : 9/27/2024 9:48:51 PM
+Duration           : 00:00:00.0465701
+
+Id                 : 324
+CommandLine        : $virtualnetwork | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:52:16 PM
+EndExecutionTime   : 9/27/2024 9:52:16 PM
+Duration           : 00:00:00.0451707
+
+Id                 : 325
+CommandLine        : $virtualnetwork | set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:52:53 PM
+EndExecutionTime   : 9/27/2024 9:52:54 PM
+Duration           : 00:00:01.1483698
+
+Id                 : 326
+CommandLine        : Get-AzVirtualNetworkSubnetConfig -virtualNetwork jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:58:25 PM
+EndExecutionTime   : 9/27/2024 9:58:25 PM
+Duration           : 00:00:00.0519643
+
+Id                 : 327
+CommandLine        : Get-AzVirtualNetworkSubnetConfig -Name jroll_az104_vnet01_subnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 9:59:41 PM
+EndExecutionTime   : 9/27/2024 9:59:54 PM
+Duration           : 00:00:12.7482446
+
+Id                 : 328
+CommandLine        : Get-AzVirtualNetworkSubnetConfig -Name jroll_az104_vnet01_subnet01 -VirtualNetwork 'jroll_az104_vnet01'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:00:12 PM
+EndExecutionTime   : 9/27/2024 10:00:12 PM
+Duration           : 00:00:00.0544295
+
+Id                 : 329
+CommandLine        : Get-AzVirtualNetworkSubnetConfig 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:01:11 PM
+EndExecutionTime   : 9/27/2024 10:01:12 PM
+Duration           : 00:00:01.3889555
+
+Id                 : 330
+CommandLine        : Get-AzVirtualNetworkSubnetConfig -virtualNetwork jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:01:31 PM
+EndExecutionTime   : 9/27/2024 10:01:31 PM
+Duration           : 00:00:00.0413611
+
+Id                 : 331
+CommandLine        : Get-AzVirtualNetworkSubnetConfig -virtualNetwork 'jroll_az104_vnet01'
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:01:39 PM
+EndExecutionTime   : 9/27/2024 10:01:39 PM
+Duration           : 00:00:00.0541368
+
+Id                 : 332
+CommandLine        : get-azvirtualnetwork -name jroll_az104_vnet01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:02:06 PM
+EndExecutionTime   : 9/27/2024 10:02:06 PM
+Duration           : 00:00:00.4871187
+
+Id                 : 333
+CommandLine        : $virtualnetwork | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:03:41 PM
+EndExecutionTime   : 9/27/2024 10:03:41 PM
+Duration           : 00:00:00.0990794
+
+Id                 : 334
+CommandLine        : $virtualnetwork | format-list -Property * > newVirtualNtwk.txt
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:04:17 PM
+EndExecutionTime   : 9/27/2024 10:04:17 PM
+Duration           : 00:00:00.0195340
+
+Id                 : 335
+CommandLine        : get-azvirtualnetwork -name jroll_az104_vnet01 | format-list -Property * > currentVirtualNtwk.txt
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:04:48 PM
+EndExecutionTime   : 9/27/2024 10:04:48 PM
+Duration           : 00:00:00.4733924
+
+Id                 : 336
+CommandLine        : $virtualnetwork = Get-AzVirtualNetwork -Name jroll_az104_vnet01
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:05:19 PM
+EndExecutionTime   : 9/27/2024 10:05:19 PM
+Duration           : 00:00:00.5143432
+
+Id                 : 337
+CommandLine        : $virtualnetwork | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:05:32 PM
+EndExecutionTime   : 9/27/2024 10:05:32 PM
+Duration           : 00:00:00.0547595
+
+Id                 : 338
+CommandLine        : $vmsn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:06:01 PM
+EndExecutionTime   : 9/27/2024 10:06:01 PM
+Duration           : 00:00:00.0752843
+
+Id                 : 339
+CommandLine        : $vmsn2 = @{ name = 'jroll_az104_vnet01_subnet02'; virtualnetwork = $virtualnetwork; addressprefix = '10.0.2.0/24' }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:07:33 PM
+EndExecutionTime   : 9/27/2024 10:07:33 PM
+Duration           : 00:00:00.0942887
+
+Id                 : 340
+CommandLine        : $subnetConfig = Add-AzVirtualNetworkSubnetConfig @vmsn2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:08:06 PM
+EndExecutionTime   : 9/27/2024 10:08:07 PM
+Duration           : 00:00:00.1031661
+
+Id                 : 341
+CommandLine        : $virtualNetwork | Set-AzVirtualNetwork
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:08:35 PM
+EndExecutionTime   : 9/27/2024 10:08:41 PM
+Duration           : 00:00:06.2927294
+
+Id                 : 342
+CommandLine        : get-azvirtualnetwork -name jroll_az104_vnet01 | format-list -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:09:18 PM
+EndExecutionTime   : 9/27/2024 10:09:19 PM
+Duration           : 00:00:00.5549072
+
+Id                 : 343
+CommandLine        : get-credential
+ExecutionStatus    : Stopped
+StartExecutionTime : 9/27/2024 10:10:38 PM
+EndExecutionTime   : 9/27/2024 10:10:48 PM
+Duration           : 00:00:10.4581448
+
+Id                 : 344
+CommandLine        : $cred = Get-Credential
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:11:29 PM
+EndExecutionTime   : 9/27/2024 10:11:42 PM
+Duration           : 00:00:12.7765887
+
+Id                 : 345
+CommandLine        : $vnet = Get-AzVirtualNetwork -Name jroll_az104_vnet01 -ResourceGroupName jroll_az104_rg02
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:13:19 PM
+EndExecutionTime   : 9/27/2024 10:13:19 PM
+Duration           : 00:00:00.5363754
+
+Id                 : 346
+CommandLine        : $nic = @{
+                         Name = "jroll_az104_vm01_nic01"
+                         ResourceGroupName = 'jroll_az104_rg02'
+                         Location = 'centralus'
+                         Subnet = $vnet.Subnets[2]
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:16:07 PM
+EndExecutionTime   : 9/27/2024 10:16:07 PM
+Duration           : 00:00:00.0203109
+
+Id                 : 347
+CommandLine        : $nicVM01 = New-AzNetworkInterface @nic
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:17:00 PM
+EndExecutionTime   : 9/27/2024 10:17:03 PM
+Duration           : 00:00:02.3561851
+
+Id                 : 348
+CommandLine        : $vmsz = @{
+                         VMName = "jroll_az104_vm01"
+                         VMSize = 'Standard_DS1_v2'  
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:18:03 PM
+EndExecutionTime   : 9/27/2024 10:18:03 PM
+Duration           : 00:00:00.0143872
+
+Id                 : 349
+CommandLine        : $vmos = @{
+                         ComputerName = "jroll_az104_vm01"
+                         Credential = $cred
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:18:27 PM
+EndExecutionTime   : 9/27/2024 10:18:27 PM
+Duration           : 00:00:00.0194102
+
+Id                 : 350
+CommandLine        : $vmimage = @{
+                         PublisherName = 'Canonical'
+                         Offer = '0001-com-ubuntu-server-jammy'
+                         Skus = '22_04-lts-gen2'
+                         Version = 'latest'    
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:18:57 PM
+EndExecutionTime   : 9/27/2024 10:18:57 PM
+Duration           : 00:00:00.0143707
+
+Id                 : 351
+CommandLine        : $vmConfig = New-AzVMConfig @vmsz `
+                         | Set-AzVMOperatingSystem @vmos -Linux `
+                         | Set-AzVMSourceImage @vmimage `
+                         | Add-AzVMNetworkInterface -Id $nicVM.Id
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:19:12 PM
+EndExecutionTime   : 9/27/2024 10:19:16 PM
+Duration           : 00:00:03.6271030
+
+Id                 : 352
+CommandLine        : $vmConfig = New-AzVMConfig @vmsz `
+                         | Set-AzVMOperatingSystem @vmos -Linux `
+                         | Set-AzVMSourceImage @vmimage `
+                         | Add-AzVMNetworkInterface -Id $nicVM01.Id
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:20:10 PM
+EndExecutionTime   : 9/27/2024 10:20:10 PM
+Duration           : 00:00:00.2720383
+
+Id                 : 353
+CommandLine        : $vm = @{
+                         ResourceGroupName = 'jroll_az104_rg02'
+                         Location = 'centralus'
+                         VM = $vmConfig
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:21:03 PM
+EndExecutionTime   : 9/27/2024 10:21:03 PM
+Duration           : 00:00:00.0133671
+
+Id                 : 354
+CommandLine        : New-AzVM @vm
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:21:16 PM
+EndExecutionTime   : 9/27/2024 10:21:41 PM
+Duration           : 00:00:24.3583614
+
+Id                 : 355
+CommandLine        : $vmos = @{
+                         ComputerName = "jroll-az104-vm01"
+                         Credential = $cred
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:23:22 PM
+EndExecutionTime   : 9/27/2024 10:23:22 PM
+Duration           : 00:00:00.0134644
+
+Id                 : 356
+CommandLine        : $vmConfig = New-AzVMConfig @vmsz `
+                         | Set-AzVMOperatingSystem @vmos -Linux `
+                         | Set-AzVMSourceImage @vmimage `
+                         | Add-AzVMNetworkInterface -Id $nicVM01.Id
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:23:32 PM
+EndExecutionTime   : 9/27/2024 10:23:32 PM
+Duration           : 00:00:00.2250340
+
+Id                 : 357
+CommandLine        : $vm = @{
+                         ResourceGroupName = 'jroll_az104_rg02'
+                         Location = 'centralus'
+                         VM = $vmConfig
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:24:04 PM
+EndExecutionTime   : 9/27/2024 10:24:04 PM
+Duration           : 00:00:00.0267916
+
+Id                 : 358
+CommandLine        : new-AzVM @vm -AsJob
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:24:17 PM
+EndExecutionTime   : 9/27/2024 10:24:17 PM
+Duration           : 00:00:00.2098261
+
+Id                 : 359
+CommandLine        : $nic2 = @{
+                         Name = "jroll_az104_vm02_nic02"
+                         ResourceGroupName = 'jroll_az104_rg02'
+                         Location = 'centralus'
+                         Subnet = $vnet.Subnets[2]
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:25:37 PM
+EndExecutionTime   : 9/27/2024 10:25:37 PM
+Duration           : 00:00:00.0178598
+
+Id                 : 360
+CommandLine        : $nicVM02 = New-AzNetworkInterface @nic2
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:26:11 PM
+EndExecutionTime   : 9/27/2024 10:26:13 PM
+Duration           : 00:00:01.9473556
+
+Id                 : 361
+CommandLine        : $vmsz2 = @{
+                         VMName = "jroll_az104_vm02"
+                         VMSize = 'Standard_DS1_v2'  
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:26:54 PM
+EndExecutionTime   : 9/27/2024 10:26:54 PM
+Duration           : 00:00:00.0151438
+
+Id                 : 362
+CommandLine        : $vmos2 = @{
+                         ComputerName = "jroll-az104-vm02"
+                         Credential = $cred
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:27:25 PM
+EndExecutionTime   : 9/27/2024 10:27:25 PM
+Duration           : 00:00:00.0394670
+
+Id                 : 363
+CommandLine        : $vmConfig2 = New-AzVMConfig @vmsz2 `
+                         | Set-AzVMOperatingSystem @vmos2 -Linux `
+                         | Set-AzVMSourceImage @vmimage `
+                         | Add-AzVMNetworkInterface -Id $nicVM02.Id
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:28:48 PM
+EndExecutionTime   : 9/27/2024 10:28:48 PM
+Duration           : 00:00:00.2450860
+
+Id                 : 364
+CommandLine        : $vm = @{
+                         ResourceGroupName = 'jroll_az104_rg02'
+                         Location = 'centralus'
+                         VM = $vmConfig2
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:29:17 PM
+EndExecutionTime   : 9/27/2024 10:29:17 PM
+Duration           : 00:00:00.0395163
+
+Id                 : 365
+CommandLine        : new-AzVM @vm -AsJob
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:29:56 PM
+EndExecutionTime   : 9/27/2024 10:29:57 PM
+Duration           : 00:00:00.8428072
+
+Id                 : 366
+CommandLine        : Get-Job
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:30:07 PM
+EndExecutionTime   : 9/27/2024 10:30:07 PM
+Duration           : 00:00:00.0267009
+
+Id                 : 367
+CommandLine        : Get-Job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:30:19 PM
+EndExecutionTime   : 9/27/2024 10:30:19 PM
+Duration           : 00:00:00.0695282
+
+Id                 : 368
+CommandLine        : $cred = Get-Credential
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:32:13 PM
+EndExecutionTime   : 9/27/2024 10:32:32 PM
+Duration           : 00:00:19.1201526
+
+Id                 : 369
+CommandLine        : $vmos = @{
+                         ComputerName = "jroll-az104-vm01"
+                         Credential = $cred
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:33:20 PM
+EndExecutionTime   : 9/27/2024 10:33:20 PM
+Duration           : 00:00:00.0016534
+
+Id                 : 370
+CommandLine        : $vmos2 = @{
+                         ComputerName = "jroll-az104-vm02"
+                         Credential = $cred
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:33:34 PM
+EndExecutionTime   : 9/27/2024 10:33:34 PM
+Duration           : 00:00:00.0018919
+
+Id                 : 371
+CommandLine        : $vmConfig2 = New-AzVMConfig @vmsz2 `
+                         | Set-AzVMOperatingSystem @vmos2 -Linux `
+                         | Set-AzVMSourceImage @vmimage `
+                         | Add-AzVMNetworkInterface -Id $nicVM02.Id
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:34:03 PM
+EndExecutionTime   : 9/27/2024 10:34:04 PM
+Duration           : 00:00:00.2260423
+
+Id                 : 372
+CommandLine        : $vmConfig = New-AzVMConfig @vmsz `
+                         | Set-AzVMOperatingSystem @vmos -Linux `
+                         | Set-AzVMSourceImage @vmimage `
+                         | Add-AzVMNetworkInterface -Id $nicVM01.Id
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:34:16 PM
+EndExecutionTime   : 9/27/2024 10:34:16 PM
+Duration           : 00:00:00.1956808
+
+Id                 : 373
+CommandLine        : $vm2 = @{
+                         ResourceGroupName = 'jroll_az104_rg02'
+                         Location = 'centralus'
+                         VM = $vmConfig2
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:34:48 PM
+EndExecutionTime   : 9/27/2024 10:34:48 PM
+Duration           : 00:00:00.0151872
+
+Id                 : 374
+CommandLine        : $vm = @{
+                         ResourceGroupName = 'jroll_az104_rg02'
+                         Location = 'centralus'
+                         VM = $vmConfig
+                     }
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:35:08 PM
+EndExecutionTime   : 9/27/2024 10:35:08 PM
+Duration           : 00:00:00.0015894
+
+Id                 : 375
+CommandLine        : new-AzVM @vm -AsJob
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:35:25 PM
+EndExecutionTime   : 9/27/2024 10:35:25 PM
+Duration           : 00:00:00.1702210
+
+Id                 : 376
+CommandLine        : new-AzVM @vm2 -AsJob
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:35:31 PM
+EndExecutionTime   : 9/27/2024 10:35:31 PM
+Duration           : 00:00:00.1527711
+
+Id                 : 377
+CommandLine        : Get-Job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:35:37 PM
+EndExecutionTime   : 9/27/2024 10:35:37 PM
+Duration           : 00:00:00.1250241
+
+Id                 : 378
+CommandLine        : Get-Job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:35:57 PM
+EndExecutionTime   : 9/27/2024 10:35:57 PM
+Duration           : 00:00:00.0442087
+
+Id                 : 379
+CommandLine        : Get-Job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:36:13 PM
+EndExecutionTime   : 9/27/2024 10:36:13 PM
+Duration           : 00:00:00.1182329
+
+Id                 : 380
+CommandLine        : dir ..
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:36:38 PM
+EndExecutionTime   : 9/27/2024 10:36:38 PM
+Duration           : 00:00:00.1238536
+
+Id                 : 381
+CommandLine        : dir ../www
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:36:50 PM
+EndExecutionTime   : 9/27/2024 10:36:50 PM
+Duration           : 00:00:00.0475857
+
+Id                 : 382
+CommandLine        : dir ..\www\notes\
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:36:56 PM
+EndExecutionTime   : 9/27/2024 10:36:57 PM
+Duration           : 00:00:00.0242068
+
+Id                 : 383
+CommandLine        : h
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:37:04 PM
+EndExecutionTime   : 9/27/2024 10:37:04 PM
+Duration           : 00:00:00.3362134
+
+Id                 : 384
+CommandLine        : h | Format-Wide -Column 3
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:38:03 PM
+EndExecutionTime   : 9/27/2024 10:38:03 PM
+Duration           : 00:00:00.2024813
+
+Id                 : 385
+CommandLine        : h | Format-List -Column 3
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:38:12 PM
+EndExecutionTime   : 9/27/2024 10:38:12 PM
+Duration           : 00:00:00.1049140
+
+Id                 : 386
+CommandLine        : h | Format-custom -Column 3
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:38:23 PM
+EndExecutionTime   : 9/27/2024 10:38:23 PM
+Duration           : 00:00:00.0693046
+
+Id                 : 387
+CommandLine        : h | Format-wide -Column 3
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:38:32 PM
+EndExecutionTime   : 9/27/2024 10:38:32 PM
+Duration           : 00:00:00.0920106
+
+Id                 : 388
+CommandLine        : h | Format-wide -Column 1
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:38:37 PM
+EndExecutionTime   : 9/27/2024 10:38:37 PM
+Duration           : 00:00:00.2709741
+
+Id                 : 389
+CommandLine        : h | Format-wide
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:38:49 PM
+EndExecutionTime   : 9/27/2024 10:38:49 PM
+Duration           : 00:00:00.1310014
+
+Id                 : 390
+CommandLine        : h 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:38:54 PM
+EndExecutionTime   : 9/27/2024 10:38:55 PM
+Duration           : 00:00:00.2153032
+
+Id                 : 391
+CommandLine        : Get-History | Format-Wide -Column 3 -AutoSize
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:39:23 PM
+EndExecutionTime   : 9/27/2024 10:39:23 PM
+Duration           : 00:00:00.0822841
+
+Id                 : 392
+CommandLine        : Get-History | Format-Wide -Column 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:39:29 PM
+EndExecutionTime   : 9/27/2024 10:39:29 PM
+Duration           : 00:00:00.0602207
+
+Id                 : 393
+CommandLine        : Get-History | Format-Wide -Column 3
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:39:35 PM
+EndExecutionTime   : 9/27/2024 10:39:35 PM
+Duration           : 00:00:00.1066487
+
+Id                 : 394
+CommandLine        : Get-History | Format-Wide -AutoSize
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:39:40 PM
+EndExecutionTime   : 9/27/2024 10:39:40 PM
+Duration           : 00:00:00.1440479
+
+Id                 : 395
+CommandLine        : Get-Job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:40:14 PM
+EndExecutionTime   : 9/27/2024 10:40:14 PM
+Duration           : 00:00:00.0675020
+
+Id                 : 396
+CommandLine        : get-azresourcegroup 
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:40:42 PM
+EndExecutionTime   : 9/27/2024 10:40:42 PM
+Duration           : 00:00:00.4728775
+
+Id                 : 397
+CommandLine        : get-azresourcegroup -name jroll_az104_rg02 -Verbose | format-list -property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:40:48 PM
+EndExecutionTime   : 9/27/2024 10:40:48 PM
+Duration           : 00:00:00.3728139
+
+Id                 : 398
+CommandLine        : get-azresourcegroup -name jroll_az104_rg02 | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:41:42 PM
+EndExecutionTime   : 9/27/2024 10:41:43 PM
+Duration           : 00:00:00.4659942
+
+Id                 : 399
+CommandLine        : Get-AzResourceGroupDeployment -ResourceGroupName jroll_az104_rg02 -Verbose | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:42:00 PM
+EndExecutionTime   : 9/27/2024 10:42:01 PM
+Duration           : 00:00:00.4097903
+
+Id                 : 400
+CommandLine        : Remove-AzResourceGroup -Name 'jroll_az104_rg02' -Force -AsJob
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:56:55 PM
+EndExecutionTime   : 9/27/2024 10:56:55 PM
+Duration           : 00:00:00.1751680
+
+Id                 : 401
+CommandLine        : get-job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:02 PM
+EndExecutionTime   : 9/27/2024 10:57:02 PM
+Duration           : 00:00:00.0902683
+
+Id                 : 402
+CommandLine        : get-job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:10 PM
+EndExecutionTime   : 9/27/2024 10:57:10 PM
+Duration           : 00:00:00.2496362
+
+Id                 : 403
+CommandLine        : get-job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:19 PM
+EndExecutionTime   : 9/27/2024 10:57:19 PM
+Duration           : 00:00:00.1697445
+
+Id                 : 404
+CommandLine        : get-job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:23 PM
+EndExecutionTime   : 9/27/2024 10:57:24 PM
+Duration           : 00:00:00.1612741
+
+Id                 : 405
+CommandLine        : get-job | Format-List -Property *
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:26 PM
+EndExecutionTime   : 9/27/2024 10:57:26 PM
+Duration           : 00:00:00.1673020
+
+Id                 : 406
+CommandLine        : cd ..
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:43 PM
+EndExecutionTime   : 9/27/2024 10:57:43 PM
+Duration           : 00:00:00.1387148
+
+Id                 : 407
+CommandLine        : git status
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:47 PM
+EndExecutionTime   : 9/27/2024 10:57:47 PM
+Duration           : 00:00:00.2080884
+
+Id                 : 408
+CommandLine        : git add . -A
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:57:54 PM
+EndExecutionTime   : 9/27/2024 10:57:54 PM
+Duration           : 00:00:00.1473021
+
+Id                 : 409
+CommandLine        : git commit -a -m "validated virtual network with bastion"
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:58:25 PM
+EndExecutionTime   : 9/27/2024 10:58:25 PM
+Duration           : 00:00:00.2414437
+
+Id                 : 410
+CommandLine        : git push
+ExecutionStatus    : Completed
+StartExecutionTime : 9/27/2024 10:58:31 PM
+EndExecutionTime   : 9/27/2024 10:58:34 PM
+Duration           : 00:00:02.8734141
+
+
+remove-azresourcegroup -force -asjob -resourceid /subscriptions/41e0b717-e638-42b4-bc1c-b664112d357e/resourceGroups/jroll_az104_rg01
+
+// Find files and directories
+Get-ChildItem -Path $env:ProgramFiles -Recurse -Include *.exe | Where-Object {
+    ($_.LastWriteTime -gt '2005-10-01') -and ($_.Length -ge 1mb) -and ($_.Length -le 10mb)
+}
+
+
+Get-ChildItem E:\Data\ScriptingGuys -Filter "????" -Directory | ForEach-Object { $_.FullName }
+
+//
+// setup and create environment for vnets, subnets, bastion and VMs
+//
+    $tag = @{ Scope = 'Dev'; Users = 'jroll@kforce.com,'; Subject = 'az-104' }
+    $loc = 'centralus'
+
+
+    // Rg
+$rg00 = @{ name = 'jroll_rg00'; location = $loc; tag = $tag }
+new-azresourceGroup @rg00
+
+    // Vnet
+$vn00parms = @{ name = 'jroll_vnet00'; location = $loc; resourcegroupname = $rg00.name; tag = $tag; addressprefix = '10.0.0.0/16' }
+$vn00 = new-azvirtualNetwork @vn00parms
+
+    // Subnets
+$sn00parms = @{ name = 'jroll_vnet00_sn00'; virtualNetwork = $vn00; tag = $tag; addressprefix = '10.0.0.0/24' }
+$sn00 = add-AzVirtualNetworkSubnetConfig @sn00parms
+
+$vn00 | set-azvirtualNetwork
+
+# Subnet 1
+$sn01Parms = @{ name = 'jroll-vetn01-sn01'; virtualNetwork = $vn00; tag = $tag; addressprefix = '10.0.1.0/26' }
+$sn01 = add-AzVirtualNetworkSubnetConfig @sn01parms
+
+$vn00 | set-azvirtualNetwork
+
+$sn02parms = @{ name = 'jroll_vnet00_sn02'; virtualNetwork = $vn00; tag = $tag; addressprefix = '10.0.2.0/24' }
+$sn02 = add-AzVirtualNetworkSubnetConfig @sn02parms
+
+$vn00 | set-azvirtualNetwork
+
+    // Static IP for bastion
+$bip = @{ name = 'bip'; location = $loc; resourcegroupname = $rg00.name; allocationmethod = 'Static'; Sku = 'Standard'; Zone = 1,2,3 }
+New-azPublicIpAddress @bip
+
+    // bastion
+    $bastion = @{ name = 'bastion'; resourcegroupname = $rg00.name; publicipaddressname = $bip.name; publicipaddressrgname = $bip.resourcegroupname; virtualnetworkname = $sn02.virtualnetwork.name; virtualnetworkrgname = $sn02.virtualnetwork.resourcegroup.name; Sku = 'Basic' }
+    new-AzBastion @bastion -asjob
+get-azroledefinition | where actions -like '*virtualnetwork*' | Select-Object name
+Get-AzVMImagePublisher -Location 'centralus' | where publishername -Like '*icrosoft*'
+Get-Azresource -ResourceGroupName jroll_rg00 | where resourcename -like 'jroll-winvm*' | select resourceid
+Get-Azresource -ResourceGroupName jroll_rg00 | where resourcename -like 'jroll-winvm*' | select resourceid | remove-azresource
+Get-ChildItem -force -Recurse | where { ( .name -like '*command*' -and .name -like '*txt' ) }
+
+PS Z:\repos\wce\az-104\src\content\docs\090-Commands> $(get-azroledefinition | where { ( $_.Name -like '*service*' -and $_.name -like '*admin*' ) }).name
+Azure Kubernetes Service Cluster Admin Role
+Azure Kubernetes Service RBAC Cluster Admin
+Azure Kubernetes Service RBAC Admin
+Cognitive Services Metrics Advisor Administrator
+AgFood Platform Service Admin
+Media Services Account Administrator
+Media Services Live Events Administrator
+Media Services Policy Administrator
+Media Services Streaming Endpoints Administrator
+Azure Kubernetes Service Hybrid Cluster Admin Role
+Azure Kubernetes Service Arc Cluster Admin Role
+Azure Hybrid Database Administrator - Read Only Service Role
+
+#### Symbolic links "target gives the actual file, path gives the symlink name"
+new-item -Type SymbolicLink -target ..\..\..\assets\RBAC\bac-admin-roles.png -path .\bac.png
