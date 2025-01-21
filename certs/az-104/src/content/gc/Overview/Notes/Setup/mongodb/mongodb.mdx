@@ -1,0 +1,86 @@
+---
+title: Mongodb install and setup
+description: Mongodb install and setup
+---
+
+### Installation and Setup
+```sh
+# Ensure gpg and curl are installed
+sudo apt-get install gnupg curl
+
+# Import MongoDB public GPG key
+curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg \
+   --dearmor
+
+# Create the pkg list file for Jammy
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+
+# Reload the pkg database
+sudo apt-get update
+
+# Install latest instance
+sudo apt-get install -y mongodb-org
+
+# Install specific instance
+sudo apt-get install -y mongodb-org=8.0.4 mongodb-org-database=8.0.4 mongodb-org-server=8.0.4 mongodb-mongosh mongodb-org-mongos=8.0.4 mongodb-org-tools=8.0.4
+
+# Start mongodb using systemd
+sudo systemctl start mongod
+
+```
+
+### MongoDB Commands
+
+
+#### Start MongoDB, first establishing preferred data path
+```sh
+# Attempt to start mongodb using systemd
+sudo systemctl start mongod
+
+# If failed, ensure target directory exists...
+sudo systemctl status mongod
+
+ls -alF /var/lib/mongodb
+
+# Try launching manually
+sudo mongod --bind_ip_all sudo mongod --bind_ip_all --noauth --dbpath /var/lib/mongodb
+
+# Now attempt to login
+mongosh localhost
+```
+
+#### Create Admin User
+```js
+// Switch to admin database
+use admin;
+
+// Create User Administrator
+db.createUser( { user: "usradm", pwd: passwordPrompt(), roles: [ { role: "userAdminAnyDatabase", db: "admin" }, { role: "readWriteAnyDatabase", db: "admin" } ]  });
+
+// Create Database Administrator (DBA)
+db.createUser( { user: "dbadm", pwd: passwordPrompt(), roles: [ { role: "dbAdminAnyDatabase", db: "admin" }, { role: "readWriteAnyDatabase", db: "admin" } ]  });
+
+// Create Database User
+db.createUser( { user: "dbusr", pwd: passwordPrompt(), roles: [ { role: "readWriteAnyDatabase", db: "admin" } ]  });
+```
+### Shutdown MongoDB
+```js
+db.adminCommand( { shutdown: 1 } );
+```
+#### Start MongoDB
+```sh
+sudo mongod --bind_ip_all --auth &
+```
+
+#### Login to MongoDB
+```sh
+mongosh -u usradm --authenticationDatabase "admin" mongodb://fqdn_or_ipaddr
+mongosh -u dbusr --authenticationDatabase "admin" mongodb://est.pcpllc.us
+
+```
+
+
+
+### References
+[Install and Run MongoDB on Ubuntu](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)

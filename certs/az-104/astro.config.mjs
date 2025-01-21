@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
   integrations: [starlight({
-      components: {
+        components: {
             TableOfContents: './src/components/TableOfContents.astro'
           , MobileTableOfContents: './src/components/MobileTableOfContents.astro'
       }
@@ -30,7 +30,7 @@ export default defineConfig({
           minHeadingLevel: 1
           , maxHeadingLevel: 5
       }
-      , title: 'AZ-104'
+      , title: 'Cloud Prep'
       , titleDelimiter: ' — '
       , social: {
           github: 'https://github.com/withastro/starlight'
