@@ -11,25 +11,13 @@ import { group } from './config/sidebar';
  */
 export const sidebar = [
 	// Start tab
-	group('start', {
+	group('General', {
 		items: [
 			'getting-started',
-			group('start.welcome', {
+			group('General.overview', {
 				items: ['concepts/why-astro', 'concepts/islands', 'tutorial/0-introduction'],
 			}),
-			group('start.newProject', {
-				items: ['install-and-setup', 'basics/project-structure', 'develop-and-build'],
-			}),
-			group('start.config', {
-				items: [
-					'guides/configuring-astro',
-					'editor-setup',
-					'guides/typescript',
-					'guides/environment-variables',
-					'guides/dev-toolbar',
-				],
-			}),
-			group('start.migrate', {
+			group('General.migrate', {
 				collapsed: true,
 				autogenerate: { directory: 'guides/migrate-to-astro' },
 			}),
@@ -42,36 +30,7 @@ export const sidebar = [
 			group('guides.routing', {
 				items: [
 					'basics/astro-pages',
-					'guides/routing',
-					'guides/endpoints',
-					'guides/middleware',
-					'guides/internationalization',
-					'guides/prefetch',
-					'guides/view-transitions',
 				],
-			}),
-			group('guides.ui', {
-				items: [
-					'basics/astro-components',
-					'basics/layouts',
-					'guides/styling',
-					'guides/fonts',
-					'guides/syntax-highlighting',
-					'guides/client-side-scripts',
-					'guides/framework-components',
-				],
-			}),
-			group('guides.content', {
-				items: [
-					'guides/markdown-content',
-					'guides/content-collections',
-					'guides/images',
-					'guides/data-fetching',
-					'guides/astro-db',
-				],
-			}),
-			group('guides.serverRendering', {
-				items: ['guides/on-demand-rendering', 'guides/server-islands', 'guides/actions'],
 			}),
 			group('guides.upgrade', {
 				items: [
@@ -139,67 +98,6 @@ export const sidebar = [
 			}),
 			'reference/legacy-flags',
 			'reference/error-reference',
-		],
-	}),
-
-	// Integrations tab
-	group('integrations', {
-		items: [
-			'guides/integrations-guide',
-			group('integrations.ui', {
-				items: [
-					'guides/integrations-guide/alpinejs',
-					'guides/integrations-guide/preact',
-					'guides/integrations-guide/react',
-					'guides/integrations-guide/solid-js',
-					'guides/integrations-guide/svelte',
-					'guides/integrations-guide/vue',
-				],
-			}),
-			group('integrations.adapters', {
-				items: [
-					'guides/integrations-guide/cloudflare',
-					'guides/integrations-guide/netlify',
-					'guides/integrations-guide/node',
-					'guides/integrations-guide/vercel',
-				],
-			}),
-			group('integrations.other', {
-				items: [
-					'guides/integrations-guide/db',
-					'guides/integrations-guide/markdoc',
-					'guides/integrations-guide/mdx',
-					'guides/integrations-guide/partytown',
-					'guides/integrations-guide/sitemap',
-					'guides/integrations-guide/tailwind',
-				],
-			}),
-			'reference/publish-to-npm',
-		],
-	}),
-
-	// Third-party services tab
-	group('thirdParty', {
-		items: [
-			group('thirdParty.deployment', {
-				collapsed: true,
-				autogenerate: { directory: 'guides/deploy' },
-			}),
-			group('thirdParty.cms', {
-				collapsed: true,
-				autogenerate: { directory: 'guides/cms' },
-			}),
-			group('thirdParty.backend', {
-				collapsed: true,
-				autogenerate: { directory: 'guides/backend' },
-			}),
-			group('thirdParty.media', {
-				collapsed: true,
-				autogenerate: { directory: 'guides/media' },
-			}),
-			'guides/ecommerce',
-			'guides/authentication',
-			'guides/testing',
 		],
 	}),
 ] satisfies StarlightUserConfig['sidebar'];
