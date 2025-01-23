@@ -15,7 +15,7 @@ export const baseSchema = z.object({
 				tagline: z.string(),
 				linkText: z.string(),
 				link: z.string(),
-			}),
+			}).optional(),
 		})
 		.optional(),
 });
