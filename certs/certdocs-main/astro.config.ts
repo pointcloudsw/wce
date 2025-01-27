@@ -42,7 +42,7 @@ export default defineConfig({
 				Pagination: './src/components/starlight/Pagination.astro',
 				SiteTitle: './src/components/starlight/SiteTitle.astro',
 				Search: './src/components/starlight/Search.astro',
-				Sidebar: './src/components/starlight/Sidebar.astro',
+				Sidebar: './src/components/Sidebar.astro',
 				PageTitle: './src/components/starlight/PageTitle.astro',
 			},
 			editLink: {

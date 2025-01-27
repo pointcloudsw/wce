@@ -1,17 +1,25 @@
 ---
 // import logo from '~/assets/astro-logo.svg?raw';
 // import docs from '~/assets/docs.svg?raw';
+
 import logo from '~/assets/aws.svg?raw';
 import docs from '~/assets/msa.svg?raw';
+import { Icon } from '@astrojs/starlight/components';
 import type { Props } from '@astrojs/starlight/props';
 
-const main = 'https://astro.build/';
-const self = '/' + (Astro.props.locale || 'en') + '/getting-started/';
+const main = '/' + (Astro.props.locale || 'en') + '/getting-started/';
+const aws = '/' + (Astro.props.locale || 'en') + '/aws/';
+const awsaws = '/' + (Astro.props.locale || 'en') + '/aws/aws/';
+const msa = '/' + (Astro.props.locale || 'en') + '/msa/';
+const msamsa = '/' + (Astro.props.locale || 'en') + '/msa/msa/';
 ---
 
 <span class="site-title sl-flex">
-	<a class="astro-logo" href={main} set:html={logo} aria-label="Astro" />
-	<a class="docs-logo" href={self} set:html={docs} aria-label="Docs" />
+	<a href={main} aria-label="Astro"><Icon name="rocket" size="3em" /></a>
+	<a class="astro-logo" href={aws} set:html={logo} aria-label="Astro" />
+	<a class="astro-logo" href={awsaws} set:html={logo} aria-label="Astro" />
+	<a class="docs-logo" href={msa} set:html={docs} aria-label="Docs" />
+	<a class="docs-logo" href={msamsa} set:html={docs} aria-label="Docs" />
 </span>
 
 <style>

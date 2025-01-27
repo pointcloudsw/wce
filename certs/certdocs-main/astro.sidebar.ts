@@ -17,87 +17,82 @@ export const sidebar = [
 			group('General.overview', {
 				items: ['concepts/why-astro', 'concepts/islands', 'tutorial/0-introduction'],
 			}),
-			group('General.migrate', {
+			group('General.commands', {
 				collapsed: true,
-				autogenerate: { directory: 'guides/migrate-to-astro' },
+				autogenerate: { directory: 'general/commands' }
+			}),
+			group('General.notes', {
+				collapsed: true,
+				autogenerate: { directory: 'general/notes' }
+			}),
+			group('General.starlight', {
+				collapsed: true,
+				autogenerate: { directory: 'general/starlight' }
 			}),
 		],
 	}),
 
-	// Guides tab
-	group('guides', {
+	// AWS tab
+	group('aws', {
+		collapsed: true,
 		items: [
-			group('guides.routing', {
-				items: [
-					'basics/astro-pages',
-				],
+			'aws/aws',
+			group('aws.administration', {
+				collapsed: true,
+				autogenerate: { directory: 'aws/administration' }
 			}),
-			group('guides.upgrade', {
-				items: [
-					'upgrade-astro',
-					group('guides.upgrade.major', {
-						collapsed: true,
-						items: [
-							'guides/upgrade-to/v5',
-							'guides/upgrade-to/v4',
-							'guides/upgrade-to/v3',
-							'guides/upgrade-to/v2',
-							'guides/upgrade-to/v1',
-						],
-					}),
-				],
+			group('aws.compute', {
+				collapsed: true,
+				autogenerate: { directory: 'aws/compute' }
 			}),
-			'guides/troubleshooting',
-			group('guides.recipes', { collapsed: true, autogenerate: { directory: 'recipes' } }),
-			'contribute',
-		],
+			group('aws.networking', {
+				collapsed: true,
+				autogenerate: { directory: 'aws/networking' }
+			}),
+			group('aws.storage', {
+				collapsed: true,
+				autogenerate: { directory: 'aws/storage' }
+			}),
+			group('aws.services', {
+				collapsed: true,
+				autogenerate: { directory: 'aws/services' }
+			}),
+			group('aws.other', {
+				collapsed: true,
+				autogenerate: { directory: 'aws/other' }
+			}),
+		]
+	}),
+	// Microsoft Azure (msa) tab
+	group('msa', {
+		collapsed: true,
+		items: [
+			'msa/msa',
+			group('msa.administration', {
+				collapsed: true,
+				autogenerate: { directory: 'msa/administration' }
+			}),
+			group('msa.compute', {
+				collapsed: true,
+				autogenerate: { directory: 'msa/compute' }
+			}),
+			group('msa.networking', {
+				collapsed: true,
+				autogenerate: { directory: 'msa/networking' }
+			}),
+			group('msa.storage', {
+				collapsed: true,
+				autogenerate: { directory: 'msa/storage' }
+			}),
+			group('msa.services', {
+				collapsed: true,
+				autogenerate: { directory: 'msa/services' }
+			}),
+			group('msa.other', {
+				collapsed: true,
+				autogenerate: { directory: 'msa/other' }
+			}),
+		]
 	}),
 
-	// Reference tab
-	group('reference', {
-		items: [
-			group('reference.syntax', {
-				items: ['reference/astro-syntax', 'reference/directives-reference'],
-			}),
-			'reference/configuration-reference',
-			'reference/cli-reference',
-			'guides/imports',
-			'reference/routing-reference',
-			group('reference.runtime', {
-				items: [
-					'reference/api-reference',
-					'reference/modules/astro-actions',
-					'reference/modules/astro-assets',
-					'reference/modules/astro-content',
-					'reference/modules/astro-env',
-					'reference/modules/astro-i18n',
-					'reference/modules/astro-middleware',
-					'reference/modules/astro-transitions',
-				],
-			}),
-			group('reference.other', {
-				items: [
-					'reference/integrations-reference',
-					'reference/adapter-reference',
-					'reference/content-loader-reference',
-					'reference/image-service-reference',
-					'reference/dev-toolbar-app-reference',
-					'reference/container-reference',
-					'reference/programmatic-reference',
-				],
-			}),
-			group('reference.experimental', {
-				items: [
-					'reference/experimental-flags',
-					'reference/experimental-flags/responsive-images',
-					'reference/experimental-flags/svg',
-					'reference/experimental-flags/client-prerender',
-					'reference/experimental-flags/content-intellisense',
-					'reference/experimental-flags/sessions',
-				],
-			}),
-			'reference/legacy-flags',
-			'reference/error-reference',
-		],
-	}),
 ] satisfies StarlightUserConfig['sidebar'];
