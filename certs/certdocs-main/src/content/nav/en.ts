@@ -1,9 +1,10 @@
 export default {
-	General: 'General',
-	'General.overview': 'General Overview',
-	'General.commands': 'Helpful Commands',
-	'General.notes': 'Notes',
-	'General.starlight': 'Starlight information',
+	home: 'Home',
+
+	resources: 'Resources',
+	'resources.commands': 'Helpful Commands',
+	'resources.notes': 'Notes',
+	'resources.starlight': 'Starlight information',
 
 	aws: 'AWS',
 	'aws.administration': 'Administration',

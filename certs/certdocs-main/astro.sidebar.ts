@@ -11,25 +11,8 @@ import { group } from './config/sidebar';
  */
 export const sidebar = [
 	// Start tab
-	group('General', {
-		items: [
-			'getting-started',
-			group('General.overview', {
-				items: ['concepts/why-astro', 'concepts/islands', 'tutorial/0-introduction'],
-			}),
-			group('General.commands', {
-				collapsed: true,
-				autogenerate: { directory: 'general/commands' }
-			}),
-			group('General.notes', {
-				collapsed: true,
-				autogenerate: { directory: 'general/notes' }
-			}),
-			group('General.starlight', {
-				collapsed: true,
-				autogenerate: { directory: 'general/starlight' }
-			}),
-		],
+	group('home', {
+		items: [ 'getting-started' ]
 	}),
 
 	// AWS tab
@@ -63,6 +46,7 @@ export const sidebar = [
 			}),
 		]
 	}),
+
 	// Microsoft Azure (msa) tab
 	group('msa', {
 		collapsed: true,
@@ -93,6 +77,23 @@ export const sidebar = [
 				autogenerate: { directory: 'msa/other' }
 			}),
 		]
+	}),
+	
+	group('resources', {
+		items: [
+			group('resources.commands', {
+				collapsed: true,
+				autogenerate: { directory: 'resources/commands' }
+			}),
+			group('resources.notes', {
+				collapsed: true,
+				autogenerate: { directory: 'resources/notes' }
+			}),
+			group('resources.starlight', {
+				collapsed: true,
+				autogenerate: { directory: 'resources/starlight' }
+			}),
+		],
 	}),
 
 ] satisfies StarlightUserConfig['sidebar'];

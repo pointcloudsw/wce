@@ -38,7 +38,7 @@ export default defineConfig({
 				MarkdownContent: './src/components/starlight/MarkdownContent.astro',
 				MobileTableOfContents: './src/components/starlight/MobileTableOfContents.astro',
 				TableOfContents: './src/components/starlight/TableOfContents.astro',
-				PageSidebar: './src/components/starlight/PageSidebar.astro',
+				PageSidebar: './src/components/PageSidebar.astro',
 				Pagination: './src/components/starlight/Pagination.astro',
 				SiteTitle: './src/components/starlight/SiteTitle.astro',
 				Search: './src/components/starlight/Search.astro',
