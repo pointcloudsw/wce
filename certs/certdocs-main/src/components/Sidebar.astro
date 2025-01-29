@@ -55,13 +55,17 @@ const isCurrent = (sidebar: SidebarEntry[]): boolean =>
 	sidebar
 		.map((entry) => (entry.type === 'link' ? entry.isCurrent : isCurrent(entry.entries)))
 		.some((entry) => entry === true);
+
+		console.log(sidebar);
+
 ---
 
 <SidebarPersister {...Astro.props}>
 	<TabbedContent class="tabbed-sidebar">
 		<Fragment slot="tab-list">
 			{
-				sidebar.map(({ label, entries }, index) => (
+				// sidebar.map(({ label, entries }, index) => (
+				sidebar.map(({ label, entries }) => (
 					<TabListItem id={makeId(label)} initial={isCurrent(entries)} class="tab-item">
 						{/* <Icon class="icon" name={getIcon(index)} /> {label} */}
 						{label}
