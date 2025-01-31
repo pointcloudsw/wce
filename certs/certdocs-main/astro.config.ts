@@ -27,7 +27,7 @@ export default defineConfig({
 		]),
 		starlight({
 			title: 'Docs',
-			/* customCss: ['./src/util/custom.css'], */
+			customCss: ['./src/util/custom.css'],
 			expressiveCode: {
 				plugins: [pluginCollapsibleSections()],
 			},
@@ -54,6 +54,10 @@ export default defineConfig({
 			social: {
 				github: 'https://github.com/withastro/astro',
 				discord: 'https://astro.build/chat',
+			},
+			tableOfContents: {
+				minHeadingLevel: 1,
+				maxHeadingLevel: 5
 			},
 			pagefind: false,
 			head: [

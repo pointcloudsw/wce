@@ -1,26 +1,73 @@
 ---
-title: Concepts
+title: Key Concepts
 description: Key concepts to know for the exam
 ---
 import BulletHdr from '~/components/BulletHdr.astro';
+import AwsCtrlTwr from '~/assets/aws/aws-control-tower-structure.png';
+import { Image } from 'astro:assets';
 
-### Key Concepts
-The relationship between AWS Organizations, Consolidated Billing and EC2 Reserved Instances
-#### [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
-*Centrally manage your environment as you scale your AWS resources*
+This section documents key concepts pertaining to organizing and laying out AWS cloud environments.
+<Image src={AwsCtrlTwr} width="840" alt="AWS Control Tower-based account structure for a landing zone" style={"margin: auto;"} />
 
-AWS Organizations helps you centrally manage and govern your environment as you grow and scale your AWS resources. Using Organizations, you can create accounts and allocate resources, group accounts to organize your workflows, apply policies for governance, and simplify billing by using a single payment method for all of your accounts.
+<details>
+    <summary class="details-header">Accounts and Organizational Units (OUs)</summary>
+    <span class="details">
+        #### [Organizing Your AWS Environment and Workloads Using Multiple Accounts](https://docs.aws.amazon.com/whitepapers/latest/organizing-your-aws-environment/organizing-your-aws-environment.html)
+        Your cloud resources and data are contained in an AWS account. An account acts as an identity and access management isolation boundary. When you need to share resources and data between two accounts, you must explicitly allow this access.
+
+        By default, no access is allowed between accounts. For example, if you designate different accounts to contain your production and non-production resources and data, no access is allowed between those environments by default.
+
+        When initially adopting AWS, it's recommended to use a multi-account strategy rather than relying on a single account. This approach is designed to provide flexibility and scalability, even in the early stages of your cloud journey. By separating resources into distinct accounts from the start, you can more easily manage security policies, access controls, and cost optimization as your initial workloads are migrated to the cloud. This lays the groundwork for a secure and well-governed AWS environment.
+
+        The number of accounts that best meets your needs can range from a few to hundreds or even thousands. Management of many accounts requires use of automation to help minimize your operational complexity and ensure efficient alignment with your security, governance, and operational requirements. AWS does not charge per account. Rather, you incur charges based on resources used, regardless of account quantity.
+
+        Workloads embody the components that, bundled together, deliver business value. A workload is usually the level of detail that business and technology leaders communicate about, for example:
+        * Marketing websites
+        * Ecommerce websites
+        * Mobile app backends
+        * Analytic platforms
+        
+        Workloads vary in levels of architectural complexity, from static websites to complex microservices, each with potentially different requirements on cost or billing identification.
+
+        Different business units or product teams might have different processes or security boundary requirements. Workloads often have distinct security postures that require separate controls and mechanisms to support them. For example, it’s common to apply different security and operational controls for the non-production and production environments of a given workload. By using separate accounts for the non-production and production environments, by default, the resources and data that make up a workload environment are separated from other environments and workloads.  Depending on your overall business model, you might choose to isolate the workloads of distinct business units or their subsidiaries into different accounts or organizational units (OUs). Isolation of business units can help them operate with greater decentralized control, but still provides the ability for you to provide overarching controls. This approach might also ease divestment of those units over time.
+        
+        Workloads that share common business purposes can be bundled together into distinct AWS accounts. As a result, you can align the ownership and decision making with those accounts and avoid dependencies and conflicts with how workloads in other accounts are secured and managed.This approach is designed to make it easier for you to meet your requirements, even in the early project stage of adoption. Based on the success of those first few workloads, you might want to gain further business benefits by expanding your adoption of AWS. This motivation often leads to the foundation stage of adoption. In this stage, you invest in evolving your cloud foundational capabilities before greatly expanding adoption.
+
+        
+    </span>    
+    <span class="details">
+        #### [Configuring Accounts and Organizational Units](https://docs.aws.amazon.com/prescriptive-guidance/latest/designing-control-tower-landing-zone/account-structure.html)
+        You can achieve both speed and security in the cloud by using AWS accounts. AWS accounts are resource containers that assist users in managing AWS resources. As needs and demands grow, environments scale through the addition of new accounts. The use of multiple accounts is a best practice because it enables rapid innovation across distributed teams and individuals, reduces the scope of impact through isolation, and can be adjusted to meet new business processes based on operational, regulatory, and budgetary requirements. Lastly, costs are incurred at the account level, so activity and costs can be identified with each account.
+    </span>
+</details>
+
+<details>
+    <summary class="details-header">AWS Organizations, Consolidated Billing and EC2 Reserved Instances</summary>
+
+    <span class="details">
+    #### [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+    __Centrally manage your environment as you scale your AWS resources__
+
+    AWS Organizations helps you centrally manage and govern your environment as you grow and scale your AWS resources. Using Organizations, you can create accounts and allocate resources, group accounts to organize your workflows, apply policies for governance, and simplify billing by using a single payment method for all of your accounts.
 
 
-#### [Consolidating billing for AWS Organizations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html)
-You can use the consolidated billing feature in AWS Organizations to consolidate billing and payment for multiple AWS accounts. Every organization in AWS Organizations has a management account that pays the charges of all the member accounts.
-Consolidated billing has the following benefits:
-* <BulletHdr>One bill</BulletHdr>You get one bill for multiple accounts in the same SOR. If an organization has accounts from multiple SORs, you receive one bill per SOR.
-* <BulletHdr>Easy tracking</BulletHdr>You can track the charges across multiple accounts and download the combined cost and usage data.
-* <BulletHdr>Combined usage</BulletHdr>You can combine the usage across all accounts in the organization to share the volume pricing discounts, Reserved Instance discounts, and Savings Plans. This can result in a lower charge for your project, department, or company than with individual standalone accounts. For more information, see Volume discounts.
-* <BulletHdr>No extra fee</BulletHdr>Consolidated billing is offered at no additional cost.
+    #### [Consolidating billing for AWS Organizations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html)
+    You can use the consolidated billing feature in AWS Organizations to consolidate billing and payment for multiple AWS accounts. Every organization in AWS Organizations has a management account that pays the charges of all the member accounts.
+    Consolidated billing has the following benefits:
+    * <BulletHdr>One bill</BulletHdr>You get one bill for multiple accounts in the same SOR. If an organization has accounts from multiple SORs, you receive one bill per SOR.
+    * <BulletHdr>Easy tracking</BulletHdr>You can track the charges across multiple accounts and download the combined cost and usage data.
+    * <BulletHdr>Combined usage</BulletHdr>You can combine the usage across all accounts in the organization to share the volume pricing discounts, Reserved Instance discounts, and Savings Plans. This can result in a lower charge for your project, department, or company than with individual standalone accounts. For more information, see Volume discounts.
+    * <BulletHdr>No extra fee</BulletHdr>Consolidated billing is offered at no additional cost.
 
-#### [Reserved Instances and consolidated billing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html#concepts-reserved-instances-billing)
-The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account. The instance usage across all member accounts is aggregated in the payer account every month. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill.
+    #### [Reserved Instances and consolidated billing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html#concepts-reserved-instances-billing)
+    The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account. The instance usage across all member accounts is aggregated in the payer account every month. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill.
 
-#### [Consolidated billing for pricing tiers]()
+    #### [Consolidated billing for pricing tiers]()
+    </span>
+</details>
+<details>
+    <summary class="details-header">Landing Zones</summary>
+    <span class="details">
+    </span>
+</details>
+
