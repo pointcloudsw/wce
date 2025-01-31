@@ -37,13 +37,13 @@ export default defineConfig({
 				Hero: './src/components/Hero.astro',
 				MarkdownContent: './src/components/starlight/MarkdownContent.astro',
 				MobileTableOfContents: './src/components/MobileTableOfContents.astro',
-				TableOfContents: './src/components/TableOfContents.astro',
 				PageSidebar: './src/components/PageSidebar.astro',
+				PageTitle: './src/components/PageTitle.astro',
 				Pagination: './src/components/Pagination.astro',
 				SiteTitle: './src/components/starlight/SiteTitle.astro',
 				Search: './src/components/starlight/Search.astro',
 				Sidebar: './src/components/Sidebar.astro',
-				PageTitle: './src/components/PageTitle.astro',
+				TableOfContents: './src/components/TableOfContents.astro'
 			},
 			editLink: {
 				baseUrl: 'https://github.com/withastro/docs/edit/main',

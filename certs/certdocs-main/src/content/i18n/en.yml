@@ -8,7 +8,7 @@ leftSidebar.sponsoredBy: Sponsored by
 # Right Sidebar
 # ---
 tableOfContents.onThisPage: " "
-tableOfContents.overview: PAGE_TITLE
+# tableOfContents.overview: PAGE_TITLE
 
 # Footer
 footer.community: Community

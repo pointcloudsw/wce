@@ -3,6 +3,7 @@ title: Key Concepts
 description: Key concepts to know for the exam
 ---
 import BulletHdr from '~/components/BulletHdr.astro';
+import TextGrid from '~/components/TextGrid.astro';
 import AwsCtrlTwr from '~/assets/aws/aws-control-tower-structure.png';
 import { Image } from 'astro:assets';
 
@@ -29,7 +30,7 @@ This section documents key concepts pertaining to organizing and laying out AWS 
         
         Workloads vary in levels of architectural complexity, from static websites to complex microservices, each with potentially different requirements on cost or billing identification.
 
-        Different business units or product teams might have different processes or security boundary requirements. Workloads often have distinct security postures that require separate controls and mechanisms to support them. For example, it’s common to apply different security and operational controls for the non-production and production environments of a given workload. By using separate accounts for the non-production and production environments, by default, the resources and data that make up a workload environment are separated from other environments and workloads.  Depending on your overall business model, you might choose to isolate the workloads of distinct business units or their subsidiaries into different accounts or organizational units (OUs). Isolation of business units can help them operate with greater decentralized control, but still provides the ability for you to provide overarching controls. This approach might also ease divestment of those units over time.
+        Different business units or product teams might have different processes or security boundary requirements. Workloads often have distinct security postures that require separate controls and mechanisms to support them. For example, it is common to apply different security and operational controls for the non-production and production environments of a given workload. By using separate accounts for the non-production and production environments, by default, the resources and data that make up a workload environment are separated from other environments and workloads.  Depending on your overall business model, you might choose to isolate the workloads of distinct business units or their subsidiaries into different accounts or organizational units (OUs). Isolation of business units can help them operate with greater decentralized control, but still provides the ability for you to provide overarching controls. This approach might also ease divestment of those units over time.
         
         Workloads that share common business purposes can be bundled together into distinct AWS accounts. As a result, you can align the ownership and decision making with those accounts and avoid dependencies and conflicts with how workloads in other accounts are secured and managed.This approach is designed to make it easier for you to meet your requirements, even in the early project stage of adoption. Based on the success of those first few workloads, you might want to gain further business benefits by expanding your adoption of AWS. This motivation often leads to the foundation stage of adoption. In this stage, you invest in evolving your cloud foundational capabilities before greatly expanding adoption.
 
@@ -48,7 +49,21 @@ This section documents key concepts pertaining to organizing and laying out AWS 
     #### [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
     __Centrally manage your environment as you scale your AWS resources__
 
-    AWS Organizations helps you centrally manage and govern your environment as you grow and scale your AWS resources. Using Organizations, you can create accounts and allocate resources, group accounts to organize your workflows, apply policies for governance, and simplify billing by using a single payment method for all of your accounts.
+    AWS Organizations helps you centralize the following aspects of:
+    <TextGrid flow="row" gap="1.2rem" gridcol="1fr 1fr" gridrow="auto" liststyle="square inside" textindent="-2ch">
+        <li>Provisioning, management and governance of AWS accounts</li>
+        <li>Provisioning, management and governance of AWS resources</li>
+        <li>Account creation</li>
+        <li>Resource allocation</li>
+        <li>Account groups</li>
+        <li>Application of policies</li>
+        <li>Billing and payment methods</li>
+        <li>Account security</li>
+        <li>Resource sharing</li>
+    </TextGrid>
+
+
+    Organizations helps you to centrally provision accounts and resources; secure and audit their environment for compliance; share resources; control access to accounts, regions, and services; as well as optimize costs and simplify billing. Additionally, Organizations supports aggregation of health events, consolidated data on use of access permissions, and centralized management of backups and tagging for multi-account environments.
 
 
     #### [Consolidating billing for AWS Organizations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html)

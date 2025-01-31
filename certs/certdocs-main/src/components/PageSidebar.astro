@@ -1,8 +1,7 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
-
-import TableOfContents from './starlight/TableOfContents.astro';
-import MobileTableOfContents from './starlight/MobileTableOfContents.astro';
+import TableOfContents from './TableOfContents.astro';
+import MobileTableOfContents from './MobileTableOfContents.astro';
 ---
 
 {
@@ -25,7 +24,8 @@ import MobileTableOfContents from './starlight/MobileTableOfContents.astro';
 		flex-direction: column;
 		justify-content: space-between;
 		height: 100%;
-		padding: 1rem var(--sl-sidebar-pad-x);
+		/* padding: 1rem var(--sl-sidebar-pad-x); */
+		padding: 2.5rlh var(--sl-sidebar-pad-x) 1rlh var(--sl-sidebar-pad-x);
 	}
 	.sl-container {
 		width: calc(var(--sl-sidebar-width) - 2 * var(--sl-sidebar-pad-x));

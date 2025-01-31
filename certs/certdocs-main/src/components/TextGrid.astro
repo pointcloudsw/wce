@@ -1,0 +1,51 @@
+---
+interface Props {
+	flow?: string;
+	gap?: string;
+	gridrow?: string;
+	gridcol?: string;
+	inlinesize?: string;
+	liststyle?: string;
+	textindent?: string;
+}
+const {
+	flow,
+	gap,
+	gridrow,
+	gridcol,
+	inlinesize,
+	liststyle,
+	textindent
+	} = Astro.props;
+---
+
+<ul class:list={['text-grid']}>
+	<slot />
+</ul>
+
+<style define:vars={{ flow, gap, gridrow, gridcol, inlinesize, liststyle, textindent }}>
+	.text-grid {
+		--_defined_grid: var(--gridrow) / var(--gridcol);
+		--_landscpe_grid: auto / 1fr 1fr;
+		--_portrait_grid: auto / 1fr;
+		--_inline_size: var(--inlinesize, 90%);
+
+		display: grid;
+		gap: var(--gap);
+		grid-auto-flow: column;
+		grid: var(--_portrait_grid);
+		inline-size: var(--_inline_size);
+		list-style: var(--liststyle);
+		text-indent: var(--textindent);
+	}
+
+	@media screen and (min-width: 1200px) {
+		.text-grid {
+			grid-auto-flow: var(--flow, row);
+			grid: var(--_defined_grid, var(--_portrait_grid));
+			list-style: var(--liststyle);
+			gap: var(--gap);
+			text-indent: var(--textindent);
+		}		
+	}
+</style>

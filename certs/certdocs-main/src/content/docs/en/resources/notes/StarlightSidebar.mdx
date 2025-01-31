@@ -1,0 +1,35 @@
+---
+title: Starlight Sidebar Mods
+description: Gist of modifying Starlight defaults
+---
+### Overview
+Wonderful though it is, Astro's Starlight doc system has a few annoying defaults, especially as it relates to its right side panel.  By default, the toc on every Starlight page's right sidebar is entitled with the 'On this page', or whatever is your local i18 equivalent (more on this later), heading text.  The second line is even less helpful, with the generic 'Overview' navigation tag existing to quickly navigate the readerto the top of the page.
+
+In this article, I will explain how to override these defaults first with a brute force method which generally works ok and second with a more elegant method that should work, but doesn't, for reasons I will explain.  So let's get started, shall we?
+
+
+insert default picture, showing focus of article and fixes
+summarize files affected in brute force approach
+- i18/en.yml or i18/en.json
+- changes for adding the _top id to the title 
+- changes for modifying the toc[0] to point to title
+- style changes to lower the toc bar
+- PageSidebar.astro
+- TableOfContents.astro
+- MobileTableOfContents.astro
+- astro.config.ts
+show changes
+explain changes
+show before and after
+
+deep dive on i18n and how one might want to leverage the extensive functionality provided by its packages as used by Astro
+specifically, the use of the t() function combined with available Props and doc properties
+
+summarize files affected in preferred approach, using i18n
+show changes
+
+show before and after (same as in brute force approach)
+
+
+
+

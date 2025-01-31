@@ -1,11 +1,6 @@
 ---
-// import TableOfContentsList from '../../../node_modules/@astrojs/starlight/components/TableOfContents/TableOfContentsList.astro';
 import type { Props } from '@astrojs/starlight/props';
-import Default from '@astrojs/starlight/components/TableOfContents.astro';
-
-// import TutorialNav from '../tutorial/TutorialNav.astro';
-
-// const isTutorial = Astro.props.entry.id.split('/')[1] === 'tutorial';
+import TableOfContentsList from 'node_modules/@astrojs/starlight/components/TableOfContents/TableOfContentsList.astro';
 
 const { title } = Astro.props.entry.data;
 const { toc } = Astro.props;
@@ -13,7 +8,19 @@ const { toc } = Astro.props;
 if ( [...(toc?.items ?? [])].length > 0 ) {
 	[...toc.items][0].text = title;
 }
-// [...toc?.items][0].text = title;
 
 ---
-<Default {...Astro.props}><slot /></Default>
+
+{
+	toc && (
+		<starlight-toc data-min-h={toc.minHeadingLevel} data-max-h={toc.maxHeadingLevel}>
+			<nav aria-labelledby="starlight__on-this-page">
+				<h2 id="starlight__on-this-page">
+					{Astro.locals.t('tableOfContents.onThisPage')}
+				</h2>
+				<TableOfContentsList toc={toc.items} />
+			</nav>
+		</starlight-toc>
+	)
+}
+<script src="../../node_modules/@astrojs/starlight/components/TableOfContents/starlight-toc"></script>
