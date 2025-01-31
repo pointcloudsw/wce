@@ -3,6 +3,13 @@ a11y.sectionLink: Section titled
 site.title: Astro Documentation
 # Left Sidebar
 leftSidebar.sponsoredBy: Sponsored by
+
+# ---
+# Right Sidebar
+# ---
+tableOfContents.onThisPage: " "
+tableOfContents.overview: PAGE_TITLE
+
 # Footer
 footer.community: Community
 footer.contribute: Contribute
