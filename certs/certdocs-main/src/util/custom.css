@@ -37,14 +37,11 @@ summary.details-header {
   font-size: 160%;
 }
 
+/* ss2000 Start */
 /*
- *
- Style ul/li for Markdown content
- *
- * Style space (ss) 2000
- *
+ * Style ul/li for Markdown content
  */
- /* ss2000 Start */
+/* ss2000 */
 ul.text-grid {
   --_defined_gap: var(--gapr, 1.25rlh) var(--gapc, 2rch);
   --_defined_grid: var(--gridrow) / var(--gridcol);
@@ -63,20 +60,22 @@ ul.text-grid {
   margin: var(--gridmargin);
   padding: var(--pad);
   position: var(--pos);
-  }
+}
 
  /* ss2000 */
 ul.text-grid > li {
   margin: var(--itemmargin);
 }
+
  /* ss2000 */
 @media screen and (min-width: 1200px) {
   ul.text-grid {
     grid-auto-flow: var(--flow, row);
     grid: var(--_defined_grid, var(--_landscape_grid));
-  }		
+  }
+
+  /* ss2000 End */
 }
- /* ss2000 End */
 
 
 @media (prefers-color-scheme: dark) {
