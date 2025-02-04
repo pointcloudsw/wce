@@ -16,7 +16,7 @@ p, li {
  * Style space (ss) 1000
  *
  */
-details:has(.details-header) > .details > * {
+details:has(.details-header) > .details > *:not(.text-grid) {
   margin-left: 2.2rch;
 }
 /* ss1000 */
@@ -36,6 +36,47 @@ span.details > p:has(+ .heading-wrapper) {
 summary.details-header {
   font-size: 160%;
 }
+
+/*
+ *
+ Style ul/li for Markdown content
+ *
+ * Style space (ss) 2000
+ *
+ */
+ /* ss2000 Start */
+ul.text-grid {
+  --_defined_gap: var(--gapr, 1.25rlh) var(--gapc, 2rch);
+  --_defined_grid: var(--gridrow) / var(--gridcol);
+  --_landscpe_grid: auto / 1fr 1fr;
+  --_portrait_grid: auto / 1fr;
+  --_inline_size: var(--inlinesize, 80%);
+  
+  display: grid;
+  gap: var(--_defined_gap);
+  grid-auto-flow: column;
+  grid: var(--_portrait_grid);
+  inline-size: var(--_inline_size);
+  text-indent: var(--textindent);
+  list-style-position: var(--lsp);
+  list-style-type: var(--lst);
+  margin: var(--gridmargin);
+  padding: var(--pad);
+  position: var(--pos);
+  }
+
+ /* ss2000 */
+ul.text-grid > li {
+  margin: var(--itemmargin);
+}
+ /* ss2000 */
+@media screen and (min-width: 1200px) {
+  ul.text-grid {
+    grid-auto-flow: var(--flow, row);
+    grid: var(--_defined_grid, var(--_landscape_grid));
+  }		
+}
+ /* ss2000 End */
 
 
 @media (prefers-color-scheme: dark) {

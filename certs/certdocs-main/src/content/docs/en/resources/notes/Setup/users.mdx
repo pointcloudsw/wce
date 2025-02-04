@@ -2,3 +2,28 @@
 title: Linux User Account Setup
 description: Linux User Account Setup
 ---
+
+Establish new user accounts on Ubuntu/Debian Linux systems using the combination of `useradd` and `chpasswd` commands.
+:::Note
+Perform as a priveleged user such as root or via sudo
+:::
+> Example:  Create a common everyday non-privileged user named 'dev'
+```bash
+useradd -s /bin/bash -m dev
+```
+
+Avoid revealing dev's password by assigning it via the chpasswd command:
+```bash
+chpasswd
+dev:T1h5isDeV'sPssWrd
+```
+Enable dev to access host via ssh:
+```bash
+mkdir ~dev/.ssh
+cat >> ~dev/.ssh/authorized_keys <<-EOF
+sshpublickeystring
+EOF
+chmod -R 700 ~dev/.ssh
+chmod 600 ~dev/.ssh/*
+chown -R dev:dev ~dev/.ssh
+```
