@@ -1,0 +1,21 @@
+---
+title: Linux Upgrade Commands
+description: Upgrade applications and kernel on Ubuntu Linux
+---
+
+Perform system wide upgrade of applications and kernel release using `apt` and `do-release-upgrade` commands.
+:::Noted
+Perform as a priveleged user such as root or via sudo
+:::
+Upgrade applications
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+Upgrade system and kernel
+```bash
+uname -a
+### Linux est 5.15.0-130-generic #140-Ubuntu SMP Wed Dec 18 17:59:53 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+do-release-upgrade
+```
