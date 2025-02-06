@@ -4,6 +4,8 @@ description: Key concepts to know for the exam
 ---
 import BulletHdr from '~/components/BulletHdr.astro';
 import AwsCtrlTwr from '~/assets/aws/aws-control-tower-structure.png';
+import AwsOrgsFunc from '~/assets/aws/aws-organizations-functionality.png';
+import AwsOrgsHier from '~/assets/aws/aws-organizations-hierarchy.png';
 import { Image } from 'astro:assets';
 
 This section documents key concepts pertaining to organizing and laying out AWS cloud environments.
@@ -48,7 +50,10 @@ This section documents key concepts pertaining to organizing and laying out AWS 
     #### [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
     __Centrally manage your environment as you scale your AWS resources__
 
-    AWS Organizations helps you centralize the following aspects of:
+    AWS Organizations provides the following functionality:
+    <Image src={AwsOrgsFunc} width="720" alt="Capabilities of AWS Organizations" style={"margin: auto;"} />
+
+    These capabilities enable cloud administrators to centralize the following activties:
     <ul class="not-content text-grid" style="--flow: row; --gapc: 5.45rch; --gapr: 0.55rlh; --gridcol: 1fr 1fr; --gridrow: auto; --gridmargin: auto; --inlinesize: 84%; --lsp: outside; --lst: square; --itemmargin: 0rlh 0.50rch; --pad: 0rlh 3rch 0rlh 2rch; --pos: relative; --textindent: 0rch">
         <li>Provisioning, management and governance of AWS accounts</li>
         <li>Provisioning, management and governance of AWS resources</li>
@@ -62,6 +67,9 @@ This section documents key concepts pertaining to organizing and laying out AWS 
     </ul>
 
     Organizations helps you to centrally provision accounts and resources; secure and audit their environment for compliance; share resources; control access to accounts, regions, and services; as well as optimize costs and simplify billing. Additionally, Organizations supports aggregation of health events, consolidated data on use of access permissions, and centralized management of backups and tagging for multi-account environments.
+
+    
+    <Image src={AwsOrgsHier} width="840" alt="AWS Organizations Hierachy Example" style={"margin: auto;"} />
 
 
     #### [Consolidating billing for AWS Organizations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html)
