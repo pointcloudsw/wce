@@ -1,32 +1,42 @@
 
 :root {
   font-size: 150%;
-  --_text-shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 p, li {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-shadow: 0px 1px 1px var(--_text-shadow-color);
 }
 
+figure {
+  inline-size: fit-content;
+  margin: auto;
+  position: relative;
+}
+figure > figcaption.not-content {
+  margin-top: 0rlh;
+}
+
+/* ss1000 Start */
 /*
- *
- Style detail/summary accordians for Markdown content
- *
- * Style space (ss) 1000
- *
+ * Style detail/summary accordians for Markdown content
  */
-details:has(.details-header) > .details > *:not(.text-grid) {
-  margin-left: 2.2rch;
+
+/* ss1000 */
+details:has(.details-header) > .details > *:not(figure, .text-grid) {
+  margin-inline-start: 2%;
 }
 /* ss1000 */
-details:has(.details-header) > .details > [class*="heading"] {
-  margin-left: -1rch;
+details:has(.details-header) > .details > [class*="heading"] + p {
+  margin-top: 0rlh;
 }
 /* ss1000 */
 span.details > .heading-wrapper {
   margin-block-start: 1.5rlh;
   margin-block-end: 0.2rlh;
+}
+/* ss1000 */
+span.details > .heading-wrapper + p {
+  margin-inline-start: 10%;
 }
 /* ss1000 */
 span.details > p:has(+ .heading-wrapper) {
@@ -35,7 +45,65 @@ span.details > p:has(+ .heading-wrapper) {
 /* ss1000 */
 summary.details-header {
   font-size: 160%;
+  word-wrap: break-word;
+  white-space: normal;
 }
+/* ss1000 */
+summary > [class*="level-h"] {
+  display: inline-flex !important;
+}
+/* ss1000 */
+summary > [class*="level-h"] > :is(h2, h3, h4, h5, h6) {
+  padding-inline-start: 5%;
+}
+/* ss1000 */
+summary:has(> [class*="level-h"])::before {
+  scale: 2;
+  vertical-align: unset;
+  margin-inline-start: 2%;
+}
+/* ss1000 */
+summary:has(> [class*="level-h"]) .anchor-link {
+  scale: 1.1;
+  vertical-align: unset;
+  margin-inline-start: -5%;
+  padding-inline-start: -5%;
+}
+/* ss1000 End */
+
+/* ss1001 Start */
+/* ss1001 */
+article.accordion > input {
+	display: none;
+}
+
+/* ss1001 */
+article.accordion > label {
+	/* background: #eee; */
+	cursor: pointer;
+	display: block;
+}
+/* ss1001 */
+article.accordion > label:hover {
+	background: #ccc;
+}
+/* ss1001 */
+article.accordion > input:checked + label {
+	background: #ccc;
+	color: white;
+}
+/* ss1001 */
+article.accordion > section {
+	/* background: #f7f7f7; */
+  block-size: 0px;
+	overflow:hidden;
+}
+
+/* ss1001 */
+article.accordion > input:checked ~ section {
+  block-size: auto;
+}
+/* ss1001 End */
 
 /* ss2000 Start */
 /*
@@ -74,9 +142,216 @@ ul.text-grid > li {
     grid: var(--_defined_grid, var(--_landscape_grid));
   }
 
-  /* ss2000 End */
+}
+/* ss2000 End */
+
+/* ss9000 Start */
+
+/* ss9000 */
+.navigation ul {
+  background: darkorange;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
 }
 
+/* ss9000 */
+.navigation li {
+	color: #fff;
+  background: darkorange;
+	display: block;
+	float: left;
+	padding: 1rem;
+	position: relative;
+	text-decoration: none;
+/*   transition-duration: 0.5s; */
+}
+  
+/* ss9000 */
+.navigation li a {
+  color: #fff;
+}
+
+/* ss9000 */
+.navigation li:hover,
+.navigation li:focus-within {
+	background: red;
+	cursor: pointer;
+}
+
+/* ss9000 */
+.navigation li:focus-within a {
+  outline: none;
+}
+/* ss9000 */
+.navigation ul.dropdown {
+  margin-top: -10px;
+  margin-left: 20px;
+  z-index: 1;
+}
+/* ss9000 */
+article.a > header + section {
+	background: orange;
+	visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+	position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+	left: 0;
+  display: none;
+}
+/* ss9000 */
+article.a > header:hover + section,
+article.a > header + section:focus-within > *,
+article.a > header + section *:hover,
+article.a > header + section *:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block
+}
+/* ss9000 */
+article.a header + section * {
+	clear: both;
+  width: 100%;
+}
+/* ss9000 End */
+
+/* ss9100 Start */
+/* ss9100 */
+article.b {
+  position: relative;
+  display: grid;
+  /* grid: auto-fit(fit-content) auto-fill(fit-content) / none; */
+  grid: repeat(auto-fit, minmax(min-content,1fr)) / 1fr;
+  grid-auto-flow: row;
+}
+/* ss9100 */
+article.b > header.tab {
+  /* position: relative; */
+  grid-area: 1;
+  }
+article.b > section.tab__content {
+  /* grid-area: 2; */
+  visibility: hidden;
+  block-size: 0;
+  /* max-height: 0; */
+  /* overflow: hidden; */
+  transition: all 0.35s;
+  /* visibility: hidden; */
+
+}
+header.tab input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+article.b > header.tab > input:checked ~ article.b > section.tab__content {
+  /* max-height: 10rem; */
+  visibility: visible;
+  grid-area: 2;
+  block-size: auto;
+
+}
+
+/* Visual styles */
+article.b {
+  color: var(--theme);
+  border: 2px solid;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+article.b > header.tab > label.tab__label,
+.tab__close {
+  display: flex;
+  color: white;
+  background: var(--theme);
+  cursor: pointer;
+}
+.tab__label {
+  justify-content: space-between;
+  padding: 1rem;
+}
+.tab__label::after {
+  content: "\276F";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  transform: rotate(90deg);
+  transition: all 0.35s;
+}
+.tab input:checked + .tab__label::after {
+  transform: rotate(270deg);
+}
+article.b:has( > header.tab > input:not(:checked) ) > section.tab__content {
+  visibility: hidden;
+}
+article.b:has( > header.tab > input:checked ) > section.tab__content {
+  visibility: visible;
+}
+.tab__content p {
+  margin: 0;
+  padding: 1rem;
+}
+.tab__close {
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+.accordion--radio {
+  --theme: var(--secondary);
+}
+
+/* Arrow animation */
+.tab input:not(:checked) + .tab__label:hover::after {
+  animation: bounce .5s infinite;
+}
+@keyframes bounce {
+  25% {
+    transform: rotate(90deg) translate(.25rem);
+  }
+  75% {
+    transform: rotate(90deg) translate(-.25rem);
+  }
+}
+
+/* ss9100 End */
+
+/* ss9500 Start */
+/* ss9500 */
+#accordion input {
+	display: none;
+}
+/* ss9500 */
+#accordion label {
+	/* background: #eee; */
+	cursor: pointer;
+	display: block;
+}
+/* ss9500 */
+#accordion label:hover {
+	background: #ccc;
+}
+/* ss9500 */
+#accordion input:checked + label {
+	background: #ccc;
+	color: white;
+}
+/* ss9500 */
+#accordion section {
+	/* background: #f7f7f7; */
+  block-size: 0px;
+	overflow:hidden;
+}
+/* ss9500 */
+#accordion section p {
+	padding: 1em;
+}
+/* ss9500 */
+#accordion input:checked ~ section {
+  block-size: auto;
+}
+/* ss9500 End */
 
 @media (prefers-color-scheme: dark) {
   :root {
