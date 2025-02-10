@@ -21,65 +21,6 @@ figure > figcaption.not-content {
 }
 
 
-/* ss1001 Start */
-/* ss1001 */
-article.accordion > input.accordion-heading {
-	display: none;
-}
-
-/* ss1001 */
-article.accordion > label.accordion-heading {
-	/* background: #eee; */
-	cursor: pointer;
-	display: block;
-}
-
-/* ss1001 */
-article.accordion > label.accordion-heading > div.heading-wrapper {
-  flex: none;
-  display: grid;
-  grid: 1fr / 5% 1fr;
-  grid-auto-flow: column;
-}
-
-/* ss1001 */
-article.accordion > label.accordion-heading > div.heading-wrapper > :is(h1, h2, h3, h4, h5, h6) {
-  grid-area: 1 / 2;
-}
-
-/* ss1001 */
-article.accordion > label.accordion-heading > div.heading-wrapper > :is(h1, h2, h3, h4, h5, h6)::before {
-  /* content: '\f285 '; */
-  /* content: '\27A4 '; */
-  /* content: '➤'; */
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 80 80'%3E%3Ctext x='0' y='60' font-family='Arial' font-size='48' fill='white'%3E➤%3C/text%3E%3C/svg%3E");
-}
-article.accordion:has(> input.accordion-heading:checked) > label.accordion-heading > div.heading-wrapper > :is(h1, h2, h3, h4, h5, h6):before {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 80 80'%3E%3Ctext x='0' y='50' font-family='Arial' font-size='48' stroke='white' fill='undefined' transform='rotate(90,20,40)'%3E➤%3C/text%3E%3C/svg%3E");
-}
-
-/* ss1001 */
-article.accordion > label.accordion-heading:hover {
-	background: #ccc;
-}
-/* ss1001 */
-article.accordion > input.accordion-heading:checked + label {
-	background: #ccc;
-	color: white;
-}
-/* ss1001 */
-article.accordion > section {
-	/* background: #f7f7f7; */
-  block-size: 0px;
-	overflow:hidden;
-}
-
-/* ss1001 */
-article.accordion > input.accordion-heading:checked ~ section {
-  block-size: auto;
-}
-/* ss1001 End */
-
 /* ss2000 Start */
 /*
  * Style ul/li for Markdown content
