@@ -58,7 +58,7 @@ export default defineConfig({
 			},
 			tableOfContents: {
 				minHeadingLevel: 1,
-				maxHeadingLevel: 5
+				maxHeadingLevel: 3
 			},
 			pagefind: false,
 			head: [
