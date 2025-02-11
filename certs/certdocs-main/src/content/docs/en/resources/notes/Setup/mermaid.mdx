@@ -1,0 +1,64 @@
+---
+title: Setting up Mermaid for use with Astro
+description: Render mdx as SVG diagrams with MermaidJS
+---
+
+Setting up MermaidJS with Astro, courtesy of [Moh Hasbi Assidiqi](https://mohhasbias.github.io/blog/render-mermaidjs-in-astro/)
+
+```bash
+npm install rehype-mermaid
+```
+
+Add some workaround to the Rehype Plugin
+The rehype-mermaid plugin does not work out of the box with Astro. We need to add a workaround to make it work. To make it work, rehype-mermaid need a `<pre>` tag with mermaid class. So we need to create a plugin for that. Here is the workaround based on [this article](https://dev.to/fkurz/extending-astrojs-markdown-processing-with-remark-and-rehype-plugins-m1k):
+
+```typescript
+// add-mermaid-classname.ts
+import { visit, CONTINUE } from "unist-util-visit"
+import type { Plugin } from 'unified';
+import type { Root, Element } from 'hast';
+
+const visitor = (node: any) => {
+  const dataLanguageMermaid = "mermaid"
+  const typeElement = "element"
+  const tagNamePre = "pre"
+  const classMermaid = dataLanguageMermaid
+
+  const isPreElement = (node: any) => typeof node.type !== undefined && node.type === typeElement
+    && node.tagName !== undefined && node.tagName === tagNamePre
+    && node.properties !== undefined && node.properties.dataLanguage === dataLanguageMermaid
+
+  if(!isPreElement(node)) {
+    return CONTINUE
+  }
+
+  const element = node as Element
+  const properties = element.properties
+  const className = properties.className as Array<string>
+  properties.className = [...className, classMermaid]
+
+  return CONTINUE
+}
+
+const addMermaidClass: Plugin<void[], Root> = () =>
+  (ast: Root) => visit(ast, visitor)
+
+export default addMermaidClass
+```
+
+Lastly, we need to add the Rehype plugin to the Astro config. We can do this by updating the astro.config.mjs file in the root of our project:
+```javascript
+// astro.config.js
+import rehypeMermaid from 'rehype-mermaid';
+import addMermaidClass from './add-mermaid-classname';
+
+export default {
+  // Other config options...
+  markdown: {
+    rehypePlugins: [
+      addMermaidClass,
+      rehypeMermaid,
+    ]
+  }
+}
+```
