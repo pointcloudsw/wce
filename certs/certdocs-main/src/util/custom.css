@@ -4,8 +4,8 @@
 }
 
 body > a {
-  /* visibility: hidden; */
-  /* display: none; */
+  visibility: hidden;
+  display: none;
 }
 p, li {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -21,33 +21,13 @@ figure > figcaption.not-content {
 }
 
 
+/* ss1001 Start */
 /* ss1001 */
-details {
-  display: unset;
-  display: grid;
-  grid: 1fr 1fr / 5% 1fr;
-  grid-auto-flow: column;
-}
-details > summary:before {
-  grid-area: 1 / 1;
-}
-details > summary > div {
-  grid-area: 1 / 2;
-}
-details > :not(> summary){
-  grid-area: 2 / 2;
-}
-/* ss1001 */
-div.heading-wrapper {
-  flex: none;
-  display: grid;
-  grid: 1fr / 5% 5% 1fr;
-  grid-auto-flow: column;
-}
-/* ss1001 */
-div.heading-wrapper > :is(h1, h2, h3, h4, h5, h6) {
-  grid-area: 1 / 3;
-}
+ .sl-markdown-content summary.not-content {
+   list-style-position: outside;
+ }
+/* ss1001 End */
+
 
 /* ss2000 Start */
 /*

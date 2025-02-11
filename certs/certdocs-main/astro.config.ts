@@ -12,6 +12,9 @@ import { rehypeTasklistEnhancer } from './config/plugins/rehype-tasklist-enhance
 import { remarkFallbackLang } from './config/plugins/remark-fallback-lang';
 import rehypeMermaid from 'rehype-mermaid';
 
+
+// import { remarkHeadingId } from 'remark-custom-heading-id'; // https://github.com/withastro/starlight/discussions/2050
+
 /* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
 const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL;
 
@@ -89,6 +92,7 @@ export default defineConfig({
 			[remarkSmartypants, { dashes: false }],
 			// Add our custom plugin that marks links to fallback language pages
 			remarkFallbackLang(),
+			// remarkHeadingId // https://github.com/withastro/starlight/discussions/2050
 		],
 		rehypePlugins: [
 			rehypeSlug,
