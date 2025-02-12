@@ -28,8 +28,7 @@ import { Image } from 'astro:assets';
             - Zero or more member accounts
             - Zero or more organizational units (OUs)
             - Zero or more policies.
-
-
+            
             AWS Organizations helps cloud administrators centralize critical tasks:
             <ul class="not-content text-grid" style="--flow: row; --gapc: 5.45rch; --gapr: 0.55rlh; --gridcol: 1fr 1fr; --gridrow: auto; --gridmargin: auto; --inlinesize: 84%; --lsp: outside; --lst: square; --itemmargin: 0rlh 0.50rch; --pad: 0rlh 3rch 0rlh 2rch; --pos: relative; --textindent: 0rch">
                 <li>Provisioning, management and governance of AWS accounts</li>
@@ -56,9 +55,9 @@ import { Image } from 'astro:assets';
 
                 If you apply an authorization policy (for example, a service control policy (SCP)), to the root, it applies to all organizational units (OUs) and member accounts in the organization. It does not apply to the management account in the organization.
 
-        :::note
+                :::note
                 You can have only one root. AWS Organizations automatically creates the root for you when you create an organization.
-        :::
+                :::
 
                 ### Organizational unit (OU)
                 An organizational unit (OU) is a group of AWS accounts within an organization. An OU can also contain other OUs enabling you to create a hierarchy. For example, you can group all accounts that belong to the same department into a departmental OU. Similarly, you can group all accounts running security services into a security OU.
@@ -70,9 +69,10 @@ import { Image } from 'astro:assets';
 
                 Using multiple AWS accounts is a best practice for scaling your environment, as it provides a billing boundary for costs, isolates resources for security, gives flexibility or individuals and teams, in addition to being adaptable for new processes.
 
-        :::note
+                :::note
                 An AWS account is different from a user. A user is an identity that you create using AWS Identity and Access Management (IAM) and takes the form of either an IAM user with long-term credentials or an IAM role with short-term credentials. A single AWS account can, and typically does, contain many users and roles.
-        :::
+                :::
+                
                 There are __two__ types of accounts in an organization:
                 - a single account that is designated as the management account; and
                 - one or more member accounts.
@@ -125,9 +125,9 @@ import { Image } from 'astro:assets';
 
                 ### Organization operations requiring `us-east-1`
                 __AWS Region `us-east-1`__ must be specified when performing operations at the Root level of an AWS Organization. For example, the root level operation [`ListRoots`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListRoots.html) requires `us-east-1` to be specified as the Region.
-                <br />
+
                 Secondly, the following Organizations operations also require `us-east-1` to be specified:  [`DeletePolicy`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DeletePolicy.html), [`DeletePolicyType`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DisablePolicyType.html), [`EnablePolicyType`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
-                <br />
+
                 Lastly, __`us-east-1`__ is also required when calling the following Resource Groups Tagging API operations (which are part of the tag policies feature): [`DescribeReportCreation`](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_DescribeReportCreation.html), [`GetComplianceSummary`](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_GetComplianceSummary.html) and [`StartReportCreation`](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_StartReportCreation.html).
 
                 ### Organization policies

@@ -7,11 +7,6 @@ body>a {
   display: none;
 }
 
-p,
-li {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 figure {
   inline-size: fit-content;
   margin: auto;
@@ -20,6 +15,16 @@ figure {
 
 figure>figcaption.not-content {
   margin-top: 0rlh;
+}
+
+li,
+p
+{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:not(div.heading-wrapper) + p {
+  margin-block-start: 1rlh;
 }
 
 
@@ -76,22 +81,22 @@ figure>figcaption.not-content {
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l2> :not(.level-h2) {
+.sl-markdown-content details.not-content section.l2 > :not(.level-h2) {
   margin-inline-start: var(--l2_indent);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l3> :not(.level-h3) {
+.sl-markdown-content details.not-content section.l3 > :not(.level-h3) {
   margin-inline-start: var(--l3_indent);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l4> :not(.level-h4) {
+.sl-markdown-content details.not-content section.l4 > :not(.level-h4) {
   margin-inline-start: var(--l4_indent);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l5> :not(.level-h5) {
+.sl-markdown-content details.not-content section.l5 > :not(.level-h5) {
   margin-inline-start: var(--l5_indent);
 }
 

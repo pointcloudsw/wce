@@ -10,8 +10,7 @@ import { makeLocalesConfig } from './config/locales';
 import { starlightPluginAutolinkHeadings } from './config/plugins/rehype-autolink';
 import { rehypeTasklistEnhancer } from './config/plugins/rehype-tasklist-enhancer';
 import { remarkFallbackLang } from './config/plugins/remark-fallback-lang';
-import rehypeMermaid from 'rehype-mermaid';
-
+import d2 from 'astro-d2';
 
 // import { remarkHeadingId } from 'remark-custom-heading-id'; // https://github.com/withastro/starlight/discussions/2050
 
@@ -22,19 +21,19 @@ const site = NETLIFY_PREVIEW_SITE || 'https://docs.astro.build/';
 
 // https://astro.build/config
 export default defineConfig({
-	site,
-	integrations: [
+    site,
+    integrations: [
 		devServerFileWatcher([
 			'./config/*', // Custom plugins and integrations
 			'./astro.sidebar.ts', // Sidebar configuration file
 			'./src/content/nav/*.ts', // Sidebar labels
 		]),
 		starlight({
-			title: 'Docs',
-			customCss: ['./src/util/custom.css'],
-			expressiveCode: {
-				plugins: [pluginCollapsibleSections()],
-			},
+        	title: 'Docs',
+        	customCss: ['./src/style/custom.css'],
+        	expressiveCode: {
+            	plugins: [pluginCollapsibleSections()],
+        	},
 			components: {
 				EditLink: './src/components/starlight/EditLink.astro',
 				Head: './src/components/starlight/Head.astro',
@@ -81,28 +80,28 @@ export default defineConfig({
 			],
 		}),
 		sitemap(),
+		d2()
 	],
-	trailingSlash: 'always',
-	scopedStyleStrategy: 'where',
-	compressHTML: false,
-	markdown: {
-		// Override with our own config
-		smartypants: false,
-		remarkPlugins: [
-			[remarkSmartypants, { dashes: false }],
-			// Add our custom plugin that marks links to fallback language pages
-			remarkFallbackLang(),
-			// remarkHeadingId // https://github.com/withastro/starlight/discussions/2050
-		],
-		rehypePlugins: [
-			rehypeSlug,
-			// Tweak GFM task list syntax
-			rehypeTasklistEnhancer(),
-			rehypeMermaid
-		],
-	},
-	image: {
-		domains: ['avatars.githubusercontent.com'],
-		service: sharpImageService(),
-	},
+    trailingSlash: 'always',
+    scopedStyleStrategy: 'where',
+    compressHTML: false,
+    markdown: {
+        // Override with our own config
+        smartypants: false,
+        remarkPlugins: [
+            [remarkSmartypants, { dashes: false }],
+            // Add our custom plugin that marks links to fallback language pages
+            remarkFallbackLang(),
+            // remarkHeadingId // https://github.com/withastro/starlight/discussions/2050
+        ],
+        rehypePlugins: [
+            rehypeSlug,
+            // Tweak GFM task list syntax
+            rehypeTasklistEnhancer(),
+        ],
+    },
+    image: {
+        domains: ['avatars.githubusercontent.com'],
+        service: sharpImageService(),
+    },
 });
