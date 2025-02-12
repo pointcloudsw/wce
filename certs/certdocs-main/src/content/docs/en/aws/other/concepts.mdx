@@ -123,45 +123,59 @@ import { Image } from 'astro:assets';
                     A handshake is a multi-step process of exchanging information between two parties. One of its primary uses in AWS Organizations is to serve as the underlying implementation for invitations. Handshake messages are passed between and responded to by the handshake initiator and the recipient. The messages are passed in a way that helps ensure that both parties know what the current status is. Handshakes also are used when changing the organization from supporting only consolidated billing features to supporting all features that AWS Organizations offers. You generally need to directly interact with handshakes only if you work with the AWS Organizations API or command line tools such as the AWS CLI.
                 </section>
 
+                ### Organization operations requiring `us-east-1`
+                __AWS Region `us-east-1`__ must be specified when performing operations at the Root level of an AWS Organization. For example, the root level operation [`ListRoots`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_ListRoots.html) requires `us-east-1` to be specified as the Region.
+                <br />
+                Secondly, the following Organizations operations also require `us-east-1` to be specified:  [`DeletePolicy`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DeletePolicy.html), [`DeletePolicyType`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DisablePolicyType.html), [`EnablePolicyType`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
+                <br />
+                Lastly, __`us-east-1`__ is also required when calling the following Resource Groups Tagging API operations (which are part of the tag policies feature): [`DescribeReportCreation`](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_DescribeReportCreation.html), [`GetComplianceSummary`](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_GetComplianceSummary.html) and [`StartReportCreation`](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_StartReportCreation.html).
+
                 ### Organization policies
                 A policy is a "document" with one or more statements that define the controls that you want to apply to a group of AWS accounts. AWS Organizations supports authorization policies and management policies.
 
                 <section class="l4">
-                #### Authorization policies
-                Authorization policies help you to centrally manage the security of AWS accounts across an organization.
+                    #### Authorization policies
+                    Authorization policies help you to centrally manage the security of AWS accounts across an organization.
 
-                #### [Service control policy (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
-                A service control policy is a type of policy that offers central control over the maximum available permissions for IAM users and IAM roles in an organization.
+                    #### [Service control policy (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+                    A service control policy is a type of policy that offers central control over the maximum available permissions for IAM users and IAM roles in an organization.
 
-                This means that SCPs specify principal-centric controls. SCPs create a permissions guardrail, or set limits on the maximum permissions available to principals in your member accounts. You use an SCP when you want to centrally enforce consistent access controls on principals in your organization.
+                    This means that SCPs specify principal-centric controls. SCPs create a permissions guardrail, or set limits on the maximum permissions available to principals in your member accounts. You use an SCP when you want to centrally enforce consistent access controls on principals in your organization.
 
-                This can include specifying which services your IAM users and IAM roles can access, which resources they can access, or the conditions under which they can make requests (for example, from specific regions or networks).
+                    This can include specifying which services your IAM users and IAM roles can access, which resources they can access, or the conditions under which they can make requests (for example, from specific regions or networks).
 
-                #### [Resource control policy (RCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
-                A resource control policy is a type of policy that offers central control over the maximum available permissions for resources in an organization.
+                    #### [Resource control policy (RCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
+                    A resource control policy is a type of policy that offers central control over the maximum available permissions for resources in an organization.
 
-                This means that RCPs specify resource-centric controls. RCPs create a permissions guardrail, or set limits, on the maximum permissions available for resources in your member accounts. Use an RCP when you want to centrally enforce consistent access controls across resources in your organization.
+                    This means that RCPs specify resource-centric controls. RCPs create a permissions guardrail, or set limits, on the maximum permissions available for resources in your member accounts. Use an RCP when you want to centrally enforce consistent access controls across resources in your organization.
 
-                This can include restricting access to your resources so that they can only be accessed by identities that belong to your organization, or specifying the conditions under which identities external to your organization can access your resources.
+                    This can include restricting access to your resources so that they can only be accessed by identities that belong to your organization, or specifying the conditions under which identities external to your organization can access your resources.
 
-                #### Management policies
-                Management policies help you centrally configure and manage AWS services and their features across an organization.
+                    #### Management policies
+                    Management policies help you centrally configure and manage AWS services and their features across an organization.
 
-                #### [Declarative policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
-                A declarative policy is a type of policy that allows you to centrally declare and enforce desired configurations for a given AWS service at scale across an organization. Once attached, the configuration is always maintained when the service adds new features or APIs.
+                    #### [Declarative policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
+                    A declarative policy is a type of policy that allows you to centrally declare and enforce desired configurations for a given AWS service at scale across an organization. Once attached, the configuration is always maintained when the service adds new features or APIs.
 
-                #### [Backup policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
-                A backup policy is type of policy that allows you to centrally manage and apply backup plans to the AWS resources across an organization's accounts.
+                    #### [Backup policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+                    A backup policy is type of policy that allows you to centrally manage and apply backup plans to the AWS resources across an organization's accounts.
 
-                #### [Tag policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
-                A tag policy is type of policy that allows you to standardize the tags attached to the AWS resources in an organization's accounts.
+                    #### [Tag policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+                    A tag policy is type of policy that allows you to standardize the tags attached to the AWS resources in an organization's accounts.
 
-                #### [Chatbot policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
-                A chatbot policy is a type of policy that allows you to control access to an organization's accounts from chat applications such as Slack and Microsoft Teams.
+                    :::danger[Warning]
+                    Tag policies are only supported in the subset of Regions that support AWS Organizations. The list of these can be found here: [Tag policies | Supported Regions](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-supported-regions.html).
+                    :::
 
-                #### [AI services opt-out policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
-                An AI services opt-out policy is a type of policy that allows you to control data collection for AWS AI services for all the accounts in an organization.
-            </section>
+                    :::note
+                    Evaluating org-wide tag policy compliance requires access to an Amazon S3 bucket in the US East (N. Virginia) Region for report storage. For more information, see [Amazon S3 bucket policy for report storage](https://docs.aws.amazon.com/ARG/latest/userguide/tag-policies-prereqs.html#bucket-policy) in the Tagging AWS Resources User Guide.
+                    :::
+                    #### [Chatbot policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+                    A chatbot policy is a type of policy that allows you to control access to an organization's accounts from chat applications such as Slack and Microsoft Teams.
+
+                    #### [AI services opt-out policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+                    An AI services opt-out policy is a type of policy that allows you to control data collection for AWS AI services for all the accounts in an organization.
+                </section>
             </section>    
         </section>
     </details>
@@ -171,7 +185,7 @@ import { Image } from 'astro:assets';
         <summary class="not-content">
             ## [Accounts and Organizational Units (OUs)](#)
         </summary>
-        <section>
+        <section class="l2">
             <section class="l3">
                 ### [Organizing Your AWS Environment and Workloads Using Multiple Accounts](https://docs.aws.amazon.com/whitepapers/latest/organizing-your-aws-environment/organizing-your-aws-environment.html)
                 Your cloud resources and data are contained in an AWS account. An account acts as an identity and access management isolation boundary. When you need to share resources and data between two accounts, you must explicitly allow this access.
@@ -193,10 +207,10 @@ import { Image } from 'astro:assets';
                 Different business units or product teams might have different processes or security boundary requirements. Workloads often have distinct security postures that require separate controls and mechanisms to support them. For example, it is common to apply different security and operational controls for the non-production and production environments of a given workload. By using separate accounts for the non-production and production environments, by default, the resources and data that make up a workload environment are separated from other environments and workloads.  Depending on your overall business model, you might choose to isolate the workloads of distinct business units or their subsidiaries into different accounts or organizational units (OUs). Isolation of business units can help them operate with greater decentralized control, but still provides the ability for you to provide overarching controls. This approach might also ease divestment of those units over time.
                 
                 Workloads that share common business purposes can be bundled together into distinct AWS accounts. As a result, you can align the ownership and decision making with those accounts and avoid dependencies and conflicts with how workloads in other accounts are secured and managed.This approach is designed to make it easier for you to meet your requirements, even in the early project stage of adoption. Based on the success of those first few workloads, you might want to gain further business benefits by expanding your adoption of AWS. This motivation often leads to the foundation stage of adoption. In this stage, you invest in evolving your cloud foundational capabilities before greatly expanding adoption.
-            </section>
-            <section class="l4">
-                #### [Configuring Accounts and Organizational Units](https://docs.aws.amazon.com/prescriptive-guidance/latest/designing-control-tower-landing-zone/account-structure.html)
-                You can achieve both speed and security in the cloud by using AWS accounts. AWS accounts are resource containers that assist users in managing AWS resources. As needs and demands grow, environments scale through the addition of new accounts. The use of multiple accounts is a best practice because it enables rapid innovation across distributed teams and individuals, reduces the scope of impact through isolation, and can be adjusted to meet new business processes based on operational, regulatory, and budgetary requirements. Lastly, costs are incurred at the account level, so activity and costs can be identified with each account.
+                <section class="l4">
+                    #### [Configuring Accounts and Organizational Units](https://docs.aws.amazon.com/prescriptive-guidance/latest/designing-control-tower-landing-zone/account-structure.html)
+                    You can achieve both speed and security in the cloud by using AWS accounts. AWS accounts are resource containers that assist users in managing AWS resources. As needs and demands grow, environments scale through the addition of new accounts. The use of multiple accounts is a best practice because it enables rapid innovation across distributed teams and individuals, reduces the scope of impact through isolation, and can be adjusted to meet new business processes based on operational, regulatory, and budgetary requirements. Lastly, costs are incurred at the account level, so activity and costs can be identified with each account.
+                </section>
             </section>
         </section>
     </details>
@@ -205,19 +219,21 @@ import { Image } from 'astro:assets';
         <summary class="not-content">
             ## Landing Zones AWS Organizations, Consolidated Billing and EC2 Reserved Instances
         </summary>
-        <section class="l3">
-            ### [Consolidating billing for AWS Organizations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html)
-            You can use the consolidated billing feature in AWS Organizations to consolidate billing and payment for multiple AWS accounts. Every organization in AWS Organizations has a management account that pays the charges of all the member accounts.
-            Consolidated billing has the following benefits:
-            * <BulletHdr>One bill</BulletHdr>You get one bill for multiple accounts in the same SOR. If an organization has accounts from multiple SORs, you receive one bill per SOR.
-            * <BulletHdr>Easy tracking</BulletHdr>You can track the charges across multiple accounts and download the combined cost and usage data.
-            * <BulletHdr>Combined usage</BulletHdr>You can combine the usage across all accounts in the organization to share the volume pricing discounts, Reserved Instance discounts, and Savings Plans. This can result in a lower charge for your project, department, or company than with individual standalone accounts. For more information, see Volume discounts.
-            * <BulletHdr>No extra fee</BulletHdr>Consolidated billing is offered at no additional cost.
+        <section class="l2">
+            <section class="l3">
+                ### [Consolidating billing for AWS Organizations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html)
+                You can use the consolidated billing feature in AWS Organizations to consolidate billing and payment for multiple AWS accounts. Every organization in AWS Organizations has a management account that pays the charges of all the member accounts.
+                Consolidated billing has the following benefits:
+                * <BulletHdr>One bill</BulletHdr>You get one bill for multiple accounts in the same SOR. If an organization has accounts from multiple SORs, you receive one bill per SOR.
+                * <BulletHdr>Easy tracking</BulletHdr>You can track the charges across multiple accounts and download the combined cost and usage data.
+                * <BulletHdr>Combined usage</BulletHdr>You can combine the usage across all accounts in the organization to share the volume pricing discounts, Reserved Instance discounts, and Savings Plans. This can result in a lower charge for your project, department, or company than with individual standalone accounts. For more information, see Volume discounts.
+                * <BulletHdr>No extra fee</BulletHdr>Consolidated billing is offered at no additional cost.
 
-            ### [Reserved Instances and consolidated billing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html#concepts-reserved-instances-billing)
-            The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account. The instance usage across all member accounts is aggregated in the payer account every month. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill.
+                ### [Reserved Instances and consolidated billing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html#concepts-reserved-instances-billing)
+                The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account. The instance usage across all member accounts is aggregated in the payer account every month. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill.
 
-            ### [Consolidated billing for pricing tiers](#)
+                ### [Consolidated billing for pricing tiers](#)
+            </section>
         </section>
     </details>
     <details class="not-content">
@@ -228,4 +244,12 @@ import { Image } from 'astro:assets';
         AWS Organizations, Consolidated Billing and EC2 Reserved Instances, Consolidated Billing and EC2 Reserved InstancesAWS Organizations, Consolidated Billing and EC2 Reserved Instances, Consolidated Billing and EC2 Reserved InstancesAWS Organizations, Consolidated Billing and EC2 Reserved Instances, Consolidated Billing and EC2 Reserved Instances
         AWS Organizations, Consolidated Billing and EC2 Reserved Instances, Consolidated Billing and EC2 Reserved Instances
     </details>
+    <section class="l2">
+    ## See Also
+        * [Quota and Service Limits of AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
+        * [List of AWS Regions](https://docs.aws.amazon.com/organizations/latest/userguide/region-support.html#region-support-list)
+        * [List of AWS Regions that support AWS Tag Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-supported-regions.html)
+        * [Amazon S3 bucket policy for report storage](https://docs.aws.amazon.com/ARG/latest/userguide/tag-policies-prereqs.html#bucket-policy)
+        * [Granting Region access by Account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
+    </section>
 </section>
