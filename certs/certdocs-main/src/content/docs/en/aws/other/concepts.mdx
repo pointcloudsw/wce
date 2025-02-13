@@ -176,7 +176,30 @@ import { Image } from 'astro:assets';
                     #### [AI services opt-out policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
                     An AI services opt-out policy is a type of policy that allows you to control data collection for AWS AI services for all the accounts in an organization.
                 </section>
-            </section>    
+
+                ### Billing and Cost Management for AWS Organizations
+                <section class="l4">
+                    #### Consolidated Billing
+                    You can use the consolidated billing feature in [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/) to consolidate billing and payment for multiple AWS accounts. Every organization in AWS Organizations has a management account that pays the charges of all the member accounts.  In other words, from a billing perspective, the consolidated billing feature of AWS Organizations treats all the accounts in the organization as one account.
+
+                    The Consolidated Billing feature of AWS Organizations offers the following benefits:
+                    * <BulletHdr>One bill</BulletHdr>You get one bill for multiple accounts in the same SOR. If an organization has accounts from multiple SORs, you receive one bill per SOR.
+                    * <BulletHdr>Easy tracking</BulletHdr>You can track the charges across multiple accounts and download the combined cost and usage data.
+                    * <BulletHdr>Combined usage</BulletHdr>You can combine the usage across all accounts in the organization to share the volume pricing discounts, Reserved Instance discounts, and Savings Plans. This can result in a lower charge for your project, department, or company than with individual standalone accounts. For more information, see Volume discounts.
+                    * <BulletHdr>No extra fee</BulletHdr>Consolidated billing is offered at no additional cost.
+
+                    :::note
+                    Even with Consolidated Billing enabled, member account bills may still be accessed to help the management account optimize, balance or reallocate across the AWS Organization volume discounts, Reserved Instances, or Savings Plans discounts that may be associated with individual member accounts within the AWS Organization.
+                    :::
+
+                    #### [Reserved Instances and consolidated billing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html#concepts-reserved-instances-billing)
+                    The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account. The instance usage across all member accounts is aggregated in the payer account every month. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill.
+
+                    With consolidated billing for AWS Organizations, `all accounts in the organization can receive the hourly cost benefit of Reserved Instances that are purchased by any other account.
+
+                    You can turn off Reserved Instance discount sharing on the Preferences page on the Billing and Cost Management console. For more information, see [Reserved Instances and Savings Plans discount sharing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-turn-off.html).
+                </section>
+            </section>
         </section>
     </details>
 
@@ -215,27 +238,7 @@ import { Image } from 'astro:assets';
         </section>
     </details>
 
-    <details class="not-content">
-        <summary class="not-content">
-            ## Landing Zones AWS Organizations, Consolidated Billing and EC2 Reserved Instances
-        </summary>
-        <section class="l2">
-            <section class="l3">
-                ### [Consolidating billing for AWS Organizations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html)
-                You can use the consolidated billing feature in AWS Organizations to consolidate billing and payment for multiple AWS accounts. Every organization in AWS Organizations has a management account that pays the charges of all the member accounts.
-                Consolidated billing has the following benefits:
-                * <BulletHdr>One bill</BulletHdr>You get one bill for multiple accounts in the same SOR. If an organization has accounts from multiple SORs, you receive one bill per SOR.
-                * <BulletHdr>Easy tracking</BulletHdr>You can track the charges across multiple accounts and download the combined cost and usage data.
-                * <BulletHdr>Combined usage</BulletHdr>You can combine the usage across all accounts in the organization to share the volume pricing discounts, Reserved Instance discounts, and Savings Plans. This can result in a lower charge for your project, department, or company than with individual standalone accounts. For more information, see Volume discounts.
-                * <BulletHdr>No extra fee</BulletHdr>Consolidated billing is offered at no additional cost.
 
-                ### [Reserved Instances and consolidated billing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html#concepts-reserved-instances-billing)
-                The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account. The instance usage across all member accounts is aggregated in the payer account every month. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill.
-
-                ### [Consolidated billing for pricing tiers](#)
-            </section>
-        </section>
-    </details>
     <details class="not-content">
         <summary class="not-content">
         ## [AWS Organizations](#)
