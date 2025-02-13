@@ -9,12 +9,19 @@ body>a {
 
 figure {
   inline-size: fit-content;
-  margin: auto;
   position: relative;
+  margin: auto;
 }
 
-figure>figcaption.not-content {
+figure > figcaption.not-content {
   margin-top: 0rlh;
+}
+
+figure > img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 li,
@@ -72,31 +79,31 @@ p
 /* sg1001 */
 .sl-markdown-content details.not-content [class*='level-h'] :is(h2, h3, h4, h5) {
   margin-block-start: 0.25rlh;
-  margin-inline-start: 1.75rch;
+  margin-inline-start: 0.25rch;
 }
 
 /* sg1001 */
-.sl-markdown-content>section.l1> :not(details) {
+.sl-markdown-content>section.l1 > :not(details, figure) {
   margin-inline-start: 1.8rch;
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l2 > :not(.level-h2) {
+.sl-markdown-content details.not-content section.l2 > :not(.level-h2, figure) {
   margin-inline-start: var(--l2_indent);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l3 > :not(.level-h3) {
+.sl-markdown-content details.not-content section.l3 > :not(.level-h3, figure) {
   margin-inline-start: var(--l3_indent);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l4 > :not(.level-h4) {
+.sl-markdown-content details.not-content section.l4 > :not(.level-h4, figure) {
   margin-inline-start: var(--l4_indent);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l5 > :not(.level-h5) {
+.sl-markdown-content details.not-content section.l5 > :not(.level-h5, figure) {
   margin-inline-start: var(--l5_indent);
 }
 

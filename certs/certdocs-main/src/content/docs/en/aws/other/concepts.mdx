@@ -21,7 +21,7 @@ import { Image } from 'astro:assets';
 
             An organization is a collection of AWS accounts that you can manage centrally and organize into a hierarchical, tree-like structure with a root at the top and organizational units nested under the root. Each account can be directly in the root, or placed in one of the OUs in the hierarchy.
 
-            <figure><Image src={AwsOrgsHier} width="840" alt="AWS Organizations Hierachy Example" style={"margin: auto;"} /><figcaption class="not-content">AWS Organizations Hierarchy Example</figcaption></figure>
+            <figure><Image src={AwsOrgsHier} width="840" alt="AWS Organizations Hierachy Example" /><figcaption class="not-content">AWS Organizations Hierarchy Example</figcaption></figure>
             
             Each organization consists of:
             - A management account
@@ -92,16 +92,16 @@ import { Image } from 'astro:assets';
 
                     The management account is the ultimate owner of the organization, having final control over security, infrastructure, and finance policies. This account has the role of a payer account and is responsible for paying all charges accrued by the accounts in its organization.
 
-            :::note
-            You cannot change which account in your organization is the management account.
-            :::
+                    :::note
+                    You cannot change which account in your organization is the management account.
+                    :::
 
                     #### Member account
                     A member account is an AWS account, other than the management account, that is part of an organization. If you are an administrator of an organization, you can create member accounts in the organization and invite existing accounts to join the organization. You also can apply policies to member accounts.
 
-            :::note
+                    :::note
                     A member account can belong to only one organization at a time. You can designate member accounts to be delegated administrator accounts.
-            :::
+                    :::
 
                     #### Delegated administrator    
                     We recommend that you use the management account and its users and roles only for tasks that must be performed by that account. We recommend that you store your AWS resources in other member accounts in the organization and keep them out of the management account. This is because security features like Organizations service control policies (SCPs) do not restrict any users or roles in the management account. Separating your resources from your management account can also help you understand the charges on your invoices. From the organization's management account, you can designate one or more member accounts as a delegated administrator account to help you implement this recommendation. There are two types of delegated administrators:
@@ -250,6 +250,7 @@ import { Image } from 'astro:assets';
         * [List of AWS Regions](https://docs.aws.amazon.com/organizations/latest/userguide/region-support.html#region-support-list)
         * [List of AWS Regions that support AWS Tag Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-supported-regions.html)
         * [Amazon S3 bucket policy for report storage](https://docs.aws.amazon.com/ARG/latest/userguide/tag-policies-prereqs.html#bucket-policy)
+        * [Operations you can call from only the organization's management account](https://docs.aws.amazon.com/organizations/latest/APIReference/action-reference.html#actions-management-account)
         * [Granting Region access by Account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
     </section>
 </section>
