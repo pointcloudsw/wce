@@ -93,6 +93,10 @@ export const sidebar = [
 				collapsed: true,
 				autogenerate: { directory: 'resources/starlight' }
 			}),
+			group('resources.research', {
+				collapsed: true,
+				autogenerate: { directory: 'resources/research' }
+			}),
 		],
 	}),
 

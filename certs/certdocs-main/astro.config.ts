@@ -11,6 +11,7 @@ import { starlightPluginAutolinkHeadings } from './config/plugins/rehype-autolin
 import { rehypeTasklistEnhancer } from './config/plugins/rehype-tasklist-enhancer';
 import { remarkFallbackLang } from './config/plugins/remark-fallback-lang';
 import d2 from 'astro-d2';
+import node from '@astrojs/node';
 
 // import { remarkHeadingId } from 'remark-custom-heading-id'; // https://github.com/withastro/starlight/discussions/2050
 
@@ -22,6 +23,7 @@ const site = NETLIFY_PREVIEW_SITE || 'https://docs.astro.build/';
 // https://astro.build/config
 export default defineConfig({
     site,
+	output: 'server',
     integrations: [
 		devServerFileWatcher([
 			'./config/*', // Custom plugins and integrations
@@ -30,6 +32,7 @@ export default defineConfig({
 		]),
 		starlight({
         	title: 'Docs',
+			prerender: false,
         	customCss: ['./src/style/custom.css'],
         	expressiveCode: {
             	plugins: [pluginCollapsibleSections()],
@@ -104,4 +107,5 @@ export default defineConfig({
         domains: ['avatars.githubusercontent.com'],
         service: sharpImageService(),
     },
+	adapter: node({ mode: 'standalone' })
 });

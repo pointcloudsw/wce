@@ -5,6 +5,7 @@ export default {
 	'resources.commands': 'Helpful Commands',
 	'resources.notes': 'Notes',
 	'resources.starlight': 'Starlight information',
+	'resources.research': 'Research',
 
 	aws: 'AWS',
 	'aws.administration': 'Administration',
