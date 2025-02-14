@@ -7,6 +7,28 @@ body>a {
   display: none;
 }
 
+blockquote {
+  background:#64626244;
+  border-left:8px solid #61eabd ;
+  border-radius: 5px;
+  font-size: 1.4em;
+  inline-size: 86%;
+  inset: auto 2rch auto 3rch;
+  line-height:1.6;
+  padding: 1.2rlh 1.2rch 1.2rlh 0;
+  position: relative;
+  text-align: center;
+}
+blockquote::before{
+  color:#04f89688;
+  content: "\201C";
+  font-family:Arial;
+  font-size:8em;
+  font-style:italic;
+  inset: -4.5rlh auto auto -3rch;
+  position: absolute;
+}
+
 figure {
   inline-size: fit-content;
   position: relative;
@@ -29,6 +51,22 @@ p
 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+/* 
+.content-panel:has(.sl-container) {
+  background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+}
+
+.content-panel:has(.sl-container) .pagination-links > a {
+  background: var(--sl-color-bg);
+} */
 
 :not(div.heading-wrapper) + p {
   margin-block-start: 1rlh;
@@ -36,16 +74,25 @@ p
 
 
 /* sg1001 Start */
-.sl-markdown-content details.not-content {
-  --indent_multiple: 0.5rch;
+/* .sl-markdown-content details.not-content { */
+.sl-markdown-content {
+  --indent_multiple: 0.25rch;
+  --indent_multiple_dscl: 0.50rch;
+  --l1_indent_factor: 3.6;
   --l2_indent_factor: 2.0;
   --l3_indent_factor: 2.0;
   --l4_indent_factor: 2.5;
   --l5_indent_factor: 3.0;
+  --l1_indent: calc(var(--l1_indent_factor) * var(--indent_multiple));
   --l2_indent: calc(var(--l2_indent_factor) * var(--indent_multiple));
   --l3_indent: calc(var(--l3_indent_factor) * var(--indent_multiple));
   --l4_indent: calc(var(--l4_indent_factor) * var(--indent_multiple));
   --l5_indent: calc(var(--l5_indent_factor) * var(--indent_multiple));
+  --l1_indent_dscl: calc(var(--l1_indent_factor) * var(--indent_multiple_dscl));
+  --l2_indent_dscl: calc(var(--l2_indent_factor) * var(--indent_multiple_dscl));
+  --l3_indent_dscl: calc(var(--l3_indent_factor) * var(--indent_multiple_dscl));
+  --l4_indent_dscl: calc(var(--l4_indent_factor) * var(--indent_multiple_dscl));
+  --l5_indent_dscl: calc(var(--l5_indent_factor) * var(--indent_multiple_dscl));
   --l1_font_scale: 110%;
   --l2_font_scale: 80%;
   --l3_font_scale: 90%;
@@ -60,53 +107,84 @@ p
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content div.heading-wrapper {
+/* .sl-markdown-content details.not-content div.heading-wrapper { */
+.sl-markdown-content div.heading-wrapper {
   margin-block-start: 2rlh;
   margin-block-end: 0.25rlh;
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content figure,
-.sl-markdown-content details.not-content aside {
+/* .sl-markdown-content details.not-content figure, */
+.sl-markdown-content figure,
+/* .sl-markdown-content details.not-content aside { */
+.sl-markdown-content aside {
   margin-block: 1rlh;
 }
 
 /* sg1001 */
 .sl-markdown-content details.not-content .anchor-link {
+/* .sl-markdown-content .anchor-link { */
   margin-inline-start: -1rch;
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content [class*='level-h'] :is(h2, h3, h4, h5) {
+.sl-markdown-content details.not-content [class*='level-h'] :is(h2, h3, h4, h5)
+/* , .sl-markdown-content [class*='level-h'] :is(h2, h3, h4, h5) */
+{
   margin-block-start: 0.25rlh;
   margin-inline-start: 0.25rch;
 }
 
 /* sg1001 */
-.sl-markdown-content>section.l1 > :not(details, figure) {
-  margin-inline-start: 1.8rch;
+.sl-markdown-content > section.l1 > :not(details, figure) {
+  /* margin-inline-start: 1.8rch; */
+  --_indent: var(--indent, var(--l1_indent));
+  margin-inline-start: var(--_indent);
 }
 
+/* sg1001 */
+.sl-markdown-content section.l2 > :not(.level-h2, figure) {
+  --_indent: var(--indent, var(--l2_indent));
+  margin-inline-start: var(--_indent);
+}
 /* sg1001 */
 .sl-markdown-content details.not-content section.l2 > :not(.level-h2, figure) {
-  margin-inline-start: var(--l2_indent);
+  --_indent: var(--indent, var(--l2_indent_dscl));
+  margin-inline-start: var(--_indent);
 }
 
+/* sg1001 */
+.sl-markdown-content section.l3 > :not(.level-h3, figure) {
+  --_indent: var(--indent, var(--l3_indent));
+  margin-inline-start: var(--_indent);
+}
 /* sg1001 */
 .sl-markdown-content details.not-content section.l3 > :not(.level-h3, figure) {
-  margin-inline-start: var(--l3_indent);
+  --_indent: var(--indent, var(--l3_indent_dscl));
+  margin-inline-start: var(--_indent);
 }
 
+/* sg1001 */
+.sl-markdown-content section.l4 > :not(.level-h4, figure) {
+  --_indent: var(--indent, var(--l4_indent));
+  margin-inline-start: var(--_indent);
+}
 /* sg1001 */
 .sl-markdown-content details.not-content section.l4 > :not(.level-h4, figure) {
-  margin-inline-start: var(--l4_indent);
+  --_indent: var(--indent, var(--l4_indent_dscl));
+  margin-inline-start: var(--_indent);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content section.l5 > :not(.level-h5, figure) {
-  margin-inline-start: var(--l5_indent);
+.sl-markdown-content section.l5 > :not(.level-h5, figure) {
+  --_indent: var(--indent, var(--l5_indent));
+  margin-inline-start: var(--_indent);
 }
-
+/* sg1001 */
+.sl-markdown-content details.not-content section.l5 > :not(.level-h5, figure) {
+  --_indent: var(--indent, var(--l5_indent_dscl));
+  margin-inline-start: var(--_indent);
+}
 /* sg1001 */
 .sl-markdown-content summary.not-content::marker {
   font-size: 140%;
@@ -124,22 +202,26 @@ div.content-panel:has(div.sl-container > h1#_top) {
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content .level-h2 h2 {
+/* .sl-markdown-content details.not-content .level-h2 h2 { */
+.sl-markdown-content .level-h2 h2 {
   font-size: var(--l2_font_scale);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content .level-h3 h3 {
+/* .sl-markdown-content details.not-content .level-h3 h3 { */
+.sl-markdown-content .level-h3 h3 {
   font-size: var(--l3_font_scale);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content .level-h4 h4 {
+/* .sl-markdown-content details.not-content .level-h4 h4 { */
+.sl-markdown-content .level-h4 h4 {
   font-size: var(--l4_font_scale);
 }
 
 /* sg1001 */
-.sl-markdown-content details.not-content .level-h5 h5 {
+/* .sl-markdown-content details.not-content .level-h5 h5 { */
+.sl-markdown-content .level-h5 h5 {
   font-size: var(--l5_font_scale);
 }
 
