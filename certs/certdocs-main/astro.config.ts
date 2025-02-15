@@ -16,13 +16,28 @@ import node from '@astrojs/node';
 // import { remarkHeadingId } from 'remark-custom-heading-id'; // https://github.com/withastro/starlight/discussions/2050
 
 /* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
-const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL;
 
-const site = NETLIFY_PREVIEW_SITE || 'https://docs.astro.build/';
+// const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL;
+// const site = NETLIFY_PREVIEW_SITE || 'http://wst.pcpllc.us/';
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const extra = isProduction
+  ? {
+      vite: {
+        ssr: {
+          noExternal: true,
+        },
+      },
+    }
+  : {};
+  
+
+const site = 'http://wst.pcpllc.us/';
 
 // https://astro.build/config
 export default defineConfig({
-    site,
+    site: site,
 	output: 'server',
     integrations: [
 		devServerFileWatcher([
@@ -107,5 +122,6 @@ export default defineConfig({
         domains: ['avatars.githubusercontent.com'],
         service: sharpImageService(),
     },
-	adapter: node({ mode: 'standalone' })
+	adapter: node({ mode: 'standalone' }),
+	extra
 });

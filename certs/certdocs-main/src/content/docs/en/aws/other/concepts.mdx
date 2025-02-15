@@ -97,9 +97,9 @@ import { Image } from 'astro:assets';
 
                 If you apply an authorization policy (for example, a service control policy (SCP)), to the root, it applies to all organizational units (OUs) and member accounts in the organization. It does not apply to the management account in the organization.
 
-                :::note
-                You can have only one root. AWS Organizations automatically creates the root for you when you create an organization.
-                :::
+:::note
+You can have only one root. AWS Organizations automatically creates the root for you when you create an organization.
+:::
 
                 ### Organizational unit (OU)
                 An organizational unit (OU) is a group of AWS accounts within an organization. An OU can also contain other OUs enabling you to create a hierarchy. For example, you can group all accounts that belong to the same department into a departmental OU. Similarly, you can group all accounts running security services into a security OU.
@@ -111,17 +111,19 @@ import { Image } from 'astro:assets';
 
                 Using multiple AWS accounts is a best practice for scaling your environment, as it provides a billing boundary for costs, isolates resources for security, gives flexibility or individuals and teams, in addition to being adaptable for new processes.
 
-                :::note
-                An AWS account is different from a user. A user is an identity that you create using AWS Identity and Access Management (IAM) and takes the form of either an IAM user with long-term credentials or an IAM role with short-term credentials. A single AWS account can, and typically does, contain many users and roles.
-                :::
+:::note
+An AWS account is different from a user. A user is an identity that you create using AWS Identity and Access Management (IAM) and takes the form of either an IAM user with long-term credentials or an IAM role with short-term credentials. A single AWS account can, and typically does, contain many users and roles.
+:::
                 
                 There are __two__ types of accounts in an organization:
-                - a single account that is designated as the management account; and
-                - one or more member accounts.
-
+                    - a single account that is designated as the management account; and
+                    - one or more member accounts.
+                
 
                 <section class="l4">
+
                     #### Management account
+
                     A management account is the AWS account you use to create your organization. From the management account, you can do the following:
                     <ul class="not-content text-grid" style="--flow: row; --gapc: 5.45rch; --gapr: 0.55rlh; --gridcol: 1fr 1fr; --gridrow: auto; --gridmargin: auto; --inlinesize: 84%; --lsp: outside; --lst: square; --itemmargin: 0rlh 0.50rch; --pad: 0rlh 3rch 0rlh 2rch; --pos: relative; --textindent: 0rch">
                         <li>Create other accounts in your organization</li>
@@ -134,29 +136,34 @@ import { Image } from 'astro:assets';
 
                     The management account is the ultimate owner of the organization, having final control over security, infrastructure, and finance policies. This account has the role of a payer account and is responsible for paying all charges accrued by the accounts in its organization.
 
-                    :::note
-                    You cannot change which account in your organization is the management account.
-                    :::
+:::note
+You cannot change which account in your organization is the management account.
+:::
 
                     #### Member account
                     A member account is an AWS account, other than the management account, that is part of an organization. If you are an administrator of an organization, you can create member accounts in the organization and invite existing accounts to join the organization. You also can apply policies to member accounts.
 
-                    :::note
-                    A member account can belong to only one organization at a time. You can designate member accounts to be delegated administrator accounts.
-                    :::
+:::note
+A member account can belong to only one organization at a time. You can designate member accounts to be delegated administrator accounts.
+:::
 
                     #### Delegated administrator    
                     We recommend that you use the management account and its users and roles only for tasks that must be performed by that account. We recommend that you store your AWS resources in other member accounts in the organization and keep them out of the management account. This is because security features like Organizations service control policies (SCPs) do not restrict any users or roles in the management account. Separating your resources from your management account can also help you understand the charges on your invoices. From the organization's management account, you can designate one or more member accounts as a delegated administrator account to help you implement this recommendation. There are two types of delegated administrators:
 
                     <section class="l5">
+
                         ##### Delegated administrator for Organizations
                         From these accounts, you can manage organization policies and attach policies to entities (roots, OUs, or accounts) within the organization. The management account can control delegation permissions at granular levels. For more information, see Delegated administrator for AWS Organizations.
 
                         ##### Delegated administrator for an AWS service
                         From these accounts, you can manage AWS services that integrate with Organizations. The management account can register different member accounts as delegated administrators for different services as needed. These accounts have administrative permissions for a specific service, as well as permissions for Organizations read-only actions. For more information, see Delegated administrator for AWS services that work with Organizations
+
                     </section>
+
                 </section>
+
                 ### Invitations and handshakes
+
                 <section class="l4">
                     #### Invitation
                     An invitation is the process of asking another account to join your organization. An invitation can be issued only by the organization's management account. The invitation is extended to either the account ID or the email address that is associated with the invited account. After the invited account accepts an invitation, it becomes a member account in the organization. Invitations also can be sent to all current member accounts when the organization needs all members to approve the change from supporting only consolidated billing features to supporting all features in the organization. Invitations work by accounts exchanging handshakes. You might not see handshakes when you work in the AWS Organizations console. But if you use the AWS CLI or AWS Organizations API, you must work directly with handshakes.
@@ -205,13 +212,14 @@ import { Image } from 'astro:assets';
                     #### [Tag policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
                     A tag policy is type of policy that allows you to standardize the tags attached to the AWS resources in an organization's accounts.
 
-                    :::danger[Warning]
-                    Tag policies are only supported in the subset of Regions that support AWS Organizations. The list of these can be found here: [Tag policies | Supported Regions](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-supported-regions.html).
-                    :::
+:::danger[Warning]
+Tag policies are only supported in the subset of Regions that support AWS Organizations. The list of these can be found here: [Tag policies | Supported Regions](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-supported-regions.html).
+:::
 
-                    :::note
-                    Evaluating org-wide tag policy compliance requires access to an Amazon S3 bucket in the US East (N. Virginia) Region for report storage. For more information, see [Amazon S3 bucket policy for report storage](https://docs.aws.amazon.com/ARG/latest/userguide/tag-policies-prereqs.html#bucket-policy) in the Tagging AWS Resources User Guide.
-                    :::
+:::note
+Evaluating org-wide tag policy compliance requires access to an Amazon S3 bucket in the US East (N. Virginia) Region for report storage. For more information, see [Amazon S3 bucket policy for report storage](https://docs.aws.amazon.com/ARG/latest/userguide/tag-policies-prereqs.html#bucket-policy) in the Tagging AWS Resources User Guide.
+:::
+
                     #### [Chatbot policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
                     A chatbot policy is a type of policy that allows you to control access to an organization's accounts from chat applications such as Slack and Microsoft Teams.
 
@@ -230,9 +238,9 @@ import { Image } from 'astro:assets';
                     * <BulletHdr>Combined usage</BulletHdr>You can combine the usage across all accounts in the organization to share the volume pricing discounts, Reserved Instance discounts, and Savings Plans. This can result in a lower charge for your project, department, or company than with individual standalone accounts. For more information, see Volume discounts.
                     * <BulletHdr>No extra fee</BulletHdr>Consolidated billing is offered at no additional cost.
 
-                    :::note
-                    Even with Consolidated Billing enabled, member account bills may still be accessed to help the management account optimize, balance or reallocate across the AWS Organization volume discounts, Reserved Instances, or Savings Plans discounts that may be associated with individual member accounts within the AWS Organization.
-                    :::
+:::note
+Even with Consolidated Billing enabled, member account bills may still be accessed to help the management account optimize, balance or reallocate across the AWS Organization volume discounts, Reserved Instances, or Savings Plans discounts that may be associated with individual member accounts within the AWS Organization.
+:::
 
                     #### [Reserved Instances and consolidated billing](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html#concepts-reserved-instances-billing)
                     The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account. The instance usage across all member accounts is aggregated in the payer account every month. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill.
@@ -291,13 +299,18 @@ import { Image } from 'astro:assets';
             AWS Organizations, Consolidated Billing and EC2 Reserved Instances, Consolidated Billing and EC2 Reserved Instances
         </section>
     </details>
-    <section class="l2">
-    ## See Also
-        * [Quota and Service Limits of AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
-        * [List of AWS Regions](https://docs.aws.amazon.com/organizations/latest/userguide/region-support.html#region-support-list)
-        * [List of AWS Regions that support AWS Tag Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-supported-regions.html)
-        * [Amazon S3 bucket policy for report storage](https://docs.aws.amazon.com/ARG/latest/userguide/tag-policies-prereqs.html#bucket-policy)
-        * [Operations you can call from only the organization's management account](https://docs.aws.amazon.com/organizations/latest/APIReference/action-reference.html#actions-management-account)
-        * [Granting Region access by Account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
-    </section>
+
+    <details class="not-content">
+        <summary class="not-content">
+        ## See Also
+        </summary>
+        <section class="l2">
+            * [Quota and Service Limits of AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
+            * [List of AWS Regions](https://docs.aws.amazon.com/organizations/latest/userguide/region-support.html#region-support-list)
+            * [List of AWS Regions that support AWS Tag Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-supported-regions.html)
+            * [Amazon S3 bucket policy for report storage](https://docs.aws.amazon.com/ARG/latest/userguide/tag-policies-prereqs.html#bucket-policy)
+            * [Operations you can call from only the organization's management account](https://docs.aws.amazon.com/organizations/latest/APIReference/action-reference.html#actions-management-account)
+            * [Granting Region access by Account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
+        </section>
+    </details>
 </section>
