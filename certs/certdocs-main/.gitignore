@@ -1,3 +1,6 @@
+# archives and zipfiles
+*.tgz
+
 # build output
 dist
 .astro/
