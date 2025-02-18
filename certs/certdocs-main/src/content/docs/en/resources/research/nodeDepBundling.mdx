@@ -1,0 +1,62 @@
+---
+title: Server-side JavaScript Dependency Management
+description: Optimizing server-side JavaScript performance with dependency bundling
+---
+
+{/* <section class="l1" style="--indent: 1.0rch;"> */}
+<section class="l1">
+    With deep origins in client-side technology, JavaScript, and the web ecosystem overall, continues to improve speed and performance for the benefit of the end user experience (UX).  One such improvement, known as "lazy loading", applies the concept of dynamic linking to JavaScript.  By postponing the import of code that isn't immediately required, key UX metrics, such as Time to First Byte (TTFB), can be improved without negative side effects to the end user.  Lazy loading, together with other performance enhancing techniques, have led to major improvements in client-side JavaScript performance, page load times and overall UX.  This is especially noticable on mobile platforms which are more constrained in terms of power, memory and processing than their laptop/desktop/server equivalents.  
+
+    Unlike client-side JavaScript, where the runtime is compiled into the client browser, [Node.js](https://nodejs.org/en) ("Node") is a server-side runtime, designed for the cloud and without the limitations of end user environments.  As such, optmizing Node programs involves unique constraints, requirements and tradeoffs as compared to browser-based runtimes.
+
+    This article discusses how server-side dependency bundling can be improved to achieve better performance and faster response times in  Node-based JavaScript.
+
+    <section class="l2">
+        for lazy loading between the two approaches.  should be thought of differently between the two approaches becInterestingly, optimzing the user experience, in this case, requires as much code as required for the average case should be preloaded and ready to go so that user requests can be served and quickly and efficiently as possible.  In the client-server relationship, lazy loading can and often does improve the user experience for client-side JavaScript whereas lazy loading almost always slows down the user experience when applied to server-side code.
+
+        ## The JavaScript Ecosystem
+        
+        Common challenges encountered by organizations embarking on a cloud journey include the following:
+        
+        <section class="l3">
+
+            ### JavaScript Runtimes
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client-side</th>
+                        <th>Server-side</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            - Apple Safari: JavaScriptCore (JSC)
+                            - Google Chrome: V8
+                            - Microsoft Edge: V8
+                            - Mozilla Firefox: SpiderMonkey
+                        </td>
+                        <td>
+                            - Bun.sh
+                            - Deno
+                            - Node.js
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            ### Node Package Manager (NPM)
+            <section class="l4">
+                #### References
+                * [Differences between Node and the Browser](https://nodejs.org/en/learn/getting-started/differences-between-nodejs-and-the-browser)
+                * [NPM by Node.js](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager)
+                * [NPM Bundling](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#bundledependencies)
+                * [SSR by Vite.dev](https://v5.vite.dev/guide/ssr.html)
+                * [Node Packages](https://nodejs.org/docs/latest/api/packages.html#introduction)
+                * [package.json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json)
+
+            </section>
+        </section>
+    </section>
+</section>

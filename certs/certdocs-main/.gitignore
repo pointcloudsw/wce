@@ -1,5 +1,8 @@
 # archives and zipfiles
 *.tgz
+*.tar
+*.tar.gz
+*.gz
 
 # build output
 dist
