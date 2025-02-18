@@ -1,0 +1,46 @@
+---
+title: GMQ - Source Query
+description: JavaScript Source Query
+---
+```js
+doc = ''; el = ''; document.querySelectorAll(':is(h1,h2,h3,h4,h5,h6,h7,.h7,.para, li):not(li > div)').forEach( h => {
+    el = h.parentNode.nodeName + ' ' + h.tagName;
+    switch (el) {
+        case 'DIV H2':
+        case 'SECTION H2':
+            el = '## ';
+            break;
+        case 'DIV H3':
+        case 'SECTION H3':
+            el = '### ';
+            break;
+        case 'SECTION H4':
+            el = '### ';
+            break;
+        case 'SECTION H5':
+            el = '#### ';
+            break;
+        case 'SECTION H6':
+            el = '##### ';
+            break;
+
+        case 'SECTION DIV':
+            el = '\n';
+            break;
+
+        case 'UL LI':
+        case 'DIV DIV':
+            el = ' - ';
+            break;
+    }
+
+	if ( el === 'SECTION H7' || h.className.includes('h7') )
+        // doc += '\n<h6>' + h.textContent + '</h6>';
+        doc += '###### ' + h.textContent + '\n';
+	else
+	    doc += el + '\t' + h.textContent + '\n';
+
+    el = '';
+
+}); console.log(doc);
+```

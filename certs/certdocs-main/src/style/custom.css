@@ -252,6 +252,8 @@ ul.text-grid {
   padding: var(--pad);
   position: var(--pos);
   /* overflow-y: scroll; */
+  overflow: auto;
+  max-block-size: 60vh;
 }
 
 /* ss2000 */
@@ -260,6 +262,7 @@ ul.text-grid>li {
 }
 
 .text-grid-hdr {
+  grid-area: 1 / 1 span 2 / -1;
   position: sticky;
   top: 0;
   place-content: center;
