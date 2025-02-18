@@ -251,6 +251,7 @@ ul.text-grid {
   margin: var(--gridmargin);
   padding: var(--pad);
   position: var(--pos);
+  /* overflow-y: scroll; */
 }
 
 /* ss2000 */
@@ -258,6 +259,14 @@ ul.text-grid>li {
   margin: var(--itemmargin);
 }
 
+.text-grid-hdr {
+  position: sticky;
+  top: 0;
+  place-content: center;
+  text-align: var(--text-align, start);
+  background: var(--sl-color-bg-nav);
+  border-bottom: 2px solid var(--sl-color-text);
+}
 /* ss2000 */
 @media screen and (min-width: 1200px) {
   ul.text-grid {
