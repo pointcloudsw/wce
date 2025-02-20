@@ -1,20 +1,25 @@
 ---
-import type { Props } from '@astrojs/starlight/props';
+// import type { Props } from '@astrojs/starlight/props';
 
 import TableOfContents from './TableOfContents.astro';
 import MobileTableOfContents from './MobileTableOfContents.astro';
 import StarlightBanner from '~/components/StarlightBanner.astro';
+
+const { toc } = Astro.locals.starlightRoute;
 ---
 
 {
-	Astro.props.toc && (
+	// Astro.props.toc && (
+	toc && (
 		<>
 			<div class="lg:sl-hidden">
-				<MobileTableOfContents {...Astro.props} />
+				{/* <MobileTableOfContents {...Astro.props} /> */}
+				<MobileTableOfContents />
 			</div>
 			<div class="right-sidebar-panel sl-hidden lg:sl-block">
 				<div class="sl-container">
-					<TableOfContents {...Astro.props} />
+					{/* <TableOfContents {...Astro.props} /> */}
+					<TableOfContents />
 				</div>
 				<div class="sl-container">
 					<StarlightBanner />

@@ -1,10 +1,12 @@
 ---
 import Default from '@astrojs/starlight/components/Pagination.astro';
-import type { Props } from '@astrojs/starlight/props';
+// import type { Props } from '@astrojs/starlight/props';
 
-const { pagination } = Astro.props;
+// const { pagination } = Astro.props;
+const { pagination } = Astro.locals.starlightRoute;
 
 let { prev, next } = pagination;
 ---
 
-<Default {...{ ...Astro.props, ...{ pagination: { prev, next } } }} />
+<!-- <Default {...{ ...Astro.props, ...{ pagination: { prev, next } } }} /> -->
+<Default {...{ ...{ pagination: { prev, next } } }} />

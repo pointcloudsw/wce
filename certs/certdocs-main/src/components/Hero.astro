@@ -1,8 +1,11 @@
 ---
-import type { Props } from '@astrojs/starlight/props';
+// import type { Props } from '@astrojs/starlight/props';
 import Button from './Button.astro';
 
-const { hero } = Astro.props.entry.data;
+// const { hero } = Astro.props.entry.data;
+// const { hero } = Astro.locals.starlightRoute;
+// const { title, tagline, actions } = hero!;
+const { hero } = Astro.locals.starlightRoute.entry.data;
 const { title, tagline, actions } = hero!;
 ---
 

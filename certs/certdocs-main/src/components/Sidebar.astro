@@ -2,8 +2,9 @@
 // import { Icon } from '@astrojs/starlight/components';
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
-import type { Props } from '@astrojs/starlight/props';
-import type { SidebarEntry } from 'node_modules/@astrojs/starlight/utils/navigation';
+// import type { Props } from '@astrojs/starlight/props';
+// import type { SidebarEntry } from 'node_modules/@astrojs/starlight/utils/navigation';
+import type { SidebarEntry } from 'node_modules/@astrojs/starlight/utils/routing/types';
 import { stripLeadingAndTrailingSlashes } from 'node_modules/@astrojs/starlight/utils/path';
 import { allPages } from '~/content';
 import { isSubPage } from '~/util/isSubPage';
@@ -13,7 +14,12 @@ import TabListItem from './tabs/TabListItem.astro';
 import TabPanel from './tabs/TabPanel.astro';
 import MobileMenuFooter from './starlight/MobileMenuFooter.astro';
 
-const { sidebar, id } = Astro.props;
+// const { sidebar, id } = Astro.props;
+const { 
+	sidebar,
+	id
+} = Astro.locals.starlightRoute;
+// const SidebarEntry = Astro.locals.starlightRoute.entry.data
 
 // Recursively tweaks properties of sidebar entries.
 // - Adds a fallback class to entries in the sidebar that don’t exist in the current language.
@@ -60,7 +66,8 @@ const isCurrent = (sidebar: SidebarEntry[]): boolean =>
 
 ---
 
-<SidebarPersister {...Astro.props}>
+<!-- <SidebarPersister {...Astro.props}> -->
+<SidebarPersister >
 	<TabbedContent class="tabbed-sidebar">
 		<Fragment slot="tab-list">
 			{
@@ -84,7 +91,8 @@ const isCurrent = (sidebar: SidebarEntry[]): boolean =>
 </SidebarPersister>
 
 <div class="md:sl-hidden">
-	<MobileMenuFooter {...Astro.props} />
+	<!-- <MobileMenuFooter {...Astro.props} /> -->
+	<MobileMenuFooter />
 </div>
 
 <style>

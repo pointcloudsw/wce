@@ -1,9 +1,10 @@
 ---
-import type { Props } from '@astrojs/starlight/props';
+// import type { Props } from '@astrojs/starlight/props';
 // import Default from '@astrojs/starlight/comp
 // import Default from '@astrojs/starlight/components/PageTitle.astro'
 
-const { title } = Astro.props.entry.data;
+// const { title } = Astro.props.entry.data;
+const { title } = Astro.locals.starlightRoute.entry.data;
 ---
 
 <h1 id="_top">{title}</h1>

@@ -11,7 +11,7 @@ import { starlightPluginAutolinkHeadings } from './config/plugins/rehype-autolin
 import { rehypeTasklistEnhancer } from './config/plugins/rehype-tasklist-enhancer';
 import { remarkFallbackLang } from './config/plugins/remark-fallback-lang';
 import d2 from 'astro-d2';
-import node from '@astrojs/node';
+// import node from '@astrojs/node';
 
 // import { remarkHeadingId } from 'remark-custom-heading-id'; // https://github.com/withastro/starlight/discussions/2050
 
@@ -20,25 +20,14 @@ import node from '@astrojs/node';
 // const NETLIFY_PREVIEW_SITE = process.env.CONTEXT !== 'production' && process.env.DEPLOY_PRIME_URL;
 // const site = NETLIFY_PREVIEW_SITE || 'http://wst.pcpllc.us/';
 
-const isProduction = process.env.NODE_ENV === 'production';
-
-const extra = isProduction
-  ? {
-      vite: {
-        ssr: {
-          noExternal: true,
-        },
-      },
-    }
-  : {};
-  
+// const isProduction = process.env.NODE_ENV === 'production';
 
 const site = 'http://wst.pcpllc.us/';
 
 // https://astro.build/config
 export default defineConfig({
     site: site,
-	output: 'server',
+	// output: 'server',
     integrations: [
 		devServerFileWatcher([
 			'./config/*', // Custom plugins and integrations
@@ -46,7 +35,7 @@ export default defineConfig({
 			'./src/content/nav/*.ts', // Sidebar labels
 		]),
 		starlight({
-        	title: 'Docs',
+        	title: 'certdocs-main',
 			prerender: false,
         	customCss: ['./src/style/custom.css'],
         	expressiveCode: {
@@ -122,6 +111,5 @@ export default defineConfig({
         domains: ['avatars.githubusercontent.com'],
         service: sharpImageService(),
     },
-	adapter: node({ mode: 'standalone' }),
-	extra
+	// adapter: node({ mode: 'standalone' })
 });

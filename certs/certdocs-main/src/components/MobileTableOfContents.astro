@@ -1,14 +1,19 @@
 ---
 import { Icon } from '@astrojs/starlight/components';
-import type { Props } from '@astrojs/starlight/props';
+// import type { Props } from '@astrojs/starlight/props';
 import TableOfContentsList from 'node_modules/@astrojs/starlight/components/TableOfContents/TableOfContentsList.astro';
 
-const { title } = Astro.props.entry.data;
-const { toc } = Astro.props;
+// const { title } = Astro.props.entry.data;
+// const { toc } = Astro.props;
+const title = Astro.locals.starlightRoute.entry.data.title;
+// const { toc } = Astro.locals.starlightRoute;
+const toc = Astro.locals.starlightRoute.toc;
+// if ( [...(toc?.items ?? [])].length > 0 ) {
+// 	[...toc.items][0].text = title;
+// }
 
-if ( [...(toc?.items ?? [])].length > 0 ) {
-	[...toc.items][0].text = title;
-}
+if ( [...(Astro.locals.starlightRoute.toc?.items ?? [])].length > 0)
+	Astro.locals.starlightRoute.toc.items[0].text = title;
 
 ---
 {
