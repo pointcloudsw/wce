@@ -11,7 +11,7 @@ import { starlightPluginAutolinkHeadings } from './config/plugins/rehype-autolin
 import { rehypeTasklistEnhancer } from './config/plugins/rehype-tasklist-enhancer';
 import { remarkFallbackLang } from './config/plugins/remark-fallback-lang';
 import d2 from 'astro-d2';
-// import node from '@astrojs/node';
+import node from '@astrojs/node';
 
 // import { remarkHeadingId } from 'remark-custom-heading-id'; // https://github.com/withastro/starlight/discussions/2050
 
@@ -27,7 +27,7 @@ const site = 'http://wst.pcpllc.us/';
 // https://astro.build/config
 export default defineConfig({
     site: site,
-	// output: 'server',
+	  output: 'server',
     integrations: [
 		devServerFileWatcher([
 			'./config/*', // Custom plugins and integrations
@@ -111,5 +111,5 @@ export default defineConfig({
         domains: ['avatars.githubusercontent.com'],
         service: sharpImageService(),
     },
-	// adapter: node({ mode: 'standalone' })
+	  adapter: node({ mode: 'standalone' })
 });
