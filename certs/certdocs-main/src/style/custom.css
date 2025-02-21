@@ -68,6 +68,12 @@ p
   background: var(--sl-color-bg);
 } */
 
+.hero-content.stack
+, .hero-content.stack > div.stack
+, .hero-content.stack > div.actions {
+  max-width: unset;
+}
+
 :not(div.heading-wrapper) + p {
   margin-block-start: 1rlh;
 }
