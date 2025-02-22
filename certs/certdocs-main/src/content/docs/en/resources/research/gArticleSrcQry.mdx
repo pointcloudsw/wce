@@ -1,0 +1,13 @@
+---
+title: GG Article - Source Query
+description: JavaScript Source Query
+---
+
+```js
+doc = ''; el = ''; document.querySelectorAll('article.article-text *').forEach( h => {
+    el = h.parentNode.nodeName + ' ' + h.tagName;
+
+    doc += el + h.textContent + '\n';
+
+}); console.log(doc);
+```
