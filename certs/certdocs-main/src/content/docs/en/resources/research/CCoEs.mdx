@@ -5,10 +5,7 @@ description: 21 February 2025
 import { Image } from 'astro:assets';
 import BulletHdr from '~/components/BulletHdr.astro';
 import ggImg from '~/assets/ggCoE3pillars.png';
-import { ggSrcQry } from './srcQryGgCoE3pillars.mdx';
-
-
-<ggSrcQry />
+import SrcQry from './srcQryGgCoE3pillars.mdx';
 
 ## 	Strategic Planning Assumptions
 
@@ -16,7 +13,7 @@ Cloud Management Challenges
 
 Regardless of when their cloud journey began, many companies struggle to manage and optimize their cloud spend.  To get a handle on these challenges, increasing numbers of business leaders are calling for Cloud Centers of Excellence (CCoEs) to be created in their businesses.  Responses from leaders across a wide range companies and industries indicate that well functioning CCoEs do produce meaningful outcomes relative to managing cloud expenditures, driving accountability and achieving operational excellence.
 
-
+<figure>
 ```d2
     grid-columns: 3
 Cloud Center of Excellence: {
@@ -43,52 +40,12 @@ Cloud Center of Excellence: {
             Reporting
         }
     }
-    Continuous Improvement
+    
+    Continuous Improvement\: KPI, Transparency, Optimization
 }
 ```
-
-
-Cloud COE Pillars
-
-Strategy
-
-Vision
-
-Planning
-
-Budgeting
-
- 
-
-Program
-
-Collaboration
-
-Advocacy
-
-Onboarding
-
- 
-
-Governance
-
-Best Practices
-
-FinOps
-
-Reporting
-
- 
-
-^-----  Continuous Improvement: KPI, transparency, optimization -
-
- 
-
- 
-
- 
-
- 
+<figcaption>Cloud Center of Excellence Pillars</figcaption>
+</figure>
 
  Organizations embarking on their cloud journey face hundreds of decisions in terms of cloud strategy, roadmap, partnerships, approach, budgeting, governance, training, schedule, operation and support, just to name a few!
 
@@ -113,12 +70,12 @@ helps the organization establish, operationalize, and build upon these principle
 
 The CCOE then facilitates optimization and continuous improvement by measuring, monitoring and publishing relevant data points stakeholders can use to monitor progress, compliance, performance and return on investment.
 
- 
+<figure>
 ```d2
 direction: right
 Prepare: {
     near: top-left
-    grid-rows: 4
+    grid-columns: 2
     Strategy
     Planning
     Technical Guidance
@@ -126,7 +83,7 @@ Prepare: {
 }
 Deliver: {
     near: top-right
-    grid-rows: 5
+    grid-columns: 2
     User stories
     Roadmap
     PoCs Prioritize
@@ -135,7 +92,7 @@ Deliver: {
 }
 Operate: {
     near: bottom-right
-    grid-rows: 5
+    grid-columns: 2
     Monitoring
     Reporting
     Managing
@@ -144,13 +101,15 @@ Operate: {
 }
 Scale: {
     near: bottom-left
-    grid-rows: 3
+    grid-columns: 2
     Lifecycle management
     Optimization
     Continuous Improvement
 }
 Prepare -> Deliver -> Operate -> Scale -> Prepare
 ```
+<figcaption>Cloud Center of Excellence Lifecycle</figcaption>
+</figure>
 
  
     
@@ -221,3 +180,4 @@ The CCOE should establish policies and standards for cloud computing, gathering 
 ```js
 // https://www.gartner.com/smarterwithgartner/execute-your-cloud-strategy-with-a-cloud-center-of-excellence
 ```
+<SrcQry />
