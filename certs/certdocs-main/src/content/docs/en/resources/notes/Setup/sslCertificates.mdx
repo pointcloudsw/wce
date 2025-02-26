@@ -1,0 +1,36 @@
+---
+title: Deploying SSL with Certbot
+description: Install and deploy SSL certificates with Certbot
+---
+
+Follow these steps to use Certbot to deploy SSL certificates to your domain.
+
+## Certbot Certonly
+Certbot is a tool to obtain SSL certificates from Let's Encrypt. The certonly command is used to obtain or renew a certificate without installing it.
+
+### Example
+To obtain a certificate using the standalone mode, you can use the following command:
+`sudo certbot certonly --standalone -d your_domain`
+This command will prompt you to enter an email address and agree to the terms of service. After successful execution, the certificate files will be stored in `/etc/letsencrypt/live/your_domain`.
+
+### Certbot Response
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/est.pcpllc.us/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/est.pcpllc.us/privkey.pem
+This certificate expires on 2025-05-26.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+### Important Considerations
+* Port Availability: Ensure that ports 80 or 443 are not in use by other services as Certbot uses these ports to complete the challenge.
+
+* Automatic Renewal: Certbot sets up a scheduled task to automatically renew the certificate. You can test this with: `sudo certbot renew --dry-run`
+
+* Configuration: After obtaining the certificate, you need to configure your application to use it. The private key (`privkey.pem`) and the full chain (`fullchain.pem`) are typically required

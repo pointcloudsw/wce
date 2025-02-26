@@ -21,6 +21,23 @@ if (KNOWN_LANGUAGES.includes(newLangWithRegion)) {
 }
 
 */
+import type { Session } from '@auth/core/types';
+import { Auth, SignIn, SignOut } from 'auth-astro/components';
 ---
+<Auth>
+  {(session: Session) => {
+    if (session) {
+      return (
+        <>
+          {/* <p>Logged in as {session.user.name}</p> */}
+		  <meta http-equiv="refresh" content="0;url=/en/getting-started/" />
 
-<meta http-equiv="refresh" content="0;url=/en/getting-started/" />
+          <SignOut>Sign Out</SignOut>
+        </>
+      );
+    } else {
+      return <SignIn provider="github">Sign In</SignIn>;
+    }
+  }}
+</Auth>
+<!-- <meta http-equiv="refresh" content="0;url=/en/getting-started/" /> -->
