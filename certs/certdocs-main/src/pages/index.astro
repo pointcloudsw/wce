@@ -29,10 +29,11 @@ import { Auth, SignIn, SignOut } from 'auth-astro/components';
     if (session) {
       return (
         <>
-          {/* <p>Logged in as {session.user.name}</p> */}
-		  <meta http-equiv="refresh" content="0;url=/en/getting-started/" />
+          <p>Logged in as {session.user.name}</p>
+		  {/* <meta http-equiv="refresh" content="0;url=/en/getting-started/" /> */}
 
           <SignOut>Sign Out</SignOut>
+          <a href="/protected">Protected page</a>
         </>
       );
     } else {
