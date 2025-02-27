@@ -1,0 +1,200 @@
+---
+title: Diving into Cloud Centers of Excellence
+description: 21 February 2025
+---
+import { Image } from 'astro:assets';
+import BulletHdr from '~/components/BulletHdr.astro';
+import ggImg from '~/assets/ggCoE3pillars.png';
+import SrcQry from './srcQryGgCoE3pillars.mdx';
+
+## TODO Items
+1. Define a small medium large kind of setup for a CCOE in terms of the time and resources we might offer to clients. 
+
+## 	Strategic Planning Assumptions
+
+Cloud Management Challenges
+
+Regardless of when their cloud journey began, many companies struggle to manage and optimize their cloud spend.  To get a handle on these challenges, increasing numbers of business leaders are calling for Cloud Centers of Excellence (CCoEs) to be created in their businesses.  Responses from leaders across a wide range companies and industries indicate that well functioning CCoEs do produce meaningful outcomes relative to managing cloud expenditures, driving accountability and achieving operational excellence.
+
+<figure>
+```d2
+grid-columns: 3
+Cloud Center of Excellence: {
+    grid-rows: 2
+    Cloud CoE Pillars: {
+        grid-rows: 1
+        Strategy: {
+            grid-rows: 3
+            Vision
+            Planning
+            Budgeting
+        }
+        Program: {
+            grid-rows: 3
+            Collaboration
+            Advocacy
+            Onboarding
+        }
+        Governance: {
+            grid-rows: 3
+            Best Practices
+            FinOps
+            Reporting
+        }
+    }
+    Continuous Improvement\: KPIs, Transparency, Optimization
+Cloud CoE Pillars <-- Continuous Improvement\: KPIs, Transparency, Optimization
+Continuous Improvement\: KPIs, Transparency, Optimization <-- Cloud CoE Pillars
+}
+```
+<figcaption class="not-content">Cloud Center of Excellence Pillars</figcaption>
+</figure>
+
+ Organizations embarking on their cloud journey face hundreds of decisions in terms of cloud strategy, roadmap, partnerships, approach, budgeting, governance, training, schedule, operation and support, just to name a few!
+
+ Sometimes intentionally, decisions made at the start of an organization’s cloud journey may become precedents that impact key decisions in the future the program.  Since the future is never entirely predictable, success in the cloud journey begins with a transformation framework for effective decision making and a blueprint for implementation.
+
+ 
+The Cloud Center of Excellence (CCoE) helps the organization establish, operationalize, and build upon these principles according to the needs and priorities of the business.
+
+The CCOE does this through collaboration with program sponsors / leaders, clients (internal and/or external application owners, product owners, partners, etc), and business stakeholders to plan, execute, operationalize and optimize the cloud program.
+
+<figure>
+```d2
+direction: right
+Prepare: {
+    near: top-left
+    grid-columns: 2
+    Strategy
+    Planning
+    Technical Guidance
+    Budget estimates
+}
+Deliver: {
+    near: top-right
+    grid-columns: 2
+    User stories
+    Roadmap
+    PoCs Prioritize
+    Schedule
+    Execute
+}
+Operate: {
+    near: bottom-right
+    grid-columns: 2
+    Monitoring
+    Reporting
+    Managing
+    Forecasting
+    SRE
+}
+Scale: {
+    near: bottom-left
+    grid-columns: 2
+    Lifecycle management
+    Optimization
+    Continuous Improvement
+}
+Prepare -> Deliver -> Operate -> Scale -> Prepare
+```
+<figcaption class="not-content">Cloud Center of Excellence Lifecycle</figcaption>
+</figure>
+
+The CCOE then facilitates optimization and continuous improvement by measuring, monitoring and publishing relevant data points stakeholders can use to monitor progress, compliance, performance and return on investment.
+
+## Structure
+A CCoE should exist only to the extent that such a formal construct ensures the business's long term success and return on investment relative to its cloud expenditures.  It should be noted, then, that successful CCOEs must have the organizational support of leadership and must also be granted by leadership the authorization and authority to own the decisions within its scope.
+
+### Bylaws
+
+### Board
+Nominations, president, etc
+
+### Membership
+
+### Charter
+These considerations should be codified in a living CCOE charter document and adopted through a formalized agreement with leadership, business partners and primary stakeholders.  A cornerstone of the CCOE, the CCOE charter document explains the following within the context of the orgnization:
+<figure>
+```d2
+    Cloud Center of Excellence Charter Document: {
+    grid-rows: 3
+    grid-columns: 2
+    \1\. Statement of Problem and Purpose\nExplain why the CCOE is being created and the problem(s) it's expected to solve
+    \2\. Expected Benefits\nSummarize the business benefits to be realized through the CCOE
+    \3\. Responsibility\nSummarize the functions organizational leaders and sponsors are requiring the CCOE to perform
+    \4\. Charter Reviews\nDocument the frequency and process by which the Charter document will be reviewed, by whom, when and how it will be updated
+    \5\. Board Membership\nDocument each board member's role who will be accountable for the direction and overall success of the CCOE
+    }
+```
+<figcaption class="not-content">Components of a CCOE Charter</figcaption>
+</figure>
+
+After the charter is voted upon and placed under change control, it should be reviwed and updated, as needed, every 16 to 24 months.
+
+## Conclusion
+Every CCOE is different but all should exist solely to advance the needs of the organizations they serve.  Many CCOEs exist only for a time, performing strategic roles to assist in bootstrapping and/or course-correcting specific cloud-related activities for the business.  Others may take on long term operational roles to assist with governance, compliance or other shared functions whose scope or ownership extends beyond any one organization.  
+
+# GG's Three Pillars of CCoE
+July 19, 2021 | Katie Costello
+
+**If your organization is thinking about standing up a cloud center of excellence, consider these risks, rewards and recommendations.**
+
+Not all cloud strategies were created equal, but cloud computing is nevertheless evolving from a market disruptor to a base expectation for IT in the era of digital business transformation. As organizations adopt cloud at scale, you might need a cloud center of excellence (CCOE); make sure you know the pros and cons.
+
+Recent research from Lydia Leong, Distinguished VP Analyst, Gartner, looks at key considerations as you weigh the fit of a CCOE — and best practices for deploying a CCOE if you choose to.
+
+## What is a cloud center of excellence?
+A CCOE is a centralized enterprise architecture function that leads and governs cloud computing adoption within an organization. It provides central IT with a way to execute the organization’s cloud strategy, enable the business to choose the best solutions, provide governance through policies and cloud management tools, and uplevel skills and foster discovery and distribution of best practices.
+
+A CCOE governs all types of cloud service models — infrastructure-as-a-service, platform-as-a-service and software as-a-service — and provides significant input to the cross-functional operating processes related to the use of these cloud services.
+
+Although an EA discipline, it doesn’t always live there on an organization chart. Most CCOEs are part of central IT, but business units sometimes create their own CCOE. CCOEs might also sometimes be referred to as a “cloud business office” or a “cloud innovation center,” among other names.
+
+It’s important to note that a CCOE is distinct from a cloud strategy or advisory council. Unlike a CCOE, the latter is not a formal organization but rather a committee responsible for drafting and maintaining the cloud strategy as a living document. It provides ongoing advisory to the CCOE and is focused on addressing the “why” behind implementing cloud, rather than the “how,” which is what the CCOE exists to answer.
+
+Some organizations only require a cloud management office or virtual team to deploy cloud, but after more than a decade of Gartner client discussions, the CCOE has emerged as the best practice for facilitating successful cloud adoption in midsize and large enterprise organizations, regardless of the organization’s cloud strategy or structure. The three pillars of a CCOE are governance, brokerage and community.
+
+<figure><Image src={ggImg} width="840" alt="GG's three pillars of a CCoE" style={"margin: auto;"} /><figcaption class="not-content">GG's three pillars of a CCoE</figcaption></figure>	
+
+## Cloud center of excellence risks and rewards
+A centralized, vendor-neutral CCOE represents the best way to ensure cloud governance while maintaining business agility. It is particularly effective in organizations where IT is distributed into the business units, but is also useful when IT is centralized. It is most important for agility-focused cloud adoption, but is also useful for cost-efficiency-focused adoption.
+
+A CCOE provides benefits in line with its three pillars:
+### Brokerage
+- Provides expertise on cloud provider solutions
+- Establishes cloud architectural standards and recommendations
+- Guides the cloud strategy and determines the process for adopting cloud providers within the organization
+- “Future-proofs” cloud adoption
+
+### Governance
+- Establishes cloud adoption policies
+- Helps manage cloud-related risks in conjunction with the security, risk management and legal/regulatory compliance functions
+- Governs cloud costs and assists in forecasting cloud provider demand
+
+### Community
+- Establishes the cloud community of practice (COP) that brings together stakeholders and facilitates cloud collaboration
+- Helps the organization adapt itself for cloud adoption by promoting COP member interaction and facilitating cloud-related training and skills development
+
+Of course, there are potential downsides of CCOEs, with the most significant one being the possibility that the CCOE will be ignored. Three root causes are most often to blame when the CCOE is being ignored, so take action to avoid these scenarios:
+
+1. **The CCOE lacks a mandate.** Make sure to secure executive leader buy-in and assurance from business leadership that they will adhere to the CCOE’s policies.
+2. **The CCOE sets unrealistic standards and guidelines.** Your organization may not be mature enough — in terms of resources and skills — to comply with CCOE standards. The CCOE should lay out a maturity roadmap to help the organization reach the desired future state on an incremental basis.
+3. **The CCOE doesn’t properly “market” itself.** Make sure the CCOE’s messaging is attractive to the business and its proposition focuses on business-related benefits.
+
+## Three recommendations for deploying your cloud center of excellence
+### No. 1: Take the lead in establishing a CCOE
+Choose an EA leader or team member as the organization’s chief cloud architect and assign that person to lead it. The architect should be a change leader with a forward-thinking, collaborative style of technical leadership, as well as a strong understanding of the business.
+
+It is useful for the architect to have some previous experience with cloud computing, but cloud training is always an option once appointed. However, don’t allow the creation of a CCOE to delay cloud adoption. Although the CCOE needs to be led internally, some organizations may benefit from engaging a cloud professional service provider to assist with CCOE foundations.
+
+### No. 2: Drive collaboration with cloud computing stakeholders across the organization
+Executive leaders should direct the chief cloud architect to chair or participate in a cross-functional cloud computing strategy or advisory council that brings together representatives who are directly involved in cloud-related uses and issues. This is one of the reasons it’s important that the architect has a good relationship with the business.
+
+### No. 3: Provide cloud brokerage and governance
+The CCOE should establish policies and standards for cloud computing, gathering good practices from across the organization, with a focus on governance, not control. The CCOE should provide guidelines to foster “doing the right thing,” but also implement guardrails to limit exposure to cloud-related risks.
+
+## Source
+```js
+// https://www.gartner.com/smarterwithgartner/execute-your-cloud-strategy-with-a-cloud-center-of-excellence
+```
+<SrcQry />

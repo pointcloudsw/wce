@@ -13,6 +13,7 @@ import { remarkFallbackLang } from './config/plugins/remark-fallback-lang';
 import d2 from 'astro-d2';
 import node from '@astrojs/node';
 import auth from 'auth-astro';
+import db from '@astrojs/db';
 // import { remarkHeadingId } from 'remark-custom-heading-id'; // https://github.com/withastro/starlight/discussions/2050
 
 /* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
@@ -27,69 +28,72 @@ const site = 'http://wst.pcpllc.us/';
 // https://astro.build/config
 export default defineConfig({
     site: site,
-	  output: 'server',
+      output: 'server',
     integrations: [
-		auth(),
-		devServerFileWatcher([
-			'./config/*', // Custom plugins and integrations
-			'./astro.sidebar.ts', // Sidebar configuration file
-			'./src/content/nav/*.ts', // Sidebar labels
+        auth(),
+        devServerFileWatcher([
+            './config/*', // Custom plugins and integrations
+            './astro.sidebar.ts', // Sidebar configuration file
+            './src/content/nav/*.ts', // Sidebar labels
 		]),
-		starlight({
-        	title: 'certdocs-main',
-			prerender: false,
-        	customCss: ['./src/style/custom.css'],
-        	expressiveCode: {
-            	plugins: [pluginCollapsibleSections()],
-        	},
-			components: {
-				EditLink: './src/components/starlight/EditLink.astro',
-				Head: './src/components/starlight/Head.astro',
-				Hero: './src/components/Hero.astro',
-				MarkdownContent: './src/components/starlight/MarkdownContent.astro',
-				MobileTableOfContents: './src/components/MobileTableOfContents.astro',
-				PageSidebar: './src/components/PageSidebar.astro',
-				PageTitle: './src/components/PageTitle.astro',
-				Pagination: './src/components/Pagination.astro',
-				SiteTitle: './src/components/starlight/SiteTitle.astro',
-				Search: './src/components/starlight/Search.astro',
-				Sidebar: './src/components/Sidebar.astro',
-				TableOfContents: './src/components/TableOfContents.astro'
-			},
-			editLink: {
-				baseUrl: 'https://github.com/withastro/docs/edit/main',
-			},
-			defaultLocale: 'en',
-			locales: makeLocalesConfig(),
-			sidebar,
-			social: {
-				github: 'https://github.com/withastro/astro',
-				discord: 'https://astro.build/chat',
-			},
-			tableOfContents: {
-				minHeadingLevel: 1,
-				maxHeadingLevel: 3
-			},
-			pagefind: false,
-			head: [
-				// Add ICO favicon fallback for Safari.
-				{
-					tag: 'link',
-					attrs: {
-						rel: 'icon',
-						href: '/favicon.ico',
-						sizes: '32x32',
-					},
-				},
-			],
-			disable404Route: true,
-			plugins: [
-				starlightPluginAutolinkHeadings()
-			],
+        starlight({
+            title: 'certdocs-main',
+            prerender: false,
+            customCss: ['./src/style/custom.css'],
+            expressiveCode: {
+                plugins: [pluginCollapsibleSections()],
+            },
+            components: {
+                EditLink: './src/components/starlight/EditLink.astro',
+                Head: './src/components/starlight/Head.astro',
+                Hero: './src/components/Hero.astro',
+                MarkdownContent: './src/components/starlight/MarkdownContent.astro',
+                MobileTableOfContents: './src/components/MobileTableOfContents.astro',
+                PageSidebar: './src/components/PageSidebar.astro',
+                PageTitle: './src/components/PageTitle.astro',
+                Pagination: './src/components/Pagination.astro',
+                SiteTitle: './src/components/starlight/SiteTitle.astro',
+                Search: './src/components/starlight/Search.astro',
+                Sidebar: './src/components/Sidebar.astro',
+                TableOfContents: './src/components/TableOfContents.astro'
+            },
+            editLink: {
+                baseUrl: 'https://github.com/withastro/docs/edit/main',
+            },
+            defaultLocale: 'en',
+            locales: makeLocalesConfig(),
+            sidebar,
+            social: {
+                github: 'https://github.com/withastro/astro',
+                discord: 'https://astro.build/chat',
+            },
+            tableOfContents: {
+                minHeadingLevel: 1,
+                maxHeadingLevel: 3
+            },
+            pagefind: false,
+            head: [
+                // Add ICO favicon fallback for Safari.
+                {
+                    tag: 'link',
+                    attrs: {
+                        rel: 'icon',
+                        href: '/favicon.ico',
+                        sizes: '32x32',
+                    },
+                },
+            ],
+            disable404Route: true,
+            plugins: [
+                starlightPluginAutolinkHeadings()
+            ],
+            routeMiddleware: './src/routeData.ts'
+
 		}),
-		sitemap(),
-		d2()
-	],
+        sitemap(),
+        d2(),
+        db()
+    ],
     trailingSlash: 'always',
     scopedStyleStrategy: 'where',
     compressHTML: false,
@@ -112,5 +116,8 @@ export default defineConfig({
         domains: ['avatars.githubusercontent.com'],
         service: sharpImageService(),
     },
-	  adapter: node({ mode: 'standalone' })
+    adapter: node({ mode: 'standalone' }),
+    redirects: {
+        '/en/getting-started/src/data': '/src/data'
+    },
 });
