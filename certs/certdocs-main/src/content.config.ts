@@ -2,7 +2,7 @@ import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 import { defineCollection, z, type CollectionEntry } from 'astro:content';
 import { AstroDocsI18nSchema } from './content/i18n-schema';
-import { glob } from 'astro/loaders';
+// import { glob } from 'astro/loaders';
 
 export const baseSchema = z.object({
 	type: z.literal('base').optional().default('base'),
@@ -142,15 +142,15 @@ export const collections = {
 		loader: i18nLoader(),
 		schema: i18nSchema({ extend: AstroDocsI18nSchema }),
 	}),
-	articles: defineCollection({
-		loader: glob({
-			pattern: "**/*.(md|mdx)",
-			base: './src/data/articles',
-			generateId: ({ entry }) => entry.replace(/\/en\/getting-started/,''),
-		}),
-		schema: z.object({
-			title: z.string(),
-			description: z.string(),
-		})
-	})
+	// articles: defineCollection({
+		// loader: glob({
+			// pattern: "**/*.(md|mdx)",
+			// base: './src/pages/articles',
+			// generateId: ({ entry }) => entry.replace(/\/en\/getting-started/,''),
+		// }),
+		// schema: z.object({
+			// title: z.string(),
+			// description: z.string(),
+		// })
+	// })
 };

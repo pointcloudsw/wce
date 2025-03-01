@@ -1,5 +1,6 @@
 ---
 // import type { Props } from '@astrojs/starlight/props';
+// import { getEntry } from 'astro:content';
 import Button from './Button.astro';
 
 // const { hero } = Astro.props.entry.data;
@@ -8,9 +9,6 @@ import Button from './Button.astro';
 const { hero } = Astro.locals.starlightRoute.entry.data;
 const { title, tagline, actions } = hero!;
 
-
-import { getCollection } from 'astro:content';
-const articles = await getCollection('articles');
 ---
 
 <div class="hero">
@@ -29,15 +27,6 @@ const articles = await getCollection('articles');
 		</div>
 	</div>
 </div>
-<ul>
-	{
-		articles.map(({ id, filePath }) => (
-			<li>
-				<a href={id}>{id}|{filePath}</a>
-			</li>
-		))
-	}
-</ul>
 
 <style>
 	.hero {

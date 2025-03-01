@@ -13,7 +13,7 @@ import { remarkFallbackLang } from './config/plugins/remark-fallback-lang';
 import d2 from 'astro-d2';
 import node from '@astrojs/node';
 import auth from 'auth-astro';
-import db from '@astrojs/db';
+// import db from '@astrojs/db';
 // import { remarkHeadingId } from 'remark-custom-heading-id'; // https://github.com/withastro/starlight/discussions/2050
 
 /* https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables */
@@ -87,12 +87,10 @@ export default defineConfig({
             plugins: [
                 starlightPluginAutolinkHeadings()
             ],
-            routeMiddleware: './src/routeData.ts'
-
 		}),
         sitemap(),
         d2(),
-        db()
+        // db()
     ],
     trailingSlash: 'always',
     scopedStyleStrategy: 'where',
