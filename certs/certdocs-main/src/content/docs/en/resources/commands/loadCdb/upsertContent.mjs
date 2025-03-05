@@ -28,26 +28,22 @@ const c = await mysql.createConnection({
     namedPlaceholders: process.env.CDB_NAMED_PLACEHOLDERS || null,
     database: process.env.CDB_DB,
     password: process.env.CDB_PW,
-    
   });
 
 try {
   const files = await readdir(rootDir, { recursive: true });
   let content = '';
-  let sqlStmt = 'INSERT INTO docs (path, doc) VALUES (?, ?)';
+  let insStmt = 'INSERT INTO docs (path, doc) VALUES (?, ?)';
+  let updStmt = 'UPDATE docs set doc = ? where path = ?';
   let values = [];
   for (const file of files.filter( f => f.match(re))){
-    // content = await readFile(rootDir + file, { encoding: 'utf-8', flag: 'r' });
     content = await readFile(rootDir + file);
     values = [ file, content ];
-    console.log('\n\n', values);
-    // let [ result ] = await c.query(`insert into docs (path, doc) values ('${file}', '${stringifyObject(content)}')`);
-    const [ result, fields ] = await c.execute(sqlStmt, values);
-    values = [];
-    // content = '';
+    // console.log('\n\n', values);
+    const [ result, fields ] = await c.execute(insStmt, values);
     console.log(result);
+    values = [];
   }
-    
 } catch (err) {
     console.error(err);
 }
