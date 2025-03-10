@@ -3,6 +3,7 @@
 /*
 export EK="{ key_ops: [ 'encrypt', 'decrypt' ], ext: true, kty: 'oct', k: 'uwt310hdcp3HRPq7nVZKSoR29YujJ0A8OFdV_UZEdto', alg: 'A256CBC' }"
 Buffer.from(process.env.EK).toString('base64');
+CDB_AES_KEY=eyBrZXlfb3BzOiBbICdlbmNyeXB0JywgJ2RlY3J5cHQnIF0sIGV4dDogdHJ1ZSwga3R5OiAnb2N0JywgazogJ3V3dDMxMGhkY3AzSFJQcTduVlpLU29SMjlZdWpKMEE4T0ZkVl9VWkVkdG8nLCBhbGc6ICdBMjU2Q0JDJyB9
 
 const sc = require('node:crypto');
 key2 = await sc.subtle.generateKey( { name: 'AES-CBC', length: 256 }, true, ['encrypt','decrypt']);
