@@ -1,6 +1,15 @@
 'use strict';
 
 /*
+
+node REPL CLI
+await import('dotenv/config');
+const { subtle } = await import('node:crypto');
+key = await subtle.generateKey({ name: process.env.CDB_KA, length:process.env.CDB_KL }, true, [ 'encrypt', 'decrypt' ] );
+expkey = await subtle.exportKey( process.env.CDB_EKT, key );
+
+
+const { subtle } = await import('node:crypto');
 export EK="{ key_ops: [ 'encrypt', 'decrypt' ], ext: true, kty: 'oct', k: 'uwt310hdcp3HRPq7nVZKSoR29YujJ0A8OFdV_UZEdto', alg: 'A256CBC' }"
 Buffer.from(process.env.EK).toString('base64');
 CDB_AES_KEY=eyBrZXlfb3BzOiBbICdlbmNyeXB0JywgJ2RlY3J5cHQnIF0sIGV4dDogdHJ1ZSwga3R5OiAnb2N0JywgazogJ3V3dDMxMGhkY3AzSFJQcTduVlpLU29SMjlZdWpKMEE4T0ZkVl9VWkVkdG8nLCBhbGc6ICdBMjU2Q0JDJyB9
@@ -25,18 +34,18 @@ import { subtle } from 'node:crypto';
 //     return key;
 // } 
 
-const alg = 'AES-CBC';
-const klength = 256;
+// const alg = 'AES-CBC';
+// const klength = 256;
 // const iv = crypto.getRandomValues(new Uint8Array(16));
 // const key = await generateAesKey();
 const key = await subtle.generateKey({
-    name: alg,
-    length,
+    name: process.env.KA,
+    process.env.KL,
     },
     true,
     ['encrypt', 'decrypt']
 );
-const expkey = await subtle.exportKey(format: 'jwk', key: key);
+const expkey = await subtle.exportKey(format: process.env.CDB_EKT, key: key);
 // console.log(`Key: ${key}\nIv: ${iv}`);
 console.log(`Exported Key:\n${expkey}`);
 const impkey = await subtle.importKey(format: 'jwk', true, [ 'encrypt', 'decrypt'], process.argv[2]);
