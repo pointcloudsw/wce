@@ -2,6 +2,32 @@
 
 /*
 
+*************************
+Data Encryption Process
+-------------------------
+generate iv // for kek
+generate kek
+export and save kek in secure location
+
+for each plaintextdoc
+    
+    generate dek
+    generate iv
+    encrypt plaintextdoc with dek
+    wrap dek with kek
+    insert ciphertextdoc, wrappeddek into database
+next doc
+
+kek = await subtle.generateKey({ name: process.env.CDB_KA, length:process.env.CDB_KL }, true, [ 'wrapKey', 'unwrapKey' ] );
+
+    expkek = await subtle.exportKey( process.env.CDB_EKT, kek );
+wkey = await subtle.wrapKey( process.env.CDB_EKT, key, kek, { name: process.env.CDB_KA, iv: iv } );
+
+wkey64 = wkey_buf.toString('base64');
+'i5fDNgAMkDhYr0is8aiUNbOFfp4iIOyPgBktfnZbxbjR7+5/Xud8RP1gDjOChi4SbMw/Nq56rW7GcFA6n909IZ+vP7RoAA42mIMdUEgx7hCj3nLTUNoUdtcyTT2lVost/qTgELGE31tEIvyB511PAg8vubyJZmjW/UlodlM/1Zc='
+
+*************************
+
 node REPL CLI
 await import('dotenv/config');
 const { subtle } = await import('node:crypto');
