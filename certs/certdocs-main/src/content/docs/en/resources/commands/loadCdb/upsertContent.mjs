@@ -27,6 +27,9 @@ CREATE TABLE docs (
 */
 
 /*
+*/
+
+/*
 
 Entities, Stores and Methods:
     0.  kek: kek64;
@@ -37,9 +40,29 @@ Entities, Stores and Methods:
 
     1a. riv: refid pk; iv[i], hidden 1:1 fk to docref on refid;
           
-          entities: refId - select, insert, delete; docIv - select, insert, update, delete;
+          entities: refId - select, insert, delete; Iv - select, insert, update, delete;
           
           methods: getIv(refId); +insIv(iv[i])-->refId; updIv(refId); *delIv(refId); genIv()-->iv[i];
+
+          Buffer.from(iv[i]).toString('base64') --> base64-encoded iv to be saved in secure store
+
+          tables:
+          drop table rv;
+          create table rv (
+            id INT NOT NULL AUTO_INCREMENT
+            , val varchar(32) NOT NULL
+            , PRIMARY KEY (id )
+          );
+          select val from riv where id = refid[i];
+          update riv set val = iv[i] where id = refId[i];
+          delete from riv where id = refId[i];
+
+          insert:
+            const stmt = 'insert into riv ( val ) values ( ? )';
+            const values = [ iv[i] ];
+            const [ result, fields ] = await c.execute(stmt, values );
+            // select last_insert_id();
+            return result.insertId;
 
     1b. docref: refid; docid;
 
