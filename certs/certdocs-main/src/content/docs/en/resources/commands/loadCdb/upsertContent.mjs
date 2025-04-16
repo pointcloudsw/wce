@@ -137,6 +137,152 @@ Cryptomap
 ]
 */
 
+/*
+  // ==========
+  // golang gcm
+  // ==========
+
+  package main
+
+import (
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
+	"encoding/hex"
+	"fmt"
+	"io"
+)
+
+func main() {
+	// Load your secret key from a safe place and reuse it across multiple
+	// Seal/Open calls. (Obviously don't use this example key for anything
+	// real.) If you want to convert a passphrase to a key, use a suitable
+	// package like bcrypt or scrypt.
+	// When decoded the key should be 16 bytes (AES-128) or 32 (AES-256).
+	key, _ := hex.DecodeString("6368616e676520746869732070617373776f726420746f206120736563726574")
+	plaintext := []byte("exampleplaintext")
+
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	// Never use more than 2^32 random nonces with a given key because of the risk of a repeat.
+	nonce := make([]byte, 12)
+	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+		panic(err.Error())
+	}
+
+	aesgcm, err := cipher.NewGCM(block)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	ciphertext := aesgcm.Seal(nil, nonce, plaintext, nil)
+	fmt.Printf("%x\n", ciphertext)
+}
+
+*/
+
+/*
+  // ========
+  // Bing Copilot Example
+  // ========
+  Certainly! Below is an example of how you can use Go to perform AES-256 encryption with Galois/Counter Mode (GCM):
+
+Copy the code
+package main
+
+import (
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
+	"encoding/hex"
+	"fmt"
+	"io"
+)
+
+// Encrypt encrypts plaintext using AES-256-GCM.
+func Encrypt(plaintext, key []byte) (string, error) {
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return "", err
+	}
+
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return "", err
+	}
+
+	nonce := make([]byte, gcm.NonceSize())
+	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+		return "", err
+	}
+
+	ciphertext := gcm.Seal(nonce, nonce, plaintext, nil)
+	return hex.EncodeToString(ciphertext), nil
+}
+
+// Decrypt decrypts ciphertext using AES-256-GCM.
+func Decrypt(ciphertextHex string, key []byte) (string, error) {
+	ciphertext, err := hex.DecodeString(ciphertextHex)
+	if err != nil {
+		return "", err
+	}
+
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return "", err
+	}
+
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return "", err
+	}
+
+	nonceSize := gcm.NonceSize()
+	if len(ciphertext) < nonceSize {
+		return "", fmt.Errorf("ciphertext too short")
+	}
+
+	nonce, ciphertext := ciphertext[:nonceSize], ciphertext[nonceSize:]
+	plaintext, err := gcm.Open(nil, nonce, ciphertext, nil)
+	if err != nil {
+		return "", err
+	}
+
+	return string(plaintext), nil
+}
+
+func main() {
+	key := []byte("thisis32bitlongpassphraseimusing!") // 32 bytes for AES-256
+	plaintext := "Hello, World!"
+
+	encrypted, err := Encrypt([]byte(plaintext), key)
+	if err != nil {
+		fmt.Println("Error encrypting:", err)
+		return
+	}
+	fmt.Println("Encrypted:", encrypted)
+
+	decrypted, err := Decrypt(encrypted, key)
+	if err != nil {
+		fmt.Println("Error decrypting:", err)
+		return
+	}
+	fmt.Println("Decrypted:", decrypted)
+}
+
+Explanation:
+Key: Ensure your key is 32 bytes long for AES-256.
+Nonce: A unique nonce is generated for each encryption operation.
+Encrypt: The Seal method of GCM encrypts the plaintext.
+Decrypt: The Open method of GCM decrypts the ciphertext.
+
+This example demonstrates both encryption and decryption using AES-256-GCM in Go. Make sure to handle errors appropriately in a production environment and securely manage your keys.
+
+*/
+
 import { readdir, readFile } from 'node:fs/promises';
 import mysql from 'mysql2/promise';
 import 'dotenv/config';
