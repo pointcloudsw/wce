@@ -1,0 +1,91 @@
+---
+title: AWS Direct Connect with NAT to prem
+description: NAT'ing from AWS Organization to Prem via AWS Direct Connect
+---
+import BulletHdr from '~/components/BulletHdr.astro';
+import { Image } from 'astro:assets';
+import dcXgw from './aws-dc-transitgw.png';
+
+<section class="l1">
+    To assist in migrating some of its applications to AWS, an enterprise customer has established AWS Direct Connect between its corporporate network and its AWS central network account.
+
+    <details class="not-content">
+        <summary class="not-content">
+            ## Summary
+        </summary>
+        <section class="l2">
+            To accommodate the applications migrating into AWS, the company will be building out hundreds of AWS accounts and VPCs.  Resources in these accounts and VPCs must be seamlessly accessible from the corporate network AND must have access to the Internet by way of an on-prem data center on the corporate network.
+            <figure><Image src={dcXgw} width="840" alt="Connecting VPCs from multiple Regions to on premises." style={"margin: auto;"} /><figcaption class="not-content">Connecting VPCs from multiple Regions to on premises.</figcaption></figure>
+
+            This design requires the following AWS services and capabilities:
+
+            <section class="l3">
+            ### Required Capabilities
+                This design requires the following AWS services and capabilities:
+
+                <section class="l4">
+                #### [AWS Direct Connect Gateway](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-gateways-intro.html)
+                    Use AWS Direct Connect gateway to connect your VPCs. You associate an AWS Direct Connect gateway with any of the following:
+                    - A transit gateway when you have multiple VPCs in the same Region
+                    - A virtual private gateway
+                    - An AWS Cloud WAN core network
+
+                    A Direct Connect gateway is a globally available resource. One or more VPCs in any AWS region connect to a Direct Connect gateway by way of private virtual interfaces (VIFs) on the gateway.
+                    
+                    A Direct Connect gateway can be associated with either a Transit Gateway or with a Virtual Private Gateway.  A Virtual Private Gateway is the VPN concentrator on the Amazon side of a VPN connection.
+:::note
+AWS Direct Connect Gateway provides no load balancing or failover capabilities on its own.  
+:::
+
+
+                    You can connect to any Region globally using a Direct Connect gateway. A Direct Connect gateway is a virtual component of Direct Connect designed to act as a distributed set of BGP route reflectors. Because it operates outside the data traffic path, it avoids creating a single point of failure or introducing dependencies on specific AWS Regions. High availability is inherently built into its design, eliminating the need for multiple Direct Connect gateways.
+                </section>
+                <section class="l4">
+                #### [AWS Transit Gateway](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html)
+                    Amazon VPC Transit Gateways is a network transit hub used to interconnect virtual private clouds (VPCs) and on-premises networks. As your cloud infrastructure expands globally, inter-Region peering connects transit gateways together using the AWS Global Infrastructure. 
+                    
+                    When used in concert with AWS Direct Connect gateway, the two can be attached with a transit VIF attachment.  The transit gateway can be configured to route traffic through the AWS Direct Connect gateway for all AWS Regions, directly or indirectly via up to six Regional, centralized transit gateways.
+                    
+                    The transit VIF between the Direct Connect Gateway and the Transit Gateway also allows for traffic routing between the on-prem network and multiple VPCs across different Regions and different AWS accounts (in the same Organization) through a single connection.  
+
+:::tip
+In accounts managed by AWS Organizations, resources such as AWS Transit Gateway, can be shared more easily, without having to enumerate each account.  Use [AWS Resource Access Manager (AWS RAM)](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) to easily share your AWS Transit Gateway with multiple AWS accounts in the same AWS Organization.
+:::
+
+:::danger[Beware]
+When sharing with AWS Organizations is enabled, any resource sharing within the organization is restricted to consumers within the same organization. This means if the consumer leaves the organization, they will lose access to the resources in the resource share. This is true when the resource is shared with an OU, the entire organization, or an individual account in the organization.
+:::
+                    Using AWS RAM to share a transit gateway with other accounts in the same AWS Organization provides for convenient centralized management of connectivity from multiple accounts without having to create individual peering connections between VPCs or duplicate network appliances in each account.  This approach allows for attaching VPCs from different accounts and Regions to the shared transit gateway and enabling routing between them.
+                
+                    Contrast the shared transit gateway approach with VPC (direct) peering.  VPC peering connects two VPCs for the purpose of routing IP traffic between them.  VPC peering is not supported across Regions, only within a Region.  VPC also does not support routing traffic between a VPC and  on-prem networks.  To route traffic between VPC and on-prem networks with VPC peering, VPN connections or Direct Connect connections would be required for each VPC peering connection.  This approach adds cost and operational complexity compared to the shared Transit Gateway approach. 
+                    
+                    All network traffic between AWS data centers is automatically encrypted at the physical layer.
+                
+                    <section class="l5">
+                    ##### Details of AWS Transit Gateway
+                        The following are the key concepts for transit gateways:
+
+                        * <BulletHdr>Attachments</BulletHdr>The following resources can be attached to AWS Transit Gateway:
+                            - One or more VPCs
+                            - A Connect SD-WAN/third-party network appliance
+                            - An AWS Direct Connect gateway
+                            - A peering connection with another transit gateway
+                            - A VPN connection to a transit gateway
+
+                        * <BulletHdr>Transit gateway route table</BulletHdr>A transit gateway has a default route table and can optionally have additional route tables. A route table includes dynamic and static routes that decide the next hop based on the destination IP address of the packet. The target of these routes could be any transit gateway attachment. By default, transit gateway attachments are associated with the default transit gateway route table.
+
+                        * <BulletHdr>Associations</BulletHdr>Each attachment is associated with exactly one route table. Each route table can be associated with zero to many attachments.
+
+                        * <BulletHdr>Route propagation</BulletHdr>A VPC, VPN connection, or Direct Connect gateway can dynamically propagate routes to a transit gateway route table. With a Connect attachment, the routes are propagated to a transit gateway route table by default. With a VPC, you must create static routes to send traffic to the transit gateway. With a VPN connection, routes are propagated from the transit gateway to your on-premises router using Border Gateway Protocol (BGP). With a Direct Connect gateway, allowed prefixes are originated to your on-premises router using BGP. With a peering attachment, you must create a static route in the transit gateway route table to point to the peering attachment.
+
+                        * <BulletHdr>Transit gateway Maximum Transmission Unit (MTU)</BulletHdr>The maximum transmission unit (MTU) of a network connection is the size, in bytes, of the largest permissible packet that can be passed over the connection. The larger the MTU of a connection, the more data that can be passed in a single packet. A transit gateway supports an MTU of 8500 bytes for traffic between VPCs, AWS Direct Connect, Transit Gateway Connect, and peering attachments (intra-Region, inter-Region, and Cloud WAN peering attachments). Traffic over VPN connections can have an MTU of 1500 bytes.
+                    </section>
+                </section>
+                <section class="l4">
+                #### Network Address Translation (NAT)
+                    This solution involves NAT'ing outbound Internet traffic from the company's own data center.  AWS VPCs [support NAT](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat.html) as well as [Internet Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html), but since neither is involved in this case, we will not elaborate on these technologies. 
+                </section>
+            </section>
+        </section>
+    </details>
+</section>
