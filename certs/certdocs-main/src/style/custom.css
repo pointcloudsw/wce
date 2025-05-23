@@ -249,7 +249,7 @@ ul.text-grid {
   display: grid;
   gap: var(--_defined_gap);
   grid-auto-flow: column;
-  grid: var(--_portrait_grid);
+  grid: var(--_defined_grid, var(--_portrait_grid));
   inline-size: var(--_inline_size);
   text-indent: var(--textindent);
   list-style-position: var(--lsp);
@@ -275,6 +275,14 @@ ul.text-grid>li {
   text-align: var(--text-align, start);
   background: var(--sl-color-bg-nav);
   border-bottom: 2px solid var(--sl-color-text);
+}
+
+ul.text-grid.vhdr > li:nth-of-type(odd) {
+  /* background: var(--sl-color-bg-nav); */
+  /* border-bottom: 2px solid var(--sl-color-text); */
+  font-weight: bold;
+  place-content: start;
+  text-align: var(--text-align, center);
 }
 /* ss2000 */
 @media screen and (min-width: 1200px) {

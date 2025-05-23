@@ -7,50 +7,143 @@ import { Image } from 'astro:assets';
 import dcXgw from './aws-dc-transitgw.png';
 
 <section class="l1">
-# A closer look at AWS serverless solutions
-    Which is the more cost effective way to host my web app:  AWS Lambda or Fargate?
+# App hosting on AWS
+    AWS offers a plethora of hosting options of varying capabilities and price points.  This summary is intended to explain each option in terms of features, capabilities and price.
 
-    Here's some general guidance to help make an informed decision: [[1]](https://docs.aws.amazon.com/decision-guides/latest/fargate-or-lambda/fargate-or-lambda.html)
+   <section class="l2">
+   ### Hosting Option Summary
+      Here are some hosting options
 
-1. Execution Model:
-   - Lambda is designed for short-lived, event-driven tasks (up to 15 minutes).
-   - Fargate is better suited for long-running applications or microservices.
+      | option | name | managed | static | serverless | description | options |
+      | --- | --- | --- | --- | --- | --- | --- |
+      | S3 |
+      | App Runner |
+      | ECS |
+      | ECS w/Fargate |
+      | EBS |
+      | EC2 |
+      | Lambda |
+      | Lightsail |
+      | Amplify |
+      | CloudFront |
+      | Accelerator |
+      | EKS |
+      <details class="not-content">
+         <summary class="not-content">
+         ### S3
+         </summary>
+         <section class="l3">
+            <ul class="not-content text-grid vhdr" style="--flow: row; --gapc: 5.45rch; --gapr: 0.55rlh; --gridcol: 1fr 3fr; --gridrow: auto; --gridmargin: auto; --inlinesize: 84%; --lsp: outside; --lst: none; --itemmargin: 0rlh 0.50rch; --pad: 0rlh 3rch 0rlh 2rch; --pos: relative; --textindent: 0rch">
+                <li>Option</li>
+                <li>S3</li>
+                <li>Name</li>
+                <li>S3</li>
+                <li>Static</li>
+                <li>S3</li>
+                <li>Managed</li>
+                <li>S3</li>
+                <li>Serverless</li>
+                <li>S3</li>
+                <li>Relative Price</li>
+                <li>S3</li>
+                <li>Summary</li>
+                <li>S3</li>
+                <li>Strengths</li>
+                <li>S3</li>
+                <li>Limitations</li>
+                <li>S3</li>
+                <li>Use cases</li>
+                <li>S3</li>
+            </ul>
+         </section>
+      </details>
+      <details class="not-content">
+         <summary class="not-content">
+         ### Lightsail
+         </summary>
+         <section class="l3">
+            <ul class="not-content text-grid vhdr" style="--flow: row; --gapc: 5.45rch; --gapr: 0.55rlh; --gridcol: 1fr 3fr; --gridrow: auto; --gridmargin: auto; --inlinesize: 84%; --lsp: outside; --lst: none; --itemmargin: 0rlh 0.50rch; --pad: 0rlh 3rch 0rlh 2rch; --pos: relative; --textindent: 0rch">
+                <li>Option</li>
+                <li>S3</li>
+                <li>Name</li>
+                <li>S3</li>
+                <li>Static</li>
+                <li>S3</li>
+                <li>Managed</li>
+                <li>S3</li>
+                <li>Serverless</li>
+                <li>S3</li>
+                <li>Relative Price</li>
+                <li>S3</li>
+                <li>Summary</li>
+                <li>S3</li>
+                <li>Strengths</li>
+                <li>
+                  With Lightsail, you pay a low, predictable price. Lightsail bundles resources such as memory, vCPU, and solid-state drive (SSD) storage into one plan, so budgeting is predictable. All Lightsail plans include static IP addresses, domain name system (DNS) management, one-click secure shell protocol (SSH) terminal access (Linux/Unix), one-click Remote Desktop Protocol (RDP) access (Windows), and server monitoring.  
+                  
+                  Data transfer of 2TB is included within Lightsail pricing for the small instance, making it ideal for small and medium businesses.
+               </li>
+                <li>Limitations</li>
+                <li>S3</li>
+                <li>Use cases</li>
+                <li>S3</li>
+            </ul>
+         </section>
+      </details>
+         <details class="not-content">
+            <summary class="not-content">
+            ### AWS Hosting Options
+            </summary>
+            <section class="l3">
+            ### Hosting Option Summary
+               Here are some hosting options
+            </section>
+         </details>
 
-2. Pricing Structure:
-   - Lambda charges based on the number of requests and execution time.
-   - Fargate charges for the compute resources used by your containers. [[2]](https://repost.aws/questions/QU0JyGMj7KRvKSMyPSM6LgVQ/aws-fargate-costs-for-hosting-a-simple-nextjs-server)
+         Which is the more cost effective way to host my web app:  AWS Lambda or Fargate?
 
-3. Cost Considerations:
-   - Lambda can be more cost-effective for sporadic workloads or applications with variable traffic.
-   - Fargate might be more economical for consistent, long-running processes.
+         Here's some general guidance to help make an informed decision: [[1]](https://docs.aws.amazon.com/decision-guides/latest/fargate-or-lambda/fargate-or-lambda.html)
 
-4. Scalability:
-   - Lambda automatically scales to handle incoming requests.
-   - With Fargate, you have more control over scaling, but it requires more management.
+      1. Execution Model:
+         - Lambda is designed for short-lived, event-driven tasks (up to 15 minutes).
+         - Fargate is better suited for long-running applications or microservices.
 
-5. Cold Starts:
-   - Lambda may experience cold starts, which can impact performance and potentially increase costs.
-   - Fargate typically has fewer cold start issues, but may have higher baseline costs.
+      2. Pricing Structure:
+         - Lambda charges based on the number of requests and execution time.
+         - Fargate charges for the compute resources used by your containers. [[2]](https://repost.aws/questions/QU0JyGMj7KRvKSMyPSM6LgVQ/aws-fargate-costs-for-hosting-a-simple-nextjs-server)
 
-6. Resource Allocation:
-   - Lambda allows less granular control over resources.
-   - Fargate offers more fine-grained control over CPU and memory allocation.
+      3. Cost Considerations:
+         - Lambda can be more cost-effective for sporadic workloads or applications with variable traffic.
+         - Fargate might be more economical for consistent, long-running processes.
 
-7. Additional Costs:
-   - Consider associated services like API Gateway for Lambda or load balancers for Fargate, which can impact overall costs.
+      4. Scalability:
+         - Lambda automatically scales to handle incoming requests.
+         - With Fargate, you have more control over scaling, but it requires more management.
 
-To determine which option is more cost-effective for your specific use case:
+      5. Cold Starts:
+         - Lambda may experience cold starts, which can impact performance and potentially increase costs.
+         - Fargate typically has fewer cold start issues, but may have higher baseline costs.
 
-1. Analyze your application's traffic patterns and resource requirements.
-2. Use the AWS Pricing Calculator to estimate costs for both services based on your expected usage.
-3. Consider running a small-scale test on both platforms to gather real-world performance and cost data.
-4. Review the AWS Free Tier offerings for both services, which may help reduce initial costs.
+      6. Resource Allocation:
+         - Lambda allows less granular control over resources.
+         - Fargate offers more fine-grained control over CPU and memory allocation.
 
-For the most up-to-date and accurate pricing information, I recommend visiting the official AWS pricing pages for Lambda and Fargate. Additionally, consulting with AWS Solutions Architects or your account representative can provide personalized guidance based on your specific use case and requirements.
+      7. Additional Costs:
+         - Consider associated services like API Gateway for Lambda or load balancers for Fargate, which can impact overall costs.
 
-Remember to consider factors beyond just cost, such as performance requirements, development experience, and operational overhead when making your decision.
-Sources
-[1] [[1] AWS Fargate or AWS Lambda? - AWS Fargate or AWS Lambda?] (https://docs.aws.amazon.com/decision-guides/latest/fargate-or-lambda/fargate-or-lambda.html)
-[3] [[2] AWS Fargate Costs for hosting a simple NextJS Server | AWS re:Post] (https://repost.aws/questions/QU0JyGMj7KRvKSMyPSM6LgVQ/aws-fargate-costs-for-hosting-a-simple-nextjs-server)
+      To determine which option is more cost-effective for your specific use case:
 
+      1. Analyze your application's traffic patterns and resource requirements.
+      2. Use the AWS Pricing Calculator to estimate costs for both services based on your expected usage.
+      3. Consider running a small-scale test on both platforms to gather real-world performance and cost data.
+      4. Review the AWS Free Tier offerings for both services, which may help reduce initial costs.
+
+      For the most up-to-date and accurate pricing information, I recommend visiting the official AWS pricing pages for Lambda and Fargate. Additionally, consulting with AWS Solutions Architects or your account representative can provide personalized guidance based on your specific use case and requirements.
+
+      Remember to consider factors beyond just cost, such as performance requirements, development experience, and operational overhead when making your decision.
+      Sources
+      [1] [[1] AWS Fargate or AWS Lambda? - AWS Fargate or AWS Lambda?] (https://docs.aws.amazon.com/decision-guides/latest/fargate-or-lambda/fargate-or-lambda.html)
+      [3] [[2] AWS Fargate Costs for hosting a simple NextJS Server | AWS re:Post] (https://repost.aws/questions/QU0JyGMj7KRvKSMyPSM6LgVQ/aws-fargate-costs-for-hosting-a-simple-nextjs-server)
+
+   </section>
 </section>

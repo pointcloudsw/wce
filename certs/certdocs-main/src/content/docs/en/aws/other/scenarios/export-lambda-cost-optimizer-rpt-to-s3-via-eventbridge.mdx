@@ -1,0 +1,52 @@
+---
+title: Use EventBridge to schedule Lambda Cost Optimizer file export job
+description: Use AWS EventBridge to schedule the export of Lambda Cost Optimizer reports to S3
+---
+import BulletHdr from '~/components/BulletHdr.astro';
+
+<section class="l1">
+   <section class="l2">
+   ## Overview
+      AWS Compute Optimizer is a service that analyzes the configuration and utilization metrics of your AWS compute resources, such as Amazon EC2 instances, Amazon EC2 Auto Scaling groups, AWS Lambda functions, Amazon EBS volumes, and Amazon ECS services on Fargate. It reports whether your resources are optimal, and generates optimization recommendations to reduce the cost and improve the performance of your workloads. Compute Optimizer also provides recent utilization metric data, in addition to projected utilization metric data for the recommendations, which you can use to evaluate which recommendation provides the best price-performance trade-off. The analysis of your usage patterns can help you decide when to move or resize your running resources, and still meet your performance and capacity requirements.
+
+      <section class="l3">
+      ### Solution components
+         This solution involves the following AWS components:
+         * <BulletHdr>Lambda Consumer</BulletHdr>Lambda consumer service responsible for the functional needs of the end application.
+         * <BulletHdr>Lambda Job Runner</BulletHdr>Lambda responsible for running the Cost Optimizer-based Export Job which exports the report to S3 or other file sink.
+         * <BulletHdr>EventBridge</BulletHdr>This solution involves the use of EventBridge to schedule execution of the Lambda Job Runner.
+         * <BulletHdr>CloudWatch</BulletHdr>CloudWatch is responsible for capturing and logging the vital stats which Compute Optimzer will use for recommending optimizations around cost and usage.
+         * <BulletHdr>Compute Optimizer</BulletHdr>Compute Optimizer is the brain and the glue that synthesizes, analyzes and makes recommendations based on the CloudWatch data from the Lambda Consumer.
+         * <BulletHdr>S3</BulletHdr>In this solution, S3 is the target to which the Cost Optimizer job will periodically export its CSV recommendations file, according to the schedule in EventBridge.
+      </section>
+
+
+   ## Details
+      AWS Cost Optimizer applies AI and ML to data in CloudWatch to help optimze AWS spend and resource consumption.  One example of this is Lambda functions which Cloud Optimizer can analyze from a frequency, memory and CPU size perspective.  It then uses that information to formulate recommendations which can be exported in CSV format to S3.
+
+      AWS Compute Optimizer recommends optimal AWS resources for your workloads to reduce costs and improve performance by using machine learning to analyze historical utilization metrics. Compute Optimizer analyzes your Amazon CloudWatch metrics from the last 14 days or 32 days to provide recommendations for free. You pay only for the Amazon Elastic Compute Cloud (EC2) instances, Amazon Elastic Container Service (ECS) services on AWS Fargate, Amazon Elastic Block Store (EBS) volumes, AWS Lambda functions, and Amazon Relational Database Service (RDS) DB instances you use to run your applications and for Amazon CloudWatch monitoring fees.
+
+      Combine with EventBridge to schedule Compute Optimizer export jobs for Lambdas, EC2, RDS and a few other compute / consumption services.
+
+   
+   ## Metrics collected from Lambda functions
+      Compute Optimizer analyzes the following CloudWatch metrics of your Lambda functions.
+
+      **Metric**|**Description**
+      ---|---
+      **Invocations**|The number of times your function code is executed, including successful executions and executions that result in a function error.
+      **Duration**|The amount of time that your function code spends processing an event.
+      **Errors**|The number of invocations that result in a function error. Function errors include exceptions thrown by your code and exceptions thrown by the Lambda runtime. The runtime returns errors for issues such as timeouts and configuration errors.
+      **Throttles**|The number of invocation requests that are throttled.
+
+      There is no additional charge for AWS Compute Optimizer. You pay only for the AWS resources needed to run your applications and Amazon CloudWatch monitoring fees.
+
+   ## References
+      - [Compute Optimizer Pricing](https://aws.amazon.com/compute-optimizer/pricing/)
+      - [Amazon EventBridge Scheduler events](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-scheduler.html)
+      - [ExportLambdaFunctionRecommendations](https://docs.aws.amazon.com/compute-optimizer/latest/APIReference/API_ExportLambdaFunctionRecommendations.html)
+      - [Exporting AWS Compute Optimizer recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
+      - [Lambda function metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/lambda-metrics-analyzed.html)
+
+   </section>
+</section>

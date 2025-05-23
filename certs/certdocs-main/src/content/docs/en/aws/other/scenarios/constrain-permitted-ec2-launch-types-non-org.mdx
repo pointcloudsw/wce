@@ -1,0 +1,34 @@
+---
+title: Constrain permitted EC2 launch types for accounts not managed through AWS Organizations
+description: Constrain permitted EC2 launch types for accounts not managed through AWS Organizations
+---
+import BulletHdr from '~/components/BulletHdr.astro';
+
+<section class="l1">
+   <section class="l2">
+   ## Overview
+      For accounts that aren't managed through AWS Organizations, what are some ways we can restrict user access to particular resources, such as EC2 launch types?
+
+      Which of these options would work?
+         - AWS Config?
+         - Assign launch template with specified instance types to the IAM user accounts
+         - Create a new IAM policy that specifies allowable instance types and attach the policy to an IAM group in which the users are members 
+
+   ## Discussion
+      The best solution in this case is to create an IAM policy at the IAM group level.  A launch template with instance types won't be sufficient nor will AWS Config.
+      
+      Launch templates allow you to create templates for configuring and provisioning Amazon EC2 instances within AWS. With launch templates, you can store launch parameters so that you do not have to specify them every time you launch an instance.  Launch templates cannot, on their own, limit the ability to be launched by particular users or groups.  However, they do have a section wherein IAM roles can be identified which can designate applications running on instances to perform actions on your behalf. For example, [this example](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-launch-templates.html#scenario-as-launch-template) shows an [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) resource for the launch template, which uses the IamInstanceProfile property to specify the IAM role. The Ref function gets the name of the [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html) resource myInstanceProfile. To configure the permissions of the IAM role, you specify a value for the ManagedPolicyArns property.
+
+      AWS Config provides a detailed view of the resources associated with your AWS account, including how they are configured, how they are related to one another, and how the configurations and their relationships have changed over time.  However, AWS Config cannot, on its own, define who can perform actions.
+      
+   ## References
+      - [Amazon EC2 permissions for the user groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/business-use-cases.html#UseCase_EC2)
+      - [Example IAM identity-based policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html)
+      - [Example policies: Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html#policy_library_ec2)
+      - [Amazon EC2: Allows launching EC2 instances in a specific subnet, programmatically and in the console](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_ec2_instances-subnet.html)
+      - [Create launch templates with AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-launch-templates.html)
+      - [EC2 launch template examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html#aws-resource-ec2-launchtemplate--examples)
+      - [Create a launch template that specifies security groups, tags, user data, and an IAM role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-launch-templates.html#scenario-as-launch-template)
+
+   </section>
+</section>

@@ -186,12 +186,20 @@ A member account can belong to only one organization at a time. You can designat
                     #### Authorization policies
                     Authorization policies help you to centrally manage the security of AWS accounts across an organization.
 
-                    #### [Service control policy (SCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
-                    A service control policy is a type of policy that offers central control over the maximum available permissions for IAM users and IAM roles in an organization.
+                    #### [Service control (SCP) policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+                    Service control policies (SCPs) are a type of organization policy that you can use to manage permissions in your organization.  They offer central control over the maximum available permissions for IAM users and IAM roles in an organization.SCPs offer central control over the maximum available permissions for the IAM users and IAM roles in your organization. SCPs help you to ensure your accounts stay within your organization’s access control guidelines. SCPs are available only in an organization that has [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html). SCPs aren't available if your organization has enabled only the consolidated billing features. For instructions on enabling SCPs, see [Enabling a policy type](https://docs.aws.amazon.com/organizations/latest/userguide/enable-policy-type.html).
 
                     This means that SCPs specify principal-centric controls. SCPs create a permissions guardrail, or set limits on the maximum permissions available to principals in your member accounts. You use an SCP when you want to centrally enforce consistent access controls on principals in your organization.
 
                     This can include specifying which services your IAM users and IAM roles can access, which resources they can access, or the conditions under which they can make requests (for example, from specific regions or networks).
+
+                    SCPs do not grant permissions to the IAM users and IAM roles in your organization. No permissions are granted by an SCP. An SCP defines a permission guardrail, or sets limits, on the actions that the IAM users and IAM roles in your organization can perform. To grant permissions, the administrator must attach policies to control access, such as identity-based policies that are attached to IAM users and IAM roles, and resource-based policies that are attached to the resources in your accounts. For more information, see [Identity-based policies and resource-based policies in the IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html).                    
+
+:::note[SCPs don't affect users or roles in the management account]
+SCPs don't affect users or roles in the management account. They affect only the member accounts in your organization. This also means that SCPs apply to member accounts that are designated as delegated administrators.
+:::      
+                    *The [effective permissions](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html#scp-effects-on-permissions) are the logical intersection between what is allowed by the SCP and [resource control policies (RCPs)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html) and what is allowed by the identity-based and resource-based policies.*
+
 
                     #### [Resource control policy (RCP)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
                     A resource control policy is a type of policy that offers central control over the maximum available permissions for resources in an organization.
